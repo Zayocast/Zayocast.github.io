@@ -160,19 +160,27 @@ section .title::after{
 }
 .home .home-content .text-1{
     font-size: 27px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 .home .home-content .text-2{
     font-size: 75px;
     font-weight: 600;
     margin-left: -3px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 .home .home-content .text-3{
     font-size: 40px;
     margin: 5px 0;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 .home .home-content .text-3 span{
     color: crimson;
     font-weight: 500;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 .home .home-content a{
     display: inline-block;
