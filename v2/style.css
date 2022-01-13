@@ -147,7 +147,7 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("https://4kwallpapers.com/images/wallpapers/marshmello-monochrome-american-dj-black-background-5k-8k-3840x2160-422.jpg") no-repeat center;
+    background: url("../bg.jpg") no-repeat center;
     height: 100vh;
     color: #fff;
     min-height: 500px;
