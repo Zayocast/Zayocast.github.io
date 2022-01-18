@@ -728,12 +728,3 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
-
-@media screen and (max-width: 481px){
-
-
-  /*write your CSS-Code here*/
-
-
-}
