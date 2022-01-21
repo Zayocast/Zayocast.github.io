@@ -221,7 +221,7 @@ button {
   display: block;
   margin: 3rem auto 0rem;
   width: 100%;
-  max-width: 950px;
+  max-width: auto;
 }
 
 progress {
@@ -266,7 +266,7 @@ progress::-webkit-progress-value {
   will-change: transform;
 }
 .my-progress-indicator.progress_1 {
-  left: 0;
+  left: 0%;
 }
 .my-progress-indicator.progress_2 {
   left: 9%;
@@ -300,6 +300,34 @@ progress::-webkit-progress-value {
 }
 .my-progress-indicator.progress_12 {
   left: 100%;
+}
+.my-progress-indicator.progress_13 {
+	left: 109%;
+}
+
+.my-progress-indicator.progress_14 {
+	left: 67%;
+}
+
+.my-progress-indicator.progress_15 {
+	left: 72%;
+}
+
+.my-progress-indicator.progress_16 {
+	left: 77%;
+}
+
+.my-progress-indicator.progress_17 {
+	left: 82%;
+}
+.my-progress-indicator.progress_18 {
+	left: 87%;
+}
+.my-progress-indicator.progress_19 {
+	left: 92%;
+}
+.my-progress-indicator.progress_20 {
+	left: 100%;
 }
 .my-progress-indicator.active {
   -webkit-animation: bounce .5s forwards;
