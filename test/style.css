@@ -13,7 +13,7 @@
     text-align: right;
 }
 .content {
-    margin-top: 54px;
+    margin-top: 10px;
   }
   
   .header {
@@ -30,8 +30,8 @@
   }
   
   .container {
-    margin-top: 15px;
-    padding-bottom: 50px;
+    margin-top: 0px;
+    padding-bottom: 20px;
   }
   
   .option-block {
