@@ -282,22 +282,9 @@ var quiz = {
 			"score": 0,
 			"status": ""
 		},
+		
 		{
 			"id": 20,
-			"question": "How can you detect the client&rsquo;s browser name?",
-			"options": [
-				{
-					"a": "navigator.appName",
-					"b": "browser.name",
-					"c": "client.navName"
-				}
-			],
-			"answer": "navigator.appName",
-			"score": 0,
-			"status": ""
-		},
-		{
-			"id": 21,
 			"question": "Колко минути се стои с къдрина?",
 			"options": [
 				{
@@ -312,7 +299,7 @@ var quiz = {
 			"status": ""
 		},
 		{
-			"id": 22,
+			"id": 21,
 			"question": "Колко време се стои с фиксажа?",
 			"options": [
 				{
@@ -326,7 +313,7 @@ var quiz = {
 			"status": ""
 		},
 		{
-			"id": 23,
+			"id": 22,
 			"question": "Какво се случва с косата по време на къдрене?",
 			"options": [
 				{
@@ -341,7 +328,7 @@ var quiz = {
 			"status": ""
 		},
 		{
-			"id": 24,
+			"id": 23,
 			"question": "Какво представлява коректорът?",
 			"options": [
 				{
@@ -355,7 +342,7 @@ var quiz = {
 			"status": ""
 		},
 		{
-			"id": 25,
+			"id": 24,
 			"question": "Колко минути се стои с амонячна боя?",
 			"options": [
 				{
@@ -369,7 +356,7 @@ var quiz = {
 			"status": ""
 		},
 		{
-			"id": 26,
+			"id": 25,
 			"question": "Колко време се стои с безамонячна боя? ",
 			"options": [
 				{
@@ -383,7 +370,7 @@ var quiz = {
 			"status": ""
 		},
 		{
-			"id": 27,
+			"id": 26,
 			"question": "Колко време се стои с мъжка боя за коса?",
 			"options": [
 				{
@@ -397,7 +384,7 @@ var quiz = {
 			"status": ""
 		},
 		{
-			"id": 28,
+			"id": 27,
 			"question": "Какво означава ламиниране на косата?",
 			"options": [
 				{
@@ -471,10 +458,12 @@ var quizApp = function () {
 				res = '<span class="correct">' + quiz.JS[j].score + '</span><i class="fa fa-check c-correct"></i>';
 			}
 			$("#result").append(
-				'<div class="result-question"><span>Въпрос ' + quiz.JS[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
-				'<div><b>Правилен отговор:</b> &nbsp;' + quiz.JS[j].answer + '</div>' +
-				'<div class="last-row"><b>Точки:</b> &nbsp;' + res +
-
+			
+				'<hr>' +
+				'<div class="result-question"><span><b>Въпрос</b> ' + quiz.JS[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
+				'<div><i>Правилен отговор:</i> &nbsp;' + quiz.JS[j].answer + '</div>' +
+				'<div class="last-row"><b>Точки:</b> &nbsp;' + res + '<br>' +
+				
 				'</div>'
 
 			);
