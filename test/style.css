@@ -1,12 +1,57 @@
-.content { margin-top:54px; }
-.header {padding:15px; position:fixed; top:0; width:100%; z-index:9999; }
-.left-title { width:30%; color:#FFF; font-size:18px; float:left; }
-.right-title { width:150px; text-align:right; float:right; color:#FFF;  }
-.quiz-body { margin-top:15px; padding-bottom:50px; }
-.option-block-container { margin-top:20px; max-width:420px; }
-.option-block { padding:10px; background:aliceblue; border:1px solid #84c5fe; margin-bottom:10px; cursor:pointer; }
-.result-question { font-weight:bold; }
 .c-wrong { margin-left:20px; color:#FF0000; }
 .c-correct {  margin-left:20px; color:green; }
-.last-row { border-bottom:1px solid #ccc; padding-bottom:25px; margin-bottom:25px; }
-.res-header { border-bottom:1px solid #ccc; margin-bottom:15px; padding-bottom:15px; }
+
+
+.left-title {
+    width: 50%;
+    font-size: 14px;
+}
+
+.right-title {
+    width: 50%;
+    font-size: 14px;
+    text-align: right;
+}
+.content {
+    margin-top: 54px;
+  }
+  
+  .header {
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+  
+  .header a {
+    color: #FFF;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  
+  .container {
+    margin-top: 15px;
+    padding-bottom: 50px;
+  }
+  
+  .option-block {
+    padding: 8px;
+    background: aliceblue;
+    border: 1px solid #84c5fe;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .button-group {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .button-group button {
+    margin: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
