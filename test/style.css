@@ -17,7 +17,7 @@
   }
   
   .header {
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%;
     z-index: 9999;
@@ -54,3 +54,6 @@
     font-size: 14px;
   }
   
+a {
+    color:black
+}
