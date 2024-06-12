@@ -87,9 +87,10 @@
     <div class="container">
         <img src="logo.jpg" alt="Лого на банката" class="logo">
         <h1>Вносна бележка</h1>
+
         <div class="form-group">
             <label for="date">Дата на представяне:</label>
-            <input type="date" id="date" name="date">
+            <input type="text" id="date" name="date" readonly>
         </div>
         <div class="form-group">
             <label for="branch">Банка:</label>
@@ -131,89 +132,108 @@
         <div class="canvas-container" id="canvas-container">
             <h2>Преглед на вносната бележка</h2>
             <canvas id="canvas1"></canvas>
+            <br /><br /><br />
+            <hr />
+            <br />
             <canvas id="canvas2"></canvas>
         </div>
     </div>
 
     <script>
+        let imageLoaded = false;
+        function checkImagesLoaded() {
+            if (imageLoaded) {
+                generateImage();
+            } else {
+                setTimeout(checkImagesLoaded, 100); // Проверяваме всеки 100 милисекунди
+            }
+        }
 
-        document.getElementById('date').valueAsDate = new Date();
+        document.addEventListener("DOMContentLoaded", function () {
+            checkImagesLoaded();
+        });
+
+        function getFormattedDate() {
+            const months = [
+                "ЯНУАРИ", "ФЕВРУАРИ", "МАРТ", "АПРИЛ", "МАЙ", "ЮНИ",
+                "ЮЛИ", "АВГУСТ", "СЕПТЕМВРИ", "ОКТОМВРИ", "НОЕМВРИ", "ДЕКЕМВРИ"
+            ];
+            const today = new Date();
+            const day = today.getDate();
+            const month = months[today.getMonth()];
+            const year = today.getFullYear();
+            return `${day}${month}${year}`;
+        }
+
+        document.getElementById('date').value = getFormattedDate();
 
         function convertNumberToWords(amount) {
-            const units = ["", "един", "два", "три", "четири", "пет", "шест", "седем", "осем", "девет"];
-            const teens = ["", "единадесет", "дванадесет", "тринадесет", "четиринадесет", "петнадесет", "шестнадесет", "седемнадесет", "осемнадесет", "деветнадесет"];
-            const tens = ["", "десет", "двадесет", "тридесет", "четиридесет", "петдесет", "шестдесет", "седемдесет", "осемдесет", "деветдесет"];
-            const hundreds = ["", "сто", "двеста", "триста", "четиристотин", "петстотин", "шестстотин", "седемстотин", "осемстотин", "деветстотин"];
-            const thousands = ["", "хиляда", "хиляди"];
+            const units = ["", "ЕДИН", "ДВА", "ТРИ", "ЧЕТИРИ", "ПЕТ", "ШЕСТ", "СЕДЕМ", "ОСЕМ", "ДЕВЕТ"];
+            const teens = ["ДЕСЕТ", "ЕДИНАДЕСЕТ", "ДВАНАДЕСЕТ", "ТРИНАДЕСЕТ", "ЧЕТИРИНАДЕСЕТ", "ПЕТНАДЕСЕТ", "ШЕСТНАДЕСЕТ", "СЕДЕМНАДЕСЕТ", "ОСЕМНАДЕСЕТ", "ДЕВЕТНАДЕСЕТ"];
+            const tens = ["", "ДЕСЕТ", "ДВАДЕСЕТ", "ТРИДЕСЕТ", "ЧЕТИРИДЕСЕТ", "ПЕТДЕСЕТ", "ШЕСТДЕСЕТ", "СЕДЕМДЕСЕТ", "ОСЕМДЕСЕТ", "ДЕВЕТДЕСЕТ"];
+            const hundreds = ["", "СТО", "ДВЕСТА", "ТРИСТА", "ЧЕТИРИСТОТИН", "ПЕТСТОТИН", "ШЕСТСТОТИН", "СЕДЕМСТОТИН", "ОСЕМСТОТИН", "ДЕВЕТСТОТИН"];
+            const thousands = ["", "ХИЛЯДА", "ДВЕ ХИЛЯДИ", "ТРИ ХИЛЯДИ", "ЧЕТИРИ ХИЛЯДИ", "ПЕТ ХИЛЯДИ", "ШЕСТ ХИЛЯДИ", "СЕДЕМ ХИЛЯДИ", "ОСЕМ ХИЛЯДИ", "ДЕВЕТ ХИЛЯДИ"];
 
             let words = '';
-            let number = parseFloat(amount, 10);
-            if (isNaN(number) || !isFinite(number)) {
+            let number = parseInt(amount, 10);
+            if (isNaN(number) || !isFinite(number) || number < 0 || number > 10000) {
                 return "невалидна сума";
             }
 
             if (number === 0) {
-                return "нула";
+                return "НУЛА ЛЕВА";
+            }
+            if (number === 1) {
+                return "ЕДИН ЛЕВ";
             }
 
-            if (number === 1000) {
-                return "Хиляда лева";
+            if (number === 10000) {
+                return "ДЕСЕТ ХИЛЯДИ ЛЕВА";
             }
 
-            if (number >= 1000 && number < 2000) {
-                let thousandPart = Math.floor(number / 1000);
-                let rest = number % 1000;
-                words += thousands[thousandPart] + " и ";
-                number = rest;
-            } else if (number >= 2000 && number < 10000) {
-                let thousandPart = Math.floor(number / 1000);
-                let rest = number % 1000;
-                words += thousands[thousandPart] + " ";
-                number = rest;
+            if (number >= 1000) {
+                const thousandPart = Math.floor(number / 1000);
+                number %= 1000;
+                words += thousands[thousandPart];
+                if (number > 0) {
+                    words += " И ";
+                } else {
+                    words += " ЛЕВА";
+                }
             }
 
             if (number >= 100) {
-                let hundredPart = Math.floor(number / 100);
-                let rest = number % 100;
-                if (rest !== 0) {
-                    words += hundreds[hundredPart] + " и ";
+                const hundredPart = Math.floor(number / 100);
+                number %= 100;
+                words += hundreds[hundredPart];
+                if (number > 0) {
+                    words += " И ";
                 } else {
-                    words += hundreds[hundredPart] + " ";
+                    words += " ЛЕВА";
                 }
-                number = rest;
             }
 
             if (number >= 20) {
-                let tenPart = Math.floor(number / 10);
-                let rest = number % 10;
-                if (rest !== 0) {
-                    words += tens[tenPart] + " и ";
+                const tenPart = Math.floor(number / 10);
+                number %= 10;
+                words += tens[tenPart];
+                if (number > 0) {
+                    words += " И ";
                 } else {
-                    words += tens[tenPart] + " ";
+                    words += " ЛЕВА";
                 }
-                number = rest;
-            }
-
-            if (number >= 11 && number <= 19) {
-                words += teens[number - 10] + " ";
+            } else if (number >= 10) {
+                words += teens[number - 10] + " ЛЕВА";
                 number = 0;
             }
 
-            if (number >= 1 && number <= 9) {
-                words += units[number] + " ";
+            if (number > 0 && number < 10) {
+                words += units[number] + " ЛЕВА";
+            } else if (number === 0 && words === '') {
+                words = "НУЛА ЛЕВА";
             }
 
-            return words.trim() + " лева";
-        }
-
-        function generateAllCombinations() {
-            let combinations = [];
-
-            for (let i = 1; i <= 10000; i++) {
-                combinations.push(convertNumberToWords(i));
-            }
-
-            return combinations;
+            return words;
         }
 
         document.getElementById('amount').addEventListener('input', function () {
@@ -222,65 +242,80 @@
             document.getElementById('amountWords').value = words;
         });
 
+        function drawTextInBoxes(ctx, text, startX, startY, boxWidth, boxHeight, letterSpacing) {
+            for (let i = 0; i < text.length; i++) {
+                ctx.fillText(text[i], startX + (i * (boxWidth + letterSpacing)), startY);
+            }
+        }
+
+        function drawTextInBoxesRightToLeft(ctx, text, startX, startY, boxWidth, boxHeight, letterSpacing) {
+            const chars = text.split('');
+            for (let i = chars.length - 1; i >= 0; i--) {
+                ctx.fillText(chars[i], startX - (chars.length - 1 - i) * (boxWidth + letterSpacing), startY);
+            }
+        }
+
         function generateImage() {
-            
+            const date = document.getElementById('date').value;
+            const branch = document.getElementById('branch').value;
+            const address = document.getElementById('address').value;
+            const name = document.getElementById('name').value;
+            const id = document.getElementById('id').value;
+            const currency = document.getElementById('currency').value;
+            const amount = document.getElementById('amount').value;
+            const amountWords = document.getElementById('amountWords').value;
+            const depositor = document.getElementById('depositor').value;
+            const reason = document.getElementById('reason').value;
+            const zerocent = "00";
+
             const canvas1 = document.getElementById('canvas1');
-            const canvas2 = document.getElementById('canvas2');
             const ctx1 = canvas1.getContext('2d');
+            const canvas2 = document.getElementById('canvas2');
             const ctx2 = canvas2.getContext('2d');
+
             const img = new Image();
-            img.src = 'belejka.png';
             img.onload = function () {
                 canvas1.width = img.width;
                 canvas1.height = img.height;
+                ctx1.drawImage(img, 0, 0);
+                ctx1.font = "22px Arial";
+                ctx1.fillStyle = "#000000";
+
+                drawTextInBoxes(ctx1, date, 510, 30, 20, 30, 1);
+                drawTextInBoxes(ctx1, branch, 50, 30, 20, 30, -4);
+                drawTextInBoxes(ctx1, address, 93, 75, 20, 30, -1);
+                drawTextInBoxes(ctx1, name, 20, 195, 20, 30, 4);
+                drawTextInBoxes(ctx1, id, 20, 245, 20, 30, 4);
+                drawTextInBoxes(ctx1, currency, 498, 295, 20, 30, 4);
+                drawTextInBoxes(ctx1, zerocent, 812, 295, 20, 30, 4);
+                drawTextInBoxesRightToLeft(ctx1, amount, 787, 295, 20, 30, 4);
+                drawTextInBoxes(ctx1, amountWords, 19, 345, 20, 30, 4);
+                drawTextInBoxes(ctx1, depositor, 19, 430, 20, 30, 4);
+                drawTextInBoxes(ctx1, reason, 20, 513, 20, 30, 4);
+
                 canvas2.width = img.width;
                 canvas2.height = img.height;
-
-                ctx1.drawImage(img, 0, 0);
                 ctx2.drawImage(img, 0, 0);
+                ctx2.font = "22px Arial";
+                ctx2.fillStyle = "#000000";
 
-                ctx1.font = '23px Arial';
-                ctx1.fillStyle = 'black';
-                ctx2.font = '23px Arial';
-                ctx2.fillStyle = 'black';
+                drawTextInBoxes(ctx2, date, 510, 30, 20, 30, 1);
+                drawTextInBoxes(ctx2, branch, 50, 30, 20, 30, -4);
+                drawTextInBoxes(ctx2, address, 93, 75, 20, 30, -1);
+                drawTextInBoxes(ctx2, name, 20, 195, 20, 30, 4);
+                drawTextInBoxes(ctx2, id, 20, 245, 20, 30, 4);
+                drawTextInBoxes(ctx2, currency, 498, 295, 20, 30, 4);
+                drawTextInBoxes(ctx2, zerocent, 812, 295, 20, 30, 4);
+                drawTextInBoxesRightToLeft(ctx2, amount, 787, 295, 20, 30, 4);
+                drawTextInBoxes(ctx2, amountWords, 19, 345, 20, 30, 4);
+                drawTextInBoxes(ctx2, depositor, 19, 430, 20, 30, 4);
+                drawTextInBoxes(ctx2, reason, 20, 513, 20, 30, 4);
 
-                const date = document.getElementById('date').value;
-                const branch = document.getElementById('branch').value;
-                const address = document.getElementById('address').value;
-                const name = document.getElementById('name').value;
-                const id = document.getElementById('id').value;
-                const currency = document.getElementById('currency').value;
-                const amount = document.getElementById('amount').value;
-                const amountWords = document.getElementById('amountWords').value;
-                const depositor = document.getElementById('depositor').value;
-                const reason = document.getElementById('reason').value;
-
-                ctx1.fillText(date, 620, 45);
-                ctx1.fillText(branch, 80, 130);
-                ctx1.fillText(address, 80, 180);
-                ctx1.fillText(name, 180, 290);
-                ctx1.fillText(id, 180, 330);
-                ctx1.fillText(currency, 680, 400);
-                ctx1.fillText(amount, 740, 400);
-                ctx1.fillText(amountWords, 180, 460);
-                ctx1.fillText(depositor, 180, 520);
-                ctx1.fillText(reason, 180, 580);
-
-                ctx2.fillText(date, 620, 45);
-                ctx2.fillText(branch, 80, 130);
-                ctx2.fillText(address, 80, 180);
-                ctx2.fillText(name, 180, 290);
-                ctx2.fillText(id, 180, 330);
-                ctx2.fillText(currency, 680, 400);
-                ctx2.fillText(amount, 740, 400);
-                ctx2.fillText(amountWords, 180, 460);
-                ctx2.fillText(depositor, 180, 520);
-                ctx2.fillText(reason, 180, 580);
-
-                document.getElementById('canvas-container').style.display = 'block';
-                window.print();
-                
+                setTimeout(() => {
+                    window.print();
+                }, 100); // Изчакваме 100 милисекунди след зареждане на изображението, преди да принтираме
             };
+            img.src = 'belejka.png';
         }
 
     </script>
