@@ -71,7 +71,7 @@
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             max-width: 100%;
-            margin-top: 20px;
+            margin-top: 0px;
         }
 
         .logo {
@@ -79,6 +79,32 @@
             margin: 0 auto 20px;
             width: 598px;
             height: 165px;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .canvas-container,
+            .canvas-container * {
+                visibility: visible;
+            }
+
+            .canvas-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: auto;
+            }
+
+            canvas {
+                display: block;
+                page-break-after: avoid;
+                width: 100%;
+                max-height: calc(50vh - 20px);
+            }
         }
     </style>
 </head>
@@ -130,11 +156,9 @@
         </div>
         <button onclick="generateImage()">Принтирай</button>
         <div class="canvas-container" id="canvas-container">
-            <h2>Преглед на вносната бележка</h2>
             <canvas id="canvas1"></canvas>
-            <br /><br /><br />
+
             <hr />
-            <br />
             <canvas id="canvas2"></canvas>
         </div>
     </div>
@@ -278,7 +302,7 @@
                 canvas1.width = img.width;
                 canvas1.height = img.height;
                 ctx1.drawImage(img, 0, 0);
-                ctx1.font = "22px Arial";
+                ctx1.font = "21px Arial";
                 ctx1.fillStyle = "#000000";
 
                 drawTextInBoxes(ctx1, date, 510, 30, 20, 30, 1);
@@ -296,7 +320,7 @@
                 canvas2.width = img.width;
                 canvas2.height = img.height;
                 ctx2.drawImage(img, 0, 0);
-                ctx2.font = "22px Arial";
+                ctx2.font = "21px Arial";
                 ctx2.fillStyle = "#000000";
 
                 drawTextInBoxes(ctx2, date, 510, 30, 20, 30, 1);
@@ -313,7 +337,7 @@
 
                 setTimeout(() => {
                     window.print();
-                }, 100); // Изчакваме 100 милисекунди след зареждане на изображението, преди да принтираме
+                }, 100);
             };
             img.src = 'belejka.png';
         }
