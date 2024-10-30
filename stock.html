@@ -86,7 +86,15 @@
         .product-info {
             margin-bottom: 10px;
         }
-        .product-info strong {
+        .info-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .info-box strong {
             display: block;
             margin-bottom: 5px;
         }
@@ -198,12 +206,20 @@ function loadProducts(page = 1, productsPerPage = 10) {
         const item = document.createElement('div');
         item.className = 'product-item';
         item.innerHTML = `
-            <div class="product-info">
-                <strong>Product Name:</strong> ${product.name} <br>
-                <strong>Where From:</strong> ${product.whereFrom} <br>
-                <strong>For Who:</strong> ${product.forWho} <br>
-                <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'} <br>
-                <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'} <br>
+            <div class="info-box">
+                <strong>Product Name:</strong> ${product.name}
+            </div>
+            <div class="info-box">
+                <strong>Where From:</strong> ${product.whereFrom}
+            </div>
+            <div class="info-box">
+                <strong>For Who:</strong> ${product.forWho}
+            </div>
+            <div class="info-box">
+                <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'}
+            </div>
+            <div class="info-box">
+                <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'}
             </div>
             <div id="buttons-${products.indexOf(product)}">
                 <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
@@ -242,21 +258,21 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
         return;
     }
 
-    // Prepare the new product object
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    const product = {
+    // Create new product object
+    const newProduct = {
         name: productName,
         whereFrom: whereFrom,
         forWho: forWho,
         pickedUp: false,
         givenOut: false,
+        timestamp: Date.now(),
         pickedUpTimestamp: null,
-        givenOutTimestamp: null,
-        timestamp: Date.now()  // Use timestamp for sorting
+        givenOutTimestamp: null
     };
-    
-    // Add the new product and save to local storage
-    products.unshift(product); // Add new product to the top of the list
+
+    // Save to local storage
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    products.unshift(newProduct); // Add new product at the beginning of the array
     saveProducts(products);
     loadProducts();
     document.getElementById("productForm").reset();
