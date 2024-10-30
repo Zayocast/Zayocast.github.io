@@ -15,13 +15,16 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 10px;
         }
         .container {
-            width: 400px;
+            max-width: 400px;
+            width: 100%;
             background: #fff;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-radius: 8px;
+            overflow: hidden;
         }
         h2, h3 {
             text-align: center;
@@ -35,6 +38,8 @@
             margin-bottom: 10px;
             padding: 10px;
             font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
         button {
             cursor: pointer;
@@ -42,6 +47,7 @@
             color: white;
             border: none;
             border-radius: 4px;
+            transition: background-color 0.3s;
         }
         button:hover {
             background-color: #45a049;
@@ -52,10 +58,19 @@
             border: 1px solid #ddd;
             margin-bottom: 10px;
             border-radius: 4px;
+            position: relative;
         }
         .status-icon {
             font-size: 1.2em;
             color: green;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            margin: 0 5px;
         }
     </style>
 </head>
@@ -77,22 +92,47 @@
                 </select>
             </label>
             <label>For Who: <input type="text" id="forWho" required></label>
+            <label>Account:
+                <select id="account" required>
+                    <option value="User1">User1</option>
+                    <option value="User2">User2</option>
+                    <option value="User3">User3</option>
+                    <option value="User4">User4</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </label>
             <button type="submit">Add Product</button>
         </form>
 
         <h3>Product History</h3>
         <div id="historyList"></div>
+        <div class="pagination" id="pagination"></div>
     </div>
 </div>
 
 <script>
 // Load products from local storage
-function loadProducts() {
+function loadProducts(page = 1, productsPerPage = 10) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     const historyList = document.getElementById("historyList");
-    historyList.innerHTML = '';  // Clear the list
+    const pagination = document.getElementById("pagination");
 
-    products.forEach((product, index) => {
+    // Clear the list and pagination
+    historyList.innerHTML = '';
+    pagination.innerHTML = '';
+
+    // Get the total number of pages
+    const totalPages = Math.ceil(products.length / productsPerPage);
+    
+    // Calculate the index for pagination
+    const startIndex = (page - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    
+    // Sort products by the latest added (newest first)
+    products.sort((a, b) => b.timestamp - a.timestamp);
+
+    // Show the current page products
+    products.slice(startIndex, endIndex).forEach((product, index) => {
         const item = document.createElement('div');
         item.className = 'product-item';
         item.innerHTML = `
@@ -102,11 +142,19 @@ function loadProducts() {
             <strong>Added By:</strong> ${product.addedBy} <br>
             <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ by ${product.pickedUpBy}` : 'No'} <br>
             <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ by ${product.givenOutBy}` : 'No'} <br>
-            <button onclick="markPickedUp(${index})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
-            <button onclick="markGivenOut(${index})" ${product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
+            <button onclick="markPickedUp(${products.length - (startIndex + index + 1)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
+            <button onclick="markGivenOut(${products.length - (startIndex + index + 1)})" ${product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
         `;
         historyList.appendChild(item);
     });
+
+    // Add pagination buttons
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.innerText = i;
+        button.onclick = () => loadProducts(i);
+        pagination.appendChild(button);
+    }
 }
 
 // Save products to local storage
@@ -122,6 +170,7 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
     const productName = document.getElementById("productName").value.trim();
     const whereFrom = document.getElementById("whereFrom").value;
     const forWho = document.getElementById("forWho").value.trim();
+    const addedBy = document.getElementById("account").value;
 
     // Validation for empty input fields
     if (!productName || !forWho) {
@@ -135,11 +184,12 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
         name: productName,
         whereFrom: whereFrom,
         forWho: forWho,
-        addedBy: "User1",  // Placeholder, replace with actual user info if needed
-        pickedUp: false,
-        pickedUpBy: null,
+        addedBy: addedBy,
+        pickedUp: (addedBy === "Admin") ? true : false,
+        pickedUpBy: (addedBy === "Admin") ? addedBy : null,
         givenOut: false,
-        givenOutBy: null
+        givenOutBy: null,
+        timestamp: Date.now()  // Use timestamp for sorting
     };
     
     // Add the new product and save to local storage
@@ -153,7 +203,7 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
 function markPickedUp(index) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].pickedUp = true;
-    products[index].pickedUpBy = "User1";  // Placeholder, replace with actual user info if needed
+    products[index].pickedUpBy = products[index].addedBy;  // Set the user who added as the picker
     saveProducts(products);
     loadProducts();
 }
@@ -162,7 +212,7 @@ function markPickedUp(index) {
 function markGivenOut(index) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].givenOut = true;
-    products[index].givenOutBy = "User1";  // Placeholder, replace with actual user info if needed
+    products[index].givenOutBy = products[index].addedBy;  // Set the user who added as the giver
     saveProducts(products);
     loadProducts();
 }
