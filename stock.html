@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Tracker</title>
     <style>
-        /* Styling for the app */
+        /* Basic Styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -86,48 +86,9 @@
 </div>
 
 <script>
-// GitHub API settings
-const githubUsername = "Zayocast";
-const repoName = "Zayocast.github.io";
-const dataFilePath = "data.json";
-const githubToken = "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";
-
-// API headers
-const headers = {
-    "Authorization": `token ${githubToken}`,
-    "Accept": "application/vnd.github.v3+json"
-};
-
-// Fetch the data file from GitHub
-async function fetchProducts() {
-    const response = await fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/${dataFilePath}`, { headers });
-    const data = await response.json();
-    const content = atob(data.content);  // Decode base64 content
-    return JSON.parse(content);
-}
-
-// Update the data file on GitHub
-async function updateProducts(products) {
-    const response = await fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/${dataFilePath}`, { headers });
-    const data = await response.json();
-    const sha = data.sha;  // File SHA needed for updating
-
-    const updatedContent = {
-        message: "Update products",
-        content: btoa(JSON.stringify(products, null, 2)),  // Encode content in base64
-        sha: sha
-    };
-
-    await fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/${dataFilePath}`, {
-        method: "PUT",
-        headers: headers,
-        body: JSON.stringify(updatedContent)
-    });
-}
-
-// Load and display products
-async function loadProducts() {
-    const products = await fetchProducts();
+// Load products from local storage
+function loadProducts() {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
     const historyList = document.getElementById("historyList");
     historyList.innerHTML = '';  // Clear the list
 
@@ -148,42 +109,47 @@ async function loadProducts() {
     });
 }
 
+// Save products to local storage
+function saveProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+}
+
 // Form submission handler
-document.getElementById("productForm").addEventListener("submit", async (e) => {
+document.getElementById("productForm").addEventListener("submit", (e) => {
     e.preventDefault();
+    const products = JSON.parse(localStorage.getItem("products")) || [];
     const product = {
         name: document.getElementById("productName").value,
         whereFrom: document.getElementById("whereFrom").value,
         forWho: document.getElementById("forWho").value,
-        addedBy: "testUser",
+        addedBy: "User1",  // Placeholder, replace with actual user info if needed
         pickedUp: false,
         pickedUpBy: null,
         givenOut: false,
         givenOutBy: null
     };
     
-    const products = await fetchProducts();
     products.push(product);
-    await updateProducts(products);
+    saveProducts(products);
     loadProducts();
     document.getElementById("productForm").reset();
 });
 
 // Mark product as picked up
-async function markPickedUp(index) {
-    const products = await fetchProducts();
+function markPickedUp(index) {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].pickedUp = true;
-    products[index].pickedUpBy = "testUser";
-    await updateProducts(products);
+    products[index].pickedUpBy = "User1";  // Placeholder, replace with actual user info if needed
+    saveProducts(products);
     loadProducts();
 }
 
 // Mark product as given out
-async function markGivenOut(index) {
-    const products = await fetchProducts();
+function markGivenOut(index) {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].givenOut = true;
-    products[index].givenOutBy = "testUser";
-    await updateProducts(products);
+    products[index].givenOutBy = "User1";  // Placeholder, replace with actual user info if needed
+    saveProducts(products);
     loadProducts();
 }
 
