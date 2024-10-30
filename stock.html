@@ -277,11 +277,13 @@ function loadProducts(page = 1, productsPerPage = 10) {
     const pagination = document.getElementById("pagination");
 
     // Clear the list and pagination
-    historyList.innerHTML = "";
-    pagination.innerHTML = "";
+    historyList.innerHTML = '';
+    pagination.innerHTML = '';
 
-    // Calculate pagination
+    // Get the total number of pages
     const totalPages = Math.ceil(products.length / productsPerPage);
+    
+    // Calculate the index for pagination
     const startIndex = (page - 1) * productsPerPage;
     const endIndex = Math.min(startIndex + productsPerPage, products.length);
 
@@ -293,9 +295,6 @@ function loadProducts(page = 1, productsPerPage = 10) {
             <strong>${products[i].name}</strong>
             <div class="info-box"><strong>От къде:</strong> ${products[i].whereFrom}</div>
             <div class="info-box"><strong>За кой:</strong> ${products[i].forWho}</div>
-            <button class="mark-taken" data-index="${i}">Маркирай като взето</button>
-            <button class="mark-given" data-index="${i}">Маркирай като дадено</button>
-            <div class="timestamp" id="timestamp-${i}"></div> <!-- Timestamp area -->
         `;
         historyList.appendChild(productItem);
     }
@@ -307,33 +306,6 @@ function loadProducts(page = 1, productsPerPage = 10) {
         pageButton.addEventListener("click", () => loadProducts(i, productsPerPage));
         pagination.appendChild(pageButton);
     }
-
-    // Attach event listeners to the buttons
-    attachEventListeners();
-}
-
-// Attach event listeners to the mark buttons
-function attachEventListeners() {
-    const markTakenButtons = document.querySelectorAll('.mark-taken');
-    const markGivenButtons = document.querySelectorAll('.mark-given');
-
-    markTakenButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const index = this.getAttribute('data-index');
-            const timestamp = new Date().toLocaleString();
-            document.getElementById(`timestamp-${index}`).innerHTML = `Взето на: ${timestamp}`;
-            button.disabled = true; // Disable the button after clicking
-        });
-    });
-
-    markGivenButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const index = this.getAttribute('data-index');
-            const timestamp = new Date().toLocaleString();
-            document.getElementById(`timestamp-${index}`).innerHTML = `Дадено на: ${timestamp}`;
-            button.disabled = true; // Disable the button after clicking
-        });
-    });
 }
 
 // Handle form submission
