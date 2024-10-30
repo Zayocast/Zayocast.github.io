@@ -164,8 +164,8 @@
     <!-- Main App Content -->
     <div id="app">
         <form id="productForm">
-            <label>Product Name: <input type="text" id="productName" required></label>
-            <label>Where From:
+            <label>Име на продукта: <input type="text" id="productName" required></label>
+            <label>От къде:
                 <select id="whereFrom" required>
                     <option value="Елиткар">Елиткар</option>
                     <option value="АЙМ">АЙМ</option>
@@ -173,11 +173,11 @@
                     <option value="Евро07">Евро07</option>
                 </select>
             </label>
-            <label>For Who: <input type="text" id="forWho" required></label>
-            <button type="submit">Add Product</button>
+            <label>За кой: <input type="text" id="forWho" required></label>
+            <button type="submit">Добави продукт</button>
         </form>
 
-        <h3>Product History</h3>
+        <h3>История на продуктите</h3>
         <div id="historyList"></div>
         <div class="pagination" id="pagination"></div>
     </div>
@@ -207,19 +207,19 @@ function loadProducts(page = 1, productsPerPage = 10) {
         item.className = 'product-item';
         item.innerHTML = `
             <div class="info-box">
-                <strong>Product Name:</strong> ${product.name}
+                <strong>Име на продукта:</strong> ${product.name}
             </div>
             <div class="info-box">
-                <strong>Where From:</strong> ${product.whereFrom}
+                <strong>От къде:</strong> ${product.whereFrom}
             </div>
             <div class="info-box">
-                <strong>For Who:</strong> ${product.forWho}
+                <strong>За кой:</strong> ${product.forWho}
             </div>
             <div class="info-box">
-                <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'}
+                <strong>Взето:</strong> ${product.pickedUp ? `Да ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'Не'}
             </div>
             <div class="info-box">
-                <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'}
+                <strong>Дадено:</strong> ${product.givenOut ? `Да ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'Не'}
             </div>
             <div id="buttons-${products.indexOf(product)}">
                 <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
