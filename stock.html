@@ -79,8 +79,22 @@
 <div class="container">
     <h2>Product Tracker</h2>
 
+    <!-- Login Form -->
+    <div id="loginFormContainer">
+        <form id="loginForm">
+            <label>Username: 
+                <input type="text" id="username" required>
+            </label>
+            <label>Password: 
+                <input type="password" id="password" required>
+            </label>
+            <button type="submit">Login</button>
+            <p id="loginError" style="color:red; text-align:center;"></p>
+        </form>
+    </div>
+
     <!-- Main App Content -->
-    <div id="app">
+    <div id="app" style="display:none;">
         <form id="productForm">
             <label>Product Name: <input type="text" id="productName" required></label>
             <label>Where From:
@@ -111,6 +125,35 @@
 </div>
 
 <script>
+// Predefined user accounts
+const users = {
+    "User1": "password1",
+    "User2": "password2",
+    "User3": "password3",
+    "User4": "password4",
+    "Admin": "adminpass"
+};
+
+let currentUser = null;
+
+// Login function
+document.getElementById("loginForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // Check for valid credentials
+    if (users[username] && users[username] === password) {
+        currentUser = username;
+        document.getElementById("loginFormContainer").style.display = 'none';
+        document.getElementById("app").style.display = 'block';
+        loadProducts();
+    } else {
+        document.getElementById("loginError").innerText = "Invalid username or password!";
+    }
+});
+
 // Load products from local storage
 function loadProducts(page = 1, productsPerPage = 10) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
@@ -203,7 +246,7 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
 function markPickedUp(index) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].pickedUp = true;
-    products[index].pickedUpBy = products[index].addedBy;  // Set the user who added as the picker
+    products[index].pickedUpBy = currentUser;  // Set the user who picked it up
     saveProducts(products);
     loadProducts();
 }
@@ -212,7 +255,7 @@ function markPickedUp(index) {
 function markGivenOut(index) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].givenOut = true;
-    products[index].givenOutBy = products[index].addedBy;  // Set the user who added as the giver
+    products[index].givenOutBy = currentUser;  // Set the user who gave it out
     saveProducts(products);
     loadProducts();
 }
