@@ -208,7 +208,7 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
     };
     
     // Add the new product and save to local storage
-    products.push(product);
+    products.unshift(product); // Add new product to the top of the list
     saveProducts(products);
     loadProducts();
     document.getElementById("productForm").reset();
