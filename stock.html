@@ -24,12 +24,21 @@
             width: 100%;
             background: #fff;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            transition: transform 0.3s;
         }
-        h2, h3 {
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
             text-align: center;
-            color: #333;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        h3 {
+            text-align: center;
+            color: #555;
         }
         form, .product-item {
             margin-top: 20px;
@@ -37,34 +46,49 @@
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
         input, select, button {
             width: 100%;
             margin-bottom: 10px;
-            padding: 10px;
+            padding: 12px;
             font-size: 1em;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 6px;
             box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
         }
         button {
             cursor: pointer;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.2s;
         }
         button:hover {
             background-color: #45a049;
+            transform: translateY(-2px);
         }
         .product-item {
             background: #f9f9f9;
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ddd;
-            margin-bottom: 10px;
-            border-radius: 4px;
+            margin-bottom: 15px;
+            border-radius: 8px;
             position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-info {
+            margin-bottom: 10px;
+        }
+        .product-info strong {
+            display: block;
+            margin-bottom: 5px;
         }
         .pagination {
             display: flex;
@@ -73,15 +97,54 @@
         }
         .pagination button {
             margin: 0 5px;
-            padding: 5px 10px;
+            padding: 8px 12px;
             background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .pagination button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            input, select, button {
+                font-size: 0.9em;
+            }
+            .pagination button {
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            input, select, button {
+                padding: 10px;
+                font-size: 0.8em;
+            }
+            .pagination button {
+                padding: 4px 8px;
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -97,10 +160,9 @@
             <label>Where From:
                 <select id="whereFrom" required>
                     <option value="Елиткар">Елиткар</option>
-                    <option value="Автокомерс">Автокомерс</option>
+                    <option value="АЙМ">АЙМ</option>
                     <option value="Аутохит">Аутохит</option>
                     <option value="Евро07">Евро07</option>
-                    <option value="Сакал">Сакал</option>
                 </select>
             </label>
             <label>For Who: <input type="text" id="forWho" required></label>
@@ -136,11 +198,13 @@ function loadProducts(page = 1, productsPerPage = 10) {
         const item = document.createElement('div');
         item.className = 'product-item';
         item.innerHTML = `
-            <strong>Product Name:</strong> ${product.name} <br>
-            <strong>Where From:</strong> ${product.whereFrom} <br>
-            <strong>For Who:</strong> ${product.forWho} <br>
-            <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'} <br>
-            <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'} <br>
+            <div class="product-info">
+                <strong>Product Name:</strong> ${product.name} <br>
+                <strong>Where From:</strong> ${product.whereFrom} <br>
+                <strong>For Who:</strong> ${product.forWho} <br>
+                <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'} <br>
+                <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'} <br>
+            </div>
             <div id="buttons-${products.indexOf(product)}">
                 <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
                 <button onclick="markGivenOut(${products.indexOf(product)})" ${!product.pickedUp || product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
