@@ -12,9 +12,9 @@
             color: #333;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: column;
-            height: 100vh;
+            height: auto; /* Changed to auto to fit content */
             margin: 0;
             padding: 20px;
             overflow: auto; /* Prevent overflow issues */
@@ -26,6 +26,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-radius: 8px;
+            margin-top: 20px; /* Added margin-top */
         }
         h2, h3 {
             text-align: center;
@@ -210,8 +211,8 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
     // Add the new product and save to local storage
     products.push(product);
     saveProducts(products);
-    loadProducts();
-    document.getElementById("productForm").reset();
+    loadProducts(); // Load the new list
+    document.getElementById("productForm").reset(); // Reset the form
 });
 
 // Mark product as picked up
@@ -220,7 +221,7 @@ function markPickedUp(index) {
     products[index].pickedUp = true;
     products[index].pickedUpBy = products[index].addedBy; // Set the user who picked it up
     saveProducts(products);
-    loadProducts();
+    loadProducts(); // Reload the product list
 }
 
 // Mark product as given out
@@ -229,7 +230,7 @@ function markGivenOut(index) {
     products[index].givenOut = true;
     products[index].givenOutBy = products[index].addedBy; // Set the user who gave it out
     saveProducts(products);
-    loadProducts();
+    loadProducts(); // Reload the product list
 }
 
 // Load products initially
