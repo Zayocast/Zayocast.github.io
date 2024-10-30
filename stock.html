@@ -118,6 +118,12 @@
             transform: translateY(-2px);
         }
 
+        /* Clear Local Storage Button */
+        .clear-button {
+            background-color: #dc3545; /* Red color for danger */
+            margin-top: 20px;
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
@@ -176,6 +182,8 @@
             <label>За кой: <input type="text" id="forWho" required></label>
             <button type="submit">Добави продукт</button>
         </form>
+
+        <button class="clear-button" id="clearStorage">Изчисти локалното хранилище</button> <!-- Clear Local Storage Button -->
 
         <h3>История на продуктите</h3>
         <div id="historyList"></div>
@@ -243,6 +251,12 @@ function saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
 }
 
+// Clear local storage function
+function clearLocalStorage() {
+    localStorage.removeItem("products");
+    loadProducts(); // Reload products after clearing
+}
+
 // Form submission handler
 document.getElementById("productForm").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -254,7 +268,7 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
 
     // Validation for empty input fields
     if (!productName || !forWho) {
-        alert("Please fill in all fields.");
+        alert("Моля, попълнете всички полета.");
         return;
     }
 
@@ -297,6 +311,9 @@ function markGivenOut(index) {
     // Hide the buttons when both are checked
     document.getElementById(`buttons-${index}`).style.display = 'none';
 }
+
+// Add event listener for clear storage button
+document.getElementById("clearStorage").addEventListener("click", clearLocalStorage);
 
 // Load products initially
 loadProducts();
