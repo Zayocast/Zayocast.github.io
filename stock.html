@@ -94,6 +94,7 @@
             border-radius: 8px;
             position: relative;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, color 0.3s; /* Smooth transition for dark mode */
         }
 
         .info-box {
@@ -103,6 +104,7 @@
             padding: 10px;
             margin: 5px 0;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, color 0.3s; /* Smooth transition for dark mode */
         }
 
         .info-box strong {
@@ -162,6 +164,17 @@
         button.dark {
             background-color: #f44336; /* Red for danger */
             color: #fff;
+        }
+
+        /* Dark mode for product item and info box */
+        .product-item.dark {
+            background: #555;
+            border: 1px solid #777;
+        }
+
+        .info-box.dark {
+            background-color: #666;
+            border: 1px solid #777;
         }
 
         /* Toggle Button Styles */
@@ -278,6 +291,10 @@ function loadProducts(page = 1, productsPerPage = 10) {
     products.sort((a, b) => b.timestamp - a.timestamp).slice(startIndex, endIndex).forEach((product) => {
         const item = document.createElement('div');
         item.className = 'product-item';
+        // Apply dark mode class if active
+        if (document.body.classList.contains('dark')) {
+            item.classList.add('dark');
+        }
         item.innerHTML = `
             <div class="info-box">
                 <strong>Име на продукта:</strong> ${product.name}
@@ -288,127 +305,58 @@ function loadProducts(page = 1, productsPerPage = 10) {
             <div class="info-box">
                 <strong>За кой:</strong> ${product.forWho}
             </div>
-            <div class="info-box">
-                <strong>Взето:</strong> ${product.pickedUp ? `Да ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'Не'}
-            </div>
-            <div class="info-box">
-                <strong>Дадено:</strong> ${product.givenOut ? `Да ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'Не'}
-            </div>
-            <div id="buttons-${products.indexOf(product)}">
-                <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Взето</button>
-                <button onclick="markGivenOut(${products.indexOf(product)})" ${product.givenOut ? 'disabled' : ''}>Дадено</button>
-            </div>
+            <button class="remove" data-id="${product.id}">Изтрий</button>
         `;
         historyList.appendChild(item);
     });
 
     // Create pagination buttons
     for (let i = 1; i <= totalPages; i++) {
-        const button = document.createElement('button');
-        button.innerText = i;
-        button.onclick = () => loadProducts(i, productsPerPage);
-        pagination.appendChild(button);
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        pageButton.addEventListener('click', () => loadProducts(i, productsPerPage));
+        pagination.appendChild(pageButton);
     }
 }
 
-// Save products to local storage
-function saveProducts(products) {
-    localStorage.setItem("products", JSON.stringify(products));
-}
-
-// Add product form submission handler
-document.getElementById("productForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    // Fetch input values
-    const productName = document.getElementById("productName").value.trim();
+// Add product to local storage
+document.getElementById("productForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const name = document.getElementById("productName").value;
     const whereFrom = document.getElementById("whereFrom").value;
-    const forWho = document.getElementById("forWho").value.trim();
+    const forWho = document.getElementById("forWho").value;
 
-    // Validation for empty input fields
-    if (!productName || !forWho) {
-        alert("Моля, попълнете всички полета.");
-        return;
-    }
-
-    // Create new product object
+    const products = JSON.parse(localStorage.getItem("products")) || [];
     const newProduct = {
-        name: productName,
+        id: Date.now(),
+        name: name,
         whereFrom: whereFrom,
         forWho: forWho,
-        pickedUp: false,
-        givenOut: false,
-        timestamp: Date.now(),
-        pickedUpTimestamp: null,
-        givenOutTimestamp: null
+        timestamp: Date.now()
     };
-
-    // Save to local storage
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    products.unshift(newProduct); // Add new product at the beginning of the array
-    saveProducts(products);
-    loadProducts();
+    products.push(newProduct);
+    localStorage.setItem("products", JSON.stringify(products));
     document.getElementById("productForm").reset();
+    loadProducts();
 });
 
-// Mark product as picked up
-function markPickedUp(index) {
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    products[index].pickedUp = true; // Mark as picked up
-    products[index].pickedUpTimestamp = Date.now(); // Set picked up timestamp
-    saveProducts(products);
+// Clear local storage
+document.getElementById("clearStorage").addEventListener("click", function() {
+    localStorage.clear();
     loadProducts();
-}
-
-// Mark product as given out
-function markGivenOut(index) {
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    products[index].givenOut = true; // Mark as given out
-    products[index].givenOutTimestamp = Date.now(); // Set given out timestamp
-    saveProducts(products);
-    loadProducts();
-    // Hide the buttons when both are checked
-    document.getElementById(`buttons-${index}`).style.display = 'none';
-}
-
-// Clear local storage function
-function clearLocalStorage() {
-    if (confirm("Сигурни ли сте, че искате да изчистите локалното хранилище?")) {
-        localStorage.removeItem("products");
-        loadProducts(); // Reload the product list
-    }
-}
-
-// Toggle theme function
-document.getElementById("themeToggle").addEventListener("click", () => {
-    const body = document.body;
-    const container = document.querySelector('.container');
-    
-    // Toggle dark class on body and container
-    body.classList.toggle('dark');
-    container.classList.toggle('dark');
-
-    // Toggle button text
-    const toggleButton = document.getElementById("themeToggle");
-    if (body.classList.contains('dark')) {
-        toggleButton.textContent = '☀️'; // Sun icon for light theme
-        // Add dark class to inputs and buttons
-        document.querySelectorAll('input, select, button').forEach(el => {
-            el.classList.add('dark');
-        });
-    } else {
-        toggleButton.textContent = '🌙'; // Moon icon for dark theme
-        // Remove dark class from inputs and buttons
-        document.querySelectorAll('input, select, button').forEach(el => {
-            el.classList.remove('dark');
-        });
-    }
 });
 
-// Clear local storage button event listener
-document.getElementById("clearStorage").addEventListener("click", clearLocalStorage);
+// Toggle theme
+document.getElementById("themeToggle").addEventListener("click", function() {
+    document.body.classList.toggle("dark");
+    const container = document.querySelector(".container");
+    container.classList.toggle("dark");
+    const inputs = document.querySelectorAll("input, select, button");
+    inputs.forEach(input => input.classList.toggle("dark"));
+    loadProducts(); // Reload products to apply dark mode styles
+});
 
-// Load products initially
+// Load products on initial page load
 loadProducts();
 </script>
 
