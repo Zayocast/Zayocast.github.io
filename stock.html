@@ -295,9 +295,13 @@ function loadProducts(page = 1, productsPerPage = 10) {
         if (document.body.classList.contains('dark')) {
             item.classList.add('dark');
         }
+
+        // Determine status based on timestamp
+        const status = product.picked ? '✅' : product.given ? '🎁' : '';
+
         item.innerHTML = `
             <div class="info-box ${document.body.classList.contains('dark') ? 'dark' : ''}">
-                <strong>Име на продукта:</strong> ${product.name}
+                <strong>Име на продукта:</strong> ${product.name} ${status}
             </div>
             <div class="info-box ${document.body.classList.contains('dark') ? 'dark' : ''}">
                 <strong>От къде:</strong> ${product.whereFrom}
@@ -305,7 +309,9 @@ function loadProducts(page = 1, productsPerPage = 10) {
             <div class="info-box ${document.body.classList.contains('dark') ? 'dark' : ''}">
                 <strong>За кой:</strong> ${product.forWho}
             </div>
-            <button class="remove" data-id="${product.id}">Изтрий</button>
+            <div class="info-box ${document.body.classList.contains('dark') ? 'dark' : ''}">
+                <strong>Timestamp:</strong> ${new Date(product.timestamp).toLocaleString()}
+            </div>
             <button class="mark-picked" data-id="${product.id}">Маркирай като взето</button>
             <button class="mark-given" data-id="${product.id}">Маркирай като дадено</button>
         `;
@@ -320,14 +326,7 @@ function loadProducts(page = 1, productsPerPage = 10) {
         pagination.appendChild(pageButton);
     }
 
-    // Add event listeners to delete and mark buttons
-    document.querySelectorAll('.remove').forEach(button => {
-        button.addEventListener('click', function() {
-            const id = this.dataset.id;
-            deleteProduct(id);
-        });
-    });
-
+    // Add event listeners to mark buttons
     document.querySelectorAll('.mark-picked').forEach(button => {
         button.addEventListener('click', function() {
             const id = this.dataset.id;
@@ -343,22 +342,30 @@ function loadProducts(page = 1, productsPerPage = 10) {
     });
 }
 
-// Function to delete a product
-function deleteProduct(id) {
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    const updatedProducts = products.filter(product => product.id != id);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-    loadProducts(); // Reload products after deletion
-}
-
 // Function to mark a product as picked
 function markAsPicked(id) {
-    alert(`Product ${id} marked as picked!`); // You can customize this action
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const updatedProducts = products.map(product => {
+        if (product.id == id) {
+            product.picked = true; // Add picked status
+        }
+        return product;
+    });
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    loadProducts(); // Reload products after marking
 }
 
 // Function to mark a product as given
 function markAsGiven(id) {
-    alert(`Product ${id} marked as given!`); // You can customize this action
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const updatedProducts = products.map(product => {
+        if (product.id == id) {
+            product.given = true; // Add given status
+        }
+        return product;
+    });
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    loadProducts(); // Reload products after marking
 }
 
 // Add product to local storage
@@ -374,7 +381,9 @@ document.getElementById("productForm").addEventListener("submit", function(event
         name: name,
         whereFrom: whereFrom,
         forWho: forWho,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        picked: false, // Initialize picked status
+        given: false  // Initialize given status
     };
     products.push(newProduct);
     localStorage.setItem("products", JSON.stringify(products));
