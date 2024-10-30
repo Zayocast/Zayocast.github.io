@@ -91,7 +91,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 10px;
-            margin-bottom: 5px; /* Space between info boxes */
+            margin-bottom: 10px; /* Space between info boxes */
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .info-box strong {
@@ -244,7 +244,7 @@ document.getElementById("productForm").addEventListener("submit", function(event
     const forWho = document.getElementById("forWho").value;
 
     if (!productName || !whereFrom || !forWho) {
-        alert("Please fill all fields.");
+        alert("All fields are required.");
         return;
     }
 
