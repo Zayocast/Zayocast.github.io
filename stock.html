@@ -261,7 +261,6 @@
                 </select>
             </label>
             <label>За кой: <input type="text" id="forWho" ></label>
-            <label>Коментар: <input type="text" id="msg" placeholder="Не е задължително" ></label>
             <button type="submit">Добави продукт</button>
         </form>
 
@@ -307,9 +306,6 @@ function loadProducts(page = 1, productsPerPage = 10) {
             </div>
             <div class="info-box">
                 <strong>За кой:</strong> ${product.forWho}
-            </div>
-            <div class="info-box">
-                <strong>Коментар:</strong> ${product.msg}
             </div>
             <div class="info-box">
                 <strong>Взето:</strong> ${product.pickedUp ? `Да ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'Не'}
