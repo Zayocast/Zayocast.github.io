@@ -138,10 +138,10 @@ function loadProducts(page = 1, productsPerPage = 10) {
             <strong>Product Name:</strong> ${product.name} <br>
             <strong>Where From:</strong> ${product.whereFrom} <br>
             <strong>For Who:</strong> ${product.forWho} <br>
-            <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅` : 'No'} <br>
-            <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅` : 'No'} <br>
+            <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'} <br>
+            <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'} <br>
             <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
-            <button onclick="markGivenOut(${products.indexOf(product)})" ${product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
+            <button onclick="markGivenOut(${products.indexOf(product)})" ${!product.pickedUp || product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
         `;
         historyList.appendChild(item);
     });
@@ -183,6 +183,8 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
         forWho: forWho,
         pickedUp: false,
         givenOut: false,
+        pickedUpTimestamp: null,
+        givenOutTimestamp: null,
         timestamp: Date.now()  // Use timestamp for sorting
     };
     
@@ -197,6 +199,7 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
 function markPickedUp(index) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].pickedUp = true; // Mark as picked up
+    products[index].pickedUpTimestamp = Date.now(); // Set picked up timestamp
     saveProducts(products);
     loadProducts();
 }
@@ -205,6 +208,7 @@ function markPickedUp(index) {
 function markGivenOut(index) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     products[index].givenOut = true; // Mark as given out
+    products[index].givenOutTimestamp = Date.now(); // Set given out timestamp
     saveProducts(products);
     loadProducts();
 }
