@@ -117,11 +117,24 @@ function saveProducts(products) {
 // Form submission handler
 document.getElementById("productForm").addEventListener("submit", (e) => {
     e.preventDefault();
+    
+    // Fetch input values
+    const productName = document.getElementById("productName").value.trim();
+    const whereFrom = document.getElementById("whereFrom").value;
+    const forWho = document.getElementById("forWho").value.trim();
+
+    // Validation for empty input fields
+    if (!productName || !forWho) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // Prepare the new product object
     const products = JSON.parse(localStorage.getItem("products")) || [];
     const product = {
-        name: document.getElementById("productName").value,
-        whereFrom: document.getElementById("whereFrom").value,
-        forWho: document.getElementById("forWho").value,
+        name: productName,
+        whereFrom: whereFrom,
+        forWho: forWho,
         addedBy: "User1",  // Placeholder, replace with actual user info if needed
         pickedUp: false,
         pickedUpBy: null,
@@ -129,6 +142,7 @@ document.getElementById("productForm").addEventListener("submit", (e) => {
         givenOutBy: null
     };
     
+    // Add the new product and save to local storage
     products.push(product);
     saveProducts(products);
     loadProducts();
