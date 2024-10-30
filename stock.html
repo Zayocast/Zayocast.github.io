@@ -97,9 +97,10 @@
             <label>Where From:
                 <select id="whereFrom" required>
                     <option value="Елиткар">Елиткар</option>
-                    <option value="АЙМ">АЙМ</option>
+                    <option value="Автокомерс">Автокомерс</option>
                     <option value="Аутохит">Аутохит</option>
                     <option value="Евро07">Евро07</option>
+                    <option value="Сакал">Сакал</option>
                 </select>
             </label>
             <label>For Who: <input type="text" id="forWho" required></label>
@@ -140,8 +141,10 @@ function loadProducts(page = 1, productsPerPage = 10) {
             <strong>For Who:</strong> ${product.forWho} <br>
             <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'} <br>
             <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'} <br>
-            <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
-            <button onclick="markGivenOut(${products.indexOf(product)})" ${!product.pickedUp || product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
+            <div id="buttons-${products.indexOf(product)}">
+                <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
+                <button onclick="markGivenOut(${products.indexOf(product)})" ${!product.pickedUp || product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
+            </div>
         `;
         historyList.appendChild(item);
     });
@@ -211,6 +214,8 @@ function markGivenOut(index) {
     products[index].givenOutTimestamp = Date.now(); // Set given out timestamp
     saveProducts(products);
     loadProducts();
+    // Hide the buttons when both are checked
+    document.getElementById(`buttons-${index}`).style.display = 'none';
 }
 
 // Load products initially
