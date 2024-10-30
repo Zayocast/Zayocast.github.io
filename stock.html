@@ -82,17 +82,22 @@
             border-radius: 8px;
             position: relative;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex; /* Flexbox for single-line layout */
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center items vertically */
         }
         .product-info {
-            margin-bottom: 10px;
+            flex-grow: 1; /* Allow info to grow */
+            margin-right: 15px; /* Space between info and buttons */
         }
         .info-box {
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 10px;
-            margin: 5px 0;
+            margin: 0 5px; /* Side margins for spacing */
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: inline-block; /* Keep info inline */
         }
         .info-box strong {
             display: block;
@@ -202,24 +207,17 @@ function loadProducts(page = 1, productsPerPage = 10) {
     const endIndex = startIndex + productsPerPage;
     
     // Show the current page products, with newest first
-    products.sort((a, b) => b.timestamp - a.timestamp).slice(startIndex, endIndex).forEach((product) => {
+    products.sort((a, b) => b.timestamp - a.timestamp).slice(startIndex, endIndex).forEach((product, index) => {
         const item = document.createElement('div');
         item.className = 'product-item';
         item.innerHTML = `
-            <div class="info-box">
-                <strong>Product Name:</strong> ${product.name}
-            </div>
-            <div class="info-box">
-                <strong>Where From:</strong> ${product.whereFrom}
-            </div>
-            <div class="info-box">
-                <strong>For Who:</strong> ${product.forWho}
-            </div>
-            <div class="info-box">
-                <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'}
-            </div>
-            <div class="info-box">
-                <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'}
+            <div class="product-info">
+                <span class="info-box"><strong>ID:</strong> №${products.length - index}</span>
+                <span class="info-box"><strong>Product Name:</strong> ${product.name}</span>
+                <span class="info-box"><strong>Where From:</strong> ${product.whereFrom}</span>
+                <span class="info-box"><strong>For Who:</strong> ${product.forWho}</span>
+                <span class="info-box"><strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'No'}</span>
+                <span class="info-box"><strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'No'}</span>
             </div>
             <div id="buttons-${products.indexOf(product)}">
                 <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
@@ -243,18 +241,15 @@ function saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
 }
 
-// Form submission handler
-document.getElementById("productForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    // Fetch input values
-    const productName = document.getElementById("productName").value.trim();
+// Add new product
+document.getElementById("productForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const productName = document.getElementById("productName").value;
     const whereFrom = document.getElementById("whereFrom").value;
-    const forWho = document.getElementById("forWho").value.trim();
+    const forWho = document.getElementById("forWho").value;
 
-    // Validation for empty input fields
-    if (!productName || !forWho) {
-        alert("Please fill in all fields.");
+    if (!productName || !whereFrom || !forWho) {
+        alert("Please fill all fields.");
         return;
     }
 
@@ -293,9 +288,9 @@ function markGivenOut(index) {
     products[index].givenOut = true; // Mark as given out
     products[index].givenOutTimestamp = Date.now(); // Set given out timestamp
     saveProducts(products);
-    loadProducts();
     // Hide the buttons when both are checked
     document.getElementById(`buttons-${index}`).style.display = 'none';
+    loadProducts(); // Reload to reflect changes
 }
 
 // Load products initially
