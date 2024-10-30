@@ -18,7 +18,9 @@
             margin: 0;
             padding: 20px;
             overflow: auto; /* Prevent overflow issues */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
         }
+
         .container {
             max-width: 600px;
             width: 100%;
@@ -26,28 +28,34 @@
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s, color 0.3s; /* Include background and color in transition */
         }
+
         .container:hover {
             transform: translateY(-5px);
         }
+
         h2 {
             text-align: center;
             color: #4CAF50;
             margin-bottom: 10px;
         }
+
         h3 {
             text-align: center;
             color: #555;
         }
+
         form, .product-item {
             margin-top: 20px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
+
         input, select, button {
             width: 100%;
             margin-bottom: 10px;
@@ -58,10 +66,12 @@
             box-sizing: border-box; /* Include padding in width */
             transition: border-color 0.3s;
         }
+
         input:focus, select:focus {
             border-color: #4CAF50;
             outline: none;
         }
+
         button {
             cursor: pointer;
             background-color: #4CAF50;
@@ -70,10 +80,12 @@
             border-radius: 6px;
             transition: background-color 0.3s, transform 0.2s;
         }
+
         button:hover {
             background-color: #45a049;
             transform: translateY(-2px);
         }
+
         .product-item {
             background: #f9f9f9;
             padding: 15px;
@@ -83,9 +95,7 @@
             position: relative;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
-        .product-info {
-            margin-bottom: 10px;
-        }
+
         .info-box {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -94,15 +104,18 @@
             margin: 5px 0;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
+
         .info-box strong {
             display: block;
             margin-bottom: 5px;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
+
         .pagination button {
             margin: 0 5px;
             padding: 8px 12px;
@@ -113,6 +126,7 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
         }
+
         .pagination button:hover {
             background-color: #0056b3;
             transform: translateY(-2px);
@@ -122,6 +136,42 @@
         .clear-button {
             background-color: #dc3545; /* Red color for danger */
             margin-top: 20px;
+        }
+
+        /* Dark Theme Styles */
+        body.dark {
+            background-color: #333;
+            color: #f4f4f9;
+        }
+
+        .container.dark {
+            background: #444;
+            color: #f4f4f9;
+        }
+
+        button.dark {
+            background-color: #f44336; /* Red for danger */
+            color: #fff;
+        }
+
+        /* Toggle Button Styles */
+        #themeToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #themeToggle:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         /* Responsive Styles */
@@ -191,6 +241,9 @@
     </div>
 </div>
 
+<!-- Theme Toggle Button -->
+<button id="themeToggle">🌙</button>
+
 <script>
 // Load products from local storage
 function loadProducts(page = 1, productsPerPage = 10) {
@@ -230,18 +283,18 @@ function loadProducts(page = 1, productsPerPage = 10) {
                 <strong>Дадено:</strong> ${product.givenOut ? `Да ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'Не'}
             </div>
             <div id="buttons-${products.indexOf(product)}">
-                <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Маркирай като взето</button>
-                <button onclick="markGivenOut(${products.indexOf(product)})" ${!product.pickedUp || product.givenOut ? 'disabled' : ''}>Маркирай като дадено</button>
+                <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Взето</button>
+                <button onclick="markGivenOut(${products.indexOf(product)})" ${product.givenOut ? 'disabled' : ''}>Дадено</button>
             </div>
         `;
         historyList.appendChild(item);
     });
 
-    // Add pagination buttons
+    // Create pagination buttons
     for (let i = 1; i <= totalPages; i++) {
         const button = document.createElement('button');
         button.innerText = i;
-        button.onclick = () => loadProducts(i);
+        button.onclick = () => loadProducts(i, productsPerPage);
         pagination.appendChild(button);
     }
 }
@@ -251,13 +304,7 @@ function saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
 }
 
-// Clear local storage function
-function clearLocalStorage() {
-    localStorage.removeItem("products");
-    loadProducts(); // Reload products after clearing
-}
-
-// Form submission handler
+// Add product form submission handler
 document.getElementById("productForm").addEventListener("submit", (e) => {
     e.preventDefault();
     
@@ -312,8 +359,31 @@ function markGivenOut(index) {
     document.getElementById(`buttons-${index}`).style.display = 'none';
 }
 
-// Add event listener for clear storage button
-document.getElementById("clearStorage").addEventListener("click", clearLocalStorage);
+// Clear local storage function
+function clearLocalStorage() {
+    if (confirm("Сигурни ли сте, че искате да изчистите локалното хранилище?")) {
+        localStorage.removeItem("products");
+        loadProducts(); // Reload the product list
+    }
+}
+
+// Toggle theme function
+document.getElementById("themeToggle").addEventListener("click", () => {
+    const body = document.body;
+    const container = document.querySelector('.container');
+    
+    // Toggle dark class on body and container
+    body.classList.toggle('dark');
+    container.classList.toggle('dark');
+
+    // Toggle button text
+    const toggleButton = document.getElementById("themeToggle");
+    if (body.classList.contains('dark')) {
+        toggleButton.textContent = '☀️'; // Sun icon for light theme
+    } else {
+        toggleButton.textContent = '🌙'; // Moon icon for dark theme
+    }
+});
 
 // Load products initially
 loadProducts();
