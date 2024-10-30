@@ -168,13 +168,13 @@
 
         /* Dark mode for product item and info box */
         .product-item.dark {
-            background: #555; /* Dark background */
-            border: 1px solid #777; /* Dark border */
+            background: #555;
+            border: 1px solid #777;
         }
 
         .info-box.dark {
-            background-color: #666; /* Dark background for info boxes */
-            border: 1px solid #777; /* Dark border for info boxes */
+            background-color: #666;
+            border: 1px solid #777;
         }
 
         /* Toggle Button Styles */
@@ -285,79 +285,145 @@ function loadProducts(page = 1, productsPerPage = 10) {
     
     // Calculate the index for pagination
     const startIndex = (page - 1) * productsPerPage;
-    const endIndex = Math.min(startIndex + productsPerPage, products.length);
-
-    // Populate the history list
-    for (let i = startIndex; i < endIndex; i++) {
-        const productItem = document.createElement("div");
-        productItem.classList.add("product-item");
-        productItem.innerHTML = `
-            <strong>${products[i].name}</strong>
-            <div class="info-box"><strong>От къде:</strong> ${products[i].whereFrom}</div>
-            <div class="info-box"><strong>За кой:</strong> ${products[i].forWho}</div>
+    const endIndex = startIndex + productsPerPage;
+    
+    // Show the current page products, with newest first
+    products.sort((a, b) => b.timestamp - a.timestamp).slice(startIndex, endIndex).forEach((product) => {
+        const item = document.createElement('div');
+        item.className = 'product-item';
+        item.innerHTML = `
+            <div class="info-box">
+                <strong>Име на продукта:</strong> ${product.name}
+            </div>
+            <div class="info-box">
+                <strong>От къде:</strong> ${product.whereFrom}
+            </div>
+            <div class="info-box">
+                <strong>За кой:</strong> ${product.forWho}
+            </div>
+            <div class="info-box">
+                <strong>Взето:</strong> ${product.pickedUp ? `Да ✅ - ${new Date(product.pickedUpTimestamp).toLocaleString()}` : 'Не'}
+            </div>
+            <div class="info-box">
+                <strong>Дадено:</strong> ${product.givenOut ? `Да ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'Не'}
+            </div>
+            <div id="buttons-${products.indexOf(product)}">
+                <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Взето</button>
+                <button onclick="markGivenOut(${products.indexOf(product)})" ${product.givenOut ? 'disabled' : ''}>Дадено</button>
+            </div>
         `;
-        historyList.appendChild(productItem);
-    }
+        historyList.appendChild(item);
+    });
 
     // Create pagination buttons
     for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement("button");
-        pageButton.textContent = i;
-        pageButton.addEventListener("click", () => loadProducts(i, productsPerPage));
-        pagination.appendChild(pageButton);
+        const button = document.createElement('button');
+        button.innerText = i;
+        button.onclick = () => loadProducts(i, productsPerPage);
+        pagination.appendChild(button);
     }
 }
 
-// Handle form submission
-document.getElementById("productForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const name = document.getElementById("productName").value;
-    const whereFrom = document.getElementById("whereFrom").value;
-    const forWho = document.getElementById("forWho").value;
-
-    // Get products from local storage or initialize as empty array
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    
-    // Push the new product to the products array
-    products.push({ name, whereFrom, forWho });
+// Save products to local storage
+function saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
+}
 
-    // Reload products
-    loadProducts();
-    this.reset();
-});
-
-// Clear local storage
-document.getElementById("clearStorage").addEventListener("click", () => {
-    localStorage.removeItem("products");
-    loadProducts();
-});
-
-// Theme toggle functionality
-const themeToggle = document.getElementById("themeToggle");
-let isDarkMode = false;
-
-themeToggle.addEventListener("click", () => {
-    isDarkMode = !isDarkMode;
-    document.body.classList.toggle("dark", isDarkMode);
-    document.querySelector(".container").classList.toggle("dark", isDarkMode);
+// Add product form submission handler
+document.getElementById("productForm").addEventListener("submit", (e) => {
+    e.preventDefault();
     
-    // Update the theme for inputs and buttons
-    document.querySelectorAll("input, select, button").forEach(el => {
-        el.classList.toggle("dark", isDarkMode);
-    });
-    
-    // Update product items and info boxes
-    document.querySelectorAll(".product-item").forEach(el => {
-        el.classList.toggle("dark", isDarkMode);
-    });
-    document.querySelectorAll(".info-box").forEach(el => {
-        el.classList.toggle("dark", isDarkMode);
-    });
+    // Fetch input values
+    const productName = document.getElementById("productName").value.trim();
+    const whereFrom = document.getElementById("whereFrom").value;
+    const forWho = document.getElementById("forWho").value.trim();
+
+    // Validation for empty input fields
+    if (!productName || !forWho) {
+        alert("Моля, попълнете всички полета.");
+        return;
+    }
+
+    // Create new product object
+    const newProduct = {
+        name: productName,
+        whereFrom: whereFrom,
+        forWho: forWho,
+        pickedUp: false,
+        givenOut: false,
+        timestamp: Date.now(),
+        pickedUpTimestamp: null,
+        givenOutTimestamp: null
+    };
+
+    // Save to local storage
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    products.unshift(newProduct); // Add new product at the beginning of the array
+    saveProducts(products);
+    loadProducts();
+    document.getElementById("productForm").reset();
 });
 
-// Load products on page load
-document.addEventListener("DOMContentLoaded", loadProducts);
+// Mark product as picked up
+function markPickedUp(index) {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    products[index].pickedUp = true; // Mark as picked up
+    products[index].pickedUpTimestamp = Date.now(); // Set picked up timestamp
+    saveProducts(products);
+    loadProducts();
+}
+
+// Mark product as given out
+function markGivenOut(index) {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    products[index].givenOut = true; // Mark as given out
+    products[index].givenOutTimestamp = Date.now(); // Set given out timestamp
+    saveProducts(products);
+    loadProducts();
+    // Hide the buttons when both are checked
+    document.getElementById(`buttons-${index}`).style.display = 'none';
+}
+
+// Clear local storage function
+function clearLocalStorage() {
+    if (confirm("Сигурни ли сте, че искате да изчистите локалното хранилище?")) {
+        localStorage.removeItem("products");
+        loadProducts(); // Reload the product list
+    }
+}
+
+// Toggle theme function
+document.getElementById("themeToggle").addEventListener("click", () => {
+    const body = document.body;
+    const container = document.querySelector('.container');
+    
+    // Toggle dark class on body and container
+    body.classList.toggle('dark');
+    container.classList.toggle('dark');
+
+    // Toggle button text
+    const toggleButton = document.getElementById("themeToggle");
+    if (body.classList.contains('dark')) {
+        toggleButton.textContent = '☀️'; // Sun icon for light theme
+        // Add dark class to inputs and buttons
+        document.querySelectorAll('input, select, button').forEach(el => {
+            el.classList.add('dark');
+        });
+    } else {
+        toggleButton.textContent = '🌙'; // Moon icon for dark theme
+        // Remove dark class from inputs and buttons
+        document.querySelectorAll('input, select, button').forEach(el => {
+            el.classList.remove('dark');
+        });
+    }
+});
+
+// Clear local storage button event listener
+document.getElementById("clearStorage").addEventListener("click", clearLocalStorage);
+
+// Load products initially
+loadProducts();
 </script>
+
 </body>
 </html>
