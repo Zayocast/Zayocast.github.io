@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Tracker</title>
+    <style>
+        /* Styling for the app */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 400px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+        form, .product-item {
+            margin-top: 20px;
+        }
+        label, input, select, button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .product-item {
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .status-icon {
+            font-size: 1.2em;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Product Tracker</h2>
+
+    <!-- Main App Content -->
+    <div id="app">
+        <form id="productForm">
+            <label>Product Name: <input type="text" id="productName" required></label>
+            <label>Where From:
+                <select id="whereFrom" required>
+                    <option value="Елиткар">Елиткар</option>
+                    <option value="АЙМ">АЙМ</option>
+                    <option value="Аутохит">Аутохит</option>
+                    <option value="Евро07">Евро07</option>
+                </select>
+            </label>
+            <label>For Who: <input type="text" id="forWho" required></label>
+            <button type="submit">Add Product</button>
+        </form>
+
+        <h3>Product History</h3>
+        <div id="historyList"></div>
+    </div>
+</div>
+
+<script>
+// GitHub API settings
+const githubUsername = "Zayocast";
+const repoName = "Zayocast.github.io";
+const dataFilePath = "data.json";
+const githubToken = "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";
+
+// API headers
+const headers = {
+    "Authorization": `token ${githubToken}`,
+    "Accept": "application/vnd.github.v3+json"
+};
+
+// Fetch the data file from GitHub
+async function fetchProducts() {
+    const response = await fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/${dataFilePath}`, { headers });
+    const data = await response.json();
+    const content = atob(data.content);  // Decode base64 content
+    return JSON.parse(content);
+}
+
+// Update the data file on GitHub
+async function updateProducts(products) {
+    const response = await fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/${dataFilePath}`, { headers });
+    const data = await response.json();
+    const sha = data.sha;  // File SHA needed for updating
+
+    const updatedContent = {
+        message: "Update products",
+        content: btoa(JSON.stringify(products, null, 2)),  // Encode content in base64
+        sha: sha
+    };
+
+    await fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/${dataFilePath}`, {
+        method: "PUT",
+        headers: headers,
+        body: JSON.stringify(updatedContent)
+    });
+}
+
+// Load and display products
+async function loadProducts() {
+    const products = await fetchProducts();
+    const historyList = document.getElementById("historyList");
+    historyList.innerHTML = '';  // Clear the list
+
+    products.forEach((product, index) => {
+        const item = document.createElement('div');
+        item.className = 'product-item';
+        item.innerHTML = `
+            <strong>Product Name:</strong> ${product.name} <br>
+            <strong>Where From:</strong> ${product.whereFrom} <br>
+            <strong>For Who:</strong> ${product.forWho} <br>
+            <strong>Added By:</strong> ${product.addedBy} <br>
+            <strong>Picked Up:</strong> ${product.pickedUp ? `Yes ✅ by ${product.pickedUpBy}` : 'No'} <br>
+            <strong>Given Out:</strong> ${product.givenOut ? `Yes ✅ by ${product.givenOutBy}` : 'No'} <br>
+            <button onclick="markPickedUp(${index})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
+            <button onclick="markGivenOut(${index})" ${product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
+        `;
+        historyList.appendChild(item);
+    });
+}
+
+// Form submission handler
+document.getElementById("productForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const product = {
+        name: document.getElementById("productName").value,
+        whereFrom: document.getElementById("whereFrom").value,
+        forWho: document.getElementById("forWho").value,
+        addedBy: "testUser",
+        pickedUp: false,
+        pickedUpBy: null,
+        givenOut: false,
+        givenOutBy: null
+    };
+    
+    const products = await fetchProducts();
+    products.push(product);
+    await updateProducts(products);
+    loadProducts();
+    document.getElementById("productForm").reset();
+});
+
+// Mark product as picked up
+async function markPickedUp(index) {
+    const products = await fetchProducts();
+    products[index].pickedUp = true;
+    products[index].pickedUpBy = "testUser";
+    await updateProducts(products);
+    loadProducts();
+}
+
+// Mark product as given out
+async function markGivenOut(index) {
+    const products = await fetchProducts();
+    products[index].givenOut = true;
+    products[index].givenOutBy = "testUser";
+    await updateProducts(products);
+    loadProducts();
+}
+
+// Load products initially
+loadProducts();
+</script>
+
+</body>
+</html>
