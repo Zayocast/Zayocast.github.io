@@ -222,8 +222,8 @@ function loadProducts(page = 1, productsPerPage = 10) {
                 <strong>Дадено:</strong> ${product.givenOut ? `Да ✅ - ${new Date(product.givenOutTimestamp).toLocaleString()}` : 'Не'}
             </div>
             <div id="buttons-${products.indexOf(product)}">
-                <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Mark as Picked Up</button>
-                <button onclick="markGivenOut(${products.indexOf(product)})" ${!product.pickedUp || product.givenOut ? 'disabled' : ''}>Mark as Given Out</button>
+                <button onclick="markPickedUp(${products.indexOf(product)})" ${product.pickedUp ? 'disabled' : ''}>Маркирай като взето</button>
+                <button onclick="markGivenOut(${products.indexOf(product)})" ${!product.pickedUp || product.givenOut ? 'disabled' : ''}>Маркирай като дадено</button>
             </div>
         `;
         historyList.appendChild(item);
