@@ -149,6 +149,16 @@
             color: #f4f4f9;
         }
 
+        input.dark, select.dark, button.dark {
+            background-color: #555;
+            color: #fff;
+            border: 1px solid #777;
+        }
+
+        input.dark:focus, select.dark:focus {
+            border-color: #4CAF50;
+        }
+
         button.dark {
             background-color: #f44336; /* Red for danger */
             color: #fff;
@@ -380,10 +390,21 @@ document.getElementById("themeToggle").addEventListener("click", () => {
     const toggleButton = document.getElementById("themeToggle");
     if (body.classList.contains('dark')) {
         toggleButton.textContent = '☀️'; // Sun icon for light theme
+        // Add dark class to inputs and buttons
+        document.querySelectorAll('input, select, button').forEach(el => {
+            el.classList.add('dark');
+        });
     } else {
         toggleButton.textContent = '🌙'; // Moon icon for dark theme
+        // Remove dark class from inputs and buttons
+        document.querySelectorAll('input, select, button').forEach(el => {
+            el.classList.remove('dark');
+        });
     }
 });
+
+// Clear local storage button event listener
+document.getElementById("clearStorage").addEventListener("click", clearLocalStorage);
 
 // Load products initially
 loadProducts();
