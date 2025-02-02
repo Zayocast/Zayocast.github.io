@@ -91,14 +91,22 @@ function renderOrders() {
   const end = start + ordersPerPage;
   const ordersToDisplay = orders.slice(start, end);
 
+  // Пъвба буква да е главна
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+
   ordersToDisplay.forEach(order => {
     const client = clients.find(client => client.id === order.clientId);
     const row = document.createElement('tr');
-    
+
     const lastOrderDate = new Date(order.date);
     const currentDate = new Date();
     const daysSinceOrder = Math.floor((currentDate - lastOrderDate) / (1000 * 60 * 60 * 24));
-
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     // Оцветяване на реда в зависимост от състоянието
     if (daysSinceOrder > 40 && order.status === 'ПОЗВЪНИ') {
       row.classList.add('bg-red-200');
@@ -107,15 +115,17 @@ function renderOrders() {
     }
 
     row.innerHTML = `
-      <td class="border-b p-2">${client.name}</td>
-      <td class="border-b p-2">${client.phone}</td>
-      <td class="border-b p-2">${order.product}</td>
-      <td class="border-b p-2">${order.quantity}</td>
-      <td class="border-b p-2">${formatDate(order.date)}</td>
-      <td class="border-b p-2">
-        <button onclick="toggleOrderStatus(${order.id})" class="bg-green-500 text-white p-2 rounded">${order.status}</button>
-      </td>
-    `;
+  <td class="border-b p-2">${capitalizeFirstLetter(client.name)}</td>
+  <td class="border-b p-2">${client.phone}</td>
+  <td class="border-b p-2">
+    ${order.product === "вода" ? "💧 Вода" : "☕ Кафе"}
+  </td>
+  <td class="border-b p-2">${order.quantity}</td>
+  <td class="border-b p-2">${formatDate(order.date)}</td>
+  <td class="border-b p-2">
+    <button onclick="toggleOrderStatus(${order.id})" class="bg-green-500 text-white p-2 rounded">${order.status}</button>
+  </td>
+`;
     tableBody.appendChild(row);
   });
 }
@@ -150,7 +160,7 @@ function searchOrders() {
     const client = clients.find(client => client.id === order.clientId);
     return client && client.name.toLowerCase().includes(searchTerm);
   });
-  
+
   renderFilteredOrders(filteredOrders);
 }
 
@@ -162,7 +172,7 @@ function renderFilteredOrders(filteredOrders) {
   filteredOrders.forEach(order => {
     const client = clients.find(client => client.id === order.clientId);
     const row = document.createElement('tr');
-    
+
     const lastOrderDate = new Date(order.date);
     const currentDate = new Date();
     const daysSinceOrder = Math.floor((currentDate - lastOrderDate) / (1000 * 60 * 60 * 24));
