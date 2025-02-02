@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Управление на клиенти и поръчки</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      margin: 0;
+      background-color: #f3f4f6;
+    }
+    .container {
+      width: 80%;
+      max-width: 1200px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f1f1f1;
+    }
+    tr.bg-red-200 {
+      background-color: #fcb8b8;
+    }
+    input[type="text"] {
+      padding: 8px;
+      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .stat-container {
+      margin-top: 20px;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .pagination button {
+      padding: 8px 12px;
+      margin: 0 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Управление на клиенти и поръчки</h1>
+
+    <!-- Добавяне на клиент -->
+    <div class="mb-6">
+      <h2 class="text-xl">Добавяне на клиент</h2>
+      <input type="text" id="clientName" placeholder="Име на клиента" class="border p-2 mr-2">
+      <input type="text" id="clientPhone" placeholder="Телефон на клиента" class="border p-2">
+      <button onclick="addClient()" class="bg-blue-500 text-white p-2 rounded ml-2">Добави клиент</button>
+    </div>
+
+    <!-- Добавяне на поръчка -->
+    <div class="mb-6">
+      <h2 class="text-xl">Добавяне на поръчка</h2>
+      <select id="clientSelect" class="border p-2 mb-2">
+        <option value="">Изберете клиент</option>
+      </select>
+      <select id="productSelect" class="border p-2 mb-2">
+        <option value="кафе">Кафе</option>
+        <option value="вода">Вода</option>
+      </select>
+      <input type="number" id="orderQuantity" placeholder="Количество" class="border p-2 mb-2">
+      <input type="date" id="orderDate" class="border p-2 mb-2">
+      <button onclick="addOrder()" class="bg-blue-500 text-white p-2 rounded">Добави поръчка</button>
+    </div>
+
+    <!-- Търсене по клиент -->
+    <div class="mb-6">
+      <h2 class="text-xl">Търсене по клиент</h2>
+      <input type="text" id="searchClient" placeholder="Търсете по име на клиент" class="border p-2 mb-4" onkeyup="searchOrders()">
+    </div>
+
+    <!-- Таблица с поръчки -->
+    <div class="mb-6">
+      <h2 class="text-xl">Таблица с поръчки</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Клиент</th>
+            <th>Телефон</th>
+            <th>Продукт</th>
+            <th>Количество</th>
+            <th>Дата</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
+        <tbody id="clientsTable"></tbody>
+      </table>
+
+      <!-- Пагинация -->
+      <div id="pagination" class="pagination"></div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="stat-container">
+      <h2 class="text-xl">Статистика</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Клиент</th>
+            <th>Брой поръчки</th>
+            <th>Общо количество</th>
+          </tr>
+        </thead>
+        <tbody id="statisticsContent"></tbody>
+      </table>
+    </div>
+
+    <!-- Бутон за изчистване на данни -->
+    <button onclick="clearLocalStorage()" class="bg-red-500 text-white p-2 rounded">Изчисти данни</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
