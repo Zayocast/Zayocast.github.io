@@ -203,19 +203,32 @@ function updateStatistics() {
   const stats = orders.reduce((acc, order) => {
     const client = clients.find(client => client.id === order.clientId);
     if (client) {
-      if (!acc[client.name]) acc[client.name] = { totalOrders: 0, totalQuantity: 0 };
+      if (!acc[client.name]) acc[client.name] = { totalOrders: 0, totalCoffee: 0, totalWater: 0 };
       acc[client.name].totalOrders += 1;
-      acc[client.name].totalQuantity += parseInt(order.quantity);
+
+      // Разделяме количествата в зависимост от продукта
+      if (order.product === "вода") {
+        acc[client.name].totalWater += parseInt(order.quantity);
+      } else if (order.product === "кафе") {
+        acc[client.name].totalCoffee += parseInt(order.quantity);
+      }
     }
     return acc;
   }, {});
 
   statisticsContent.innerHTML = '';
   for (const clientName in stats) {
-    const { totalOrders, totalQuantity } = stats[clientName];
-    statisticsContent.innerHTML += `<tr><td class="border-b p-2">${clientName}</td><td class="border-b p-2">${totalOrders}</td><td class="border-b p-2">${totalQuantity}</td></tr>`;
+    const { totalOrders, totalCoffee, totalWater } = stats[clientName];
+    statisticsContent.innerHTML += `
+      <tr>
+        <td class="border-b p-2"><b>${clientName}</b></td>
+        <td class="border-b p-2"><b>${totalOrders}</b></td>
+        <td class="border-b p-2"><b> Кафе: ${totalCoffee} <br />Вода: ${totalWater} </b></td>
+        
+      </tr>`;
   }
 }
+
 
 // Функция за изчистване на данни от localStorage
 function clearLocalStorage() {
