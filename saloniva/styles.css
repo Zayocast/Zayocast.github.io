@@ -381,9 +381,9 @@ nav {
 }
 
 .testimonials-slider {
-    max-width: 800px;
-    margin: 0 auto;
+    min-height: 260px;
     position: relative;
+    transition: min-height 0.3s;
 }
 
 .testimonial {
