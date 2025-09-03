@@ -1,71 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Салон ИВА - Примерен тест</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фризьорски Тест 💇‍♂️</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
-  <header class="header bg-primary">
     <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <a href="https://zayocast.github.io/test/">Салон-ИВА Примерни тестови въпроси!</a>
+        <h1>Салон ИВА Тест 💇‍♀️✂️</h1>
+        
+        <!-- Начален екран -->
+        <div id="start-screen">
+            <p>Добре дошъл! Тестът има <span id="question-count">0</span> въпроса. Въпросите се разбъркват всеки път! Успех 📝</p>
+            <button id="start-btn">Започни Теста 🚀</button>
+            <button id="admin-btn">Админ Режим ⚙️</button>
         </div>
-        <div class="col-6 text-right">
-          Въпроси: <span id="tque"></span>
+        
+        <!-- Парола за админ -->
+        <div id="admin-login-screen" class="hidden">
+            <h2>Въведи Парола 🔐</h2>
+            <input type="password" id="admin-password" placeholder="Парола...">
+            <button id="submit-password">Влез ⚙️</button>
+            <button id="back-to-start-from-login">Назад ⬅️</button>
         </div>
-      </div>
+        
+        <!-- Тест екран -->
+        <div id="quiz-screen" class="hidden">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <div class="question-card">
+                <p id="question-number"></p>
+                <h2 id="question"></h2>
+                <div id="options"></div>
+            </div>
+            <div class="navigation">
+                <button id="next-btn">Напред ➡️</button>
+                <button id="prev-btn">Назад ⬅️</button>
+            </div>
+            <button id="submit-btn" class="hidden">Предаване 📤</button>
+        </div>
+        
+        <!-- Резултати екран -->
+        <div id="results-screen" class="hidden">
+            <h2>Резултати 🏆</h2>
+            <div class="score-summary">
+                <p id="score"></p>
+                <canvas id="result-chart" style="max-height: 200px; margin-bottom: 20px;"></canvas>
+            </div>
+            <div id="answers"></div>
+            <button id="restart-btn">Начало 🔄</button>
+        </div>
+        
+        <!-- Админ екран -->
+        <div id="admin-screen" class="hidden">
+            <h2>Админ Режим ⚙️</h2>
+            <button id="back-to-start">Назад към Начало ⬅️</button>
+            <h3>Добави Нов Въпрос ➕</h3>
+            <input type="text" id="new-question" placeholder="Въпрос...">
+            <input type="text" id="option1" placeholder="Опция 1">
+            <input type="text" id="option2" placeholder="Опция 2">
+            <input type="text" id="option3" placeholder="Опция 3 (опционално)">
+            <input type="text" id="option4" placeholder="Опция 4 (опционално)">
+            <input type="number" id="correct-option" placeholder="Верен отговор (номер 1-4)">
+            <button id="add-question">Добави ➕</button>
+            <div id="question-list"></div>
+        </div>
     </div>
-  </header>
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          
-<div class="content">
-  <div class="container-fluid">
-    
-    <div class="row">
-      <div class="col-sm-12">
-            <div id="result" class="quiz-body">
-              <form name="quizForm" onSubmit="">
-                <fieldset class="form-group">
-            <h4><span id="qid">1.</span> <span id="question"></span></h4>
-                  
-                  <div class="option-block-container" id="question-options">
-                    
-                   </div> <!-- End of option block -->
-                   </fieldset>
-                   <button  name="previous" id="previous" class="btn btn-success">Назад</button>
-                   &nbsp;
-                   <button  name="next" id="next" class="btn btn-success">Напред</button>
-             </form>
-             </div>
-          </div> <!-- End of col-sm-12 -->
-          
-      </div> <!-- End of row -->
-  </div> <!-- ENd of container fluid -->
-  </div> <!-- End of content -->
-  </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Scripts here -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script><script  src="./script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
