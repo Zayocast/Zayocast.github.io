@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dynamic Roast Machine 🤖🔥</title>
+  <meta name="description" content="Dynamic Roast / Meme insult generator — сглобява реплики от части, добавя custom парчета, TTS, копиране, история и още." />
+  <style>
+    :root{
+      --bg:#0b1020;--card:#111428;--muted:#9fb0ff;--text:#e8eefc;--accent:#7c9aff;--accent2:#00d9a6;--danger:#ff5c7a
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial}
+    body{background:radial-gradient(800px 400px at 10% -10%, #112249, transparent), radial-gradient(700px 350px at 120% 10%, #152a44, transparent),var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;padding:28px}
+    .wrap{width:min(1100px,96%);background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,.06);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-weight:900;background:conic-gradient(from 180deg,#7c9aff,#00d9a6);color:#081022}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+    main{display:grid;grid-template-columns:1fr 420px;gap:16px;margin-top:16px}
+    @media (max-width:980px){main{grid-template-columns:1fr}}
+    .card{background:rgba(255,255,255,.03);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.04)}
+    .output{min-height:130px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));font-size:18px;display:flex;align-items:center}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    button.btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.06);cursor:pointer;background:transparent;color:var(--text)}
+    button.primary{background:linear-gradient(180deg,var(--accent),#5e7cff);border:none;color:#081022}
+    button.danger{background:linear-gradient(180deg,var(--danger),#ff3b6f);border:none;color:#081022}
+    label.option{display:flex;align-items:center;gap:8px}
+    .col{display:flex;flex-direction:column;gap:8px}
+    .small{font-size:13px;color:var(--muted)}
+    .history{max-height:360px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+    .history .item{padding:8px;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;gap:8px}
+    .muted{color:var(--muted)}
+    input[type=text], textarea, select{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);color:var(--text);width:100%}
+    textarea{min-height:70px}
+    .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .tag{padding:6px 8px;border-radius:999px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap" role="application" aria-label="Dynamic Roast Machine">
+    <header>
+      <div class="brand">
+        <div class="logo">🔥</div>
+        <div>
+          <h1>Dynamic Roast Machine</h1>
+          <p class="lead">Сглобява memes + insults от части. Добавяй, съхранявай и споделяй. PG-13 vibes 😈</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="small">Made for: <strong>Братле</strong> — много шеги, малко обидки 🤝</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:700;font-size:15px">Резултат</div>
+            <div class="small muted">Натисни „Генерирай Roast“ за нова динамична реплика</div>
+          </div>
+          <div class="tags" id="active-cats"></div>
+        </div>
+
+        <div id="output" class="output" aria-live="polite"></div>
+
+        <div class="controls">
+          <button class="btn primary" id="btn-gen">🎲 Генерирай Roast</button>
+          <button class="btn" id="btn-presets">📦 От готови фрази</button>
+          <button class="btn" id="btn-copy">📋 Копирай</button>
+          <button class="btn" id="btn-tts">🔊 Изговори</button>
+          <button class="btn danger" id="btn-clearHistory">🧹 Изчисти история</button>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center">
+          <label class="option"><input type="checkbox" id="auto-mode"> Auto (2s)</label>
+          <label class="option"><input type="checkbox" id="safe-mode" checked> Safe Mode (PG-13)</label>
+          <label style="margin-left:8px">Име за заместване: <input id="nameInput" type="text" placeholder="напр. Пешо, Мони, superUser" style="width:180px"/></label>
+        </div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.04);margin:12px 0" />
+
+        <div class="small muted">Персонализирани части (могат да се добавят и вече се съхраняват в localStorage)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+          <div>
+            <label class="small">Начало (start)</label>
+            <input id="add-start" type="text" placeholder="напр. 'Братле, ти си като'" />
+          </div>
+          <div>
+            <label class="small">Среда (middle)</label>
+            <input id="add-middle" type="text" placeholder="напр. 'стар тостер'" />
+          </div>
+          <div style="grid-column:1/3">
+            <label class="small">Край (end)</label>
+            <input id="add-end" type="text" placeholder="напр. '– бавен и безполезен.'" />
+          </div>
+        </div>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <select id="add-cat">
+            <option value="memes">Memes</option>
+            <option value="dev">Dev</option>
+            <option value="animals">Animals</option>
+            <option value="cars">Cars</option>
+            <option value="famous">Famous</option>
+            <option value="brutal">Brutal 😈</option>
+          </select>
+          <button class="btn" id="btn-addPart">➕ Добави парче</button>
+          <button class="btn" id="btn-resetParts">♻️ Reset parts</button>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Настройки & Категории</div>
+          <div class="small muted">Избери категории, които да се ползват</div>
+        </div>
+
+        <div style="margin-top:8px;display:grid;gap:8px">
+          <label class="option"><input type="checkbox" class="cat" value="memes" checked> Memes (general)</label>
+          <label class="option"><input type="checkbox" class="cat" value="dev" checked> Dev jokes</label>
+          <label class="option"><input type="checkbox" class="cat" value="animals"> Animals</label>
+          <label class="option"><input type="checkbox" class="cat" value="cars"> Cars</label>
+          <label class="option"><input type="checkbox" class="cat" value="famous"> Famous people</label>
+          <label class="option"><input type="checkbox" class="cat" value="brutal"> Brutal 😈</label>
+        </div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.04);margin:8px 0" />
+
+        <div class="col">
+          <div style="display:flex;gap:8px;align-items:center">
+            <div style="font-weight:700">История</div>
+            <div class="small muted">(LocalStorage)</div>
+          </div>
+          <div id="history" class="history" aria-live="polite"></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // ----------------- Data -----------------
+    const defaultStarters = ["Братле","Копеле","Шматка"];
+    const baseParts = {
+      memes: {
+        start:["Братле, ти си като","Мозъкът ти е като","Усмивката ти е като","Присъствието ти е като","Движенията ти са като"],
+        middle:["Wi‑Fi на баба","стар тостер","Excel таблица с 200k реда","принтер без мастило","Nokia с паднал бутон","кола без бензин"],
+        end:["– бавен и безполезен.","– грее, ама не върши работа.","– crash-ва всеки път когато някой те погледне.","– уж жив, ама постоянно зацикля.","– изглеждаш стабилен, ама винаги даваш грешка."]
+      },
+      dev: {
+        start:["Братле, ти си като","Кодът ти е като","Менталното ти пространство е като"],
+        middle:["console.log в production","var вместо let","commit с 'fix stuff'","merge без tests","docker контейнер с 0 памет"],
+        end:["– никой не иска да го вижда.","– старо и неприкосновено.","– причини за бесене.","– причини за StackOverflow search."]
+      },
+      animals: {
+        start:["Ти си като","Мозъкът ти прилича на"],
+        middle:["ленивец на кафе","щъркел на ролкови кънки","костенурка с реактивен ракетен двигател"],
+        end:["– бавен, но драматичен.","– изглеждаш епично, но не мърдаш."]
+      },
+      cars: {
+        start:["Ти си като","Духът ти е като"],
+        middle:["кола без масло","ретро микробус със светещи лампи","спортен автомобил с плоска гума"],
+        end:["– много звук, малко движение.","– старт, но никога не стигаш."]
+      },
+      famous: {
+        start:["Ти си като","Поведението ти напомня на"],
+        middle:["инфлуенсър с 2 последователи","политик, който говори много и прави малко","знаменитост, която забрави текста"],
+        end:["– пълен спектакъл, празно съдържание.","– реклама без продукт."]
+      },
+      brutal: {
+        start:["Ти си пълен","Ти си истински","С присъствието си"],
+        middle:["като развален генератор на смърт","като човешки вирус","като тотален идиот","като празна душа с Wi-Fi","като гръмотевица без светкавица"],
+        end:["– законно, ама почти.","– брутален и непоправим.","– боли, но е истина.","– дори мама ти се срамува.","– светът заслужава по-добро от това."]
+      }
+    };
+
+    const presets = [
+      "Мозъкът ти е като стар тостер – crash-ва всеки път когато някой те погледне.",
+      "Братле, ти си като 404 страница — обещаваш много, показваш нищо.",
+      "Ти си човешки placeholder — Lorem ipsum с обувки."
+    ];
+
+    const userKey = 'drm-user-parts-v2';
+    function loadUserParts(){ try{ return JSON.parse(localStorage.getItem(userKey)) || {memes:{start:[],middle:[],end:[]},dev:{start:[],middle:[],end:[]},animals:{start:[],middle:[],end:[]},cars:{start:[],middle:[],end:[]},famous:{start:[],middle:[],end:[]},brutal:{start:[],middle:[],end:[]}} }catch{ return JSON.parse(JSON.stringify(baseParts)) } }
+    function saveUserParts(p){ localStorage.setItem(userKey, JSON.stringify(p)); }
+    let userParts = loadUserParts();
+
+    const el = {
+      output: document.getElementById('output'),
+      btnGen: document.getElementById('btn-gen'),
+      btnPresets: document.getElementById('btn-presets'),
+      btnCopy: document.getElementById('btn-copy'),
+      btnTts: document.getElementById('btn-tts'),
+      btnClearHistory: document.getElementById('btn-clearHistory'),
+      autoMode: document.getElementById('auto-mode'),
+      safeMode: document.getElementById('safe-mode'),
+      nameInput: document.getElementById('nameInput'),
+      cats: Array.from(document.querySelectorAll('.cat')),
+      history: document.getElementById('history'),
+      addStart: document.getElementById('add-start'),
+      addMiddle: document.getElementById('add-middle'),
+      addEnd: document.getElementById('add-end'),
+      addCat: document.getElementById('add-cat'),
+      btnAddPart: document.getElementById('btn-addPart'),
+      btnResetParts: document.getElementById('btn-resetParts'),
+      activeCats: document.getElementById('active-cats')
+    };
+
+    const histKey='drm-history-v2';
+    function loadHistory(){ try{ return JSON.parse(localStorage.getItem(histKey)||'[]') }catch{return[]} }
+    function saveHistory(h){ localStorage.setItem(histKey, JSON.stringify(h)) }
+    let historyArr = loadHistory();
+
+    function updateHistory(){ el.history.innerHTML = ''; historyArr.slice().reverse().forEach((r,i)=>{
+      const div=document.createElement('div');div.className='item';div.textContent=r;
+      el.history.appendChild(div);
+    }) }
+
+    function getActiveCats(){ return el.cats.filter(c=>c.checked).map(c=>c.value) }
+    function updateActiveTags(){ el.activeCats.innerHTML = ''; getActiveCats().forEach(c=>{
+      const t=document.createElement('div');t.className='tag';t.textContent=c;el.activeCats.appendChild(t)
+    }) }
+
+    function random(arr){ return arr[Math.floor(Math.random()*arr.length)] }
+
+    function generateRoast(){
+      const starter = el.nameInput.value.trim() || random(defaultStarters);
+      const cats = el.safeMode.checked ? getActiveCats().filter(c=>'famous'!==c) : getActiveCats();
+      if(!cats.length) return 'Няма активни категории 😅';
+      const cat = random(cats);
+      const start = random(baseParts[cat].start.concat(userParts[cat].start));
+      const middle = random(baseParts[cat].middle.concat(userParts[cat].middle));
+      const end = random(baseParts[cat].end.concat(userParts[cat].end));
+      return `${starter} ${start} ${middle} ${end}`.trim();
+    }
+
+    function addToHistory(text){ historyArr.push(text); if(historyArr.length>50) historyArr.shift(); saveHistory(historyArr); updateHistory(); }
+
+    el.btnGen.onclick = ()=>{ const r=generateRoast(); el.output.textContent=r; addToHistory(r) }
+    el.btnPresets.onclick = ()=>{ const r=random(presets); el.output.textContent=r; addToHistory(r) }
+    el.btnCopy.onclick = ()=>{navigator.clipboard.writeText(el.output.textContent).then(()=>alert('Copied!'))}
+    el.btnTts.onclick = ()=>{ const u = new SpeechSynthesisUtterance(el.output.textContent); speechSynthesis.speak(u) }
+    el.btnClearHistory.onclick = ()=>{ historyArr=[]; saveHistory(historyArr); updateHistory() }
+
+    el.btnAddPart.onclick = ()=>{
+      const cat = el.addCat.value;
+      if(el.addStart.value) userParts[cat].start.push(el.addStart.value);
+      if(el.addMiddle.value) userParts[cat].middle.push(el.addMiddle.value);
+      if(el.addEnd.value) userParts[cat].end.push(el.addEnd.value);
+      saveUserParts(userParts);
+      el.addStart.value=''; el.addMiddle.value=''; el.addEnd.value='';
+      alert('Added custom parts!')
+    }
+
+    el.btnResetParts.onclick = ()=>{ if(confirm('Сигурен ли си? Reset на всички персонализирани части!')){ userParts = loadUserParts(); saveUserParts(userParts) } }
+
+    let autoInterval = null;
+    el.autoMode.onchange = ()=>{
+      if(el.autoMode.checked){
+        autoInterval = setInterval(()=>{ el.btnGen.click() },2000)
+      }else clearInterval(autoInterval)
+    }
+
+    el.cats.forEach(c=>c.onchange = updateActiveTags)
+    updateActiveTags()
+    updateHistory()
+  </script>
+</body>
+</html>
