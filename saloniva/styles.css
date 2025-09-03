@@ -975,7 +975,10 @@ footer {
     }
 
     .partners-track {
-        animation-duration: 60s; /* По-бавно за мобилни */
+        animation-duration: 60s; 
+    }
+    .testimonials-slider {
+        min-height: 340px; 
     }
 }
 

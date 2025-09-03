@@ -881,6 +881,25 @@
             }
         });
     </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.querySelector('.testimonials-slider');
+    if (slider) {
+        let max = 0;
+        slider.querySelectorAll('.testimonial').forEach(t => {
+            t.style.display = 'block';
+            t.style.position = 'absolute';
+            t.style.visibility = 'hidden';
+            const h = t.offsetHeight;
+            if (h > max) max = h;
+            t.style.display = '';
+            t.style.position = '';
+            t.style.visibility = '';
+        });
+        slider.style.minHeight = max + 'px';
+    }
+});
+</script>
 </body>
 
 </html>
