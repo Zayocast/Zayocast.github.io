@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RAYKOV.OS v1.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        os: {
+                            bg: '#0f0f0f',
+                            glass: 'rgba(20, 20, 20, 0.6)',
+                            border: 'rgba(255, 255, 255, 0.1)',
+                            accent: '#3b82f6',
+                        }
+                    },
+                    animation: {
+                        'boot-fade': 'fadeOut 1s ease-in-out forwards',
+                    },
+                    keyframes: {
+                        fadeOut: {
+                            '0%': { opacity: 1 },
+                            '100%': { opacity: 0, visibility: 'hidden' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass {
+                @apply bg-os-glass backdrop-blur-xl border border-os-border shadow-2xl;
+            }
+            .desktop-icon {
+                @apply flex flex-col items-center justify-center w-24 h-24 rounded-xl hover:bg-white/10 transition-all cursor-pointer text-center p-2;
+            }
+            .window {
+                @apply absolute glass rounded-xl overflow-hidden flex flex-col shadow-black/50 transition-transform;
+                min-width: 300px;
+                min-height: 200px;
+            }
+            .window.active {
+                @apply z-50 shadow-black/70;
+            }
+            /* CRT scanline effect for retro-coolness */
+            .scanlines {
+                background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+                background-size: 100% 4px;
+                pointer-events: none;
+            }
+        }
+        body {
+            overflow: hidden;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-200 select-none">
+
+    <div id="boot-screen" class="fixed inset-0 bg-black z-[100] flex items-start p-10 font-mono text-green-500 text-sm overflow-hidden">
+        <div id="boot-text" class="whitespace-pre-wrap"></div>
+    </div>
+
+    <div class="fixed inset-0 scanlines z-[60] opacity-10 mix-blend-overlay"></div>
+
+    <main id="desktop" class="w-full h-full p-6 grid grid-cols-1 auto-rows-min gap-4 sm:flex sm:flex-col sm:flex-wrap sm:content-start sm:h-[calc(100vh-3rem)]">
+        
+        <div class="desktop-icon" onclick="openWindow('about')">
+            <i class="fa-regular fa-file-lines text-4xl text-blue-400 mb-2 filter drop-shadow-lg"></i>
+            <span class="text-xs text-shadow-sm">readme.txt</span>
+        </div>
+        
+        <div class="desktop-icon" onclick="openWindow('projects')">
+            <i class="fa-solid fa-folder-tree text-4xl text-yellow-400 mb-2 filter drop-shadow-lg"></i>
+            <span class="text-xs text-shadow-sm">Projects_v2</span>
+        </div>
+
+        <div class="desktop-icon" onclick="openWindow('skills')">
+            <i class="fa-solid fa-microchip text-4xl text-green-400 mb-2 filter drop-shadow-lg"></i>
+            <span class="text-xs text-shadow-sm">Skills.sys</span>
+        </div>
+
+        <div class="desktop-icon" onclick="openWindow('contact')">
+            <i class="fa-solid fa-satellite-dish text-4xl text-red-400 mb-2 filter drop-shadow-lg"></i>
+            <span class="text-xs text-shadow-sm">Connect.exe</span>
+        </div>
+        
+        <div class="desktop-icon mt-auto sm:mt-0">
+            <i class="fa-solid fa-trash-can text-4xl text-gray-400 mb-2 filter drop-shadow-lg"></i>
+            <span class="text-xs text-shadow-sm">Recycle Bin</span>
+        </div>
+
+    </main>
+
+    <div id="window-about" class="window hidden w-[90%] sm:w-[500px] h-[400px] top-10 left-10 sm:top-20 sm:left-40" onmousedown="focusWindow(this)">
+        <div class="window-header bg-white/5 p-3 flex justify-between items-center cursor-move border-b border-white/10">
+            <div class="flex items-center gap-2 text-sm">
+                <i class="fa-regular fa-file-lines text-blue-400"></i> readme.txt - Notepad
+            </div>
+            <div class="flex gap-2">
+                <button class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400"></button>
+                <button class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400"></button>
+                <button class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400" onclick="closeWindow('about')"></button>
+            </div>
+        </div>
+        <div class="window-content p-6 font-mono text-sm overflow-y-auto flex-1 bg-[#1e1e1e]/80 text-green-300 selection:bg-green-500/30">
+            <p>> WHOAMI</p>
+            <p class="mb-4 text-white">Raykov.DEV // Digital Creator</p>
+            <p>> BIO</p>
+            <p class="mb-4 text-gray-300 leading-relaxed">
+                Аз не просто пиша код, аз създавам дигитални екосистеми. Фокусиран върху иновативни интерфейси и безупречен user experience. Вярвам, че уебът трябва да е място за експерименти, а не просто статични страници.
+            </p>
+            <p>> STATUS</p>
+            <p class="text-blue-400 animate-pulse">Available for new missions_</p>
+        </div>
+    </div>
+
+    <div id="window-projects" class="window hidden w-[90%] sm:w-[800px] h-[500px] top-5 left-5 sm:top-16 sm:left-[200px]" onmousedown="focusWindow(this)">
+        <div class="window-header bg-white/5 p-3 flex justify-between items-center cursor-move border-b border-white/10">
+            <div class="flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-folder-tree text-yellow-400"></i> ~/Documents/Projects_v2
+            </div>
+             <div class="flex gap-2">
+                <button class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400"></button>
+                <button class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400"></button>
+                <button class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400" onclick="closeWindow('projects')"></button>
+            </div>
+        </div>
+        <div class="window-content p-6 overflow-y-auto flex-1 bg-dark/50">
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="glass p-4 rounded-lg hover:bg-white/10 transition flex gap-4 items-center group cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Neon_Commerce.app</h4>
+                        <p class="text-xs text-gray-400">Next.js e-shop platform</p>
+                    </div>
+                </div>
+                <div class="glass p-4 rounded-lg hover:bg-white/10 transition flex gap-4 items-center group cursor-pointer">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">AI_Generator.exe</h4>
+                        <p class="text-xs text-gray-400">Content creation tool</p>
+                    </div>
+                </div>
+                 <div class="glass p-4 rounded-lg hover:bg-white/10 transition flex gap-4 items-center group cursor-pointer">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400 text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Crypto_Dash.js</h4>
+                        <p class="text-xs text-gray-400">Realtime analytics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="window-skills" class="window hidden w-[90%] sm:w-[400px] h-[450px] top-16 left-16 sm:top-32 sm:left-[400px]" onmousedown="focusWindow(this)">
+        <div class="window-header bg-white/5 p-3 flex justify-between items-center cursor-move border-b border-white/10">
+            <div class="flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-microchip text-green-400"></i> System Monitor - Skills
+            </div>
+            <div class="flex gap-2">
+                <button class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400"></button>
+                <button class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400"></button>
+                <button class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400" onclick="closeWindow('skills')"></button>
+            </div>
+        </div>
+        <div class="window-content p-6 overflow-y-auto flex-1 font-mono text-xs bg-black/80">
+            <div class="space-y-4">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span>REACT_CORE</span>
+                        <span class="text-green-400">98%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-green-500 w-[98%] rounded-full"></div>
+                    </div>
+                </div>
+                 <div>
+                    <div class="flex justify-between mb-1">
+                        <span>NODE_JS_ENGINE</span>
+                        <span class="text-yellow-400">90%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-yellow-500 w-[90%] rounded-full"></div>
+                    </div>
+                </div>
+                 <div>
+                    <div class="flex justify-between mb-1">
+                        <span>UI_DESIGN_MODULE</span>
+                        <span class="text-blue-400">95%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-blue-500 w-[95%] rounded-full"></div>
+                    </div>
+                </div>
+                 <div>
+                    <div class="flex justify-between mb-1">
+                        <span>DB_MANAGEMENT</span>
+                        <span class="text-purple-400">85%</span>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-purple-500 w-[85%] rounded-full"></div>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-white/10 text-gray-500">
+                    <p>CPU: Neural Net Processor X1</p>
+                    <p>RAM: 128GB Quantum Memory</p>
+                    <p>UPTIME: 5 Years, 32 Days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="window-contact" class="window hidden w-[90%] sm:w-[500px] h-[350px] top-24 left-8 sm:top-40 sm:left-[300px]" onmousedown="focusWindow(this)">
+         <div class="window-header bg-white/5 p-3 flex justify-between items-center cursor-move border-b border-white/10">
+            <div class="flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-terminal"></i> Terminal - Connect
+            </div>
+            <div class="flex gap-2">
+                <button class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400"></button>
+                <button class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400"></button>
+                <button class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400" onclick="closeWindow('contact')"></button>
+            </div>
+        </div>
+        <div class="window-content p-4 font-mono bg-black text-sm flex-1 overflow-hidden">
+             <div class="text-gray-400 mb-4">
+                Establishing secure connection...<br>
+                Connection established.<br>
+                Type your message below to transmit.
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Message transmitted to Raykov!'); this.reset();" class="h-full flex flex-col">
+                <div class="flex items-center gap-2 text-green-500 mb-2">
+                    <span>visitor@raykov-os:~$</span>
+                    <input type="email" placeholder="enter_your_email" class="bg-transparent border-none outline-none flex-1 text-white focus:ring-0" required>
+                </div>
+                 <div class="flex gap-2 text-green-500 flex-1 items-start">
+                    <span>visitor@raykov-os:~$</span>
+                    <textarea placeholder="enter_message..." class="bg-transparent border-none outline-none flex-1 text-white resize-none h-full focus:ring-0" required></textarea>
+                </div>
+                <button type="submit" class="hidden">Submit</button> <p class="text-gray-500 mt-2">[Press Enter to Transmit]</p>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+        <div class="glass px-4 py-3 rounded-2xl flex items-center gap-2 sm:gap-6">
+            <button class="p-2 rounded-xl hover:bg-white/10 transition text-blue-400 text-xl" onclick="toggleStartMenu()">
+                <i class="fa-brands fa-windows"></i>
+            </button>
+            <div class="w-px h-6 bg-white/10"></div>
+             <button class="p-2 rounded-xl hover:bg-white/10 transition text-white/70 hover:text-blue-400" onclick="openWindow('about')" title="About Me">
+                 <i class="fa-regular fa-user"></i>
+            </button>
+             <button class="p-2 rounded-xl hover:bg-white/10 transition text-white/70 hover:text-yellow-400" onclick="openWindow('projects')" title="Projects">
+                 <i class="fa-solid fa-code"></i>
+            </button>
+             <button class="p-2 rounded-xl hover:bg-white/10 transition text-white/70 hover:text-red-400" onclick="openWindow('contact')" title="Contact">
+                 <i class="fa-regular fa-envelope"></i>
+            </button>
+            <div class="w-px h-6 bg-white/10"></div>
+            <div id="clock" class="text-sm font-mono text-white/80 px-2">
+                00:00:00
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- BOOT SEQUENCE ---
+        const bootText = document.getElementById('boot-text');
+        const bootScreen = document.getElementById('boot-screen');
+        const bootMessages = [
+            "INITIALIZING RAYKOV KERNEL v1.0...",
+            "LOADING MODULES: [ React ] [ Node ] [ Creativity ] [ Coffee ]...",
+            "MOUNTING FILE SYSTEM...",
+            "CHECKING INTEGRITY... OK",
+            "STARTING GRAPHICAL INTERFACE...",
+            "WELCOME, USER."
+        ];
+        let msgIndex = 0;
+
+        function typeBoot() {
+            if (msgIndex < bootMessages.length) {
+                bootText.innerHTML += bootMessages[msgIndex] + "\n";
+                msgIndex++;
+                setTimeout(typeBoot, Math.random() * 300 + 100);
+            } else {
+                setTimeout(() => {
+                    bootScreen.classList.add('animate-boot-fade');
+                    // Play startup sound here if you want later
+                }, 800);
+            }
+        }
+        // Start boot after a tiny delay
+        setTimeout(typeBoot, 500);
+
+        // --- CLOCK ---
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString('en-US', { hour12: false });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- WINDOW MANAGER ---
+        let zIndexCounter = 100;
+
+        function openWindow(id) {
+            const win = document.getElementById(`window-${id}`);
+            win.classList.remove('hidden');
+            focusWindow(win);
+        }
+
+        function closeWindow(id) {
+             const win = document.getElementById(`window-${id}`);
+             win.classList.add('hidden');
+        }
+
+        function focusWindow(win) {
+            zIndexCounter++;
+            win.style.zIndex = zIndexCounter;
+            // Deactivate other windows visually if needed
+            document.querySelectorAll('.window').forEach(w => w.classList.remove('active'));
+            win.classList.add('active');
+        }
+
+        // --- DRAGGABLE WINDOWS (Simplified for portability) ---
+        let isDragging = false;
+        let currentWindow = null;
+        let offset = { x: 0, y: 0 };
+
+        document.querySelectorAll('.window-header').forEach(header => {
+            header.addEventListener('mousedown', startDrag);
+            // Touch support for mobile dragging
+            header.addEventListener('touchstart', startDrag, {passive: false});
+        });
+
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag, {passive: false});
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
+
+        function startDrag(e) {
+            // Ignore clicks on buttons in header
+            if (e.target.tagName === 'BUTTON') return;
+            
+            isDragging = true;
+            currentWindow = this.parentElement;
+            focusWindow(currentWindow);
+            
+            const clientX = e.clientX || e.touches[0].clientX;
+            const clientY = e.clientY || e.touches[0].clientY;
+
+            offset.x = clientX - currentWindow.offsetLeft;
+            offset.y = clientY - currentWindow.offsetTop;
+
+             if (e.type === 'touchstart') e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging || !currentWindow) return;
+            e.preventDefault();
+
+            const clientX = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+            const clientY = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+
+            currentWindow.style.left = (clientX - offset.x) + 'px';
+            currentWindow.style.top = (clientY - offset.y) + 'px';
+        }
+
+        function stopDrag() {
+            isDragging = false;
+            currentWindow = null;
+        }
+    </script>
+</body>
+</html>
