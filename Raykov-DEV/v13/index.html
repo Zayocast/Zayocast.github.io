@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAYKOV.DEV | Senior Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            950: '#020617', // Main BG
+                            900: '#0f172a', // Secondary BG
+                            800: '#1e293b', // Card BG
+                            700: '#334155', // Borders
+                        },
+                        accent: {
+                            DEFAULT: '#6366f1', // Indigo-500
+                            dark: '#4f46e5',    // Indigo-600
+                            light: '#818cf8'    // Indigo-400
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-glow {
+                text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+            }
+            .bg-grid {
+                background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
+                                  linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark-950 text-slate-300 font-sans selection:bg-accent/30 selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-dark-950/80 backdrop-blur-lg border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 lg:px-12 h-20 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold tracking-tight text-white">
+                RAYKOV<span class="text-accent">.DEV</span>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium uppercase tracking-wider text-slate-400">
+                <a href="#services" class="hover:text-accent transition-colors">Услуги</a>
+                <a href="#about" class="hover:text-accent transition-colors">За мен</a>
+                <a href="#skills" class="hover:text-accent transition-colors">Умения</a>
+                <a href="#work" class="hover:text-accent transition-colors">Проекти</a>
+                <a href="#testimonials" class="hover:text-accent transition-colors">Отзиви</a>
+            </div>
+
+            <div class="hidden lg:block">
+                <a href="#contact" class="px-6 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold rounded-lg transition-all shadow-lg shadow-accent/20">
+                    Стартирай Проект
+                </a>
+            </div>
+
+            <button id="menu-toggle" class="lg:hidden text-2xl text-white">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-dark-900 border-b border-white/10">
+            <div class="container mx-auto px-6 py-6 flex flex-col gap-4">
+                <a href="#services" class="text-slate-300 hover:text-accent py-2">Услуги</a>
+                <a href="#about" class="text-slate-300 hover:text-accent py-2">За мен</a>
+                <a href="#skills" class="text-slate-300 hover:text-accent py-2">Умения</a>
+                <a href="#work" class="text-slate-300 hover:text-accent py-2">Проекти</a>
+                <a href="#contact" class="text-accent font-bold py-2">Контакт</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-dark-950">
+        <div class="absolute inset-0 bg-grid opacity-20"></div>
+        <div class="absolute top-1/4 -left-64 w-96 h-96 bg-accent/20 rounded-full blur-[128px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[128px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-accent-light text-sm font-medium mb-6">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                    </span>
+                    Available for freelance work
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-8">
+                    Изграждам дигитални <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500 text-glow">продукти</span> от ново поколение.
+                </h1>
+                <p class="text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed">
+                    Senior Full-Stack разработчик, специализиран в създаването на високопроизводителни уеб приложения, уникални интерфейси и скалируеми бекенд системи.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#work" class="px-8 py-4 bg-white text-dark-950 font-bold rounded-lg hover:bg-slate-200 transition-all flex items-center gap-2">
+                        Разгледай Портфолио <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-white/5 text-white font-bold rounded-lg hover:bg-white/10 border border-white/10 transition-all">
+                        Свържи се с мен
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="py-12 bg-dark-900 border-y border-white/5">
+        <div class="container mx-auto px-6 lg:px-12">
+            <p class="text-center text-sm font-medium uppercase tracking-widest text-slate-500 mb-8">Технологиите, с които работя</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <i class="fa-brands fa-react text-4xl lg:text-5xl hover:text-[#61DAFB] transition-colors"></i>
+                <i class="fa-brands fa-node-js text-4xl lg:text-5xl hover:text-[#339933] transition-colors"></i>
+                <i class="fa-brands fa-laravel text-4xl lg:text-5xl hover:text-[#FF2D20] transition-colors"></i>
+                <i class="fa-brands fa-aws text-4xl lg:text-5xl hover:text-[#FF9900] transition-colors"></i>
+                <i class="fa-brands fa-docker text-4xl lg:text-5xl hover:text-[#2496ED] transition-colors"></i>
+                <i class="fa-brands fa-figma text-4xl lg:text-5xl hover:text-[#F24E1E] transition-colors"></i>
+            </div>
+        </div>
+    </div>
+
+    <section id="services" class="py-24 lg:py-32 bg-dark-950">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row gap-12 lg:items-end justify-between mb-20">
+                <div class="max-w-2xl">
+                    <h4 class="text-accent font-bold tracking-widest uppercase mb-4">Какво Предлагам</h4>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-white">Комплексни решения за твоя бизнес</h2>
+                </div>
+                <p class="text-slate-400 max-w-md text-lg">
+                    От идеята до финалния продукт, покривам целия спектър на софтуерната разработка с фокус върху качеството.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group p-8 bg-dark-800/50 border border-white/5 rounded-2xl hover:bg-dark-800 transition-all duration-300">
+                    <div class="w-16 h-16 bg-accent/10 text-accent rounded-xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Web Development</h3>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        Изработка на бързи, сигурни и мащабируеми уеб сайтове и приложения, използвайки най-новите технологии (React, Next.js, Node).
+                    </p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent"></i> SPA & PWA Приложения</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent"></i> Custom CMS решения</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent"></i> API интеграции</li>
+                    </ul>
+                </div>
+                <div class="group p-8 bg-dark-800/50 border border-white/5 rounded-2xl hover:bg-dark-800 transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-swatchbook"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">UI/UX Design</h3>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        Създаване на интуитивни и визуално впечатляващи интерфейси, които ангажират потребителите и повишават конверсиите.
+                    </p>
+                     <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> Wireframing & Prototyping</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> Mobile-First дизайн</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> Design Systems</li>
+                    </ul>
+                </div>
+                <div class="group p-8 bg-dark-800/50 border border-white/5 rounded-2xl hover:bg-dark-800 transition-all duration-300">
+                    <div class="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Optimization & SEO</h3>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        Оптимизация на скоростта, сигурността и видимостта на твоя сайт в търсачките за максимални резултати.
+                    </p>
+                     <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Google Core Web Vitals</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Техническо SEO</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Одит на сигурността</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 lg:py-32 bg-dark-900 relative overflow-hidden">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+                <div>
+                    <h4 class="text-accent font-bold tracking-widest uppercase mb-4">За Мен</h4>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-8">Повече от просто код. Партньор в успеха.</h2>
+                    <div class="space-y-6 text-lg text-slate-400">
+                        <p>
+                            С над 5 години опит в индустрията, аз не просто пиша код – аз решавам бизнес проблеми чрез технологии. Моята страст е да намирам елегантния баланс между сложна функционалност и лесен за използване интерфейс.
+                        </p>
+                        <p>
+                            Вярвам в прозрачната комуникация, спазването на срокове и доставянето на продукт, който надхвърля очакванията. Когато не съм пред компютъра, обичам да планинаствам и да уча нови неща за AI и машинно обучение.
+                        </p>
+                    </div>
+                    <div class="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-12">
+                        <div>
+                            <h3 class="text-4xl font-extrabold text-white mb-2">50+</h3>
+                            <p class="text-slate-500 uppercase text-sm font-medium tracking-wider">Завършени Проекта</p>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl font-extrabold text-white mb-2">5г.</h3>
+                            <p class="text-slate-500 uppercase text-sm font-medium tracking-wider">Професионален Опит</p>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl font-extrabold text-white mb-2">100%</h3>
+                            <p class="text-slate-500 uppercase text-sm font-medium tracking-wider">Доволни Клиенти</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <h3 class="text-2xl font-bold text-white mb-10 flex items-center gap-3">
+                        <i class="fa-solid fa-briefcase text-accent"></i>
+                        Професионален Път
+                    </h3>
+                    <div class="absolute left-0 top-16 bottom-0 w-px bg-dark-700 ml-4"></div>
+                    <div class="space-y-10">
+                        <div class="relative pl-16">
+                            <div class="absolute left-0 ml-[11px] w-4 h-4 bg-accent rounded-full border-4 border-dark-900"></div>
+                            <span class="text-sm font-bold text-accent tracking-wider uppercase mb-2 block">2023 - Сега</span>
+                            <h4 class="text-xl font-bold text-white">Senior Freelance Developer</h4>
+                            <p class="text-slate-400 mt-2">Работа по комплексни международни проекти за стартъпи и установени бизнеси.</p>
+                        </div>
+                        <div class="relative pl-16">
+                            <div class="absolute left-0 ml-[11px] w-4 h-4 bg-slate-600 rounded-full border-4 border-dark-900"></div>
+                            <span class="text-sm font-bold text-slate-500 tracking-wider uppercase mb-2 block">2020 - 2023</span>
+                            <h4 class="text-xl font-bold text-white">Full-Stack Developer @ TechStudio</h4>
+                            <p class="text-slate-400 mt-2">Водещ разработчик на 10+ ключови проекта. Менторство на junior колеги.</p>
+                        </div>
+                        <div class="relative pl-16">
+                             <div class="absolute left-0 ml-[11px] w-4 h-4 bg-slate-600 rounded-full border-4 border-dark-900"></div>
+                            <span class="text-sm font-bold text-slate-500 tracking-wider uppercase mb-2 block">2018 - 2020</span>
+                            <h4 class="text-xl font-bold text-white">Frontend Developer @ CreativeWeb</h4>
+                            <p class="text-slate-400 mt-2">Изработка на pixel-perfect потребителски интерфейси и анимации.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-dark-950">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-6">Технически Арсенал</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                    Използвам правилните инструменти за всяка задача, за да гарантирам най-добрия възможен резултат.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-dark-900 rounded-2xl border border-white/5">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-lg flex items-center justify-center text-2xl">
+                            <i class="fa-brands fa-html5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Frontend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">HTML5/CSS3</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">JavaScript (ES6+)</span>
+                        <span class="px-4 py-2 bg-accent/20 text-white rounded-full text-sm font-medium">React.js</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Next.js</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Tailwind CSS</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Redux</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">TypeScript</span>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-dark-900 rounded-2xl border border-white/5">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-lg flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-emerald-500/20 text-white rounded-full text-sm font-medium">Node.js</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Express</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">PHP / Laravel</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Python</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">PostgreSQL</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">MongoDB</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">REST API</span>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-dark-900 rounded-2xl border border-white/5">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-lg flex items-center justify-center text-2xl">
+                             <i class="fa-solid fa-toolbox"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Tools & DevOps</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Git / GitHub</span>
+                        <span class="px-4 py-2 bg-orange-500/20 text-white rounded-full text-sm font-medium">Docker</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">AWS</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Figma</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">Jest</span>
+                        <span class="px-4 py-2 bg-dark-800 text-slate-300 rounded-full text-sm font-medium">CI/CD Pipelines</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-24 lg:py-32 bg-dark-900">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h4 class="text-accent font-bold tracking-widest uppercase mb-4">Портфолио</h4>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-white">Избрани Проекти</h2>
+                </div>
+                <a href="#" class="group flex items-center gap-2 text-accent font-bold mt-6 md:mt-0">
+                    Виж целия архив <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="group relative grid lg:grid-cols-12 gap-8 items-center bg-dark-800/30 rounded-3xl p-6 lg:p-12 border border-white/5 mb-12 hover:border-accent/30 transition-all">
+                <div class="lg:col-span-7 relative overflow-hidden rounded-2xl">
+                    <div class="aspect-video bg-dark-950 relative">
+                         <img src="https://placehold.co/1200x800/1e293b/6366f1?text=Featured+Project" alt="Featured Project" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+                <div class="lg:col-span-5 lg:pl-8">
+                    <span class="text-accent font-bold tracking-widest uppercase text-sm">Featured Project</span>
+                    <h3 class="text-3xl font-extrabold text-white mt-4 mb-6">FinTech Dashboard Pro</h3>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        Цялостна платформа за финансов анализ в реално време. Включва сложни графики, управление на потребители и сигурни транзакции.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <span class="px-3 py-1 bg-dark-950 text-slate-400 text-sm font-medium rounded-md">React</span>
+                        <span class="px-3 py-1 bg-dark-950 text-slate-400 text-sm font-medium rounded-md">Node.js</span>
+                        <span class="px-3 py-1 bg-dark-950 text-slate-400 text-sm font-medium rounded-md">D3.js</span>
+                        <span class="px-3 py-1 bg-dark-950 text-slate-400 text-sm font-medium rounded-md">MongoDB</span>
+                    </div>
+                    <div class="flex gap-6">
+                        <a href="#" class="flex items-center gap-2 text-white font-bold hover:text-accent transition-colors">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                        </a>
+                        <a href="#" class="flex items-center gap-2 text-white font-bold hover:text-accent transition-colors">
+                            <i class="fa-brands fa-github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="group bg-dark-800/30 rounded-3xl overflow-hidden border border-white/5 hover:border-accent/30 transition-all">
+                    <div class="aspect-[16/10] overflow-hidden bg-dark-950 relative">
+                        <img src="https://placehold.co/800x500/1e293b/6366f1?text=E-Commerce+App" alt="Project 2" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700">
+                         <div class="absolute inset-0 bg-dark-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                            <a href="#" class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-dark-950 text-xl hover:text-accent transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-white mb-3">Neon E-Commerce</h3>
+                        <p class="text-slate-400 mb-6">Модерен онлайн магазин с headless архитектура и Stripe интеграция.</p>
+                        <div class="flex gap-4 text-sm font-medium text-accent">
+                            <span>Next.js</span>
+                            <span>Stripe</span>
+                            <span>Sanity CMS</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="group bg-dark-800/30 rounded-3xl overflow-hidden border border-white/5 hover:border-accent/30 transition-all">
+                    <div class="aspect-[16/10] overflow-hidden bg-dark-950 relative">
+                        <img src="https://placehold.co/800x500/1e293b/6366f1?text=AI+Platform" alt="Project 3" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700">
+                         <div class="absolute inset-0 bg-dark-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                            <a href="#" class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-dark-950 text-xl hover:text-accent transition"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-white mb-3">AI Content Generator</h3>
+                        <p class="text-slate-400 mb-6">SaaS платформа за генериране на маркетинг съдържание чрез OpenAI API.</p>
+                        <div class="flex gap-4 text-sm font-medium text-accent">
+                            <span>Vue.js</span>
+                            <span>Python</span>
+                            <span>OpenAI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 bg-dark-950 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-96 bg-accent/5 rounded-full blur-[128px] pointer-events-none"></div>
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-white mb-6">Доволни Клиенти</h2>
+                <div class="w-24 h-1.5 bg-accent mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-dark-900 rounded-2xl border border-white/5 relative">
+                    <i class="fa-solid fa-quote-right absolute top-8 right-8 text-6xl text-dark-800"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://placehold.co/60x60/334155/ffffff?text=JD" alt="Client" class="w-14 h-14 rounded-full border-2 border-accent">
+                        <div>
+                            <h4 class="font-bold text-white">John Doe</h4>
+                            <p class="text-sm text-slate-500">CEO @ StartUp</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 italic relative z-10">
+                        "Raykov е изключителен професионалист. Той не само изпълни проекта в срок, но и предложи подобрения, за които дори не бяхме помислили."
+                    </p>
+                    <div class="flex text-amber-400 gap-1 mt-6 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                 <div class="p-8 bg-dark-900 rounded-2xl border border-white/5 relative">
+                    <i class="fa-solid fa-quote-right absolute top-8 right-8 text-6xl text-dark-800"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://placehold.co/60x60/334155/ffffff?text=MS" alt="Client" class="w-14 h-14 rounded-full border-2 border-accent">
+                        <div>
+                            <h4 class="font-bold text-white">Maria Smith</h4>
+                            <p class="text-sm text-slate-500">Marketing Director</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 italic relative z-10">
+                        "Най-добрият разработчик, с когото сме работили. Комуникацията беше лесна, а крайният резултат надхвърли очакванията ни."
+                    </p>
+                    <div class="flex text-amber-400 gap-1 mt-6 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                 <div class="p-8 bg-dark-900 rounded-2xl border border-white/5 relative hidden lg:block">
+                    <i class="fa-solid fa-quote-right absolute top-8 right-8 text-6xl text-dark-800"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://placehold.co/60x60/334155/ffffff?text=AK" alt="Client" class="w-14 h-14 rounded-full border-2 border-accent">
+                        <div>
+                            <h4 class="font-bold text-white">Alex Kovachev</h4>
+                            <p class="text-sm text-slate-500">Product Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 italic relative z-10">
+                        "Техническите му умения са на много високо ниво. Справи се блестящо със сложната бекенд архитектура на нашето приложение."
+                    </p>
+                    <div class="flex text-amber-400 gap-1 mt-6 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-accent">
+        <div class="container mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-8">Имаш идея за следващия голям проект?</h2>
+            <p class="text-indigo-200 text-xl max-w-2xl mx-auto mb-10">
+                Не губи повече време. Нека обсъдим как можем да я превърнем в реалност.
+            </p>
+            <a href="#contact" class="inline-block px-10 py-5 bg-white text-accent font-extrabold text-lg rounded-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
+                Започни Сега
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 lg:py-32 bg-dark-900">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+                <div>
+                    <h4 class="text-accent font-bold tracking-widest uppercase mb-4">Контакт</h4>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-8">Нека си поговорим</h2>
+                    <p class="text-slate-400 text-lg mb-12">
+                        Попълни формата или използвай директните контакти по-долу. Отговарям в рамките на 24 часа.
+                    </p>
+
+                    <div class="space-y-8">
+                         <div class="flex items-start gap-6">
+                            <div class="w-14 h-14 bg-dark-800 rounded-full flex items-center justify-center text-accent text-2xl shrink-0 border border-white/5">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Email</h4>
+                                <a href="mailto:hello@raykov.dev" class="text-slate-400 hover:text-accent transition-colors text-lg">hello@raykov.dev</a>
+                            </div>
+                        </div>
+                         <div class="flex items-start gap-6">
+                            <div class="w-14 h-14 bg-dark-800 rounded-full flex items-center justify-center text-accent text-2xl shrink-0 border border-white/5">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Телефон</h4>
+                                <a href="tel:+359888123456" class="text-slate-400 hover:text-accent transition-colors text-lg">+359 888 123 456</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <div class="w-14 h-14 bg-dark-800 rounded-full flex items-center justify-center text-accent text-2xl shrink-0 border border-white/5">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Локация</h4>
+                                <p class="text-slate-400 text-lg">София, България (Available Remote)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-950 p-8 lg:p-12 rounded-3xl border border-white/5 shadow-2xl">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-slate-400 ml-1">Твоето име</label>
+                                <input type="text" class="w-full px-5 py-4 bg-dark-900 rounded-xl border border-dark-700 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition text-white" placeholder="Иван Петров">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-slate-400 ml-1">Email адрес</label>
+                                <input type="email" class="w-full px-5 py-4 bg-dark-900 rounded-xl border border-dark-700 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition text-white" placeholder="ivan@example.com">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400 ml-1">Тип проект</label>
+                            <select class="w-full px-5 py-4 bg-dark-900 rounded-xl border border-dark-700 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition text-white appearance-none">
+                                <option>Избери опция...</option>
+                                <option>Уебсайт / Уеб Приложение</option>
+                                <option>Онлайн Магазин</option>
+                                <option>UI/UX Дизайн</option>
+                                <option>Друго</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400 ml-1">Съобщение</label>
+                            <textarea rows="5" class="w-full px-5 py-4 bg-dark-900 rounded-xl border border-dark-700 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition text-white resize-none" placeholder="Разкажи ми повече за проекта..."></textarea>
+                        </div>
+                        <button class="w-full py-5 bg-accent hover:bg-accent-dark text-white font-bold text-lg rounded-xl transition-all flex items-center justify-center gap-3">
+                            Изпрати Запитване <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-dark-950 border-t border-white/5">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-3xl font-extrabold tracking-tight text-white block mb-6">
+                        RAYKOV<span class="text-accent">.DEV</span>
+                    </a>
+                    <p class="text-slate-400 max-w-sm mb-8">
+                        Създавам дигитални преживявания с фокус върху качеството, производителността и потребителската удовлетвореност.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-dark-900 rounded-lg flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 bg-dark-900 rounded-lg flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 bg-dark-900 rounded-lg flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition-all"><i class="fa-brands fa-twitter"></i></a>
+                         <a href="#" class="w-10 h-10 bg-dark-900 rounded-lg flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Бързи Връзки</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home" class="text-slate-400 hover:text-accent transition-colors">Начало</a></li>
+                        <li><a href="#about" class="text-slate-400 hover:text-accent transition-colors">За мен</a></li>
+                        <li><a href="#work" class="text-slate-400 hover:text-accent transition-colors">Проекти</a></li>
+                        <li><a href="#contact" class="text-slate-400 hover:text-accent transition-colors">Контакт</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Услуги</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-slate-400 hover:text-accent transition-colors">Web Development</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-accent transition-colors">UI/UX Design</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-accent transition-colors">E-Commerce</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-accent transition-colors">Consulting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+                <p>© 2025 Raykov.DEV. Всички права запазени.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-slate-300 transition-colors">Политика за поверителност</a>
+                    <a href="#" class="hover:text-slate-300 transition-colors">Общи условия</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark-950/95', 'shadow-lg');
+                navbar.classList.remove('bg-dark-950/80');
+            } else {
+                 navbar.classList.add('bg-dark-950/80');
+                navbar.classList.remove('bg-dark-950/95', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>

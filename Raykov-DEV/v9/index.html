@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAYKOV.DEV | Digital Architect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <nav class="fixed-nav">
+        <div class="nav-tl logo">RAYKOV<span class="accent">.DEV</span></div>
+        <div class="nav-tr menu-trigger">МЕНЮ</div>
+        <div class="nav-bl social">
+            <a href="#" class="hover-target">GH</a> / <a href="#" class="hover-target">LN</a>
+        </div>
+        <div class="nav-br contact-trigger">
+            <a href="#contact" class="hover-target">СВЪРЖИ СЕ</a>
+        </div>
+    </nav>
+
+    <div class="menu-overlay">
+        <div class="menu-close hover-target">ЗАТВОРИ</div>
+        <ul class="menu-links">
+            <li><a href="#home" class="menu-link hover-target" data-text="НАЧАЛО">НАЧАЛО</a></li>
+            <li><a href="#about" class="menu-link hover-target" data-text="ЗА МЕН">ЗА МЕН</a></li>
+            <li><a href="#work" class="menu-link hover-target" data-text="ПРОЕКТИ">ПРОЕКТИ</a></li>
+            <li><a href="#contact" class="menu-link hover-target" data-text="КОНТАКТ">КОНТАКТ</a></li>
+        </ul>
+    </div>
+
+    <main class="scroller">
+        
+        <section id="home" class="scene hero-scene">
+            <div class="glitch-wrapper">
+                <h1 class="hero-title glitch" data-text="DIGITAL">DIGITAL</h1>
+                <h1 class="hero-title glitch" data-text="ARCHITECT">ARCHITECT</h1>
+            </div>
+            <p class="hero-subtitle">[ СЪЗДАВАМ НЕЩА, КОИТО ЖИВЕЯТ В ИНТЕРНЕТ ]</p>
+            <div class="scroll-hint">
+                <span>СКРОЛНИ</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <section id="about" class="scene about-scene">
+            <div class="content-box">
+                <h2 class="big-text">НЕ Е ПРОСТО <span class="outline-text">КОД</span></h2>
+                <div class="about-details">
+                    <p class="reveal-text">Аз съм Raykov. Не правя просто уебсайтове. Изграждам дигитални екосистеми, които работят бързо, изглеждат брутално и носят резултати.</p>
+                    <ul class="skills-list">
+                        <li>/// FRONTEND DEVELOPMENT</li>
+                        <li>/// UI/UX DESIGN</li>
+                        <li>/// PERFORMANCE OPTIMIZATION</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="scene work-scene">
+            <div class="scene-header">
+                <h2>ИЗБРАНИ <span class="accent">ПРОЕКТИ</span></h2>
+            </div>
+            <div class="work-gallery">
+                <div class="work-item hover-target">
+                    <div class="work-info">
+                        <span class="work-num">01</span>
+                        <h3>NEON E-COMM</h3>
+                        <p>Full Stack / Design</p>
+                    </div>
+                    <div class="work-img" style="background-image: url('https://placehold.co/600x400/111/00ff9d?text=PROJECT+01')"></div>
+                </div>
+                <div class="work-item hover-target">
+                    <div class="work-info">
+                        <span class="work-num">02</span>
+                        <h3>CORPORATE AI</h3>
+                        <p>Frontend / Animation</p>
+                    </div>
+                    <div class="work-img" style="background-image: url('https://placehold.co/600x400/111/00ff9d?text=PROJECT+02')"></div>
+                </div>
+                 <div class="work-item hover-target">
+                    <div class="work-info">
+                        <span class="work-num">03</span>
+                        <h3>SIST AUTO APP</h3>
+                        <p>UI / Branding</p>
+                    </div>
+                    <div class="work-img" style="background-image: url('https://placehold.co/600x400/111/00ff9d?text=PROJECT+03')"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="scene contact-scene">
+            <div class="contact-center">
+                <h2 class="big-text hover-target">ДА РАБОТИМ <span class="accent">ЗАЕДНО</span>?</h2>
+                <div class="contact-details">
+                    <a href="mailto:hello@raykov.dev" class="email-link hover-target">hello@raykov.dev</a>
+                    <div class="social-big">
+                        <a href="#" class="hover-target">GITHUB</a>
+                        <a href="#" class="hover-target">LINKEDIN</a>
+                        <a href="#" class="hover-target">INSTAGRAM</a>
+                    </div>
+                </div>
+            </div>
+            <footer class="minimal-footer">
+                © 2025 RAYKOV.DEV // ALL RIGHTS RESERVED
+            </footer>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

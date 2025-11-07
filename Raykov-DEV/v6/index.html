@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Raykov.DEV - Професионален уеб разработчик. Създавам модерни, елегантни и функционални уеб решения с фокус върху потребителското изживяване и производителност.">
+    <meta name="keywords" content="web developer, уеб разработчик, portfolio, портфолио, HTML, CSS, JavaScript, frontend developer">
+    <meta name="author" content="Raykov">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://raykov.dev">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Raykov.DEV - Web Developer Portfolio">
+    <meta property="og:description" content="Професионален уеб разработчик. Създавам модерни и елегантни уеб решения.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raykov.dev">
+    <meta property="og:image" content="https://raykov.dev/og-image.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Raykov.DEV - Web Developer Portfolio">
+    <meta name="twitter:description" content="Професионален уеб разработчик. Създавам модерни и елегантни уеб решения.">
+    <meta name="twitter:image" content="https://raykov.dev/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💻%3C/text%3E%3C/svg%3E">
+    
+    <title>Raykov.DEV - Web Developer Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Raykov",
+        "url": "https://raykov.dev",
+        "jobTitle": "Web Developer",
+        "description": "Професионален уеб разработчик специализиран в модерни уеб технологии"
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <span class="logo-ray">RAY</span><span class="logo-kov">KOV</span><span class="logo-dev">.DEV</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress" id="loaderProgress"></div>
+            </div>
+            <p class="loader-text" id="loaderText">Loading Projects...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-ray">RAY</span><span class="logo-kov">KOV</span><span class="logo-dev">.DEV</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#home" class="nav-link">Начало</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">За мен</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Умения</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Проекти</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link">Опит</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Контакти</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text" data-scroll>
+                <h1 class="hero-title">
+                    <span class="title-line">Здравейте, аз съм</span>
+                    <span class="title-name">Raykov</span>
+                    <span class="title-role">Web Developer</span>
+                </h1>
+                <p class="hero-description">
+                    Създавам модерни, елегантни и функционални уеб решения<br>
+                    с фокус върху потребителското изживяване и производителност
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Виж Проекти</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Свържи се</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image" data-scroll>
+                <div class="image-wrapper">
+                    <svg class="hero-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#e63946;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#c72736;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="250" cy="250" r="200" fill="url(#grad1)" opacity="0.1"/>
+                        <path d="M150,250 L200,200 L250,230 L300,180 L350,220 L350,320 L150,320 Z" fill="url(#grad1)" opacity="0.6"/>
+                        <circle cx="200" cy="200" r="8" fill="#e63946"/>
+                        <circle cx="250" cy="230" r="8" fill="#e63946"/>
+                        <circle cx="300" cy="180" r="8" fill="#e63946"/>
+                        <circle cx="350" cy="220" r="8" fill="#e63946"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section" data-scroll>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">01.</span>
+                За мен
+            </h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-paragraph">
+                        Здравейте! Аз съм Raykov, страстен уеб разработчик с фокус върху създаването на 
+                        изключителни дигитални изживявания. Обичам да превръщам сложни проблеми в 
+                        прости, красиви и интуитивни решения.
+                    </p>
+                    <p class="about-paragraph">
+                        Специализирам се в модерни уеб технологии и винаги съм в крак с най-новите тенденции 
+                        в индустрията. Всеки проект е възможност да създам нещо уникално и функционално.
+                    </p>
+                    <p class="about-paragraph">
+                        Когато не програмирам, обичам да експериментирам с нови технологии, да чета за дизайн 
+                        и да се вдъхновявам от креативни проекти по целия свят.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Проекти</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="3">0</div>
+                        <div class="stat-label">Години Опит</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="40">0</div>
+                        <div class="stat-label">Доволни Клиенти</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section" data-scroll>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">02.</span>
+                Умения & Технологии
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
+                            <path d="M4 7h16M4 12h16M4 17h16"/>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Frontend</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React & Vue.js</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8M12 17v4"/>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Backend</h3>
+                    <ul class="skill-list">
+                        <li>Node.js & Express</li>
+                        <li>PHP & Laravel</li>
+                        <li>Database Design</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
+                            <polyline points="7.5 19.79 7.5 14.6 3 12"/>
+                            <polyline points="21 12 16.5 14.6 16.5 19.79"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="skill-title">Tools & Other</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>Webpack & Vite</li>
+                        <li>Figma & Adobe XD</li>
+                        <li>SEO Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section" data-scroll>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">03.</span>
+                Избрани Проекти
+            </h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/1a1a1a/e63946?text=E-Commerce+Platform" alt="E-Commerce Platform" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" aria-label="View Project">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">
+                            Модерна онлайн платформа за електронна търговия с интегрирана система за плащания и управление на инвентар.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/1a1a1a/e63946?text=Portfolio+Website" alt="Portfolio Website" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" aria-label="View Project">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-description">
+                            Креативно портфолио за дизайнер с фокус върху визуалното представяне и анимации.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/1a1a1a/e63946?text=Task+Management+App" alt="Task Management App" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" aria-label="View Project">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management App</h3>
+                        <p class="project-description">
+                            Интуитивно приложение за управление на задачи с drag-and-drop функционалност и реално време синхронизация.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Tailwind</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/1a1a1a/e63946?text=Restaurant+Booking" alt="Restaurant Booking System" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" aria-label="View Project">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Restaurant Booking System</h3>
+                        <p class="project-description">
+                            Система за резервации с календар, управление на маси и автоматични имейл потвърждения.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">Laravel</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/1a1a1a/e63946?text=Weather+Dashboard" alt="Weather Dashboard" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" aria-label="View Project">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Weather Dashboard</h3>
+                        <p class="project-description">
+                            Интерактивно табло за прогноза на времето с API интеграция и красиви визуализации на данни.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">API</span>
+                            <span class="tag">Chart.js</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/1a1a1a/e63946?text=Blog+Platform" alt="Blog Platform" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" aria-label="View Project">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Blog Platform</h3>
+                        <p class="project-description">
+                            Пълнофункционална блог платформа с CMS, коментари, тагове и SEO оптимизация.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Markdown</span>
+                            <span class="tag">Vercel</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section" data-scroll>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">04.</span>
+                Опит & Образование
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Senior Web Developer</h3>
+                        <span class="timeline-company">Tech Solutions Ltd.</span>
+                        <span class="timeline-date">2023 - Сега</span>
+                        <p class="timeline-description">
+                            Разработка на корпоративни уеб приложения и лидерство на екип от разработчици.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Frontend Developer</h3>
+                        <span class="timeline-company">Digital Agency Pro</span>
+                        <span class="timeline-date">2021 - 2023</span>
+                        <p class="timeline-description">
+                            Създаване на responsive уеб сайтове и модерни single-page приложения.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Junior Developer</h3>
+                        <span class="timeline-company">StartUp Inc.</span>
+                        <span class="timeline-date">2020 - 2021</span>
+                        <p class="timeline-description">
+                            Асистиране при разработка на проекти и изучаване на нови технологии.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section" data-scroll>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-number">05.</span>
+                Да си поговорим
+            </h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="contact-subtitle">Свържете се с мен</h3>
+                    <p class="contact-text">
+                        Имате проект на ум? Нека работим заедно за да създадем нещо невероятно!
+                    </p>
+                    <div class="contact-methods">
+                        <a href="mailto:contact@raykov.dev" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>contact@raykov.dev</span>
+                        </a>
+                        <a href="tel:+359888123456" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>+359 888 123 456</span>
+                        </a>
+                        <a href="#" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Пазарджик, България</span>
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Име</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Тема</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Съобщение</label>
+                        <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Изпрати Съобщение</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-ray">RAY</span><span class="logo-kov">KOV</span><span class="logo-dev">.DEV</span>
+                </div>
+                <p class="footer-text">
+                    Създавам дигитални изживявания с код и креативност
+                </p>
+                <div class="footer-links">
+                    <a href="#home">Начало</a>
+                    <a href="#about">За мен</a>
+                    <a href="#projects">Проекти</a>
+                    <a href="#contact">Контакти</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Raykov.DEV. Всички права запазени.</p>
+                    <p>Дизайн & Разработка с ❤️</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

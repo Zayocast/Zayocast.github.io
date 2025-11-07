@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Raykov.TERMINAL – Пиши команди. Получавай магия.">
+    <meta property="og:title" content="Raykov.TERMINAL()">
+    <meta property="og:image" content="https://placehold.co/1200x630/000000/e63946?text=>_">
+    <title>>_ Raykov.TERMINAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line">
+            <span class="prompt">guest@raykov:~$</span>
+            <input type="text" id="cmd" autofocus autocomplete="off">
+        </div>
+    </div>
+
+    <!-- Скрити 3D карти (появяват се с команди) -->
+    <div id="card-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

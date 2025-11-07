@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raykov.DEV | Уеб разработчик & дизайнер</title>
+  <meta name="description" content="Портфолио на Raykov – уеб разработчик и дизайнер, специализиран в създаване на модерни, анимирани и адаптивни сайтове.">
+  <meta name="keywords" content="Raykov, RaykovDEV, уеб разработчик, уеб дизайн, портфолио, responsive, developer">
+  <meta name="theme-color" content="#0b0b13">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-text">Loading <span>Raykov.DEV</span>...</div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-wrapper">
+      <div class="logo">Raykov<span>.DEV</span></div>
+      <nav class="nav">
+        <button class="menu-btn" aria-label="Toggle menu">☰</button>
+        <ul class="nav-list">
+          <li><a href="#hero">Начало</a></li>
+          <li><a href="#about">За мен</a></li>
+          <li><a href="#work">Проекти</a></li>
+          <li><a href="#tech">Умения</a></li>
+          <li><a href="#contact">Контакт</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="hero-title">Създавам <span>впечатляващи</span><br>уеб изживявания</h1>
+      <p class="hero-sub">Съвременен дизайн, оптимизация и адаптивност за всеки екран.</p>
+      <a href="#work" class="btn-primary">Виж проектите</a>
+    </div>
+    <div class="hero-bg" data-speed="0.3"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about section">
+    <div class="container grid-2">
+      <div class="about-text reveal">
+        <h2>Кой съм аз?</h2>
+        <p>
+          Аз съм Златин Райков – уеб разработчик, дизайнер и създател на дигитални преживявания. 
+          Имам страст към изчистен дизайн, анимации и реални бизнес решения. 
+          Обичам да превръщам сложното в елегантно и бързо.
+        </p>
+        <p>
+          Работя с <strong>PHP / JavaScript / MySQL / Tailwind / UI/UX</strong> и създавам приложения, 
+          които изглеждат еднакво добре навсякъде.
+        </p>
+      </div>
+      <div class="about-img reveal">
+        <img src="https://placehold.co/600x400/101020/ffffff?text=Raykov+Portrait" alt="Raykov Developer Photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="work section">
+    <div class="container">
+      <h2 class="section-title reveal">Избрани проекти</h2>
+      <div class="work-grid">
+        <div class="work-card reveal">
+          <img src="https://placehold.co/600x400/0a0a0a/00ffff?text=Voda+Order+Manager" alt="Voda Order Manager">
+          <div class="work-info">
+            <h3>Voda Order Manager</h3>
+            <p>Система за управление на поръчки, клиенти и задължения с логове и роля-базирани достъпи.</p>
+          </div>
+        </div>
+
+        <div class="work-card reveal">
+          <img src="https://placehold.co/600x400/101010/00aaff?text=Auto+Parts+Store" alt="Auto Parts Store">
+          <div class="work-info">
+            <h3>Auto Parts Store</h3>
+            <p>Онлайн магазин с VIN търсачка, responsive дизайн и тъмна/светла тема.</p>
+          </div>
+        </div>
+
+        <div class="work-card reveal">
+          <img src="https://placehold.co/600x400/121212/00cccc?text=Luxe+Cut+%26+Glow" alt="Luxe Cut & Glow">
+          <div class="work-info">
+            <h3>Luxe Cut & Glow</h3>
+            <p>Луксозен landing page за салон с паралакс и плавни преходи.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech -->
+  <section id="tech" class="tech section">
+    <div class="container">
+      <h2 class="section-title reveal">Технологии & Умения</h2>
+      <div class="tech-grid">
+        <div class="tech-item reveal">⚡ HTML / CSS / JS</div>
+        <div class="tech-item reveal">💾 PHP / MySQL</div>
+        <div class="tech-item reveal">🎨 UI / UX дизайн</div>
+        <div class="tech-item reveal">📱 Responsive Layouts</div>
+        <div class="tech-item reveal">🌙 Dark / Light Themes</div>
+        <div class="tech-item reveal">🚀 Performance Optimization</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact section">
+    <div class="container grid-2">
+      <div class="contact-text reveal">
+        <h2>Свържи се с мен</h2>
+        <p>
+          Имаш проект, идея или просто искаш да споделиш визията си? 
+          Пиши ми — ще измислим нещо страхотно заедно.
+        </p>
+        <ul class="contact-info">
+          <li>📧 hello@raykov.dev</li>
+          <li>💻 github.com/Zayocast</li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal">
+        <input type="text" placeholder="Име">
+        <input type="email" placeholder="Имейл">
+        <textarea rows="4" placeholder="Проект или идея..."></textarea>
+        <button type="submit" class="btn-primary">Изпрати</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© <span id="year"></span> Raykov.DEV — изграден с 💙 и JavaScript</p>
+  </footer>
+</body>
+</html>

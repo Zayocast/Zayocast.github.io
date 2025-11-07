@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Raykov.DEV – 3D портфолио в космоса. Върти куба. Влез в стаята.">
+    <meta property="og:title" content="Raykov.CUBE">
+    <meta property="og:image" content="https://placehold.co/1200x630/0f0f23/e63946?text=Raykov.CUBE">
+    <title>Raykov.CUBE() – Върти ме 😈</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- LOADER – 0.9 сек -->
+    <div id="loader">
+        <div class="cube-loader">
+            <div class="face"></div><div class="face"></div><div class="face"></div>
+            <div class="face"></div><div class="face"></div><div class="face"></div>
+        </div>
+        <p>Raykov.CUBE loading<span class="dot">...</span></p>
+    </div>
+
+    <!-- MENU – плава в космоса -->
+    <nav id="cosmic-menu">
+        <div class="menu-item" data-face="0">🏠</div>
+        <div class="menu-item" data-face="1">😎</div>
+        <div class="menu-item" data-face="2">🚀</div>
+        <div class="menu-item" data-face="3">⚡</div>
+        <div class="menu-item" data-face="4">💬</div>
+        <div class="menu-item" data-face="5">⭐</div>
+    </nav>
+
+    <!-- 3D CUBE -->
+    <div id="cube-container">
+        <div id="cube">
+            <div class="face front"  data-section="home">
+                <h1>Raykov<br><span>.CUBE</span></h1>
+                <p>Върти ме с мишката<br>или пръста 👆</p>
+            </div>
+            <div class="face back"   data-section="about">
+                <h2>Аз съм Райков</h2>
+                <p>Кодiram сайтове, които летят.<br>И мемета, които убиват.</p>
+            </div>
+            <div class="face right"  data-section="projects">
+                <h2>Проекти</h2>
+                <div class="mini-card">Todo v69</div>
+                <div class="mini-card">Dark Mode</div>
+                <div class="mini-card">API King</div>
+            </div>
+            <div class="face left"   data-section="skills">
+                <h2>Суперсили</h2>
+                <p>HTML/CSS – 99%<br>JS – 95%<br>Мемета – 420%</p>
+            </div>
+            <div class="face top"    data-section="contact">
+                <h2>Пиши ми</h2>
+                <form id="quick-form">
+                    <input type="text" placeholder="име" required>
+                    <button>🚀</button>
+                </form>
+            </div>
+            <div class="face bottom" data-section="easter">
+                <h2>🦄 Тайна</h2>
+                <p>Натисни 3 пъти</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- STARS BACKGROUND -->
+    <div id="stars"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

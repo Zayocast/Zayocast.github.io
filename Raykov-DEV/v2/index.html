@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Raykov.DEV – Портфолио на уеб разработчик</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Портфолиото на Райков – модерен уеб разработчик, специализиран в ландинг страници, SaaS системи и онлайн магазини." />
+    <meta name="keywords" content="Raykov, Raykov DEV, уеб разработчик, web developer, портфолио, landing page, PHP, JavaScript, UI, UX" />
+    <link rel="canonical" href="https://raykov.dev/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Raykov.DEV – Портфолио на уеб разработчик" />
+    <meta property="og:description" content="Модерни уеб приложения, ландинг страници и custom системи за бизнеси." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://raykov.dev/" />
+    <meta property="og:image" content="https://placehold.co/1200x630/111111/ffffff?text=Raykov.DEV" />
+
+    <!-- Misc -->
+    <meta name="theme-color" content="#e63946" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Raykov",
+      "url": "https://raykov.dev",
+      "jobTitle": "Web Developer",
+      "sameAs": [
+        "https://github.com/Zayocast"
+      ]
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- JS -->
+    <script src="script.js" defer></script>
+</head>
+<body class="page">
+
+    <!-- Loader -->
+    <div class="loader" aria-hidden="true">
+        <div class="loader__inner">
+            <span class="loader__label">Loading projects…</span>
+            <div class="loader__bar">
+                <span class="loader__bar-fill"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative SVG background -->
+    <svg class="page-bg-svg" viewBox="0 0 600 600" aria-hidden="true">
+        <defs>
+            <linearGradient id="raykov-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e63946" />
+                <stop offset="100%" stop-color="#ff8c5a" />
+            </linearGradient>
+        </defs>
+        <circle cx="80" cy="120" r="80" fill="url(#raykov-grad)" opacity="0.12" />
+        <rect x="380" y="380" width="160" height="160" rx="32" fill="url(#raykov-grad)" opacity="0.08" />
+        <path d="M500 40 Q560 140 480 220 T520 420" fill="none" stroke="#e63946" stroke-width="2" opacity="0.25" />
+    </svg>
+
+    <!-- Header -->
+    <header class="site-header" id="top">
+        <div class="container site-header__inner">
+            <a href="#hero" class="logo" aria-label="Raykov.DEV - Начало">
+                <span class="logo__main">Raykov</span><span class="logo__accent">.DEV</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Отвори навигацията" aria-expanded="false">
+                <span class="nav-toggle__line"></span>
+                <span class="nav-toggle__line"></span>
+            </button>
+
+            <nav class="main-nav" aria-label="Главна навигация">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item"><a href="#hero" class="main-nav__link">Начало</a></li>
+                    <li class="main-nav__item"><a href="#about" class="main-nav__link">За мен</a></li>
+                    <li class="main-nav__item"><a href="#projects" class="main-nav__link">Проекти</a></li>
+                    <li class="main-nav__item"><a href="#skills" class="main-nav__link">Умения</a></li>
+                    <li class="main-nav__item"><a href="#process" class="main-nav__link">Как работя</a></li>
+                    <li class="main-nav__item"><a href="#contact" class="main-nav__link main-nav__link--highlight">Контакт</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section id="hero" class="section hero" data-parallax-speed="0.25">
+            <div class="container hero__inner">
+                <div class="hero__content reveal">
+                    <p className="hero__eyebrow"></pClass>
+                    <p class="hero__eyebrow">Портфолио / Raykov.DEV</p>
+                    <h1 class="hero__title">
+                        Създавам <span class="hero__title-highlight">смели</span> уеб проекти<br />
+                        за реални бизнеси.
+                    </h1>
+                    <p class="hero__subtitle">
+                        Ландинг страници, мини SaaS системи, онлайн магазини и custom решения, 
+                        които изглеждат <strong>модерно</strong>, зареждат бързо и работят стабилно.
+                    </p>
+
+                    <div class="hero__cta">
+                        <a href="#projects" class="btn btn--primary">Виж проектите</a>
+                        <a href="#contact" class="btn btn--ghost">Напиши ми</a>
+                    </div>
+
+                    <div class="hero__meta">
+                        <div class="hero-badge">🔥 Фокус: реални клиенти и работещи решения</div>
+                        <ul class="hero-tags" aria-label="Основен стек">
+                            <li class="hero-tags__item">PHP / MySQL</li>
+                            <li class="hero-tags__item">HTML / CSS / JS</li>
+                            <li class="hero-tags__item">UI / UX</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hero__visual reveal">
+                    <div class="hero-card hero-card--main">
+                        <img
+                            src="https://placehold.co/600x380/111111/ffffff?text=Dashboard+Preview"
+                            alt="Преглед на админ панел на уеб приложение"
+                            class="hero-card__image"
+                            loading="lazy"
+                        />
+                        <div class="hero-card__label">Voda Order Manager</div>
+                    </div>
+                    <div class="hero-card hero-card--secondary">
+                        <img
+                            src="https://placehold.co/420x260/1f1f1f/ffffff?text=Landing+Page"
+                            alt="Преглед на модерна ландинг страница"
+                            class="hero-card__image"
+                            loading="lazy"
+                        />
+                        <div class="hero-card__label">Auto Parts Store</div>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat__value">20+</span>
+                        <span class="hero-stat__label">реални проекта</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-corners hero-corners--tl"></div>
+            <div class="hero-corners hero-corners--tr"></div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="section section--alt about">
+            <div class="container about__inner">
+                <div class="about__content reveal">
+                    <h2 class="section-title">Кой стои зад Raykov.DEV?</h2>
+                    <p class="section-intro">
+                        Занимавам се с уеб разработка, дизайн и изграждане на малки, но 
+                        <strong>много практични</strong> приложения за бизнеси – от автосервизи до онлайн магазини.
+                    </p>
+
+                    <div class="about__grid">
+                        <p>
+                            Обичам проекти, в които има реален проблем за решаване – 
+                            управление на поръчки, следене на клиенти, по-удобни начини за
+                            записване на часове, автоматично генериране на документи и други.
+                        </p>
+                        <p>
+                            Комбинирам <strong>чист код</strong>, <strong>семантичен HTML</strong>, 
+                            <strong>добри SEO практики</strong> и модерен тъмен дизайн с акценти,
+                            за да изглежда всичко професионално и да се усеща бързо и „стегнато“.
+                        </p>
+                    </div>
+
+                    <ul class="about-highlights">
+                        <li class="about-highlights__item">
+                            <span class="about-highlights__label">Фокус</span>
+                            <span class="about-highlights__value">Custom мини приложения за бизнеси</span>
+                        </li>
+                        <li class="about-highlights__item">
+                            <span class="about-highlights__label">Стил</span>
+                            <span class="about-highlights__value">Тъмни теми, остри акценти, smooth анимации</span>
+                        </li>
+                        <li class="about-highlights__item">
+                            <span class="about-highlights__label">Подход</span>
+                            <span class="about-highlights__value">Практично, ясно, без излишен шум</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <aside class="about__side reveal">
+                    <div class="about-card">
+                        <h3 class="about-card__title">Мини fun факти 🤘</h3>
+                        <ul class="about-card__list">
+                            <li>Обичам да правя уеб апове, които реално се ползват всеки ден.</li>
+                            <li>Имам слабост към авто тематиката – сервизи, магазини, поръчки.</li>
+                            <li>HTML/CSS ми е платното, JS – четката, а PHP/MySQL – двигателят отдолу.</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="section projects">
+            <div class="container">
+                <header class="section-header reveal">
+                    <h2 class="section-title">Подбрани проекти</h2>
+                    <p class="section-intro">
+                        Няколко от нещата, по които съм работил – от SaaS mini apps до ландинг страници и онлайн магазини.
+                    </p>
+                </header>
+
+                <div class="projects__grid">
+                    <!-- Project 1 -->
+                    <article class="project-card reveal">
+                        <div class="project-card__media">
+                            <img
+                                src="https://placehold.co/600x400/181818/ffffff?text=Voda+Order+Manager"
+                                alt="Екран от система за управление на поръчки"
+                                loading="lazy"
+                            />
+                            <span class="project-card__badge">SaaS / Internal Tool</span>
+                        </div>
+                        <div class="project-card__body">
+                            <h3 class="project-card__title">Voda Order Manager</h3>
+                            <p class="project-card__text">
+                                Mini web приложение за управление на поръчки, клиенти, статуси и 
+                                задължения. Оптимизирано за бърза работа в малък екип.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>PHP</li>
+                                <li>MySQL</li>
+                                <li>Tailwind-like UI</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card reveal">
+                        <div class="project-card__media">
+                            <img
+                                src="https://placehold.co/600x400/202020/ffffff?text=Auto+Parts+Store"
+                                alt="Начална страница на онлайн магазин за авточасти"
+                                loading="lazy"
+                            />
+                            <span class="project-card__badge">E-commerce</span>
+                        </div>
+                        <div class="project-card__body">
+                            <h3 class="project-card__title">Online магазин за авточасти</h3>
+                            <p class="project-card__text">
+                                Модерен магазин с търсене по VIN, марка, модел и година, 
+                                кошница и форма за поръчка – изцяло front-end прототип.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>JS</li>
+                                <li>Responsive</li>
+                                <li>UI/UX</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card reveal">
+                        <div class="project-card__media">
+                            <img
+                                src="https://placehold.co/600x400/151515/ffffff?text=Luxe+Cut+%26+Glow"
+                                alt="Ландинг страница за салон Luxe Cut &amp; Glow"
+                                loading="lazy"
+                            />
+                            <span class="project-card__badge">Landing Page</span>
+                        </div>
+                        <div class="project-card__body">
+                            <h3 class="project-card__title">Luxe Cut &amp; Glow</h3>
+                            <p class="project-card__text">
+                                Премиум landing page за салон – паралакс ефекти, луксозно усещане, 
+                                акцент върху записване на час и представяне на услугите.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>Design</li>
+                                <li>Parallax</li>
+                                <li>Conversion</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project-card reveal">
+                        <div class="project-card__media">
+                            <img
+                                src="https://placehold.co/600x400/111111/ffffff?text=Sist+Auto+Promo"
+                                alt="Флайер и лендинг концепция за автосервиз"
+                                loading="lazy"
+                            />
+                            <span class="project-card__badge">Branding</span>
+                        </div>
+                        <div class="project-card__body">
+                            <h3 class="project-card__title">SIST AUTO – флайер &amp; web</h3>
+                            <p class="project-card__text">
+                                Комбо дизайн: флайер с 15% отстъпка и уеб присъствие с 
+                                запазен стил – тъмна тема, червен акцент и силен call-to-action.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>Print</li>
+                                <li>Web</li>
+                                <li>Branding</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section section--alt skills">
+            <div class="container">
+                <header class="section-header reveal">
+                    <h2 class="section-title">Технологии &amp; умения</h2>
+                    <p class="section-intro">
+                        Баланс между чист код, дизайн и реален продукт, който хората да ползват без да се чудят как.
+                    </p>
+                </header>
+
+                <div class="skills__grid">
+                    <article class="skill-card reveal">
+                        <div class="skill-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <rect x="4" y="8" width="40" height="30" rx="4"></rect>
+                                <rect x="10" y="16" width="14" height="4"></rect>
+                                <rect x="10" y="24" width="10" height="4"></rect>
+                                <circle cx="35" cy="28" r="5"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="skill-card__title">Front-end</h3>
+                        <p class="skill-card__text">
+                            Семантичен HTML, модерно CSS, JavaScript за интеракции, паралакс, анимации и smooth UX.
+                        </p>
+                        <p class="skill-card__meta">HTML5 · CSS3 · JS · Responsive</p>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <div class="skill-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <rect x="6" y="10" width="36" height="26" rx="4"></rect>
+                                <path d="M12 18h10v4H12zM12 26h8v4h-8zM26 18h10v12H26z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="skill-card__title">Back-end</h3>
+                        <p class="skill-card__text">
+                            PHP/MySQL приложения с логин системи, роли, логове, филтри и стабилна логика.
+                        </p>
+                        <p class="skill-card__meta">PHP · MySQL · Sessions · CRUD</p>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <div class="skill-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <rect x="8" y="8" width="32" height="10" rx="3"></rect>
+                                <rect x="8" y="20" width="20" height="10" rx="3"></rect>
+                                <rect x="8" y="32" width="26" height="6" rx="3"></rect>
+                            </svg>
+                        </div>
+                        <h3 class="skill-card__title">UX &amp; детайл</h3>
+                        <p class="skill-card__text">
+                            Ясни хедъри, силни CTA бутони, логична структура, бързи действия – 
+                            без да се губиш по страницата.
+                        </p>
+                        <p class="skill-card__meta">UI/UX · Micro interactions</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section id="process" class="section process">
+            <div class="container">
+                <header class="section-header reveal">
+                    <h2 class="section-title">Как работя по проект</h2>
+                    <p class="section-intro">
+                        Ясни стъпки – от идея, през дизайн, до работещ код, който можеш да ползваш веднага.
+                    </p>
+                </header>
+
+                <ol class="process__steps">
+                    <li class="process-step reveal">
+                        <span class="process-step__number">01</span>
+                        <div class="process-step__body">
+                            <h3 class="process-step__title">Разговор &amp; цел</h3>
+                            <p class="process-step__text">
+                                Изясняваме какво трябва да прави проектът – какви екрани, какви роли, какви данни.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="process-step reveal">
+                        <span class="process-step__number">02</span>
+                        <div class="process-step__body">
+                            <h3 class="process-step__title">Wireframe &amp; дизайн</h3>
+                            <p class="process-step__text">
+                                Прехвърлям идеята в подреден layout – секции, компоненти, UI елементи, цветове и типография.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="process-step reveal">
+                        <span class="process-step__number">03</span>
+                        <div class="process-step__body">
+                            <h3 class="process-step__title">Разработка</h3>
+                            <p class="process-step__text">
+                                Пиша кода – HTML, CSS, JS, PHP/MySQL, оптимизация за скорост и мобилни устройства.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="process-step reveal">
+                        <span class="process-step__number">04</span>
+                        <div class="process-step__body">
+                            <h3 class="process-step__title">Тест &amp; финални щрихи</h3>
+                            <p class="process-step__text">
+                                Тестваме всичко заедно, оправяме детайлите и пускаме проекта да работи за теб.
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section section--alt contact">
+            <div class="container contact__inner">
+                <div class="contact__content reveal">
+                    <h2 class="section-title">Хайде да направим нещо заедно</h2>
+                    <p class="section-intro">
+                        Ако имаш идея за мини приложение, ландинг страница, онлайн магазин 
+                        или ти трябва „скелет“ на по-голям проект – пиши ми. 🙂
+                    </p>
+
+                    <ul class="contact-details">
+                        <li class="contact-details__item">
+                            <span class="contact-details__label">Email</span>
+                            <a href="mailto:hello@raykov.dev" class="contact-details__value">hello@raykov.dev</a>
+                        </li>
+                        <li class="contact-details__item">
+                            <span class="contact-details__label">GitHub</span>
+                            <a href="https://github.com/Zayocast" class="contact-details__value" target="_blank" rel="noopener noreferrer">
+                                github.com/Zayocast
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact__form-wrap reveal">
+                    <form class="contact-form" autocomplete="on">
+                        <div class="contact-form__field">
+                            <label for="name">Име</label>
+                            <input type="text" id="name" name="name" placeholder="Как да те наричам?" required />
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="email">Имейл</label>
+                            <input type="email" id="email" name="email" placeholder="example@mail.com" required />
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="project">Проект / идея</label>
+                            <textarea id="project" name="project" rows="4" placeholder="Разкажи накратко какво искаш да направим." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full" disabled>
+                            Изпрати (демо – без бекенд)
+                        </button>
+                        <p class="contact-form__note">
+                            Формата е само демо front-end. За реален контакт – използвай email или GitHub.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Back to top -->
+    <button class="to-top" aria-label="Върни се в началото">
+        ↑
+    </button>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div class="site-footer__col">
+                <a href="#hero" class="logo logo--footer">
+                    <span class="logo__main">Raykov</span><span class="logo__accent">.DEV</span>
+                </a>
+                <p class="site-footer__text">
+                    Портфолио на уеб разработчик, който обича смислени проекти и чист дизайн.
+                </p>
+            </div>
+            <div class="site-footer__col">
+                <h3 class="site-footer__title">Навигация</h3>
+                <ul class="site-footer__links">
+                    <li><a href="#about">За мен</a></li>
+                    <li><a href="#projects">Проекти</a></li>
+                    <li><a href="#skills">Умения</a></li>
+                    <li><a href="#process">Как работя</a></li>
+                    <li><a href="#contact">Контакт</a></li>
+                </ul>
+            </div>
+            <div class="site-footer__col">
+                <h3 class="site-footer__title">Контакт</h3>
+                <ul class="site-footer__links">
+                    <li><a href="mailto:hello@raykov.dev">hello@raykov.dev</a></li>
+                    <li><a href="https://github.com/Zayocast" target="_blank" rel="noopener noreferrer">GitHub профил</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="site-footer__bottom">
+            <p>© <span id="year"></span> Raykov.DEV – всички права запазени.</p>
+        </div>
+    </footer>
+</body>
+</html>
