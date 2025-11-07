@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raykov.DEV | Versions Index</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; }
+    .version-card {
+      background: #111; border-radius: 1rem; overflow: hidden;
+      transition: all .3s ease; border: 1px solid #1f1f1f;
+    }
+    .version-card:hover {
+      transform: translateY(-4px);
+      border-color: #e63946;
+      box-shadow: 0 0 15px rgba(230,57,70,0.3);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-16 px-6">
+
+  <header class="mb-12 text-center">
+    <h1 class="text-4xl font-extrabold tracking-tight mb-2">
+      <span class="text-white">Raykov</span><span class="text-red-500">.DEV</span>
+    </h1>
+    <p class="text-gray-400">UI/UX Experimental Portfolio Versions</p>
+  </header>
+
+  <main class="max-w-6xl grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <!-- JS ще добави картите тук -->
+  </main>
+
+  <footer class="mt-16 text-gray-500 text-sm text-center">
+    © 2025 Raykov.DEV — All rights reserved.
+  </footer>
+
+  <script>
+    const container = document.querySelector('main');
+    const totalVersions = 16;
+
+    for (let i = 1; i <= totalVersions; i++) {
+      const card = document.createElement('a');
+      card.href = `/v${i}`;
+      card.className = 'version-card group';
+      card.innerHTML = `
+        <img src="https://placehold.co/600x400/1a1a1a/ffffff?text=Version+${i}" alt="v${i}" class="w-full h-40 object-cover opacity-80 group-hover:opacity-100 transition">
+        <div class="p-4 flex justify-between items-center">
+          <div>
+            <h3 class="font-bold text-lg">Version ${i}</h3>
+            <p class="text-sm text-gray-400">/v${i}</p>
+          </div>
+          <div class="flex gap-3 text-gray-400">
+            <i class="fa-solid fa-eye hover:text-red-500 transition"></i>
+            <i class="fa-solid fa-code hover:text-red-500 transition"></i>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    }
+  </script>
+</body>
+</html>
