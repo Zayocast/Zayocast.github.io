@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>СИСТ АУТО - Доверения Автосервиз</title>
+    
+    <meta name="description" content="СИСТ АУТО е вашият доверен автосервиз за компютърна диагностика, ремонт на двигатели, окачване, климатици и пълно обслужване на автомобила.">
+    
+    <meta name="keywords" content="автосервиз, ремонт на коли, СИСТ АУТО, диагностика, смяна масло, ремонт двигател, окачване">
+    
+    <meta property="og:title" content="СИСТ АУТО - Професионален Автосервиз">
+    <meta property="og:description" content="Качество и коректност при ремонт на двигатели, окачване, диагностика и др.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1495435229349-e86db7bfa013?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1977">
+    <meta property="og:type" content="website">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "СИСТ АУТО",
+      "description": "Професионален автосервиз за диагностика, ремонт и поддръжка.",
+      "telephone": "+359888123456",
+      "email": "office@sistauto.bg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Майсторска №123",
+        "addressLocality": "[Твоят Град]",
+        "postalCode": "[Пощенски Код]",
+        "addressCountry": "BG"
+      },
+      "openingHours": [
+        "Mo-Fr 08:30-18:30",
+        "Sa 09:00-14:00"
+      ],
+      "image": "https://images.unsplash.com/photo-1495435229349-e86db7bfa013?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1977"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">СИСТ<span> АУТО</span></a>
+            <ul>
+                <li><a href="#home">Начало</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#why-us">Защо Нас?</a></li>
+                <li><a href="#gallery">Галерия</a></li>
+                <li><a href="#testimonials">Отзиви</a></li>
+                <li><a href="#pricing">Цени</a></li>
+                <li><a href="#faq">Въпроси</a></li>
+                <li class="cta-button"><a href="#contact">Контакти</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-on-scroll">
+                    <h1>Вашият автомобил заслужава <span class="highlight">най-доброто!</span></h1>
+                    <p>Професионален автосервиз за диагностика, ремонт и поддръжка. Оставете грижите на нас.</p>
+                    <a href="#services" class="btn">Виж Услугите</a>
+                </div>
+                <div class="hero-form fade-in-on-scroll" style="transition-delay: 100ms;">
+                    <h3>Бързо запитване за оферта</h3>
+                    <form action="#">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Твоето име..." required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Телефон за връзка..." required>
+                        </div>
+                         <div class="form-group">
+                            <input type="text" name="car" placeholder="Марка и модел (напр. Audi A4)">
+                        </div>
+                        <button type="submit" class="btn btn-full">Изпрати запитване</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="services" class="container">
+            <h2 class="fade-in-on-scroll">Нашите <span>Услуги</span></h2>
+            <div class="services-grid">
+                <div class="service-card fade-in-on-scroll">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 8h16v8H4V8z"/></svg>
+                    </div>
+                    <h3>Диагностика</h3>
+                    <p>Модерна компютърна диагностика за бързо и точно откриване на проблеми.</p>
+                </div>
+                <div class="service-card fade-in-on-scroll" style="transition-delay: 100ms;">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 14h-4v2h4v-2zm-6 0H9v2h4v-2zM5 14H1v2h4v-2zM21 7H3c-.55 0-1 .45-1 1v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-.55-.45-1-1-1zM7 19H5v-2h2v2zm6 0h-4v-2h4v2zm4 0h-2v-2h2v2zm3-11H4V9h16v-1zM7 5H3c-.55 0-1 .45-1 1s.45 1 1 1h4c.55 0 1-.45 1-1s-.45-1-1-1zm12 0h-4c-.55 0-1 .45-1 1s.45 1 1 1h4c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+                    </div>
+                    <h3>Двигатели</h3>
+                    <p>Основни и текущи ремонти по двигателя. Връщаме мощността на колата ти.</p>
+                </div>
+                <div class="service-card fade-in-on-scroll" style="transition-delay: 200ms;">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 9c-1.1 0-2 .9-2 2v5.33c0 1.47-1.19 2.67-2.67 2.67h-.66c-1.47 0-2.67-1.19-2.67-2.67V11c0-1.1-.9-2-2-2s-2 .9-2 2v5.33c0 2.84 2.32 5.17 5.17 5.17h.66c2.84 0 5.17-2.32 5.17-5.17V11c0-1.1-.9-2-2-2zM8 5h2V2H8v3zM6 7h2V4H6v3zm8 0h2V4h-2v3zm2-5v3h2V2h-2z"/></svg>
+                    </div>
+                    <h3>Окачване</h3>
+                    <p>Ремонт и смяна на амортисьори, носачи, шарнири. За перфектно возене.</p>
+                </div>
+                <div class="service-card fade-in-on-scroll">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 11h-2.1c-.2-1.2-.6-2.3-1.2-3.4l1.5-1.5-1.4-1.4-1.5 1.5c-1.1-.6-2.2-1-3.4-1.2V2h-2v2.1c-1.2.2-2.3.6-3.4 1.2L5.1 3.8 3.7 5.2l1.5 1.5c-.6 1.1-1 2.2-1.2 3.4H2v2h2.1c.2 1.2.6 2.3 1.2 3.4L3.7 18.9l1.4 1.4 1.5-1.5c1.1.6 2.2 1 3.4 1.2V22h2v-2.1c1.2-.2 2.3-.6 3.4-1.2l1.5 1.5 1.4-1.4-1.5-1.5c.6-1.1 1-2.2 1.2-3.4H22v-2zM12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/></svg>
+                    </div>
+                    <h3>Климатици</h3>
+                    <p>Пълнене, диагностика и ремонт на климатични системи. Прохлада през лятото.</p>
+                </div>
+                <div class="service-card fade-in-on-scroll" style="transition-delay: 100ms;">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.8 13.7c-.2-.5-.5-1-.9-1.3l-2.6-2.6c-.8-.8-2-.8-2.8 0L9.4 14c-.1.1-.2.2-.2.3l-4 4c-.4.4-.6.9-.6 1.4V22h2v-2.3l2.7-2.7h2.3v3H22v-6c0-1.1-.4-2.2-1.2-3l-.2-.3zM18 20h-1v-1.3l1.8-1.8c.1-.1.2-.2.2-.3 0-.1 0-.3-.1-.4l-.8-.8c-.1-.1-.2-.1-.4-.1-.1 0-.3.1-.4.2L16 17.3V20h-1v-2.7l3-3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7l-.8-.8c-.2-.2-.5-.3-.7-.3-.3 0-.5.1-.7.3l-3 3H8.3L7 16.7V15c0-.3-.1-.5-.3-.7l-1-1c-.2-.2-.5-.3-.7-.3-.3 0-.5.1-.7.3l-1.3 1.3c-.4.4-.4 1 0 1.4l4 4c.1.1.3.2.4.2H12v2.8c.2-.1.4-.2.5-.3l5.1-5.1c.2-.2.5-.3.7-.3.3 0 .5.1.7.3l.8.8c.2.2.3.5.3.7s-.1.5-.3.7l-1.8 1.8V20z"/></svg>
+                    </div>
+                    <h3>Обслужване</h3>
+                    <p>Смяна на масла, филтри, ремъци и всичко нужно за поддръжката на автомобила.</p>
+                </div>
+                <div class="service-card fade-in-on-scroll" style="transition-delay: 200ms;">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm-4-4H4v-2h4c-.55-1.17-.85-2.52-1-4h2c.16 1.48.51 2.87 1 4H8v2zm6 4h-2c-.16-1.48-.51-2.87-1-4h4v2h-4c.55 1.17.85 2.52 1 4zm4-4h-4c.55-1.17.85-2.52 1-4h2c-.16 1.48-.51 2.87-1 4h4v2z"/></svg>
+                    </div>
+                    <h3>Спирачки</h3>
+                    <p>Смяна на дискове, накладки и спирачна течност. Безопасността е преди всичко.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="container">
+            <h2 class="fade-in-on-scroll">Защо да изберете <span>Нас?</span></h2>
+            <div class="why-us-content">
+                <div class="why-us-team">
+                    <h3 class="fade-in-on-scroll">Запознайте се с Екипа</h3>
+                    <div class="team-card fade-in-on-scroll" style="transition-delay: 50ms;">
+                        <img src="https://placehold.co/80x80/D90429/FFF?text=ИП" alt="Снимка на Иван">
+                        <div>
+                            <h4>Иван Петров</h4>
+                            <p>Главен Механик</p>
+                        </div>
+                    </div>
+                    <div class="team-card fade-in-on-scroll" style="transition-delay: 150ms;">
+                        <img src="https://placehold.co/80x80/444958/FFF?text=ГД" alt="Снимка на Георги">
+                        <div>
+                            <h4>Георги Димитров</h4>
+                            <p>Експерт Диагностика</p>
+                        </div>
+                    </div>
+                    <div class="team-card fade-in-on-scroll" style="transition-delay: 250ms;">
+                        <img src="https://placehold.co/80x80/444958/FFF?text=ПС" alt="Снимка на Петър">
+                        <div>
+                            <h4>Петър Стоянов</h4>
+                            <p>Специалист Окачване</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-us-list fade-in-on-scroll" style="transition-delay: 100ms;">
+                    <h3>Ние гарантираме качество и коректност</h3>
+                    <p>Нашият опит ни позволява да предложим най-доброто решение за вашия автомобил, без скрити такси и излишни ремонти.</p>
+                    <ul>
+                        <li>Сертифицирани механици с над 10г. опит</li>
+                        <li>Гаранция за всички вложени части и труд</li>
+                        <li>Работа само с висококачествени консумативи</li>
+                        <li>Прозрачно ценообразуване и бърза работа</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">Свържете се с нас</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="bg-light">
+            <div class="container">
+                <h2 class="fade-in-on-scroll">Нашата <span>Работа</span></h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in-on-scroll">
+                        <img src="vizitki.png" alt="Ремонт Преди">
+                    </div>
+                     <div class="gallery-item fade-in-on-scroll" style="transition-delay: 100ms;">
+                        <img src="https://placehold.co/600x400/555/FFF?text=След:+Чист+Двигател" alt="Ремонт След">
+                    </div>
+                     <div class="gallery-item fade-in-on-scroll" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/600x400/D90429/FFF?text=Ремонт+Окачване" alt="Смяна Окачване">
+                    </div>
+                     <div class="gallery-item fade-in-on-scroll">
+                        <img src="https://placehold.co/600x400/444/999?text=Преди:+Ударен+Калник" alt="Преди">
+                    </div>
+                     <div class="gallery-item fade-in-on-scroll" style="transition-delay: 100ms;">
+                        <img src="https://placehold.co/600x400/555/FFF?text=След:+Нов+Калник" alt="След">
+                    </div>
+                     <div class="gallery-item fade-in-on-scroll" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/600x400/333745/FFF?text=Полирани+Фарове" alt="Полиране">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials">
+            <div class="container">
+                <h2 class="fade-in-on-scroll">Какво казват <span>Клиентите</span></h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in-on-scroll">
+                        <p class="quote">Бях тръгнал да продавам колата, мислех, че няма оправия. Тези пичове я съживиха! Сега върви по-добре от нова. Препоръчвам с две ръце!</p>
+                        <p class="author">- Иван Петров, VW Golf V</p>
+                    </div>
+                    <div class="testimonial-card fade-in-on-scroll" style="transition-delay: 100ms;">
+                        <p class="quote">Най-накрая сервиз, в който не се опитват да те излъжат. Обясниха ми всичко, показаха ми старите части. Много съм доволна!</p>
+                        <p class="author">- Мария Георгиева, Toyota Yaris</p>
+                    </div>
+                    <div class="testimonial-card fade-in-on-scroll" style="transition-delay: 200ms;">
+                        <p class="quote">Проблем с климатика, който 3 други сервиза не можаха да открият. Тук го намериха за 20 минути. Просто професионалисти.</p>
+                        <p class="author">- Георги Димитров, BMW E90</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="process" class="bg-light">
+            <div class="container">
+                <h2 class="fade-in-on-scroll">Нашият Процес в <span>3 Стъпки</span></h2>
+                <div class="process-grid">
+                    <div class="process-step fade-in-on-scroll">
+                        <div class="step-number">01</div>
+                        <h3>Запази Час</h3>
+                        <p>Свържи се с нас по телефона или през формата, за да опишеш проблема и да уговорим удобно време.</p>
+                    </div>
+                    <div class="process-step fade-in-on-scroll" style="transition-delay: 100ms;">
+                        <div class="step-number">02</div>
+                        <h3>Диагностика</h3>
+                        <p>Ще направим пълен преглед и диагностика на проблема. Ще се свържем с теб с ясна оферта преди да започнем.</p>
+                    </div>
+                    <div class="process-step fade-in-on-scroll" style="transition-delay: 200ms;">
+                        <div class="step-number">03</div>
+                        <h3>Ремонт и Предаване</h3>
+                        <p>Нашият екип извършва ремонта качествено и в срок. Обаждаме ти се, когато колата е готова за взимане.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <div class="container">
+                <h2 class="fade-in-on-scroll">Нашите <span>Ценови Планове</span></h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card fade-in-on-scroll">
+                        <h3>Основно Обслужване</h3>
+                        <div class="price-tag">120 лв.</div>
+                        <p>За да е колата ти винаги в час.</p>
+                        <ul>
+                            <li>Смяна масло (труд)</li>
+                            <li>Смяна маслен филтър</li>
+                            <li>Смяна въздушен филтър</li>
+                            <li>Проверка течности</li>
+                            <li>Нулиране на инспекция</li>
+                        </ul>
+                        <a href="#contact" class="btn">Запази час</a>
+                    </div>
+                    <div class="pricing-card featured fade-in-on-scroll" style="transition-delay: 100ms;">
+                        <h3>Пълен Преглед</h3>
+                        <div class="price-tag">180 лв.</div>
+                        <p>Пълна грижа преди дълъг път или зимата.</p>
+                        <ul>
+                            <li>Всичко от "Основно Обслужване"</li>
+                            <li>Смяна горивен филтър</li>
+                            <li>Смяна филтър купе</li>
+                            <li>Пълна диагностика на ходова част</li>
+                            <li>Компютърна диагностика</li>
+                        </ul>
+                        <a href="#contact" class="btn">Запази час</a>
+                    </div>
+                    <div class="pricing-card fade-in-on-scroll" style="transition-delay: 200ms;">
+                        <h3>Ремонт / Диагностика</h3>
+                        <div class="price-tag">40 лв. <span>/час</span></div>
+                        <p>За всичко останало, което "тропа".</p>
+                        <ul>
+                            <li>Диагностика на проблем</li>
+                            <li>Ремонт двигатели</li>
+                            <li>Ремонт окачване</li>
+                            <li>Ел. услуги</li>
+                            <li>...и много други</li>
+                        </ul>
+                        <a href="#contact" class="btn">Свържи се</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="parallax-cta">
+            <div class="container fade-in-on-scroll">
+                <h2>Готов ли си за сервиз без главоболия?</h2>
+                <p>Довери се на професионалистите. Остави колата си в сигурни ръце.</p>
+                <a href="#contact" class="btn">Запази час сега</a>
+            </div>
+        </section>
+
+        <section id="faq" class="container">
+            <h2 class="fade-in-on-scroll">Често Задавани <span>Въпроси</span></h2>
+            <div class="faq-container fade-in-on-scroll">
+                <div class="faq-item">
+                    <div class="faq-question">Колко време отнема смяна на масло?</div>
+                    <div class="faq-answer">
+                        <p>Стандартна смяна на масло и маслен филтър обикновено отнема между 30 и 45 минути, ако имате запазен час.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Давате ли гаранция за ремонтите?</div>
+                    <div class="faq-answer">
+                        <p>Да, даваме пълна гаранция както за вложените части (според гаранцията на производителя), така и за извършения от нас труд. При възникнал проблем, просто ни се обадете.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Трябва ли да си запазя час предварително?</div>
+                    <div class="faq-answer">
+                        <p>Силно препоръчително е. Работата със запазен час ни позволява да няма струпване и да ви обърнем 100% внимание веднага щом пристигнете.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <div class="faq-question">Работите ли с части на клиента?</div>
+                    <div class="faq-answer">
+                        <p>По принцип предпочитаме да работим с наши, доказани доставчици, за да можем да дадем гаранция за частите. В отделни случаи можем да направим изключение, но не даваме гаранция за труд при дефектна част, донесена от клиента.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="partners" class="bg-light">
+            <div class="container">
+                <h2 class="fade-in-on-scroll">Работим с доказани марки</h2>
+            </div>
+            
+            <div class="logo-scroller fade-in-on-scroll">
+                <div class="scroller-inner">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=BOSCH" alt="Bosch">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=Castrol" alt="Castrol">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=Continental" alt="Continental">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=MANN-FILTER" alt="Mann Filter">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=ATE" alt="ATE">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=TRW" alt="TRW">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=Q8" alt="Q8">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=SACHS" alt="SACHS">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=KAYABA" alt="KAYABA">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=LUK" alt="LUK">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=FILTRON" alt="FILTRON">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=VALEO" alt="VALEO">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=JBM" alt="JBM">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=FEBI" alt="FEBI">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=SWAG" alt="SWAG">
+                    
+                    <img src="https://placehold.co/120x60/555968/ccc?text=BOSCH" alt="Bosch">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=Castrol" alt="Castrol">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=Continental" alt="Continental">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=MANN-FILTER" alt="Mann Filter">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=ATE" alt="ATE">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=TRW" alt="TRW">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=Q8" alt="Q8">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=SACHS" alt="SACHS">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=KAYABA" alt="KAYABA">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=LUK" alt="LUK">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=FILTRON" alt="FILTRON">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=VALEO" alt="VALEO">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=JBM" alt="JBM">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=FEBI" alt="FEBI">
+                    <img src="https://placehold.co/120x60/555968/ccc?text=SWAG" alt="SWAG">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="fade-in-on-scroll">Свържете се с <span>Нас</span></h2>
+                <div class="contact-content fade-in-on-scroll">
+                    <div class="contact-info">
+                        <h3>Информация за контакт</h3>
+                        <p>Очакваме те! Ела на място, звънни или ни пиши. Винаги сме насреща за твоята кола.</p>
+                        <ul>
+                            <li><strong>📍</strong> гр. [Твоят Град], ул. "Майсторска" №123</li>
+                            <li><strong>📞</strong> 0888 123 456</li>
+                            <li><strong>📧</strong> office@sistauto.bg</li>
+                            <li><strong>⏰</strong> Пон - Пет: 08:30 - 18:30</li>
+                            <li><strong>⏰</strong> Събота: 09:00 - 14:00</li>
+                        </ul>
+                    </div>
+                    <div class="contact-form-side">
+                         <h3>Имаш въпрос? Пиши ни!</h3>
+                         <form action="#">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Име" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Имейл" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" rows="5" placeholder="Твоето съобщение..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-full">Изпрати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="map-container fade-in-on-scroll" style="transition-delay: 200ms;">
+            <div class="container">
+                 <h3>Намерете ни лесно</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.321287428815!2d23.3219412154673!3d42.6977081791656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8541c8815c61%3A0x3b59367d3c5e8b39!2z0J3QsNC60YPQvdC-0LDRgNCwINC60LvQuNGEINCy0L7Qu9C40Y8!5e0!3m2!1sbg!2sbg!4v1678886568123!5m2!1sbg!2sbg" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p><a href="#home" class="logo">СИСТ<span> АУТО</span></a>. Всички права запазени. 2025©</p>
+            <p class="made-by">Made by : Златин Райков</p>
+        </div>
+    </footer>
+    
+    <div class="lightbox-overlay">
+        <a class="lightbox-close">×</a>
+        <a class="lightbox-prev">❮</a>
+        <a class="lightbox-next">❯</a>
+        <div class="lightbox-content">
+            <img src="" alt="Увеличена снимка от галерията">
+        </div>
+    </div>
+    
+    <a href="#home" id="backToTopBtn" title="Към началото">&uarr;</a>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>

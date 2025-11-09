@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СИСТ АУТО - 15% Отстъпка</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .flyer {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #e63946;
+        }
+        
+        .flyer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(230, 57, 70, 0.03) 10px, rgba(230, 57, 70, 0.03) 20px);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 40px 30px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '🔧';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: -50px;
+            left: -30px;
+            transform: rotate(-15deg);
+        }
+        
+        .header::after {
+            content: '⚙️';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            bottom: -30px;
+            right: -20px;
+            transform: rotate(25deg);
+        }
+        
+        .logo {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+            position: relative;
+        }
+        
+        .logo-white {
+            color: white;
+        }
+        
+        .logo-red {
+            color: #e63946;
+        }
+        
+        .tagline {
+            color: #cccccc;
+            font-size: 16px;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+        
+        .special-badge {
+            display: inline-block;
+            background: #e63946;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .discount-banner {
+            background: linear-gradient(135deg, #e63946 0%, #c72736 100%);
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .discount-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+        }
+        
+        .discount-banner::after {
+            content: '💯';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+        
+        .discount-text {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .discount-percent {
+            font-size: 110px;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+        
+        .discount-text {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .promo-ribbon {
+            background: white;
+            color: #e63946;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .info-section {
+            padding: 40px 30px;
+            background: #2d2d2d;
+            position: relative;
+        }
+        
+        .info-section::before {
+            content: '🚗';
+            position: absolute;
+            font-size: 180px;
+            opacity: 0.03;
+            top: 20px;
+            right: -20px;
+            transform: rotate(-10deg);
+        }
+        
+        .promo-text {
+            text-align: center;
+            color: white;
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #e63946;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .highlight {
+            color: #e63946;
+            font-weight: 900;
+            font-size: 22px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .service-item {
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-3px);
+            border-color: #e63946;
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .service-name {
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 25px;
+            border: 2px solid #e63946;
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.2);
+        }
+        
+        .contact-title {
+            color: #e63946;
+            font-size: 20px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin: 15px 0;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(230, 57, 70, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            color: #e63946;
+            font-size: 24px;
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .contact-text {
+            color: #cccccc;
+            font-weight: 600;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 30px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '⭐';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            color: #cccccc;
+            font-size: 16px;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+        
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #e63946;
+            margin: 20px auto;
+        }
+        
+        .terms {
+            color: #888;
+            font-size: 12px;
+            margin-top: 20px;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .decorative-corner {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 3px solid #e63946;
+            opacity: 0.4;
+            z-index: 10;
+        }
+        
+        .corner-tl {
+            top: 15px;
+            left: 15px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .corner-tr {
+            top: 15px;
+            right: 15px;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .corner-bl {
+            bottom: 15px;
+            left: 15px;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .corner-br {
+            bottom: 15px;
+            right: 15px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        .urgent-tag {
+            position: absolute;
+            top: 30px;
+            right: -35px;
+            background: #e63946;
+            color: white;
+            padding: 10px 45px;
+            font-size: 11px;
+            font-weight: 900;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="decorative-corner corner-tl"></div>
+        <div class="decorative-corner corner-tr"></div>
+        <div class="decorative-corner corner-bl"></div>
+        <div class="decorative-corner corner-br"></div>
+        
+       
+        
+        <div class="content-wrapper">
+            <div class="header">
+                <div class="logo">
+                    <span class="logo-white">СИСТ</span><span class="logo-red">АУТО</span>
+                </div>
+                <div class="tagline">Вашият доверен автосервиз</div>
+                <div class="special-badge">✨ Специална промоция ✨</div>
+            </div>
+            
+            <div class="discount-banner">
+                <div class="discount-text">
+                    <div class="discount-percent">
+                        15%
+                    </div>
+                    <div class="discount-label">Отстъпка</div>
+                </div>
+            </div>
+            
+            <div class="promo-ribbon">
+                🎁 ПОКАЖИ ТОЗИ ФЛАЙЕР И СПЕСТИ! 🎁
+            </div>
+            
+            <div class="info-section">
+                <div class="promo-text">
+                    Покажете този <span class="highlight">ФЛАЙЕР</span><br>
+                    и получете <span class="highlight">15% ОТСТЪПКА</span><br>
+                    при всяка услуга в нашия сервиз!
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">🔧</div>
+                        <div class="service-name">Ремонт</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">⚙️</div>
+                        <div class="service-name">Поддръжка</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🛠️</div>
+                        <div class="service-name">Диагностика</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🔩</div>
+                        <div class="service-name">Профилактика</div>
+                    </div>
+                </div>
+                
+                <div class="contact-box">
+                    <div class="contact-title">📞 Свържете се с нас</div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">0888 123 456</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">office@sistauto.bg</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">бул. „Стефан Стамболов" № 6</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-text">www.sist-auto.bg</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="logo">
+                    <span class="logo-white">СИСТ</span><span class="logo-red">АУТО</span>
+                </div>
+                <div class="tagline">Вашият доверен автосервиз</div>
+                
+                <div class="divider"></div>
+                
+                <div class="terms">
+                    ⚠️ Офертата е валидна при показване на флайера<br>
+                    ⚠️ Не се комбинира с други промоции<br>
+                    ⚠️ Запазете си час предварително
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

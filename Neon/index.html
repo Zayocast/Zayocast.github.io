@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="24/7 електро услуги с неон стил. Монтаж, ремонт, умни домове. Бързо, чисто, с 5г гаранция."/>
+  <meta name="keywords" content="електрик, неон, 24/7, ремонт, монтаж, София"/>
+  <title>NEON ZAYO ⚡️ | Електро услуги 2.0</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --neon: #00ffea;
+      --pink: #ff00ff;
+      --bg: #0a0a0a;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); font-family: 'Roboto Mono', monospace; }
+    .neon-text { text-shadow: 0 0 10px var(--neon), 0 0 30px var(--neon); }
+    .neon-pink { text-shadow: 0 0 10px var(--pink), 0 0 30px var(--pink); }
+    .pulse-neon { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 20px var(--neon); } 50% { box-shadow: 0 0 40px var(--neon); } }
+    .lightning { animation: flash 4s infinite; }
+    @keyframes flash { 0%,100% { opacity: 0; } 10%,12% { opacity: 1; } }
+    .glitch { animation: glitch 3s infinite; }
+    @keyframes glitch {
+      0%,100% { clip-path: inset(0 0 0 0); }
+      20% { clip-path: inset(90% 0 1% 0); }
+      40% { clip-path: inset(10% 0 80% 0); }
+    }
+  </style>
+</head>
+<body class="text-gray-100 overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/70 border-b border-cyan-400/30">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <a href="#" class="text-3xl font-bold orbitron neon-text">NEON ZAYO</a>
+      <div class="hidden md:flex gap-10 text-lg">
+        <a href="#services" class="hover:neon-text transition">УСЛУГИ</a>
+        <a href="#why" class="hover:neon-pink transition">ЗАЩО НИЕ</a>
+        <a href="#contact" class="hover:neon-text transition">КОНТАКТ</a>
+      </div>
+      <button id="menuBtn" class="md:hidden text-3xl neon-text">☰</button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-t border-cyan-400/50">
+      <div class="flex flex-col p-6 space-y-6 text-2xl">
+        <a href="#services" class="neon-text">УСЛУГИ</a>
+        <a href="#why" class="neon-pink">ЗАЩО НИЕ</a>
+        <a href="#contact" class="neon-text">КОНТАКТ</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center relative">
+    <div class="absolute inset-0 opacity-30">
+      <svg class="w-full h-full" viewBox="0 0 100 100">
+        <defs>
+          <pattern id="grid2" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M10 0 L0 0 0 10" fill="none" stroke="#00ffea" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#grid2)"/>
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center relative z-10">
+      <div>
+        <h1 class="text-6xl md:text-8xl font-black orbitron leading-tight glitch">
+          <span class="neon-text">24/7</span><br/>
+          <span class="neon-pink">НЕОН</span><br/>
+          <span class="neon-text">ЕЛЕКТРИК</span>
+        </h1>
+        <p class="mt-6 text-2xl text-cyan-300">
+          Пристигаме за 30 мин. Светим по-ярко от Vegas.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-6">
+          <a href="#contact" class="px-10 py-5 bg-cyan-400 text-black font-bold text-xl rounded-none pulse-neon hover:bg-cyan-300 transition">
+            ИЗВИКАЙ СЕГА
+          </a>
+          <a href="#services" class="px-10 py-5 border-4 border-pink-500 text-pink-500 font-bold text-xl hover:bg-pink-500/10 transition">
+            ВИЖ УСЛУГИ
+          </a>
+        </div>
+      </div>
+
+      <!-- SVG Lightning -->
+      <div class="relative">
+        <svg viewBox="0 0 400 400" class="w-full h-auto lightning">
+          <path d="M180 20 L160 160 L220 180 L180 300 L240 220 L170 200 Z" 
+                fill="none" stroke="#00ffea" stroke-width="8"/>
+          <path d="M200 20 L180 180 L240 200 L200 340 L260 240 L190 220 Z" 
+                fill="none" stroke="#ff00ff" stroke-width="6" opacity="0.8"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORIZONTAL SERVICES -->
+  <section id="services" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-black orbitron text-center mb-16 neon-text">УСЛУГИ</h2>
+      <div class="overflow-x-auto scrollbar-hide">
+        <div class="flex gap-8 pb-8" style="width: max-content;">
+          <!-- Card 1 -->
+          <div class="w-96 bg-gradient-to-br from-cyan-900/50 to-purple-900/50 p-8 rounded-3xl border-2 border-cyan-400/50 hover:border-cyan-300 transition-all hover:scale-105">
+            <img src="https://placehold.co/380x200/00ffea/0a0a0a?text=АВАРИЯ+24/7" alt="Авариен ремонт" class="rounded-2xl mb-6">
+            <h3 class="text-3xl font-bold orbitron neon-text">АВАРИЯ 24/7</h3>
+            <p class="mt-4 text-cyan-200">30 мин в София. Без почивен ден.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="w-96 bg-gradient-to-br from-pink-900/50 to-cyan-900/50 p-8 rounded-3xl border-2 border-pink-500/50 hover:border-pink-300 transition-all hover:scale-105">
+            <img src="https://placehold.co/380x200/ff00ff/0a0a0a?text=УМЕН+ДОМ" alt="Умен дом" class="rounded-2xl mb-6">
+            <h3 class="text-3xl font-bold orbitron neon-pink">УМЕН ДОМ</h3>
+            <p class="mt-4 text-pink-200">Гласово управление. Светва с "Hey Zayo!"</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="w-96 bg-gradient-to-br from-cyan-900/50 to-green-900/50 p-8 rounded-3xl border-2 border-cyan-400/50 hover:border-green-300 transition-all hover:scale-105">
+            <img src="https://placehold.co/380x200/00ffea/0a0a0a?text=LED+ОСВЕТЛЕНИЕ" alt="LED осветление" class="rounded-2xl mb-6">
+            <h3 class="text-3xl font-bold orbitron neon-text">LED НЕОН</h3>
+            <p class="mt-4 text-green-200">80% по-малко ток. 100% Vegas vibe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="py-24 bg-black/50">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 class="text-6xl font-black orbitron neon-pink mb-12">ЗАЩО NEON ZAYO?</h2>
+        <ul class="space-y-8 text-xl">
+          <li class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cyan-400/20 flex-center neon-text">✓</div>
+            <span>5 години гаранция</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-pink-500/20 flex-center neon-pink">€</div>
+            <span>Фиксирана цена преди старт</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cyan-400/20 flex-center neon-text">✨</div>
+            <span>По-чист дом след нас</span>
+          </li>
+        </ul>
+      </div>
+      <div class="relative">
+        <img src="https://placehold.co/600x800/00ffea/0a0a0a?text=NEON+TECH" 
+             alt="Неон техник" 
+             class="rounded-3xl border-4 border-cyan-400/50 shadow-2xl shadow-cyan-400/50">
+        <div class="absolute inset-0 border-4 border-pink-500/50 rounded-3xl animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-900/20 to-transparent"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <h2 class="text-7xl font-black orbitron neon-text mb-8">ГОТОВ ЗА СВЕТЛИНА?</h2>
+      <p class="text-3xl neon-pink mb-12">-20% за първи НЕОН клиент!</p>
+      
+      <div class="flex flex-col md:flex-row justify-center gap-8 mb-16">
+        <a href="tel:+359899123456" class="px-12 py-6 bg-cyan-400 text-black font-bold text-2xl rounded-none pulse-neon hover:bg-cyan-300">
+          0899 123 456
+        </a>
+        <a href="https://wa.me/359899123456" class="px-12 py-6 border-4 border-pink-500 text-pink-500 font-bold text-2xl hover:bg-pink-500/10">
+          WhatsApp
+        </a>
+      </div>
+
+      <form class="bg-black/70 p-10 rounded-3xl border-2 border-cyan-400/50 max-w-2xl mx-auto" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="ИМЕ" class="w-full mb-6 px-6 py-5 bg-transparent border-2 border-cyan-400/50 rounded-none focus:border-cyan-300 outline-none text-xl neon-text" required>
+        <input type="tel" placeholder="ТЕЛЕФОН" class="w-full mb-6 px-6 py-5 bg-transparent border-2 border-pink-500/50 rounded-none focus:border-pink-300 outline-none text-xl neon-pink" required>
+        <textarea placeholder="КАКВО ТИ ТРЯБВА?" rows="3" class="w-full mb-8 px-6 py-5 bg-transparent border-2 border-cyan-400/50 rounded-none focus:border-cyan-300 outline-none text-xl"></textarea>
+        <button type="submit" class="w-full py-6 bg-gradient-to-r from-cyan-400 to-pink-500 hover:from-cyan-300 hover:to-pink-400 text-black font-black text-2xl rounded-none pulse-neon">
+          ИЗПРАТИ СИГНАЛ ⚡️
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-cyan-400/30">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="neon-text text-xl orbitron">© 2025 NEON ZAYO</p>
+      <p class="text-sm text-cyan-400 mt-2">Coded with 380V by @Zayocast</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.getElementById('menuBtn').onclick = () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    };
+
+    // Form feedback
+    document.querySelector('form').onsubmit = (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'СИГНАЛЪТ Е ИЗПРАТЕН! ⚡️';
+      btn.classList.add('bg-green-500');
+      setTimeout(() => {
+        btn.textContent = 'ИЗПРАТИ СИГНАЛ ⚡️';
+        btn.classList.remove('bg-green-500');
+      }, 3000);
+    };
+  </script>
+</body>
+</html>

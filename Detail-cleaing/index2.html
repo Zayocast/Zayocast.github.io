@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepClean PRO • Детайлно почистване с гаранция за блясък</title>
+    <meta name="description" content="Професионално детайлно почистване на домове, офиси и автомобили. 72ч гаранция за чистота! София и региона." />
+    <meta name="keywords" content="детайлно почистване, дълбоко почистване, почистване след ремонт, абонаментно почистване, авто детайлинг" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="DeepClean PRO • Детайлно почистване #1 в София" />
+    <meta property="og:description" content="От прах до блясък – за 4 часа." />
+    <meta property="og:image" content="https://placehold.co/1200x630/0a1a2e/00ff9d?text=DeepClean+PRO" />
+    <meta property="og:url" content="https://deepclean.bg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/64x64/00ff9d/0a1a2e?text=✨" type="image/png" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ========= РЕСЕТ ========= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #eee;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; letter-spacing: 2px; }
+        a { color: inherit; text-decoration: none; }
+
+        /* ========= ЦВЕТОВА ПАЛИТРА ========= */
+        :root {
+            --neon-blue: #00d4ff;
+            --electric-green: #00ff9d;
+            --dark: #0a1a2e;
+            --darker: #050914;
+        }
+
+        /* ========= HERO С ПАРАЛАКС + НЕОН ЕФЕКТ ========= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10,26,46,0.95), rgba(5,9,20,0.98)), url('https://placehold.co/1920x1080/0a1a2e/00ff9d?text=DEEP+CLEAN') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 70%, var(--neon-blue) 0%, transparent 50%);
+            opacity: 0.3;
+            animation: pulse 8s infinite;
+        }
+        .hero h1 {
+            font-size: 6rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--electric-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0,212,255,0.5);
+        }
+        .hero p {
+            font-size: 1.8rem;
+            margin: 1.5rem 0 3rem;
+            color: #ccc;
+        }
+        .btn {
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid var(--electric-green);
+            color: var(--electric-green);
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, var(--electric-green), transparent);
+            transition: 0.7s;
+            z-index: -1;
+        }
+        .btn:hover::before { left: 100%; }
+        .btn:hover {
+            background: var(--electric-green);
+            color: #000;
+            box-shadow: 0 0 30px var(--electric-green);
+            transform: translateY(-5px);
+        }
+
+        /* ========= НАВИГАЦИЯ ========= */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10,26,46,0.8);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: 0.4s;
+        }
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(5,9,20,0.95);
+            box-shadow: 0 10px 40px rgba(0,212,255,0.2);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--electric-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links a {
+            margin: 0 1.5rem;
+            font-weight: 600;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; left: 50%;
+            width: 0; height: 3px;
+            background: var(--electric-green);
+            transition: 0.4s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* ========= СЕКЦИИ ========= */
+        section {
+            padding: 140px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 5rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--electric-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ========= ЗА НАС ========= */
+        .about {
+            background: var(--dark);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0,212,255,0.1);
+            border-radius: 20px;
+            border: 1px solid var(--neon-blue);
+        }
+        .stat h3 { font-size: 3rem; color: var(--electric-green); }
+
+        /* ========= УСЛУГИ ========= */
+        .services {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+            gap: 3rem;
+        }
+        .service-card {
+            background: rgba(255,255,255,0.03);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            border: 1px solid rgba(0,255,157,0.2);
+            transition: 0.5s;
+            backdrop-filter: blur(10px);
+        }
+        .service-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 0 50px rgba(0,255,157,0.3);
+            border-color: var(--electric-green);
+        }
+        .service-card i {
+            font-size: 4rem;
+            background: linear-gradient(var(--neon-blue), var(--electric-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .price { color: var(--electric-green); font-size: 2rem; font-weight: 700; }
+
+        /* ========= ГАРАНЦИЯ БАНЕР ========= */
+        .guarantee {
+            background: linear-gradient(90deg, var(--neon-blue), var(--electric-green));
+            color: #000;
+            text-align: center;
+            padding: 4rem 5%;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* ========= ГАЛЕРИЯ ========= */
+        .gallery {
+            background: var(--darker);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            gap: 2rem;
+        }
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,212,255,0.2);
+            transition: 0.5s;
+        }
+        .gallery-item:hover {
+            transform: scale(1.08);
+            box-shadow: 0 30px 60px rgba(0,255,157,0.4);
+        }
+
+        /* ========= КОНТАКТ ========= */
+        .contact {
+            background: var(--dark);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--neon-blue);
+            border-radius: 15px;
+            color: #fff;
+        }
+
+        /* ========= BACK TO TOP ========= */
+        #backToTop {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: var(--electric-green);
+            color: #000;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            box-shadow: 0 0 30px rgba(0,255,157,0.6);
+        }
+        #backToTop.show { opacity: 1; visibility: visible; }
+
+        /* ========= АНИМАЦИИ ========= */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========= РЕСПОНСИВ ========= */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- НАВИГАЦИЯ -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">DeepClean PRO</div>
+            <div class="nav-links">
+                <a href="#home">Начало</a>
+                <a href="#about">За нас</a>
+                <a href="#services">Услуги</a>
+                <a href="#gallery">Галерия</a>
+                <a href="#contact">Контакт</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div>
+            <h1>ДЕТАЙЛНО ПОЧИСТВАНЕ</h1>
+            <p>От прах до кристал – за 4 часа</p>
+            <a href="#contact" class="btn">ПОРЪЧАЙ СЕГА</a>
+        </div>
+    </section>
+
+    <!-- ЗА НАС -->
+    <section id="about" class="about">
+        <h2 class="section-title fade-in">Защо DeepClean PRO?</h2>
+        <div class="about-grid">
+            <div class="fade-in">
+                <p>От 2018 г. правим невъзможното възможно. Използваме **Kärcher професионална техника**, **биоразградими препарати** и **72ч гаранция за чистота** – ако не ти хареса, връщаме парите!</p>
+                <div class="stats">
+                    <div class="stat fade-in"><h3>2500+</h3><p>доволни клиенти</p></div>
+                    <div class="stat fade-in"><h3>4.9★</h3><p>средна оценка</p></div>
+                    <div class="stat fade-in"><h3>72ч</h3><p>гаранция</p></div>
+                    <div class="stat fade-in"><h3>24/7</h3><p>резервации</p></div>
+                </div>
+            </div>
+            <div class="fade-in">
+                <img src="https://placehold.co/700x700/0a1a2e/00ff9d?text=Екип" alt="Екип DeepClean" style="border-radius:20px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- УСЛУГИ -->
+    <section id="services" class="services">
+        <h2 class="section-title fade-in">Какво почистваме?</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <i class="fas fa-home"></i>
+                <h3>След ремонт</h3>
+                <p>Прах, строителни остатъци, лепило</p>
+                <p class="price">от 6 лв./кв.м</p>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-building"></i>
+                <h3>Офиси & магазини</h3>
+                <p>Абонаментно или еднократно</p>
+                <p class="price">от 4 лв./кв.м</p>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-car"></i>
+                <h3>Авто детайлинг</h3>
+                <p>Пране на салон, полиране</p>
+                <p class="price">от 150 лв.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАРАНЦИЯ БАНЕР -->
+    <div class="guarantee">
+        72 ЧАСА ГАРАНЦИЯ – АКО НЕ СИ ДОВОЛЕН, ВРЪЩАМЕ ПАРИТЕ!
+    </div>
+
+    <!-- ГАЛЕРИЯ -->
+    <section id="gallery" class="gallery">
+        <h2 class="section-title fade-in">Преди / След</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in"><img src="https://placehold.co/600x800/0a1a2e/00d4ff?text=ПРЕДИ" alt="Преди"></div>
+            <div class="gallery-item fade-in"><img src="https://placehold.co/600x800/00ff9d/0a1a2e?text=СЛЕД" alt="След"></div>
+            <div class="gallery-item fade-in"><img src="https://placehold.co/600x800/0a1a2e/00ff9d?text=ПРЕДИ+2" alt="Преди"></div>
+            <div class="gallery-item fade-in"><img src="https://placehold.co/600x800/00d4ff/0a1a2e?text=СЛЕД+2" alt="След"></div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТ -->
+    <section id="contact" class="contact">
+        <h2 class="section-title fade-in">Поръчай сега</h2>
+        <div class="contact-grid">
+            <div class="contact-form fade-in">
+                <form>
+                    <input type="text" placeholder="Име" required />
+                    <input type="tel" placeholder="Телефон" required />
+                    <input type="text" placeholder="Квадратура (кв.м)" />
+                    <textarea rows="5" placeholder="Какво точно искаш да почистим?"></textarea>
+                    <button type="submit" class="btn">ИЗПРАТИ ЗАЯВКА</button>
+                </form>
+            </div>
+            <div class="fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.2965!2d23.3219!3d42.6978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8562!5e0!3m2!1sbg!2sbg!4v1698000000000" width="100%" height="450" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- BACK TO TOP -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Navbar
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        // Back to top
+        const btn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            btn.classList.toggle('show', window.scrollY > 500);
+        });
+        btn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+        // Fade-in анимации
+        const fades = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+        }, { threshold: 0.15 });
+        fades.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

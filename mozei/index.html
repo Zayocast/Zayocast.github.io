@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Исторически музей – Стрелча</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <meta name="description" content="Исторически музей – Стрелча: археологически находки, българските земи XV–XIX век, художествена галерия и образователни програми в сърцето на Средногорието.">
+    <meta name="keywords" content="исторически музей Стрелча, музей Стрелча, археология, българските земи XV-XIX век, художествена галерия, културен туризъм">
+    <meta name="author" content="Исторически музей – Стрелча">
+    <link rel="canonical" href="https://strelchamuseum.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Исторически музей – Стрелча">
+    <meta property="og:description" content="Открийте историята на Средногорието – археология, възраждане, изкуство и съвременни изложби.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://strelchamuseum.com/">
+    <meta property="og:image" content="https://placehold.co/1200x630/111827/ffffff?text=Historical+Museum+Strelcha">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <style>
+        :root {
+            --bg-body: #050816;
+            --bg-card: rgba(15, 23, 42, 0.85);
+            --bg-card-soft: rgba(15, 23, 42, 0.65);
+            --accent: #f97316;
+            --accent-soft: rgba(249, 115, 22, 0.15);
+            --accent-strong: #fb923c;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-subtle: rgba(148, 163, 184, 0.35);
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+            --shadow-smooth: 0 10px 30px rgba(15, 23, 42, 0.55);
+            --nav-height: 76px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, #1d243d 0, transparent 50%),
+                radial-gradient(circle at bottom right, #0c1224 0, transparent 55%),
+                #020617;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .gradient-overlay {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 10% 0, rgba(249, 115, 22, 0.12) 0, transparent 55%),
+                radial-gradient(circle at 90% 100%, rgba(56, 189, 248, 0.1) 0, transparent 55%);
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* NAVBAR */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 50;
+            backdrop-filter: blur(16px);
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.6), transparent);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            gap: 1.5rem;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: radial-gradient(circle at 30% 20%, #f97316 0, #c2410c 40%, #020617 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fefce8;
+            box-shadow: 0 12px 30px rgba(249, 115, 22, 0.75);
+        }
+
+        .logo-icon i {
+            font-size: 1.25rem;
+        }
+
+        .logo-text-main {
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .logo-text-sub {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 0.2rem;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.2rem;
+            height: 2px;
+            width: 0;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #f97316, #fb7185);
+            transition: width 0.18s ease-out;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #e5e7eb;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            background-image: linear-gradient(135deg, #f97316, #fb7185);
+            color: #0b1020;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(248, 113, 113, 0.55);
+            transition: transform 0.16s ease-out, box-shadow 0.16s ease-out;
+        }
+
+        .nav-cta i {
+            font-size: 0.9rem;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 45px rgba(251, 113, 133, 0.65);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            inset: var(--nav-height) 0 auto 0;
+            background: rgba(15, 23, 42, 0.975);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+            display: none;
+            flex-direction: column;
+            padding: 0.75rem 1.5rem 1.25rem;
+            gap: 0.75rem;
+            z-index: 40;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+        }
+
+        .mobile-nav a i {
+            font-size: 0.95rem;
+            color: var(--accent);
+        }
+
+        .mobile-nav .mobile-cta {
+            margin-top: 0.5rem;
+            align-self: flex-start;
+        }
+
+        /* LAYOUT */
+
+        main {
+            padding-top: calc(var(--nav-height) + 18px);
+        }
+
+        .section {
+            padding: 4.5rem 1.5rem 4rem;
+        }
+
+        .section-alt {
+            background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9) 0, rgba(15, 23, 42, 0.75) 45%, transparent 80%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent-strong);
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            max-width: 36rem;
+            font-size: 0.95rem;
+        }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+            padding-top: 4.5rem;
+            padding-bottom: 4.5rem;
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.05fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-main {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 0.9rem;
+        }
+
+        .hero-kicker i {
+            color: var(--accent-strong);
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 3vw + 1.2rem, 3.1rem);
+            line-height: 1.1;
+            margin-bottom: 0.9rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(120deg, #f97316, #fb7185, #38bdf8);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text {
+            color: var(--text-muted);
+            max-width: 32rem;
+            font-size: 0.98rem;
+            margin-bottom: 1.35rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .hero-tag i {
+            font-size: 0.85rem;
+            color: var(--accent-strong);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.7rem 1.4rem;
+            border-radius: 999px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background-image: linear-gradient(135deg, #f97316, #fb7185);
+            color: #0b1020;
+            cursor: pointer;
+            box-shadow: 0 18px 45px rgba(251, 113, 133, 0.7);
+            transition: transform 0.16s ease-out, box-shadow 0.16s ease-out;
+        }
+
+        .btn-primary i {
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 24px 55px rgba(248, 113, 113, 0.75);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.65rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.16s ease-out, color 0.16s ease-out, border-color 0.16s ease-out;
+        }
+
+        .btn-ghost i {
+            font-size: 0.95rem;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(15, 23, 42, 0.98);
+            color: #e5e7eb;
+            border-color: rgba(248, 250, 252, 0.75);
+        }
+
+        .hero-secondary-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .hero-secondary-note i {
+            color: #4ade80;
+            margin-right: 0.35rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 260px;
+        }
+
+        .hero-orbit {
+            position: absolute;
+            inset: -40px -20px -40px -20px;
+            background:
+                radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.1) 0, transparent 55%),
+                radial-gradient(circle at 90% 80%, rgba(248, 250, 252, 0.1) 0, transparent 55%);
+            border-radius: 999px;
+            filter: blur(1px);
+            opacity: 0.85;
+        }
+
+        .hero-panel {
+            position: relative;
+            z-index: 1;
+            padding: 1.6rem 1.5rem;
+            border-radius: var(--radius-xl);
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            box-shadow: var(--shadow-soft);
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .hero-panel-left h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-panel-left p {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .hero-panel-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .info-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .info-pill i {
+            font-size: 0.85rem;
+            color: var(--accent-strong);
+        }
+
+        .hero-panel-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hero-stat {
+            padding: 0.65rem 0.75rem;
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.94);
+            border: 1px solid rgba(248, 250, 252, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .hero-stat strong {
+            color: #f9fafb;
+            font-size: 0.92rem;
+        }
+
+        .hero-tagline {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .hero-tagline span {
+            color: var(--accent-strong);
+        }
+
+        .hero-parallax-shape {
+            position: absolute;
+            inset: -120px -80px auto auto;
+            background:
+                radial-gradient(circle at 20% 0, rgba(248, 250, 252, 0.25) 0, transparent 50%),
+                radial-gradient(circle at 80% 100%, rgba(248, 113, 113, 0.25) 0, transparent 50%);
+            opacity: 0.6;
+            border-radius: 999px;
+            filter: blur(6px);
+            pointer-events: none;
+        }
+
+        .hero-react-slot {
+            margin-top: 1.4rem;
+        }
+
+        .hero-react-card {
+            padding: 0.75rem 0.9rem;
+            border-radius: 18px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.08) 0, rgba(15, 23, 42, 0.95) 55%);
+            box-shadow: var(--shadow-smooth);
+            font-size: 0.84rem;
+        }
+
+        .hero-react-card-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent-strong);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-react-card-body {
+            color: var(--text-muted);
+        }
+
+        .hero-react-card-body strong {
+            color: #e5e7eb;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 2rem;
+        }
+
+        .about-block {
+            padding: 1.5rem 1.4rem;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-smooth);
+        }
+
+        .about-block h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .about-block p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .about-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .about-list i {
+            margin-top: 0.15rem;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .timeline {
+            margin-top: 1.2rem;
+            border-top: 1px dashed rgba(148, 163, 184, 0.5);
+            padding-top: 1rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 0.9rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .timeline-year {
+            font-weight: 600;
+            color: #e5e7eb;
+            font-size: 0.87rem;
+            min-width: 70px;
+        }
+
+        .timeline-text {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* EXHIBITIONS */
+
+        .cards-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            padding: 1.4rem 1.3rem;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent-strong);
+            margin-bottom: 0.4rem;
+        }
+
+        .card-tag i {
+            font-size: 0.8rem;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.87rem;
+            color: var(--text-muted);
+        }
+
+        .card-meta {
+            margin-top: 0.85rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .card-meta i {
+            font-size: 0.8rem;
+            color: var(--accent-strong);
+        }
+
+        .card-outline {
+            background: var(--bg-card-soft);
+            border-style: dashed;
+        }
+
+        .card-accent {
+            border-color: rgba(248, 113, 113, 0.65);
+        }
+
+        /* PROGRAMS */
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.4rem;
+        }
+
+        .program-card {
+            padding: 1.3rem 1.2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card h3 {
+            font-size: 0.98rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .program-card p {
+            font-size: 0.87rem;
+            color: var(--text-muted);
+        }
+
+        .program-age {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--accent-strong);
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(248, 250, 252, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            color: var(--text-muted);
+        }
+
+        /* VISIT */
+
+        .visit-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 1.8rem;
+        }
+
+        .visit-card {
+            padding: 1.4rem 1.3rem;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .visit-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .visit-card p,
+        .visit-card li {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .visit-list {
+            list-style: none;
+            margin-top: 0.6rem;
+        }
+
+        .visit-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .visit-list i {
+            font-size: 0.85rem;
+            color: var(--accent-strong);
+        }
+
+        .visit-highlight {
+            margin-top: 0.75rem;
+            padding: 0.65rem 0.75rem;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid rgba(74, 222, 128, 0.4);
+            font-size: 0.84rem;
+            color: #bbf7d0;
+        }
+
+        .visit-note {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .map-placeholder {
+            margin-top: 0.85rem;
+            padding: 0.9rem 0.8rem;
+            border-radius: 16px;
+            background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.12) 0, rgba(15, 23, 42, 0.96) 55%);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .map-placeholder span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .map-placeholder i {
+            font-size: 1rem;
+            color: #38bdf8;
+        }
+
+        /* NEWS */
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1.1fr;
+            gap: 1.6rem;
+        }
+
+        .news-main,
+        .news-side {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .news-card {
+            padding: 1.25rem 1.2rem;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent-strong);
+            margin-bottom: 0.4rem;
+        }
+
+        .news-pill i {
+            font-size: 0.8rem;
+        }
+
+        .news-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .news-card p {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+        }
+
+        .news-meta {
+            margin-top: 0.7rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .news-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .news-meta i {
+            font-size: 0.8rem;
+            color: var(--accent-strong);
+        }
+
+        /* GALLERY */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.03);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0.9;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+            opacity: 1;
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            left: 0.7rem;
+            bottom: 0.65rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8);
+            font-size: 0.78rem;
+            color: #f9fafb;
+            backdrop-filter: blur(12px);
+        }
+
+        /* CONTACT */
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+            gap: 1.6rem;
+        }
+
+        .contact-card {
+            padding: 1.4rem 1.3rem;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .contact-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .contact-row i {
+            font-size: 0.9rem;
+            color: var(--accent-strong);
+            margin-top: 0.1rem;
+        }
+
+        .contact-socials {
+            margin-top: 0.75rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.16s ease-out, color 0.16s ease-out, transform 0.16s ease-out, border-color 0.16s ease-out;
+        }
+
+        .social-link:hover {
+            background: #f97316;
+            border-color: #fed7aa;
+            color: #0b1020;
+            transform: translateY(-1px);
+        }
+
+        .contact-note {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.82rem;
+        }
+
+        .form-field label {
+            color: #e5e7eb;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            background: rgba(15, 23, 42, 0.98);
+            padding: 0.6rem 0.7rem;
+            color: #f9fafb;
+            font-size: 0.86rem;
+            outline: none;
+        }
+
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: rgba(148, 163, 184, 0.7);
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.6);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .form-submit {
+            margin-top: 0.4rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .form-helper {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid rgba(148, 163, 184, 0.35);
+            background: rgba(15, 23, 42, 0.98);
+            padding: 1.4rem 1.5rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-inner a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-inner a:hover {
+            color: #e5e7eb;
+        }
+
+        /* BACK TO TOP */
+
+        .back-to-top {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, #f97316, #fb7185);
+            color: #020617;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 18px 45px rgba(251, 113, 133, 0.75);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s;
+            z-index: 60;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top i {
+            font-size: 1.2rem;
+        }
+
+        /* ANIMATION HELPERS */
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 992px) {
+            .hero-inner {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 2.5rem;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .cards-grid-3,
+            .programs-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .visit-layout,
+            .news-grid,
+            .contact-layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .section {
+                padding-inline: 1.25rem;
+            }
+
+            .hero {
+                padding-top: 3.6rem;
+            }
+
+            .hero-panel {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .cards-grid-3,
+            .programs-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero-panel {
+                padding: 1.25rem 1.15rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .gallery-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .back-to-top {
+                right: 1rem;
+                bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="gradient-overlay" aria-hidden="true"></div>
+
+<header>
+    <div class="nav-inner">
+        <div class="logo-wrap">
+            <div class="logo-icon">
+                <i class="fa-solid fa-landmark"></i>
+            </div>
+            <div>
+                <div class="logo-text-main">Исторически музей</div>
+                <div class="logo-text-sub">гр. Стрелча</div>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#about" class="nav-link">Музеят</a>
+            <a href="#exhibitions" class="nav-link">Експозиции</a>
+            <a href="#programs" class="nav-link">Програми</a>
+            <a href="#visit" class="nav-link">Посещение</a>
+            <a href="#news" class="nav-link">Актуално</a>
+            <a href="#gallery" class="nav-link">Галерия</a>
+            <a href="#contact" class="nav-link">Контакти</a>
+        </nav>
+
+        <button class="nav-cta" onclick="document.getElementById('visit').scrollIntoView({behavior: 'smooth'})">
+            <i class="fa-solid fa-ticket-simple"></i>
+            Планирай посещение
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Отвори меню">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#about"><i class="fa-solid fa-circle-info"></i> Музеят</a>
+        <a href="#exhibitions"><i class="fa-solid fa-layer-group"></i> Експозиции</a>
+        <a href="#programs"><i class="fa-solid fa-children"></i> Програми</a>
+        <a href="#visit"><i class="fa-solid fa-ticket"></i> Посещение</a>
+        <a href="#news"><i class="fa-solid fa-newspaper"></i> Актуално</a>
+        <a href="#gallery"><i class="fa-solid fa-images"></i> Галерия</a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i> Контакти</a>
+        <button class="nav-cta mobile-cta" onclick="document.getElementById('visit').scrollIntoView({behavior: 'smooth'})">
+            <i class="fa-solid fa-calendar-check"></i>
+            Работно време
+        </button>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <div class="hero-parallax-shape parallax-hero"></div>
+        <div class="container hero-inner">
+            <div class="hero-main fade-in-up">
+                <div class="hero-kicker">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    Средногорие · България
+                </div>
+                <h1 class="hero-title">
+                    Жива <span>история</span> в сърцето на Стрелча
+                </h1>
+                <p class="hero-text">
+                    Историческият музей в Стрелча съхранява миналото на региона –
+                    от тракийските светилища и археологически съкровища, през борбите за свобода,
+                    до съвременното изкуство и културен живот.
+                </p>
+
+                <div class="hero-meta">
+                    <div class="hero-tag">
+                        <i class="fa-solid fa-building-columns"></i>
+                        Три етажа експозиции
+                    </div>
+                    <div class="hero-tag">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                        Мултимедийна инсталация „Поздравъ отъ Стрелча“
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="document.getElementById('exhibitions').scrollIntoView({behavior:'smooth'})">
+                        <i class="fa-solid fa-person-walking-arrow-right"></i>
+                        Разгледай експозициите
+                    </button>
+                    <button class="btn-ghost" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+                        <i class="fa-solid fa-image"></i>
+                        Виж атмосферата
+                    </button>
+                    <span class="hero-secondary-note">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Всеки ден · 08:30–12:00 · 13:00–17:30
+                    </span>
+                </div>
+
+                <div id="react-hero" class="hero-react-slot"></div>
+            </div>
+
+            <div class="hero-visual fade-in-up">
+                <div class="hero-orbit"></div>
+                <div class="hero-panel">
+                    <div class="hero-panel-left">
+                        <h3>Къде се намираме?</h3>
+                        <p>
+                            Музеят е разположен в специално построена триетажна сграда в центъра на Стрелча –
+                            само на няколко минути от минералните басейни и градския площад.
+                        </p>
+                        <div class="hero-panel-info">
+                            <div class="info-pill">
+                                <i class="fa-solid fa-location-dot"></i>
+                                бул. „България“ 50, гр. Стрелча
+                            </div>
+                            <div class="info-pill">
+                                <i class="fa-solid fa-bus"></i>
+                                Удобно за групи и ученици
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-panel-right">
+                        <div class="hero-stat">
+                            <span>Археология и тракийско наследство</span>
+                            <strong>І–V в. пр.н.е.</strong>
+                        </div>
+                        <div class="hero-stat">
+                            <span>Българските земи XV–XIX в.</span>
+                            <strong>Априлско въстание</strong>
+                        </div>
+                        <div class="hero-stat">
+                            <span>Художествена галерия</span>
+                            <strong>Съвременни автори</strong>
+                        </div>
+                        <div class="hero-tagline">
+                            Всеки експонат разказва <span>история</span> – от древните траки до днес.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section section-alt">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="eyebrow">За музея</div>
+                <h2 class="section-title">Място, което пази паметта на Средногорието</h2>
+                <p class="section-subtitle">
+                    Началото е поставено през XX век с малка сбирка от местни изследователи.
+                    Днес Историческият музей – Стрелча е модерна културна институция с богати фондове,
+                    постоянни и гостуващи изложби и активно музейно образование.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-block fade-in-up">
+                    <h3>Мисия и акценти</h3>
+                    <p>
+                        Музеят представя историята на Стрелча и околността – от праисторията и тракийските
+                        храмове, през Възраждането и Априлското въстание, до съвременните културни процеси.
+                    </p>
+
+                    <ul class="about-list">
+                        <li>
+                            <i class="fa-solid fa-scroll"></i>
+                            Богати колекции от археологически находки, оръжия, икони и етнографски предмети.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-brush"></i>
+                            Художествена галерия с живопис, графика и приложно изкуство.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-children"></i>
+                            Образователни програми за ученици, семейства и любители на историята.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-arrows-spin"></i>
+                            Мултимедийни и интерактивни инсталации за съвременен музейно преживяване.
+                        </li>
+                    </ul>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1950-те</div>
+                            <div class="timeline-text">
+                                Създава се музейна сбирка от местни краеведи, която постепенно се разширява.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2002 г.</div>
+                            <div class="timeline-text">
+                                Открит е новият музей в триетажна сграда, построена специално за нуждите на
+                                културната институция.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">Днес</div>
+                            <div class="timeline-text">
+                                Музеят е активен център за културен туризъм, научни проучвания и образователни инициативи.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-block fade-in-up">
+                    <h3>Какво ще откриете вътре?</h3>
+                    <p>
+                        Постоянната експозиция е разположена на три нива, организирани тематично:
+                    </p>
+
+                    <ul class="about-list">
+                        <li>
+                            <i class="fa-solid fa-helmet-safety"></i>
+                            <strong>Археология</strong> – праисторически находки, тракийски култови комплекси и
+                            артефакти от Античността.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-flag"></i>
+                            <strong>Българските земи XV–XIX в.</strong> – бит, занаяти, църковна и революционна история,
+                            Априлско въстание.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-palette"></i>
+                            <strong>Изкуство</strong> – художествени творби, посветени на Стрелча, Средногорието и историческата памет.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXHIBITIONS -->
+    <section id="exhibitions" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="eyebrow">Експозиции</div>
+                <h2 class="section-title">Основни постоянни експозиции</h2>
+                <p class="section-subtitle">
+                    Разходете се през различни епохи – от тракийските светилища, през Възраждането,
+                    до съвременните изложби и мултимедийни пространства.
+                </p>
+            </div>
+
+            <div class="cards-grid-3">
+                <article class="card fade-in-up">
+                    <div class="card-tag">
+                        <i class="fa-solid fa-helmet-un"></i> Археология
+                    </div>
+                    <h3>Праистория и древни траки</h3>
+                    <p>
+                        Каменни и керамични находки, оръдия на труда, култови предмети и артефакти,
+                        свързани с тракийските светилища и гробници около Стрелча.
+                    </p>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-layer-group"></i> I–IV в. пр.н.е.</span>
+                        <span><i class="fa-solid fa-location-crosshairs"></i> Регион Средногорие</span>
+                    </div>
+                </article>
+
+                <article class="card fade-in-up">
+                    <div class="card-tag">
+                        <i class="fa-solid fa-flag"></i> Ново време
+                    </div>
+                    <h3>Българските земи XV–XIX век</h3>
+                    <p>
+                        Експозиция, посветена на живота по време на Османското владичество,
+                        националноосвободителните борби и участието на Стрелча в Априлското въстание.
+                    </p>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-fire-flame-curved"></i> Априлско въстание</span>
+                        <span><i class="fa-solid fa-people-line"></i> Участници от Стрелча</span>
+                    </div>
+                </article>
+
+                <article class="card card-accent fade-in-up">
+                    <div class="card-tag">
+                        <i class="fa-solid fa-palette"></i> Изкуство
+                    </div>
+                    <h3>Художествена галерия</h3>
+                    <p>
+                        Портрети, пейзажи и тематични изложби, посветени на местната история и
+                        културна памет, както и гостуващи експозиции от български художници.
+                    </p>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-brush"></i> Живопис и графика</span>
+                        <span><i class="fa-solid fa-clock-rotate-left"></i> Постоянно + временни</span>
+                    </div>
+                </article>
+
+                <article class="card card-outline fade-in-up">
+                    <div class="card-tag">
+                        <i class="fa-solid fa-vr-cardboard"></i> Мултимедия
+                    </div>
+                    <h3>Инсталация „Поздравъ отъ Стрелча“</h3>
+                    <p>
+                        Съвременна мултимедийна инсталация, която пренася посетителите в атмосферата
+                        на старинния балнеоложки курорт чрез снимки, звук и прожекции.
+                    </p>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-headphones"></i> Аудио &amp; видео</span>
+                        <span><i class="fa-solid fa-person-rays"></i> Потапящо преживяване</span>
+                    </div>
+                </article>
+
+                <article class="card card-outline fade-in-up">
+                    <div class="card-tag">
+                        <i class="fa-solid fa-person-dress"></i> Гостуваща изложба
+                    </div>
+                    <h3>„Прекрасният свят на тракийката“</h3>
+                    <p>
+                        Етнографска изложба, разкриваща живота, облеклото и ритуалите на тракийската жена –
+                        гостуваща в Стрелча благодарение на партньорство с други музеи.
+                    </p>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-calendar-days"></i> Временна експозиция</span>
+                        <span><i class="fa-solid fa-ticket"></i> Включена в посещението</span>
+                    </div>
+                </article>
+
+                <article class="card card-outline fade-in-up">
+                    <div class="card-tag">
+                        <i class="fa-solid fa-school"></i> Образователно
+                    </div>
+                    <h3>„Музей в куфар“</h3>
+                    <p>
+                        Пътуваща мини експозиция с предмети-реплики и учебни материали, която достига
+                        до училища и културни центрове в региона.
+                    </p>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-route"></i> Гостува в училища</span>
+                        <span><i class="fa-solid fa-children"></i> За деца и младежи</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs" class="section section-alt">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="eyebrow">Обучение и събития</div>
+                <h2 class="section-title">Програми за деца, ученици и гости</h2>
+                <p class="section-subtitle">
+                    Историческият музей – Стрелча предлага богата програма от занимания,
+                    работилници и летни инициативи, които превръщат ученето по история в преживяване.
+                </p>
+            </div>
+
+            <div class="programs-grid">
+                <article class="program-card fade-in-up">
+                    <div class="program-badge">Сезонна програма</div>
+                    <h3>„Лято в музея“</h3>
+                    <p>
+                        Творчески ателиета, занимания на открито и игри в двора на музея –
+                        подходящи за деца и младежи, които прекарват ваканцията в Стрелча.
+                    </p>
+                    <div class="program-age">
+                        <i class="fa-solid fa-sun-plant-wilt"></i>
+                        Подходящо за възраст 7–15 г.
+                    </div>
+                </article>
+
+                <article class="program-card fade-in-up">
+                    <div class="program-badge">За училища</div>
+                    <h3>Музейно училище „Искам да науча“</h3>
+                    <p>
+                        Специално разработени образователни модули по история и краезнание
+                        с включени игри, работни листове и тематични задачи.
+                    </p>
+                    <div class="program-age">
+                        <i class="fa-solid fa-user-graduate"></i>
+                        Подходящо за класове I–XII
+                    </div>
+                </article>
+
+                <article class="program-card fade-in-up">
+                    <div class="program-badge">За всички</div>
+                    <h3>Лекторски турове и тематични беседи</h3>
+                    <p>
+                        Възможност за организирани групови посещения с професионален екскурзовод –
+                        на български и при заявка на чужд език.
+                    </p>
+                    <div class="program-age">
+                        <i class="fa-solid fa-users"></i>
+                        Подходящо за групи и туроператори
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIT -->
+    <section id="visit" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="eyebrow">Планирайте своето посещение</div>
+                <h2 class="section-title">Работно време, билети и достъпност</h2>
+                <p class="section-subtitle">
+                    Музеят е отворен всеки ден, което го прави удобна спирка по време на вашата
+                    почивка в Стрелча – независимо дали сте сам, с приятели или с цял клас.
+                </p>
+            </div>
+
+            <div class="visit-layout">
+                <div class="visit-card fade-in-up">
+                    <h3><i class="fa-solid fa-clock"></i> Работно време</h3>
+                    <ul class="visit-list">
+                        <li><i class="fa-solid fa-sun"></i> Всеки ден: 08:30 – 12:00</li>
+                        <li><i class="fa-solid fa-sun-plant-wilt"></i> Следобед: 13:00 – 17:30</li>
+                        <li><i class="fa-solid fa-business-time"></i> Без почивен ден</li>
+                    </ul>
+
+                    <div class="visit-highlight">
+                        За групи и училища е препоръчително предварително записване по телефон или имейл.
+                    </div>
+
+                    <p class="visit-note">
+                        При специални събития и временни изложби работното време може да бъде удължено.
+                    </p>
+                </div>
+
+                <div class="visit-card fade-in-up">
+                    <h3><i class="fa-solid fa-ticket"></i> Билети и достъп</h3>
+                    <ul class="visit-list">
+                        <li><i class="fa-solid fa-person"></i> Индивидуални посетители – стандартен билет</li>
+                        <li><i class="fa-solid fa-child"></i> Ученици и деца – преференциални цени</li>
+                        <li><i class="fa-solid fa-users"></i> Организирани групи – по договаряне</li>
+                        <li><i class="fa-solid fa-universal-access"></i> Достъп за посетители с ограничена подвижност в общите зони</li>
+                    </ul>
+
+                    <div class="map-placeholder">
+                        <span>
+                            <i class="fa-solid fa-location-dot"></i>
+                            бул. „България“ 50, 4530 гр. Стрелча
+                        </span>
+                        <span>
+                            <i class="fa-solid fa-map"></i>
+                            Навигация: „Historical Museum, Strelcha“
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" class="section section-alt">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="eyebrow">Актуално</div>
+                <h2 class="section-title">Събития и инициативи</h2>
+                <p class="section-subtitle">
+                    Музеят е жив организъм – с нови изложби, мултимедийни проекти и
+                    партньорства с други културни институции в България и чужбина.
+                </p>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-main">
+                    <article class="news-card fade-in-up">
+                        <div class="news-pill">
+                            <i class="fa-solid fa-bolt"></i> Ново
+                        </div>
+                        <h3>Първи посетители в мултимедийната инсталация „Поздравъ отъ Стрелча“</h3>
+                        <p>
+                            Новата инсталация пренася гостите в началото на XX век чрез архивни
+                            пощенски картички, звук и прожекции. Част от специален проект за дигитализация
+                            на културното наследство на курорта.
+                        </p>
+                        <div class="news-meta">
+                            <span><i class="fa-solid fa-calendar-day"></i> 2025 · Специален проект</span>
+                            <span><i class="fa-solid fa-circle-play"></i> Мултимедия &amp; звук</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="news-side">
+                    <article class="news-card fade-in-up">
+                        <div class="news-pill">
+                            <i class="fa-solid fa-person-dress"></i> Гостуваща изложба
+                        </div>
+                        <h3>„Прекрасният свят на тракийката“</h3>
+                        <p>
+                            Пътуваща изложба за ролята на жената в тракийското общество – ритуали, облекло
+                            и бижута, представени чрез реплики и визуални панели.
+                        </p>
+                        <div class="news-meta">
+                            <span><i class="fa-solid fa-route"></i> Партньорство с други музеи</span>
+                        </div>
+                    </article>
+
+                    <article class="news-card fade-in-up">
+                        <div class="news-pill">
+                            <i class="fa-solid fa-children"></i> Образование
+                        </div>
+                        <h3>Нови модули към „Музейно училище“</h3>
+                        <p>
+                            Обновени учебни пакети с повече интерактивни задачи и материали за учители –
+                            подходящи за час по родолюбие в музея.
+                        </p>
+                        <div class="news-meta">
+                            <span><i class="fa-solid fa-user-graduate"></i> За училища</span>
+                            <span><i class="fa-solid fa-book-open-reader"></i> Учебни ресурси</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="eyebrow">Галерия</div>
+                <h2 class="section-title">Вътре в залите и двора на музея</h2>
+                <p class="section-subtitle">
+                    Кратък поглед към експозициите – от археологическите витрини до уютния музейен двор,
+                    в който често се провеждат събития и творчески работилници.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/0f172a/ffffff?text=Archaeology+Hall" alt="Археологическа зала">
+                    <figcaption class="gallery-item-label">Археологическа зала</figcaption>
+                </figure>
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/020617/fbbf24?text=Thracian+Artifacts" alt="Тракийски артефакти">
+                    <figcaption class="gallery-item-label">Тракийски артефакти</figcaption>
+                </figure>
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/111827/f97316?text=Bulgarian+Lands+XV-XIX" alt="Българските земи XV–XIX в.">
+                    <figcaption class="gallery-item-label">XV–XIX век</figcaption>
+                </figure>
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/0f172a/bae6fd?text=Art+Gallery" alt="Художествена галерия">
+                    <figcaption class="gallery-item-label">Художествена галерия</figcaption>
+                </figure>
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/020617/f97316?text=Multimedia+Installation" alt="Мултимедийна инсталация">
+                    <figcaption class="gallery-item-label">Мултимедия</figcaption>
+                </figure>
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/020617/a7f3d0?text=Museum+Yard" alt="Двор на музея">
+                    <figcaption class="gallery-item-label">Двор на музея</figcaption>
+                </figure>
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/020617/c4b5fd?text=Educational+Workshop" alt="Образователна работилница">
+                    <figcaption class="gallery-item-label">Работилници</figcaption>
+                </figure>
+                <figure class="gallery-item fade-in-up">
+                    <img src="https://placehold.co/600x450/020617/f97316?text=Night+Event" alt="Вечерно събитие">
+                    <figcaption class="gallery-item-label">Събития</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="eyebrow">Контакти</div>
+                <h2 class="section-title">Свържете се с Исторически музей – Стрелча</h2>
+                <p class="section-subtitle">
+                    Използвайте посочените контакти за информация за билети, групови посещения,
+                    партньорства и образователни инициативи.
+                </p>
+            </div>
+
+            <div class="contact-layout">
+                <div class="contact-card fade-in-up">
+                    <h3><i class="fa-solid fa-landmark"></i> Официални контакти</h3>
+
+                    <div class="contact-row">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            бул. „България“ 50<br>
+                            4530 гр. Стрелча, България
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            +359 35 323 533<br>
+                            +359 899 070 108
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>museum@strelcha.bg (примерен служебен имейл)</div>
+                    </div>
+
+                    <div class="contact-row">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>Всеки ден: 08:30 – 12:00 · 13:00 – 17:30</div>
+                    </div>
+
+                    <div class="contact-socials">
+                        <a href="https://www.facebook.com/strelchamuseum" target="_blank" class="social-link" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/strelchamuseum" target="_blank" class="social-link" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://strelchamuseum.com/" target="_blank" class="social-link" aria-label="Официален сайт">
+                            <i class="fa-solid fa-globe"></i>
+                        </a>
+                    </div>
+
+                    <div class="contact-note">
+                        За официална и актуална информация за цени и събития,
+                        моля, следете сайта и страниците на музея.
+                    </div>
+                </div>
+
+                <div class="contact-card fade-in-up">
+                    <h3><i class="fa-solid fa-paper-plane"></i> Запитване за посещение</h3>
+
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Това е демо форма. Добавете backend по ваш избор.');">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="name">Име и фамилия</label>
+                                <input id="name" type="text" placeholder="Вашето име">
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Имейл</label>
+                                <input id="email" type="email" placeholder="name@example.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="group">Група / организация</label>
+                                <input id="group" type="text" placeholder="Училище, фирма, клуб (по желание)">
+                            </div>
+                            <div class="form-field">
+                                <label for="date">Желана дата</label>
+                                <input id="date" type="date">
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message">Вашето съобщение</label>
+                            <textarea id="message" placeholder="Интересува ме организирано посещение за..."></textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <button class="btn-primary" type="submit">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Изпрати запитване
+                            </button>
+                        </div>
+
+                        <div class="form-helper">
+                            С изпращането на запитване потвърждавате, че сте съгласни
+                            с обработката на предоставените от вас данни за целите на комуникацията с музея.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>© Исторически музей – град Стрелча. Всички права запазени.</div>
+        <div>Бул. „България“ 50 · 4530 Стрелча, България</div>
+        <div>Уеб дизайн · демо версия за представяне</div>
+    </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Нагоре">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- LIBRARIES -->
+
+<!-- React + ReactDOM for Framer Motion hero card -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Framer Motion UMD -->
+<script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const navToggle = document.getElementById("navToggle");
+        const mobileNav = document.getElementById("mobileNav");
+        const backToTop = document.getElementById("backToTop");
+        const navLinks = document.querySelectorAll("header nav a, .mobile-nav a");
+
+        /* Mobile nav */
+        navToggle.addEventListener("click", function () {
+            mobileNav.classList.toggle("open");
+            navToggle.innerHTML = mobileNav.classList.contains("open")
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (mobileNav.classList.contains("open")) {
+                    mobileNav.classList.remove("open");
+                    navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                }
+            });
+        });
+
+        /* Back to top */
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 400) {
+                backToTop.classList.add("visible");
+            } else {
+                backToTop.classList.remove("visible");
+            }
+        });
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({top: 0, behavior: "smooth"});
+        });
+
+        /* Smooth active link highlight */
+        const sections = document.querySelectorAll("main section[id]");
+        function updateActiveLink() {
+            let currentId = null;
+            const scrollPos = window.scrollY + 100;
+            sections.forEach(section => {
+                if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                    currentId = section.id;
+                }
+            });
+            document.querySelectorAll("header nav a").forEach(link => {
+                link.classList.toggle("active", currentId && link.getAttribute("href") === "#" + currentId);
+            });
+        }
+
+        window.addEventListener("scroll", updateActiveLink);
+        updateActiveLink();
+
+        /* GSAP animations */
+        if (window.gsap) {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from(".hero-main", {
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+            gsap.from(".hero-visual", {
+                opacity: 0,
+                x: 40,
+                duration: 1.1,
+                ease: "power3.out"
+            });
+
+            gsap.utils.toArray(".fade-in-up").forEach(function (el) {
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    ease: "power2.out"
+                });
+            });
+
+            gsap.to(".parallax-hero", {
+                yPercent: 18,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#hero",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        }
+
+        /* Framer Motion hero info card */
+        if (window.React && window.ReactDOM && window["framer-motion"]) {
+            const e = React.createElement;
+            const motion = window["framer-motion"].motion;
+
+            function HeroHighlightCard() {
+                return e(
+                    motion.div,
+                    {
+                        className: "hero-react-card",
+                        initial: {opacity: 0, y: 24},
+                        animate: {opacity: 1, y: 0},
+                        transition: {duration: 0.9, delay: 0.3}
+                    },
+                    e("div", {className: "hero-react-card-title"}, "Ново в музея"),
+                    e(
+                        "div",
+                        {className: "hero-react-card-body"},
+                        "Разгледайте мултимедийната инсталация ",
+                        e("strong", null, "„Поздравъ отъ Стрелча“"),
+                        " и новите образователни модули за ученици и семейства."
+                    )
+                );
+            }
+
+            const root = document.getElementById("react-hero");
+            if (root) {
+                ReactDOM.render(e(HeroHighlightCard), root);
+            }
+        }
+    });
+</script>
+</body>
+</html>

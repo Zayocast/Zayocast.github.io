@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Чистота Finesse - Професионално Детайлно Почистване</title>
+    <meta name="description" content="Чистота Finesse предлага луксозно детайлно почистване за домове и офиси. Ние носим блясък и перфекционизъм във всеки ъгъл.">
+    <meta name="keywords" content="детайлно почистване, почистване на домове, почистване на офиси, професионално почистване, София">
+    <meta name="author" content="Чистота Finesse">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ======== 0. ГЛОБАЛНИ НАСТРОЙКИ И ПРОМЕНЛИВИ ======== */
+        :root {
+            --primary-color: #1d3557; /* Тъмно синьо */
+            --secondary-color: #457b9d; /* По-светло синьо */
+            --accent-color: #a8dadc; /* Ментово */
+            --highlight-color: #e63946; /* Акцентно червено (за CTA) */
+            --light-color: #f1faee; /* Много светло сиво/зелено */
+            --dark-text: #333;
+            --light-text: #ffffff;
+            --font-family: 'Poppins', sans-serif;
+            --section-padding: 80px 0;
+            --container-width: 1100px;
+            --border-radius: 8px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* За плавно скролване при клик на линк */
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.7;
+            color: var(--dark-text);
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--primary-color);
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        h4 { font-size: 1.1rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ======== 1. ОБЩИ КЛАСОВЕ (Utility Classes) ======== */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--highlight-color);
+            color: var(--light-text);
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #d02a37;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.5);
+            color: var(--light-text);
+        }
+
+        /* ======== 2. ХЕДЪР И НАВИГАЦИЯ ======== */
+        .site-header {
+            width: 100%;
+            position: fixed; /* Променено на fixed за "sticky" ефект */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: transparent;
+            padding: 1.5rem 0;
+            transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .site-header.sticky {
+            background-color: var(--light-text);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .site-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text);
+        }
+
+        .logo strong {
+            font-weight: 300;
+        }
+
+        .site-header.sticky .logo {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            font-weight: 400;
+            font-size: 1rem;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .site-header.sticky .nav-links a {
+            color: var(--dark-text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .site-header.sticky .nav-links a::after {
+            background-color: var(--highlight-color);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 8px 20px !important;
+            background-color: var(--accent-color);
+            color: var(--primary-color) !important;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--light-text);
+            color: var(--primary-color) !important;
+        }
+
+        .site-header.sticky .nav-cta {
+            background-color: var(--highlight-color);
+            color: var(--light-text) !important;
+        }
+
+        .site-header.sticky .nav-cta:hover {
+            background-color: #d02a37;
+        }
+
+        /* Мобилно меню - Бургер */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .site-header.sticky .burger div {
+            background-color: var(--primary-color);
+        }
+
+        /* ======== 3. ХИРОУ СЕКЦИЯ ======== */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+            position: relative;
+            background-image: url('https://placehold.co/1920x1080/1d3557/457b9d?text=Sparkling+Clean+Home');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax ефект */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Затъмняване за четливост */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            color: var(--light-text);
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            font-size: 1.1rem;
+            padding: 15px 35px;
+        }
+
+        /* ======== 4. СЕКЦИИ ОБЩО ======== */
+        section {
+            padding: var(--section-padding);
+        }
+
+        /* Четни секции - с по-светъл фон */
+        section:nth-of-type(even) {
+            background-color: var(--light-color);
+        }
+
+        /* ======== 5. ЗА НАС ======== */
+        .about-image img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* ======== 6. УСЛУГИ ======== */
+        .services-section {
+            background-color: var(--light-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 60px;
+            height: 60px;
+            color: var(--secondary-color);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+        }
+
+        /* ======== 7. ЗАЩО НАС ======== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .feature-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-item p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ======== 8. ГАЛЕРИЯ ======== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        /* ======== 9. ОТЗИВИ ======== */
+        .testimonials-section {
+            background-color: var(--light-color);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--accent-color);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-card cite {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* ======== 10. КОНТАКТИ ======== */
+        .contact-wrapper {
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: var(--font-family);
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(69, 123, 157, 0.3);
+        }
+
+        .contact-form button {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p strong {
+            color: var(--primary-color);
+        }
+
+        /* ======== 11. ФУТЪР ======== */
+        .site-footer-bottom {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .site-footer-bottom .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-footer-bottom p {
+            margin: 0;
+            color: var(--light-color);
+        }
+
+        .social-links a {
+            color: var(--light-color);
+            margin-left: 1rem;
+            font-weight: 300;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* ======== 12. АНИМАЦИИ (WOW ЕФЕКТ) ======== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
+        .reveal-delay-3 { transition-delay: 0.6s; }
+
+        /* ======== 13. МОБИЛНА ОПТИМИЗАЦИЯ (Media Queries) ======== */
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .grid-2-col {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Обръщане на колоните за "За нас" */
+            .about-section .grid-2-col {
+                grid-template-areas: "image" "text";
+            }
+            .about-image { grid-area: image; }
+            .about-text { grid-area: text; }
+
+            .features-grid,
+            .testimonials-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+
+            h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+
+            /* Навигация за мобилни */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: 60%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in-out;
+                z-index: 1001;
+            }
+
+            .nav-links li {
+                margin: 2rem 0;
+            }
+
+            .nav-links a,
+            .site-header.sticky .nav-links a {
+                color: var(--light-text);
+                font-size: 1.2rem;
+            }
+
+            .burger {
+                display: block;
+                z-index: 1002;
+            }
+
+            /* JavaScript ще добави този клас */
+            .nav-active {
+                transform: translateX(0%);
+            }
+
+            /* Анимация на Бургера (X) */
+            .toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .toggle .line2 {
+                opacity: 0;
+            }
+            .toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .site-header.toggle .burger div {
+                background-color: var(--light-text); /* Фиксираме цвета на X */
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .site-footer-bottom .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <a href="#home" class="logo">Чистота <strong>Finesse</strong></a>
+            <ul class="nav-links">
+                <li><a href="#home">Начало</a></li>
+                <li><a href="#about">За Нас</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#gallery">Галерия</a></li>
+                <li><a href="#testimonials">Отзиви</a></li>
+                <li><a href="#contact" class="cta-button nav-cta">Запитване</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1 class="reveal">Предефинираме Понятието за Чисто</h1>
+                <p class="reveal reveal-delay-1">Луксозно детайлно почистване, което превръща вашия дом в светилище.</p>
+                <a href="#contact" class="cta-button hero-cta reveal reveal-delay-2">Заяви Безплатен Оглед</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container grid-2-col reveal">
+                <div class="about-image">
+                    <img src="https://placehold.co/600x400/1d3557/ffffff?text=Нашият+Екип" alt="Екипът на Чистота Finesse в действие">
+                </div>
+                <div class="about-text">
+                    <h2>Нашата Мисия: Перфекционизъм във Всеки Детайл</h2>
+                    <p>В "Чистота Finesse" ние не просто почистваме – ние възстановяваме. Нашият екип от обучени професионалисти използва само най-висок клас еко-съобразни препарати и най-модерна техника, за да гарантира безупречен резултат.</p>
+                    <p>Ние вярваме, че чистият дом е основата на спокойния ум. Затова подхождаме към всяка задача с прецизност и внимание, сякаш е нашият собствен дом.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="text-center reveal">Какво Предлагаме</h2>
+                <div class="services-grid">
+                    
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                        <h3>Детайлно Почистване на Домове</h3>
+                        <p>От пода до тавана, включително труднодостъпни места, фуги и фини детайли, които другите пропускат.</p>
+                    </div>
+
+                    <div class="service-card reveal reveal-delay-1">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        </div>
+                        <h3>Почистване на Офиси и Търговски Площи</h3>
+                        <p>Създаваме продуктивна и здравословна работна среда. Гъвкави планове, съобразени с вашия бизнес.</p>
+                    </div>
+
+                    <div class="service-card reveal reveal-delay-2">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                        <h3>Измиване на Прозорци и Витрини</h3>
+                        <p>Кристална видимост с нашите професионални техники за измиване на стъкла, дограми и фасади.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="why-us-section">
+            <div class="container">
+                <h2 class="text-center reveal">Защо да Изберете Finesse</h2>
+                <div class="features-grid">
+                    <div class="feature-item reveal">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        </div>
+                        <h4>Експертен Екип</h4>
+                        <p>Нашите служители са обучени, проверени и застраховани.</p>
+                    </div>
+                    <div class="feature-item reveal reveal-delay-1">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h4>Еко-Съобразни</h4>
+                        <p>Използваме само сертифицирани препарати, безопасни за деца и домашни любимци.</p>
+                    </div>
+                    <div class="feature-item reveal reveal-delay-2">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h4>100% Гаранция</h4>
+                        <p>Ако не сте доволни, ние ще се върнем и ще почистим отново. Безплатно.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="text-center reveal">Реални Резултати</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal"><img src="https://placehold.co/400x300/457b9d/ffffff?text=Преди+1" alt="Преди почистване 1"></div>
+                    <div class="gallery-item reveal reveal-delay-1"><img src="https://placehold.co/400x300/a8dadc/1d3557?text=След+1" alt="След почистване 1"></div>
+                    <div class="gallery-item reveal"><img src="https://placehold.co/400x300/457b9d/ffffff?text=Преди+2" alt="Преди почистване 2"></div>
+                    <div class="gallery-item reveal reveal-delay-1"><img src="https://placehold.co/400x300/a8dadc/1d3557?text=След+2" alt="След почистване 2"></div>
+                    <div class="gallery-item reveal"><img src="https://placehold.co/400x300/457b9d/ffffff?text=Преди+3" alt="Преди почистване 3"></div>
+                    <div class="gallery-item reveal reveal-delay-1"><img src="https://placehold.co/400x300/a8dadc/1d3557?text=След+3" alt="След почистване 3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h2 class="text-center reveal">Какво Казват Клиентите</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card reveal">
+                        <p>"Невероятен професионализъм! Апартаментът ми никога не е бил толкова чист. Обърнаха внимание на детайли, за които дори не се бях сещал."</p>
+                        <cite>– Мария Иванова, София</cite>
+                    </div>
+                    <div class="testimonial-card reveal reveal-delay-1">
+                        <p>"Като управител на офис, 'Чистота Finesse' са моят най-доверен партньор. Винаги навреме, винаги перфектни. Препоръчвам горещо!"</p>
+                        <cite>– Георги Петров, Мениджър</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="text-center reveal">Свържете се с Нас</h2>
+                <p class="text-center reveal">Готови ли сте за истинска чистота? Попълнете формата или ни се обадете.</p>
+                <div class="contact-wrapper grid-2-col reveal reveal-delay-1">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Име</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Имейл</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Интересувам се от</label>
+                            <select id="service" name="service">
+                                <option value="home">Почистване на Дом</option>
+                                <option value="office">Почистване на Офис</option>
+                                <option value="other">Друго Запитване</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Съобщение</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Изпрати Запитване</button>
+                    </form>
+                    <div class="contact-info">
+                        <h3>Нашите Координати</h3>
+                        <p><strong>Телефон:</strong><br> +359 888 123 456</p>
+                        <p><strong>Имейл:</strong><br> office@finesse.bg</p>
+                        <p><strong>Адрес:</strong><br> бул. "България" 1, София, България</p>
+                        <p><strong>Работно Време:</strong><br> Понеделник - Петък: 09:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 Чистота Finesse. Всички права запазени.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // 1. Навигация за Мобилни Устройства
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksList = document.querySelectorAll('.nav-links li');
+            const header = document.querySelector('.site-header');
+
+            const navSlide = () => {
+                // Превключване на менюто
+                burger.addEventListener('click', () => {
+                    navLinks.classList.toggle('nav-active');
+                    burger.classList.toggle('toggle');
+                    header.classList.toggle('toggle'); // За да може X-ът да е бял
+                });
+
+                // Затваряне на менюто при клик на линк (за single-page)
+                navLinksList.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('nav-active')) {
+                            navLinks.classList.remove('nav-active');
+                            burger.classList.remove('toggle');
+                            header.classList.remove('toggle');
+                        }
+                    });
+                });
+            };
+
+            // 2. "Sticky" Навигация при Скрол
+            const stickyNav = () => {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 80) { // 80px е добър праг
+                        header.classList.add('sticky');
+                    } else {
+                        header.classList.remove('sticky');
+                    }
+                });
+            };
+
+            // 3. Анимации при Скролване (Intersection Observer)
+            const scrollReveal = () => {
+                const revealElements = document.querySelectorAll('.reveal');
+
+                const revealOptions = {
+                    root: null, // Относително viewport-a
+                    threshold: 0.15, // 15% от елемента да се вижда
+                    rootMargin: "0px"
+                };
+
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                            // Спираме да наблюдаваме елемента, след като вече се е показал
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, revealOptions);
+
+                revealElements.forEach(el => {
+                    revealObserver.observe(el);
+                });
+            };
+            
+            // 4. Предотвратяване на изпращането на формата (за демо цели)
+            const handleForm = () => {
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm) {
+                    contactForm.addEventListener('submit', (e) => {
+                        e.preventDefault(); // Спираме презареждането
+                        
+                        // Вместо alert(), можем да покажем съобщение в конзолата
+                        // или да добавим текст до бутона
+                        console.log("Формата е изпратена (симулация).");
+                        
+                        // Може да добавим по-добра обратна връзка тук
+                        const submitButton = contactForm.querySelector('button[type="submit"]');
+                        submitButton.textContent = "Изпратено!";
+                        submitButton.disabled = true;
+                        
+                        setTimeout(() => {
+                            submitButton.textContent = "Изпрати Запитване";
+                            submitButton.disabled = false;
+                            contactForm.reset(); // Изчистване на формата
+                        }, 3000);
+                    });
+                }
+            };
+
+
+            // Старитране на функциите
+            navSlide();
+            stickyNav();
+            scrollReveal();
+            handleForm();
+
+        });
+    </script>
+</body>
+</html>

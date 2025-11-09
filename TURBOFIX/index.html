@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboFix | Premium Auto Service</title>
+    <meta name="description" content="Professional Auto Service. Best mechanics in town. Diagnostics, repairs, and maintenance.">
+    <meta name="keywords" content="auto service, car repair, mechanics, oil change, diagnostics, автосервиз, ремонти">
+    <meta name="author" content="TurboFix PRO">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://turbofix-demo.com/">
+    <meta property="og:title" content="TurboFix - We keep you moving">
+    <meta property="og:description" content="Professional Auto Service with modern diagnostics.">
+    <meta property="og:image" content="https://placehold.co/1200x630/png?text=TurboFix+Preview">
+
+    <link rel="icon" href="https://placehold.co/32x32/orange/white?text=TF">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- ROOT VARIABLES (Лесна смяна на темата, братле) --- */
+        :root {
+            --primary-color: #ff6b00; /* Оранжево за акцент */
+            --secondary-color: #1a1a1a; /* Тъмно сиво за тежест */
+            --text-light: #f4f4f4;
+            --text-dark: #333333;
+            --bg-light: #ffffff;
+            --bg-grey: #f9f9f9;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        .highlight { color: var(--primary-color); }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 2px solid var(--primary-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background: var(--secondary-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            font-weight: bold;
+        }
+
+        .logo i { color: var(--primary-color); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Lang Switcher Styles */
+        .lang-switch {
+            display: flex;
+            background: #333;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-left: 30px;
+            border: 1px solid var(--primary-color);
+        }
+
+        .lang-btn {
+            padding: 5px 15px;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x1080/222/fff?text=Super+Car+Background+Image');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about {
+            background: var(--bg-light);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* --- SERVICES SECTION --- */
+        #services {
+            background: var(--bg-grey);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 3px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- WHY US (Stats) --- */
+        #why-us {
+            background: var(--secondary-color);
+            color: var(--text-light);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .stat-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- TESTIMONIALS --- */
+        #testimonials { background: var(--bg-grey); }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .testimonial-card i.fa-quote-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.1;
+            color: var(--primary-color);
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        /* --- CONTACT --- */
+        #contact { background: var(--secondary-color); color: var(--text-light); }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .contact-info-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 20px;
+            width: 30px;
+        }
+        .contact-form input, .contact-form textarea, .contact-form select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .contact-form textarea { resize: vertical; height: 120px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #111;
+            color: #777;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* --- MOBILE NAV --- */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 92vh;
+                top: 8vh;
+                background-color: var(--secondary-color);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+            }
+            .nav-links.nav-active {
+                transform: translateX(0%);
+            }
+            .nav-links li {
+                margin: 30px 0;
+            }
+            .burger { display: block; }
+            .about-grid, .contact-wrapper, .stats-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .lang-switch { margin: 20px 0; }
+        }
+
+    </style>
+</head>
+<body class="lang-en">
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo" data-aos="fade-down">
+                    <i class="fas fa-cogs"></i> TURBO<span class="highlight">FIX</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hero" data-lang-en="Home" data-lang-bg="Начало">Home</a></li>
+                    <li><a href="#about" data-lang-en="About" data-lang-bg="За нас">About</a></li>
+                    <li><a href="#services" data-lang-en="Services" data-lang-bg="Услуги">Services</a></li>
+                    <li><a href="#gallery" data-lang-en="Gallery" data-lang-bg="Галерия">Gallery</a></li>
+                    <li><a href="#contact" data-lang-en="Contact" data-lang-bg="Контакт">Contact</a></li>
+                    
+                    <li class="lang-switch">
+                         <div class="lang-btn" id="btn-bg" onclick="setLanguage('bg')">BG</div>
+                         <div class="lang-btn active" id="btn-en" onclick="setLanguage('en')">ENG</div>
+                    </li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 data-lang-en="Premium Auto Care For Your Vehicle" data-lang-bg="Премиум грижа за твоя автомобил">Premium Auto Care For Your Vehicle</h1>
+                    <p data-lang-en="We use top-tier diagnostics and experienced mechanics to get you back on the road safely. Fast, reliable, and affordable." data-lang-bg="Използваме диагностика от най-висок клас и опитни механици. Бързо, надеждно и изгодно.">We use top-tier diagnostics and experienced mechanics to get you back on the road safely. Fast, reliable, and affordable.</p>
+                    <a href="#contact" class="btn">
+                        <i class="fas fa-calendar-check"></i> 
+                        <span data-lang-en="Book Appointment" data-lang-bg="Запиши Час">Book Appointment</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-img" data-aos="fade-right">
+                        <img src="https://placehold.co/600x400/orange/white?text=Mechanics+Working" alt="Our Workshop">
+                    </div>
+                    <div class="about-text" data-aos="fade-left">
+                        <h2 class="section-title" data-lang-en="Who We Are" data-lang-bg="Кои сме ние">Who We Are</h2>
+                        <p data-lang-en="TurboFix has been the trusted local auto repair shop for over 15 years. We treat every car as if it were our own. No hidden fees, just honest work." data-lang-bg="TurboFix е довереният местен автосервиз от над 15 години. Отнасяме се към всяка кола все едно е нашата собствена. Без скрити такси, само честна работа.">
+                            TurboFix has been the trusted local auto repair shop for over 15 years. We treat every car as if it were our own. No hidden fees, just honest work.
+                        </p>
+                        <br>
+                        <ul style="list-style: none;">
+                            <li><i class="fas fa-check-circle highlight"></i> <span data-lang-en="Certified Mechanics" data-lang-bg="Сертифицирани механици">Certified Mechanics</span></li>
+                            <li><i class="fas fa-check-circle highlight"></i> <span data-lang-en="Modern Equipment" data-lang-bg="Модерно оборудване">Modern Equipment</span></li>
+                            <li><i class="fas fa-check-circle highlight"></i> <span data-lang-en="Warranty on Repairs" data-lang-bg="Гаранция на ремонтите">Warranty on Repairs</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section-padding">
+            <div class="container">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="section-title" data-lang-en="Our Services" data-lang-bg="Нашите Услуги">Our Services</h2>
+                </div>
+                <div class="services-grid" style="margin-top: 50px;">
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-oil-can service-icon"></i>
+                        <h3 data-lang-en="Oil & Fluids" data-lang-bg="Масла и Течности">Oil & Fluids</h3>
+                        <p data-lang-en="Comprehensive oil change services using premium synthetic oils." data-lang-bg="Пълна смяна на масло използвайки премиум синтетични масла.">Comprehensive oil change services using premium synthetic oils.</p>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-car-battery service-icon"></i>
+                        <h3 data-lang-en="Electrical Diagnostics" data-lang-bg="Ел. Диагностика">Electrical Diagnostics</h3>
+                        <p data-lang-en="Battery testing, alternator repairs, and complex electrical fixes." data-lang-bg="Тестване на акумулатори, ремонт на алтернатори и сложни ел. ремонти.">Battery testing, alternator repairs, and complex electrical fixes.</p>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fas fa-cogs service-icon"></i>
+                        <h3 data-lang-en="Engine Repair" data-lang-bg="Ремонт на Двигатели">Engine Repair</h3>
+                        <p data-lang-en="From minor tune-ups to complete engine overhauls." data-lang-bg="От малки настройки до основни ремонти на двигателя.">From minor tune-ups to complete engine overhauls.</p>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+                        <i class="fas fa-snowflake service-icon"></i>
+                        <h3 data-lang-en="A/C Services" data-lang-bg="Климатици">A/C Services</h3>
+                        <p data-lang-en="Keep cool with our air conditioning recharge and repair." data-lang-bg="Останете на хладно с нашето зареждане и ремонт на автоклиматици.">Keep cool with our air conditioning recharge and repair.</p>
+                    </div>
+                     <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
+                        <i class="fas fa-truck-monster service-icon"></i>
+                        <h3 data-lang-en="Suspension & Tires" data-lang-bg="Окачване и Гуми">Suspension & Tires</h3>
+                        <p data-lang-en="Wheel alignment, shock absorbers, and tire mounting." data-lang-bg="Реглаж, амортисьори и монтаж на гуми.">Wheel alignment, shock absorbers, and tire mounting.</p>
+                    </div>
+                     <div class="service-card" data-aos="zoom-in" data-aos-delay="600">
+                        <i class="fas fa-shield-alt service-icon"></i>
+                        <h3 data-lang-en="Inspections" data-lang-bg="Прегледи">Inspections</h3>
+                        <p data-lang-en="Pre-purchase inspections and annual safety checks." data-lang-bg="Прегледи преди покупка и годишни технически прегледи.">Pre-purchase inspections and annual safety checks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 40px;" data-aos="fade-up">
+                     <h2 class="section-title" style="color: white" data-lang-en="Why Choose TurboFix" data-lang-bg="Защо TurboFix">Why Choose TurboFix</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item" data-aos="flip-left">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="stat-number">15+</span>
+                        <span data-lang-en="Years Experience" data-lang-bg="Години Опит">Years Experience</span>
+                    </div>
+                    <div class="stat-item" data-aos="flip-left" data-aos-delay="100">
+                        <i class="fas fa-car"></i>
+                        <span class="stat-number">12k+</span>
+                        <span data-lang-en="Cars Repaired" data-lang-bg="Поправени Коли">Cars Repaired</span>
+                    </div>
+                    <div class="stat-item" data-aos="flip-left" data-aos-delay="200">
+                        <i class="fas fa-smile"></i>
+                        <span class="stat-number">99%</span>
+                        <span data-lang-en="Happy Clients" data-lang-bg="Доволни Клиенти">Happy Clients</span>
+                    </div>
+                    <div class="stat-item" data-aos="flip-left" data-aos-delay="300">
+                        <i class="fas fa-wrench"></i>
+                        <span class="stat-number">24h</span>
+                        <span data-lang-en="Fast Turnaround" data-lang-bg="Бърза Реакция">Fast Turnaround</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section-padding">
+            <div class="container">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="section-title" data-lang-en="Recent Work" data-lang-bg="Скорошни Проекти">Recent Work</h2>
+                </div>
+                <div class="gallery-grid" style="margin-top: 40px;">
+                    <div class="gallery-item" data-aos="fade-up"><img src="https://placehold.co/400x300/333/fff?text=Sport+Car+Engine" alt="Work 1"></div>
+                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="100"><img src="https://placehold.co/400x300/444/fff?text=Brake+Disc+Change" alt="Work 2"></div>
+                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="200"><img src="https://placehold.co/400x300/555/fff?text=Polishing" alt="Work 3"></div>
+                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="300"><img src="https://placehold.co/400x300/666/fff?text=Diagnostics+Tablet" alt="Work 4"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section-padding">
+            <div class="container">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="section-title" data-lang-en="Client Reviews" data-lang-bg="Отзиви от Клиенти">Client Reviews</h2>
+                </div>
+                <div class="testimonial-grid" style="margin-top: 50px;">
+                    <div class="testimonial-card" data-aos="fade-right">
+                        <i class="fas fa-quote-right"></i>
+                        <p data-lang-en="Incredible service! They fixed my BMW's transmission when no one else could figure out the issue. Highly recommended!" data-lang-bg="Невероятно обслужване! Оправиха трансмисията на моето БМВ, когато никой друг не можа да открие проблема. Препоръчвам!">Incredible service! They fixed my BMW's transmission when no one else could figure out the issue. Highly recommended!</p>
+                        <div class="user-info">
+                            <img src="https://placehold.co/50x50/orange/white?text=JD" alt="User">
+                            <div>
+                                <h4>John Doe</h4>
+                                <small data-lang-en="BMW Owner" data-lang-bg="Собственик на BMW">BMW Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-left" data-aos-delay="100">
+                        <i class="fas fa-quote-right"></i>
+                        <p data-lang-en="Fast, cheap and very professional. The best place in town for regular maintenance." data-lang-bg="Бързо, евтино и много професионално. Най-доброто място в града за редовна поддръжка.">Fast, cheap and very professional. The best place in town for regular maintenance.</p>
+                        <div class="user-info">
+                            <img src="https://placehold.co/50x50/333/white?text=MI" alt="User">
+                            <div>
+                                <h4>Maria Ivanova</h4>
+                                <small data-lang-en="Toyota Owner" data-lang-bg="Собственик на Toyota">Toyota Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="section-title" style="color:white" data-lang-en="Get In Touch" data-lang-bg="Свържи се с нас">Get In Touch</h2>
+                </div>
+                <div class="contact-wrapper" style="margin-top: 50px;">
+                    <div class="contact-info" data-aos="fade-right">
+                        <h3 style="margin-bottom: 20px;" data-lang-en="Visit Our Shop" data-lang-bg="Посети сервиза">Visit Our Shop</h3>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>123 Auto Street, Sofia, BG 1000</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <p>+359 888 123 456</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>service@turbofix-demo.com</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <p data-lang-en="Mon - Fri: 09:00 - 18:00" data-lang-bg="Пон - Пет: 09:00 - 18:00">Mon - Fri: 09:00 - 18:00</p>
+                        </div>
+                        <img src="https://placehold.co/600x250/222/ff6b00?text=MAP+LOCATION+PLACEHOLDER" style="width:100%; border-radius: 10px; margin-top: 20px;" alt="Map">
+                    </div>
+
+                    <div class="contact-form" data-aos="fade-left">
+                        <form onsubmit="event.preventDefault(); alert('Братле, това е демо! Формата не работи наистина.');">
+                            <input type="text" placeholder="Your Name / Имена" required>
+                            <input type="email" placeholder="Your Email / Имейл" required>
+                            <input type="tel" placeholder="Phone / Телефон" required>
+                            <select>
+                                <option value="" disabled selected data-lang-en="- Select Service -" data-lang-bg="- Избери Услуга -">- Select Service -</option>
+                                <option value="diagnostics">Diagnostics</option>
+                                <option value="repair">Repair</option>
+                                <option value="oil">Oil Change</option>
+                            </select>
+                            <textarea placeholder="Message / Съобщение"></textarea>
+                            <button type="submit" class="btn" style="width: 100%; border:none">
+                                <span data-lang-en="Send Message" data-lang-bg="Изпрати">Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 TurboFix Auto Service. <span data-lang-en="All rights reserved." data-lang-bg="Всички права запазени.">All rights reserved.</span></p>
+            <div style="margin-top: 10px; font-size: 1.5rem;">
+                <a href="#" style="color: #777; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color: #777; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Initialize Animations (AOS - братлето на Framer Motion за vanilla JS)
+        AOS.init({
+            offset: 100,
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // 2. Mobile Navigation Logic
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
+
+        // 3. Language Switcher Logic (Братле, това е магията)
+        // По подразбиране сме на ENG, защото така е в HTML-а
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            if(currentLang === lang) return;
+            currentLang = lang;
+
+            // Смяна на активния бутон
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-bg').classList.remove('active');
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Намираме всички елементи, които имат атрибути за превод
+            const elements = document.querySelectorAll('[data-lang-en]');
+
+            elements.forEach(el => {
+                // Взимаме текста от съответния атрибут (data-lang-en или data-lang-bg)
+                const newText = el.getAttribute(`data-lang-${lang}`);
+                if (newText) {
+                    // Ако е input placeholder
+                    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                         // Тук е малко по-сложно за placeholders ако искаш перфектност,
+                         // но за демото оставихме смесени placeholders.
+                         // Ако искаш и тях: el.placeholder = newText;
+                    } else {
+                        // Нормален текст
+                        el.innerText = newText;
+                    }
+                }
+            });
+
+            // Смяна на body class за всеки случай
+            document.body.className = `lang-${lang}`;
+        }
+    </script>
+</body>
+</html>

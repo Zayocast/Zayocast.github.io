@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Elite - УАУ Фитнесът</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Глобални Настройки и Променливи --- */
+        :root {
+            --color-dark: #121212;        /* Тъмно за фон */
+            --color-primary: #1a1a1a;     /* Малко по-светло тъмно */
+            --color-accent: #00FFD1;      /* Нашият "УАУ" цвят - неон */
+            --color-text: #E0E0E0;        /* Светъл текст */
+            --color-text-secondary: #AAAAAA;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth; /* Плавнo скролиране при клик на линк */
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-dark);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden; /* Да няма хоризонтален скрол заради анимации */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: white;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        /* --- 1. Навигация (Модерна, с blur ефект) --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.5); /* Полупрозрачен фон */
+            backdrop-filter: blur(10px); /* "УАУ" ефектът - замъгляване */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav li {
+            margin-left: 2rem;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* --- 2. Hero Секция (Parallax "УАУ") --- */
+        .hero-section {
+            height: 100vh; /* Цял екран */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg');
+            background-size: cover;
+            background-position: center;
+            /* Задаваме background-attachment: fixed; в CSS като резерва,
+               но JS ще го контролира по-добре */
+            background-attachment: fixed; 
+            filter: brightness(0.4); /* Затъмняваме снимката */
+            z-index: -1;
+            /* Ще се анимира от JS */
+            will-change: transform;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-dark);
+            padding: 0.8rem 2.5rem;
+            border: none;
+            border-radius: 50px; /* Модерно заобляне */
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-3px);
+            background-color: white;
+        }
+
+        .scroll-down-icon {
+            position: absolute;
+            bottom: 2rem;
+            /* Анимация за пулсиране */
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(10px); }
+            100% { opacity: 0.5; transform: translateY(0); }
+        }
+
+        /* --- 3. Секция "За Нас" (Асиметрично) --- */
+        .content-section {
+            padding: 6rem 0;
+            background: var(--color-primary);
+        }
+
+        .split-layout {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap; /* За мобилни */
+        }
+
+        .split-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .split-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .split-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .split-content ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .split-content li {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-accent);
+            stroke-width: 2;
+            fill: none;
+            margin-right: 0.5rem;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* --- 4. Галерия (CSS Grid "УАУ") --- */
+        .gallery-section {
+            padding: 6rem 0;
+            background: var(--color-dark);
+        }
+
+        .asymmetric-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-out;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Асиметричното разположение */
+        .item-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+        .item-2 { grid-column: 3 / 4; grid-row: 1 / 3; }
+        .item-3 { grid-column: 4 / 5; grid-row: 1 / 2; }
+        .item-4 { grid-column: 1 / 3; grid-row: 2 / 3; }
+
+        /* --- 5. Форма за Записване (Floating Labels "УАУ") --- */
+        .booking-section {
+            padding: 6rem 0;
+            background: var(--color-primary);
+            text-align: center;
+        }
+
+        .booking-section p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            color: var(--color-text-secondary);
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        /* "УАУ" ефект с плаващ лейбъл */
+        .floating-label {
+            position: relative;
+        }
+
+        .floating-label input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-dark);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .floating-label label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: var(--color-text-secondary);
+            transition: all 0.3s ease;
+            pointer-events: none; /* Позволява клик "през" лейбъла */
+        }
+
+        /* Магията: :focus или :valid (когато има текст) */
+        .floating-label input:focus + label,
+        .floating-label input:valid + label {
+            top: -0.5rem;
+            left: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            background: var(--color-primary); /* Трябва да съвпада с фона */
+            padding: 0 0.25rem;
+        }
+
+        .booking-form .cta-button {
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        /* --- 6. Footer (Контакти) --- */
+        .footer-section {
+            padding: 4rem 0 2rem 0;
+            background: var(--color-dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-column h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column p {
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-text-secondary);
+            transition: fill 0.3s ease;
+        }
+
+        .social-icons a:hover svg {
+            fill: var(--color-accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* --- ############# АНИМАЦИИ (The "WOW" Core) ############# --- */
+
+        /* Това е класът, който скрива елементите ПРЕДИ да се появят */
+        .reveal-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* Различни посоки на появяване */
+        .reveal-on-scroll[data-direction="up"] {
+            transform: translateY(50px);
+        }
+        .reveal-on-scroll[data-direction="left"] {
+            transform: translateX(-50px);
+        }
+        .reveal-on-scroll[data-direction="right"] {
+            transform: translateX(50px);
+        }
+        /* Default (ако не е зададена посока) */
+        .reveal-on-scroll:not([data-direction]) {
+            transform: translateY(30px);
+        }
+
+
+        /* Това е класът, който JavaScript ще добави, когато елементът е видим */
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+        
+        /* --- Адаптивност (Responsive) --- */
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem; /* Намаляваме заглавието на телефони */
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            /* Навигация за мобилни (проста) */
+            .main-nav ul {
+                display: none; /* Скриваме за телефони - за да е просто */
+                /* В реална ситуация тук се прави хамбургер меню */
+            }
+            
+            .split-layout {
+                flex-direction: column; /* Елементите един под друг */
+            }
+            
+            .split-image {
+                order: -1; /* Снимката да е отгоре на мобилен */
+            }
+            
+            /* Галерия за мобилни */
+            .asymmetric-gallery {
+                grid-template-columns: 1fr; /* Всичко в една колона */
+                grid-template-rows: auto;
+                gap: 1rem;
+            }
+            /* Връщаме им нормалния вид */
+            .item-1, .item-2, .item-3, .item-4 {
+                grid-column: auto;
+                grid-row: auto;
+                height: 300px; /* Фиксирана височина */
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <a href="#hero">FIT-ELITE</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#about">За Нас</a></li>
+                <li><a href="#gallery">Галерия</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#booking">Запази Час</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-background">
+                </div>
+            <div class="hero-content">
+                <h1 class="reveal-on-scroll" data-reveal-delay="0.1s">ПРЕОБРАЗИ</h1>
+                <h1 class="reveal-on-scroll" data-reveal-delay="0.3s">СИЛАТА СИ</h1>
+                <p class="reveal-on-scroll" data-reveal-delay="0.5s">Твоята промяна започва днес. Не утре.</p>
+                <a href="#booking" class="cta-button reveal-on-scroll" data-reveal-delay="0.7s">Започни Сега</a>
+            </div>
+            <div class="scroll-down-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <div class="container split-layout">
+                <div class="split-content reveal-on-scroll" data-direction="left">
+                    <h2>Не просто фитнес. <br>А начин на живот.</h2>
+                    <p>Ние вярваме, че силата не е само в мускулите, а в ума. Нашата мисия е да ти дадем инструментите да изградиш най-добрата версия на себе си, с помощта на елитни треньори и най-модерното оборудване.</p>
+                    <ul>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                            Персонални Тренировки
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                            Групови Занимания
+                        </li>
+                        <li>
+                            <svg class="check-icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+                            Хранителни Режими
+                        </li>
+                    </ul>
+                </div>
+                <div class="split-image reveal-on-scroll" data-direction="right">
+                    <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg" alt="Интериор на фитнес зала">
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title reveal-on-scroll">Усети Атмосферата</h2>
+            <div class="asymmetric-gallery">
+                <div class="gallery-item item-1 reveal-on-scroll"><img src="https://images.pexels.com/photos/4753997/pexels-photo-4753997.jpeg" alt="Фитнес галерия 1"></div>
+                <div class="gallery-item item-2 reveal-on-scroll"><img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg" alt="Фитнес галерия 2"></div>
+                <div class="gallery-item item-3 reveal-on-scroll"><img src="https://images.pexels.com/photos/3256805/pexels-photo-3256805.jpeg" alt="Фитнес галерия 3"></div>
+                <div class="gallery-item item-4 reveal-on-scroll"><img src="https://images.pexels.com/photos/2261482/pexels-photo-2261482.jpeg" alt="Фитнес галерия 4"></div>
+            </div>
+        </section>
+
+        <section id="booking" class="booking-section">
+            <div class="container reveal-on-scroll" data-direction="up">
+                <h2 class="section-title">Готов ли си за промяна?</h2>
+                <p>Остави ни данните си и наш консултант ще се свърже с теб, за да запазим час за твоята ПЪРВА БЕЗПЛАТНА тренировка.</p>
+                <form id="booking-form" class="booking-form">
+                    <div class="form-group floating-label">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Име</label>
+                    </div>
+                    <div class="form-group floating-label">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Имейл</label>
+                    </div>
+                    <div class="form-group floating-label">
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">Телефон</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="cta-button">Изпрати Запитване</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer id="contact" class="footer-section">
+            <div class="container footer-content">
+                <div class="footer-column">
+                    <h3>FIT-ELITE</h3>
+                    <p>Твоят път към върха.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Контакти</h4>
+                    <p>ул. "Шампионска" 1 <br> гр. София, 1000</p>
+                    <p>Телефон: +359 888 123 456</p>
+                    <p>Имейл: info@fit-elite.bg</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Социални Мрежи</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FIT-ELITE. Всички права запазени.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Ще изчакаме целия HTML да се зареди
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. "УАУ" Ефект: Анимации при скролване ---
+            
+            // Намираме всички елементи, които искаме да анимираме
+            const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
+
+            // Създаваме "наблюдател" (Intersection Observer)
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // Ако елементът е влязъл в полезрението (isIntersecting)
+                    if (entry.isIntersecting) {
+                        // Добавяме класа, който пуска CSS анимацията
+                        entry.target.classList.add('is-visible');
+                        
+                        // Спираме да наблюдаваме този елемент, за да не се повтаря анимацията
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Анимацията да тръгне, когато 10% от елемента се вижда
+            });
+
+            // Казваме на наблюдателя да "гледа" за всеки от нашите елементи
+            elementsToReveal.forEach(element => {
+                // Проверяваме за data-атрибут за забавяне
+                const delay = element.getAttribute('data-reveal-delay');
+                if (delay) {
+                    element.style.transitionDelay = delay;
+                }
+                observer.observe(element);
+            });
+
+            // --- 2. "УАУ" Ефект: По-добър Parallax за Hero секцията ---
+            const heroBackground = document.querySelector('.hero-background');
+
+            window.addEventListener('scroll', () => {
+                // Взимаме колко сме скролнали
+                const scrollPosition = window.pageYOffset;
+                
+                // Местим фона по-бавно от скрола (0.5 пъти)
+                // Това създава усещане за дълбочина
+                // Използваме 'translateZ(0)' за да форсираме хардуерно ускорение
+                heroBackground.style.transform = `translateY(${scrollPosition * 0.5}px) translateZ(0)`;
+            });
+            
+            // --- 3. Функционалност: Валидация на формата (базова) ---
+            const bookingForm = document.getElementById('booking-form');
+            bookingForm.addEventListener('submit', (event) => {
+                // Спираме стандартното изпращане на формата
+                event.preventDefault();
+
+                // (Тук обикновено се случва изпращане към сървър с fetch/AJAX)
+                
+                // Показваме съобщение за успех (само за демо)
+                alert('Благодарим! Вашето запитване е изпратено. Ще се свържем с Вас скоро.');
+                
+                // Изчистваме формата
+                bookingForm.reset();
+            });
+
+        });
+    </script>
+</body>
+</html>

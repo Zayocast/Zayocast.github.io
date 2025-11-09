@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Професионален ремонт на покриви в България – бързо, качествено, на топ цена. Безплатен оглед 24/7." />
+  <meta name="keywords" content="ремонт покриви, хидроизолация, керемиди, тенекеджия, София, Пловдив" />
+  <meta name="author" content="ZayoRoof Ltd." />
+  <title>Покрив Майстори – Ремонт на покриви №1 в България</title>
+
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #e63946;
+      --dark: #1d3557;
+      --light: #f1faee;
+      --gray: #457b9d;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fff;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    a { text-decoration:none; color:inherit; }
+
+    /* NAV */
+    header {
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:999;
+      background:rgba(29,53,87,.95);
+      backdrop-filter:blur(10px);
+      transition:0.4s;
+    }
+    nav {
+      max-width:1400px;
+      margin:auto;
+      padding:1rem 5%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .logo svg { width:50px; height:50px; }
+    .nav-links {
+      display:flex;
+      gap:2rem;
+    }
+    .nav-links a {
+      color:#fff;
+      font-weight:600;
+      position:relative;
+    }
+    .nav-links a::after {
+      content:'';
+      position:absolute;
+      width:0; height:2px;
+      bottom:-5px; left:0;
+      background:var(--primary);
+      transition:0.3s;
+    }
+    .nav-links a:hover::after { width:100%; }
+    .burger { display:none; cursor:pointer; }
+    .burger div { width:25px; height:3px; background:#fff; margin:5px; transition:0.3s; }
+
+    /* HERO */
+    .hero {
+      height:100vh;
+      background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url('https://placehold.co/1920x1080/1d3557/f1faee?text=Покрив+под+дъжда') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+    }
+    .hero h1 {
+      font-size:4.5rem;
+      margin-bottom:1rem;
+      text-shadow:0 4px 10px rgba(0,0,0,.8);
+    }
+    .hero p {
+      font-size:1.4rem;
+      max-width:800px;
+      margin:0 auto 2rem;
+    }
+    .cta {
+      background:var(--primary);
+      padding:1rem 2.5rem;
+      border-radius:50px;
+      font-weight:800;
+      letter-spacing:1px;
+      transition:0.3s;
+      box-shadow:0 10px 20px rgba(230,57,70,.4);
+    }
+    .cta:hover { transform:scale(1.1); }
+
+    /* SECTIONS */
+    section { padding:5rem 5%; max-width:1400px; margin:auto; }
+    h2 { font-size:2.8rem; text-align:center; margin-bottom:3rem; color:var(--dark); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; }
+    .card {
+      background:#fff;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+      transition:0.4s;
+    }
+    .card:hover { transform:translateY(-15px); }
+    .card img { width:100%; height:200px; object-fit:cover; }
+    .card-body { padding:1.5rem; }
+    .card h3 { font-size:1.5rem; margin-bottom:0.5rem; color:var(--primary); }
+
+    /* SVG Wave */
+    .wave { position:relative; }
+    .wave svg { position:absolute; bottom:0; width:100%; height:150px; }
+
+    /* TESTIMONIALS */
+    .testi {
+      background:var(--light);
+      text-align:center;
+    }
+    .quote {
+      font-size:1.3rem;
+      font-style:italic;
+      max-width:800px;
+      margin:2rem auto;
+      position:relative;
+    }
+    .quote::before { content:"“"; font-size:5rem; color:var(--primary); position:absolute; left:-40px; top:-20px; }
+
+    /* CTA FINAL */
+    .final-cta {
+      background:linear-gradient(135deg, var(--primary), var(--gray));
+      color:#fff;
+      text-align:center;
+    }
+    .final-cta h2 { color:#fff; }
+
+    /* FOOTER */
+    footer {
+      background:var(--dark);
+      color:#fff;
+      text-align:center;
+      padding:3rem 5%;
+    }
+    .social svg { width:30px; margin:0 10px; fill:#fff; transition:0.3s; }
+    .social svg:hover { fill:var(--primary); transform:scale(1.2); }
+
+    /* MOBILE */
+    @media (max-width:768px) {
+      .nav-links { position:fixed; right:-100%; top:70px; height:100vh; background:var(--dark); flex-direction:column; align-items:center; width:50%; transition:0.5s; }
+      .nav-links.active { right:0; }
+      .burger { display:block; }
+      .hero h1 { font-size:3rem; }
+      .burger div:nth-child(1).active { transform:rotate(45deg) translate(5px,5px); }
+      .burger div:nth-child(2).active { opacity:0; }
+      .burger div:nth-child(3).active { transform:rotate(-45deg) translate(7px,-7px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <svg viewBox="0 0 100 100"><path d="M10 50 L50 10 L90 50 L70 50 L70 90 L30 90 L30 50 Z" fill="#e63946"/><path d="M20 60 L50 35 L80 60" fill="none" stroke="#fff" stroke-width="8"/></svg>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#services">Услуги</a>
+        <a href="#why">Защо ние</a>
+        <a href="#gallery">Галерия</a>
+        <a href="#testi">Отзиви</a>
+        <a href="#contact">Контакт</a>
+      </div>
+      <div class="burger" id="burger">
+        <div></div><div></div><div></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" data-aos="fade-down">
+    <div>
+      <h1>ПОКРИВЪТ ТЕ ПАЗИ, НИЕ ГО СПАСЯВАМЕ</h1>
+      <p>30+ години опит • Безплатен оглед за 24 ч • Гаранция до 15 години</p>
+      <a href="tel:+359888123456" class="cta">ПОРЪЧАЙ ОГЛЕД СЕГА</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 data-aos="fade-up">Какво поправяме?</h2>
+    <div class="grid">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://placehold.co/600x400/e63946/ffffff?text=Керемиди" alt="Ремонт керемиди">
+        <div class="card-body">
+          <h3>Керемиди & Тухли</h3>
+          <p>Смяна, редене, хидроизолация.</p>
+        </div>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://placehold.co/600x400/457b9d/ffffff?text=Тенекия" alt="Тенекия">
+        <div class="card-body">
+          <h3>Тенекия & Улуци</h3>
+          <p>Поцинкована, медна, PVC.</p>
+        </div>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://placehold.co/600x400/1d3557/ffffff?text=Хидро" alt="Хидроизолация">
+        <div class="card-body">
+          <h3>Хидроизолация</h3>
+          <p>Битум, PVC, TPO мембрани.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="wave" style="background:var(--light);">
+    <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+      <path fill="#f1faee" d="M0,0 L0,100 Q360,150 720,100 T1440,100 L1440,0 Z"/>
+    </svg>
+    <h2 data-aos="fade-up">Защо точно ние?</h2>
+    <div class="grid">
+      <div data-aos="zoom-in" data-aos-delay="100">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#e63946" stroke-width="8"/><path d="M30 50 L45 65 L70 40" stroke="#e63946" stroke-width="8" fill="none"/></svg>
+        <h3>15 г. гаранция</h3>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="200">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#e63946" stroke-width="8"/><text x="50" y="58" text-anchor="middle" fill="#e63946" font-size="40">24</text></svg>
+        <h3>24/7 аварийна бригада</h3>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="300">
+        <svg viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="40" rx="10" fill="#e63946"/><path d="M35 45 L50 55 L65 45" fill="#fff"/></svg>
+        <h3>Фиксирана цена предварително</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2 data-aos="fade-up">Преди / След</h2>
+    <div class="grid">
+      <div class="card" data-aos="flip-left">
+        <img src="https://placehold.co/600x400/555/fff?text=ПРЕДИ" alt="Преди ремонт">
+      </div>
+      <div class="card" data-aos="flip-right">
+        <img src="https://placehold.co/600x400/e63946/fff?text=СЛЕД" alt="След ремонт">
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testi" class="testi">
+    <h2 data-aos="fade-up">Какво казват клиентите</h2>
+    <div class="quote" data-aos="fade-up" data-aos-delay="200">
+      „След бурята покривът ми беше катастрофа. За 48 ч смениха всичко, сега е по-добър от нов!“
+      <br><strong>– Иван П., София</strong>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="contact">
+    <h2 data-aos="zoom-in">Готов ли си за сух покрив?</h2>
+    <p data-aos="fade-up" data-aos-delay="200">Обади се СЕГА и вземи -20% за първи оглед!</p>
+    <a href="tel:+359888123456" class="cta" data-aos="bounce">ОБАДИ СЕ: 0888 123 456</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Покрив Майстори ООД • Лиценз №1337</p>
+    <div class="social">
+      <a href="#"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.41c0-2.52 1.5-3.91 3.79-3.91.99 0 2.03.18 2.03.18v2.23h-1.14c-1.13 0-1.48.7-1.48 1.42v1.71h2.67l-.43 2.89h-2.24v6.99C18.34 21.13 22 16.99 22 12z"/></svg></a>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once:true, duration:1000 });
+
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      burger.querySelectorAll('div').forEach(d => d.classList.toggle('active'));
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        if(navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          burger.querySelectorAll('div').forEach(d => d.classList.remove('active'));
+        }
+      });
+    });
+
+    // Sticky nav color change
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').style.background = 
+        window.scrollY > 100 ? 'rgba(29,53,87,.98)' : 'rgba(29,53,87,.95)';
+    });
+  </script>
+</body>
+</html>

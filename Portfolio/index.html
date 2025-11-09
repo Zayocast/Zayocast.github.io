@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zayocast – фронтенд нинджа, анимационен бог и мемелорд на България." />
+    <meta name="keywords" content="портфолио, фронтенд, уеб дизайн, анимации, SVG, България" />
+    <meta name="author" content="Zayocast" />
+    <title>Zayocast | Frontend Wizard</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=space-grotesk:400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.0.42/lenis.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --txt: #f0f0f0;
+            --accent: #00ff99;
+            --gray: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        header {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+
+        .hero-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(90deg, #00ff99, #0099ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 40px rgba(0, 255, 153, .5);
+        }
+
+        .mouse {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--accent);
+            border-radius: 30px;
+        }
+
+        .mouse::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 3px;
+            animation: scroll 1.5s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translate(-50%, 0)
+            }
+
+            100% {
+                transform: translate(-50%, 15px);
+                opacity: 0
+            }
+        }
+
+        section {
+            padding: 8rem 5%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .card {
+            background: var(--gray);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform .6s cubic-bezier(.2, .8, .4, 1);
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--accent), #ff00aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            filter: blur(80px);
+            opacity: .4;
+            animation: float 20s infinite linear;
+        }
+
+        .blob1 {
+            background: #00ff99;
+            top: 10%;
+            left: 10%;
+        }
+
+        .blob2 {
+            background: #ff00aa;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(30px, -30px) rotate(180deg);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem;
+            font-size: 1.2rem;
+            background: rgba(0, 255, 153, .1);
+        }
+
+        .socials a {
+            color: var(--accent);
+            margin: 0 1rem;
+            font-size: 2rem;
+            transition: transform .3s;
+        }
+
+        .socials a:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <!-- HERO -->
+    <header id="home">
+        <svg class="hero-svg" viewBox="0 0 1440 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0L1440 960V0H0Z" fill="url(#grad)" />
+            <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00ff99" />
+                    <stop offset="100%" stop-color="#0099ff" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <h1 class="hero-title">ZAYOCAST</h1>
+        <div class="mouse"></div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2
+            style="text-align:center;font-size:3rem;margin-bottom:3rem;background:linear-gradient(90deg,#ff00aa,#00ff99);-webkit-background-clip:text;color:transparent;">
+            Кой съм аз?
+        </h2>
+        <p style="max-width:800px;margin:auto;font-size:1.3rem;line-height:1.8;text-align:center;">
+            Фронтенд мемелорд, който превръща 0 и 1 в <b>УАУ</b>.
+            Обичам GSAP, харесвам SVG-та и мразя скучни сайтове.
+            Ако твоят проект няма паралакс – той е 2015.
+        </p>
+    </section>
+
+    <!-- WORKS -->
+    <section id="work" style="background:#111;">
+        <h2
+            style="text-align:center;font-size:3rem;margin-bottom:4rem;background:linear-gradient(90deg,#00ff99,#ff00aa);-webkit-background-clip:text;color:transparent;">
+            Последните ми магийки
+        </h2>
+        <div class="grid">
+            <!-- CARD 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1519389951296-3c68f7e5e2c8?q=80&w=800"
+                    alt="Neon Dashboard" />
+                <h3>Neon Crypto Dashboard</h3>
+            </div>
+            <!-- CARD 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1597733336794-12d4cfb0a355?q=80&w=800" alt="3D Portfolio" />
+                <h3>3D Interactive Portfolio</h3>
+            </div>
+            <!-- CARD 3 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=800" alt="AI Landing" />
+                <h3>AI SaaS Landing</h3>
+            </div>
+            <!-- CARD 4 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517180107641-2e9a8e3b115c?q=80&w=800" alt="E-commerce" />
+                <h3>Headless Shop</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2
+            style="text-align:center;font-size:3rem;margin-bottom:4rem;background:linear-gradient(90deg,#0099ff,#00ff99);-webkit-background-clip:text;color:transparent;">
+            Оръжията ми
+        </h2>
+        <div
+            style="max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2rem;text-align:center;">
+            <div><svg width="80" height="80" viewBox="0 0 128 128">
+                    <path fill="#00ff99" d="M64 8L8 96h112L64 8Z" />
+                </svg>
+                <p>HTML</p>
+            </div>
+            <div><svg width="80" height="80" viewBox="0 0 128 128">
+                    <circle cx="64" cy="64" r="56" fill="#ff00aa" />
+                </svg>
+                <p>CSS</p>
+            </div>
+            <div><svg width="80" height="80" viewBox="0 0 128 128">
+                    <rect x="24" y="24" width="80" height="80" fill="#0099ff" />
+                </svg>
+                <p>JS</p>
+            </div>
+            <div><svg width="80" height="80" viewBox="0 0 128 128">
+                    <path fill="#00ff99" d="M24 24h80v80H24Z" />
+                </svg>
+                <p>React</p>
+            </div>
+            <div><svg width="80" height="80" viewBox="0 0 128 128">
+                    <polygon fill="#ff00aa" points="64,8 108,48 88,108 40,108 20,48" />
+                </svg>
+                <p>GSAP</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2
+            style="text-align:center;font-size:3rem;margin-bottom:3rem;background:linear-gradient(90deg,#ff00aa,#0099ff);-webkit-background-clip:text;color:transparent;">
+            Хайде да правим магия
+        </h2>
+        <p style="text-align:center;font-size:1.5rem;">
+            <a href="mailto:hi@zayocast.dev" style="color:var(--accent);text-decoration:none;">hi@zayocast.dev</a>
+        </p>
+        <div class="socials" style="text-align:center;margin-top:2rem;">
+            <a href="https://x.com/Zayocast" target="_blank">𝕏</a>
+            <a href="https://github.com/zayocast" target="_blank">GitHub</a>
+            <a href="https://dribbble.com/zayocast" target="_blank">Dribbble</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Zayocast – всички права запазени, освен ако не ти трябва кода 😉</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@lenis/core@1.0.42/dist/lenis.min.js"></script>
+    <script>
+        // LENIS SMOOTH SCROLL
+        const lenis = new Lenis({ lerp: 0.07 });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // GSAP ANIMATIONS
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        gsap.from(".hero-title", {
+            y: 200,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        });
+
+        gsap.utils.toArray(".card").forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 100,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.15,
+                ease: "back.out(1.4)"
+            });
+        });
+
+        // PARALLAX BLOBS
+        gsap.to(".blob1", { y: -300, rotation: 360, scrollTrigger: { trigger: "body", scrub: 1 } });
+        gsap.to(".blob2", { y: 300, rotation: -360, scrollTrigger: { trigger: "body", scrub: 1 } });
+
+        // NAV SCROLL
+        document.querySelectorAll("a[href^='#']").forEach(a => {
+            a.addEventListener("click", e => {
+                e.preventDefault();
+                lenis.scrollTo(a.getAttribute("href"));
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,2429 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Професионални услуги за детайлно почистване на домове, офиси и апартаменти. Качество, надеждност и перфектна чистота.">
+    <meta name="keywords" content="детайлно почистване, почистване на домове, почистване на офиси, професионално почистване, абонаментно почистване">
+    <meta name="author" content="CleanPro Bulgaria">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CleanPro - Професионално Детайлно Почистване">
+    <meta property="og:description" content="Вашият надежден партньор за перфектна чистота и хигиена">
+    <meta property="og:image" content="https://placehold.co/1200x630/2563eb/ffffff?text=CleanPro">
+    <meta property="og:type" content="website">
+    
+    <title>CleanPro - Детайлно Почистване | Професионални Услуги</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✨</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========================================
+           ГЛОБАЛНИ СТИЛОВЕ И RESET
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Цветова палитра - свежа синьо-зелена гама за чистота */
+            --primary-blue: #2563eb;
+            --accent-green: #10b981;
+            --deep-navy: #1e3a8a;
+            --light-blue: #dbeafe;
+            --soft-white: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --success-green: #22c55e;
+            --warning-orange: #f59e0b;
+            
+            /* Шрифтове */
+            --font-primary: 'Inter', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            
+            /* Размери */
+            --section-padding: 100px 20px;
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-dark);
+            background-color: var(--soft-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* ========================================
+           NAVIGATION BAR
+        ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .navbar.scrolled {
+            padding: 15px 50px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+        
+        .logo i {
+            font-size: 32px;
+            color: var(--accent-green);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            color: white !important;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .nav-cta::after {
+            display: none;
+        }
+        
+        .nav-cta:hover {
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary-blue);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+        
+        /* ========================================
+           HERO SECTION - MODERN GRADIENT DESIGN
+        ======================================== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            animation: fadeInLeft 1s ease-out 0.2s backwards;
+        }
+        
+        .hero-badge i {
+            color: #fbbf24;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 64px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            animation: fadeInLeft 1s ease-out 0.4s backwards;
+        }
+        
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #fbbf24, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            line-height: 1.7;
+            animation: fadeInLeft 1s ease-out 0.6s backwards;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInLeft 1s ease-out 0.8s backwards;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: white;
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            transform: translateY(-5px);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-badge {
+            position: absolute;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-badge-1 {
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-badge-2 {
+            bottom: 15%;
+            right: -10%;
+            animation-delay: 1.5s;
+        }
+        
+        .floating-badge i {
+            font-size: 32px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .floating-badge h4 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .floating-badge p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        /* ========================================
+           ОБЩИ СТИЛОВЕ ЗА СЕКЦИИ
+        ======================================== */
+        section {
+            padding: var(--section-padding);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ========================================
+           FEATURES СЕКЦИЯ
+        ======================================== */
+        .features {
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background: var(--soft-white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: rotateY(180deg);
+        }
+        
+        .feature-icon i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* ========================================
+           УСЛУГИ СЕКЦИЯ
+        ======================================== */
+        .services {
+            background: linear-gradient(135deg, var(--soft-white), var(--light-blue));
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .service-content {
+            padding: 35px;
+        }
+        
+        .service-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+        
+        .service-features li i {
+            color: var(--accent-green);
+            font-size: 16px;
+        }
+        
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 25px;
+            border-top: 2px solid var(--soft-white);
+        }
+        
+        .service-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .service-price span {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        
+        .service-btn {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .service-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* ========================================
+           ПРОЦЕС СЕКЦИЯ
+        ======================================== */
+        .process {
+            background: white;
+        }
+        
+        .process-timeline {
+            position: relative;
+            margin-top: 80px;
+            padding: 0 20px;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: calc(100% - 100px);
+            background: linear-gradient(180deg, var(--primary-blue), var(--accent-green));
+        }
+        
+        .process-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .process-step:nth-child(even) .step-content {
+            order: 2;
+        }
+        
+        .process-step:nth-child(even) .step-image {
+            order: 1;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.3);
+            z-index: 2;
+        }
+        
+        .step-content {
+            background: var(--soft-white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+        }
+        
+        .step-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        .step-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        
+        /* ========================================
+           АБОНАМЕНТИ СЕКЦИЯ
+        ======================================== */
+        .pricing {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            color: white;
+        }
+        
+        .pricing .section-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .pricing .section-title,
+        .pricing .section-subtitle {
+            color: white;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            color: var(--text-dark);
+            padding: 45px;
+            border-radius: var(--border-radius);
+            position: relative;
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pricing-card.featured {
+            border-color: #fbbf24;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured .popular-badge {
+            display: block;
+        }
+        
+        .popular-badge {
+            display: none;
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        
+        .pricing-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .pricing-card p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        .pricing-amount {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-amount span {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 35px 0;
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .pricing-features li i {
+            color: var(--accent-green);
+            font-size: 18px;
+        }
+        
+        .pricing-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .pricing-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* ========================================
+           ГАЛЕРИЯ СЕКЦИЯ
+        ======================================== */
+        .gallery {
+            background: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay i {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-overlay h4 {
+            font-size: 22px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        /* ========================================
+           ОТЗИВИ СЕКЦИЯ
+        ======================================== */
+        .testimonials {
+            background: var(--soft-white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quote-icon {
+            font-size: 48px;
+            color: var(--light-blue);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .rating {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .rating i {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+        
+        /* ========================================
+           КОНТАКТ СЕКЦИЯ
+        ======================================== */
+        .contact {
+            background: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .contact-info h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--soft-white);
+            padding: 25px;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+        
+        .info-item:hover {
+            background: var(--light-blue);
+            transform: translateX(10px);
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .info-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .info-text h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .info-text p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .contact-form {
+            background: var(--soft-white);
+            padding: 45px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            font-family: var(--font-primary);
+            font-size: 15px;
+            transition: var(--transition);
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* ========================================
+           FOOTER
+        ======================================== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 80px 20px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent-green);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* ========================================
+           BACK TO TOP BUTTON
+        ======================================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.3);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.5);
+        }
+        
+        .back-to-top i {
+            font-size: 22px;
+            color: white;
+        }
+        
+        /* ========================================
+           СТАТИСТИКИ СЕКЦИЯ
+        ======================================== */
+        .stats {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            padding: 80px 20px;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .contact-container,
+            .process-step {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .step-number {
+                left: 30px;
+                transform: translateY(-50%);
+            }
+            
+            .process-step:nth-child(even) .step-content,
+            .process-step:nth-child(even) .step-image {
+                order: initial;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px 20px;
+            }
+            
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 50px;
+                gap: 30px;
+                transition: left 0.4s ease;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            .hero {
+                padding: 120px 20px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .services-grid,
+            .pricing-grid,
+            .gallery-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .floating-badge {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                padding: 15px 30px;
+                font-size: 14px;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         NAVIGATION BAR
+    ======================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-sparkles"></i>
+                CleanPro
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Начало</a></li>
+                <li><a href="#features">Предимства</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#pricing">Цени</a></li>
+                <li><a href="#gallery">Галерия</a></li>
+                <li><a href="#contact" class="nav-cta">Свържи се</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+    ======================================== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    Над 5000 доволни клиента
+                </div>
+                <h1>
+                    Професионално <span class="highlight">Детайлно Почистване</span>
+                </h1>
+                <p>
+                    Превърнете вашия дом или офис в безупречно чисто пространство. 
+                    Ние предлагаме най-висококачествени услуги за почистване с гарантирани резултати.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        Запази час
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Научи повече
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://placehold.co/600x600/2563eb/ffffff?text=Cleaning+Service" alt="Почистване">
+                <div class="floating-badge floating-badge-1">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>100%</h4>
+                    <p>Гаранция</p>
+                </div>
+                <div class="floating-badge floating-badge-2">
+                    <i class="fas fa-clock"></i>
+                    <h4>24/7</h4>
+                    <p>Поддръжка</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         СТАТИСТИКИ
+    ======================================== -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">5000+</span>
+                <span class="stat-label">Доволни клиенти</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Години опит</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99%</span>
+                <span class="stat-label">Удовлетвореност</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Обслужване</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ПРЕДИМСТВА СЕКЦИЯ
+    ======================================== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-star"></i>
+                    Защо ние
+                </span>
+                <h2 class="section-title">Нашите предимства</h2>
+                <p class="section-subtitle">
+                    Ние предлагаме повече от просто почистване - ние създаваме перфектна среда за живот и работа
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Сертифицирани специалисти</h3>
+                    <p>
+                        Нашият екип е обучен и сертифициран по най-високите стандарти за професионално почистване
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Еко-продукти</h3>
+                    <p>
+                        Използваме само био-разградими и безопасни препарати, грижейки се за вашето здраве и природата
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Гъвкав график</h3>
+                    <p>
+                        Работим по ваше удобство - почистване в удобно за вас време, включително уикенди и празници
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Гарантирано качество</h3>
+                    <p>
+                        100% гаранция за качество - ако не сте доволни, почистваме повторно напълно безплатно
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>Модерна техника</h3>
+                    <p>
+                        Използваме най-съвременно оборудване и професионални машини за безупречни резултати
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Поддръжка</h3>
+                    <p>
+                        Винаги на разположение за спешни ситуации и консултации - обаждайте се по всяко време
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         УСЛУГИ СЕКЦИЯ
+    ======================================== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-broom"></i>
+                    Нашите услуги
+                </span>
+                <h2 class="section-title">Какво предлагаме</h2>
+                <p class="section-subtitle">
+                    Пълна гама от професионални услуги за почистване, адаптирани към вашите нужди
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/400x250/2563eb/ffffff?text=Home+Cleaning" alt="Почистване на домове">
+                        <span class="service-badge">Популярно</span>
+                    </div>
+                    <div class="service-content">
+                        <h3>Почистване на домове</h3>
+                        <p>
+                            Цялостно почистване на вашия дом с внимание към всеки детайл
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Прахосмукане и измиване</li>
+                            <li><i class="fas fa-check-circle"></i> Почистване на прозорци</li>
+                            <li><i class="fas fa-check-circle"></i> Дезинфекция на санитарни помещения</li>
+                            <li><i class="fas fa-check-circle"></i> Полиране на мебели</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">
+                                80лв
+                                <span>/час</span>
+                            </div>
+                            <button class="service-btn" onclick="alert('Благодарим! Свържете се с нас за запазване на час.')">
+                                Поръчай
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/400x250/10b981/ffffff?text=Office+Cleaning" alt="Почистване на офиси">
+                    </div>
+                    <div class="service-content">
+                        <h3>Почистване на офиси</h3>
+                        <p>
+                            Професионално почистване на офисни пространства за продуктивна работна среда
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Ежедневно поддържане</li>
+                            <li><i class="fas fa-check-circle"></i> Почистване на работни места</li>
+                            <li><i class="fas fa-check-circle"></i> Дезинфекция на общи зони</li>
+                            <li><i class="fas fa-check-circle"></i> Изхвърляне на отпадъци</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">
+                                120лв
+                                <span>/визита</span>
+                            </div>
+                            <button class="service-btn" onclick="alert('Благодарим! Свържете се с нас за запазване на час.')">
+                                Поръчай
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/400x250/2563eb/ffffff?text=Deep+Cleaning" alt="Генерално почистване">
+                        <span class="service-badge">Най-търсено</span>
+                    </div>
+                    <div class="service-content">
+                        <h3>Генерално почистване</h3>
+                        <p>
+                            Детайлно почистване на труднодостъпни места и цялостна дезинфекция
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Почистване зад мебели</li>
+                            <li><i class="fas fa-check-circle"></i> Измиване на стени и тавани</li>
+                            <li><i class="fas fa-check-circle"></i> Почистване на уреди</li>
+                            <li><i class="fas fa-check-circle"></i> Машинно изтупване</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">
+                                200лв
+                                <span>/обект</span>
+                            </div>
+                            <button class="service-btn" onclick="alert('Благодарим! Свържете се с нас за запазване на час.')">
+                                Поръчай
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/400x250/10b981/ffffff?text=After+Repair" alt="След ремонт">
+                    </div>
+                    <div class="service-content">
+                        <h3>Почистване след ремонт</h3>
+                        <p>
+                            Специализирано почистване след строителни и ремонтни дейности
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Почистване на прах и боя</li>
+                            <li><i class="fas fa-check-circle"></i> Полиране на подове</li>
+                            <li><i class="fas fa-check-circle"></i> Измиване на фаянс и теракот</li>
+                            <li><i class="fas fa-check-circle"></i> Извозване на отпадъци</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">
+                                250лв
+                                <span>/обект</span>
+                            </div>
+                            <button class="service-btn" onclick="alert('Благодарим! Свържете се с нас за запазване на час.')">
+                                Поръчай
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/400x250/2563eb/ffffff?text=Carpet+Cleaning" alt="Пране на килими">
+                    </div>
+                    <div class="service-content">
+                        <h3>Пране на килими и мокети</h3>
+                        <p>
+                            Професионално машинно пране и дезинфекция на всички видове килими
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Машинно екстракция</li>
+                            <li><i class="fas fa-check-circle"></i> Премахване на петна</li>
+                            <li><i class="fas fa-check-circle"></i> Антиалергенна обработка</li>
+                            <li><i class="fas fa-check-circle"></i> Бързо изсушаване</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">
+                                15лв
+                                <span>/м²</span>
+                            </div>
+                            <button class="service-btn" onclick="alert('Благодарим! Свържете се с нас за запазване на час.')">
+                                Поръчай
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/400x250/10b981/ffffff?text=Window+Cleaning" alt="Почистване на прозорци">
+                    </div>
+                    <div class="service-content">
+                        <h3>Почистване на прозорци</h3>
+                        <p>
+                            Кристално чисти прозорци с професионално оборудване и техники
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Двустранно измиване</li>
+                            <li><i class="fas fa-check-circle"></i> Премахване на упорити замърсявания</li>
+                            <li><i class="fas fa-check-circle"></i> Почистване на первази</li>
+                            <li><i class="fas fa-check-circle"></i> Работа на височина</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">
+                                10лв
+                                <span>/прозорец</span>
+                            </div>
+                            <button class="service-btn" onclick="alert('Благодарим! Свържете се с нас за запазване на час.')">
+                                Поръчай
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ПРОЦЕС СЕКЦИЯ
+    ======================================== -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-list-check"></i>
+                    Как работим
+                </span>
+                <h2 class="section-title">Нашият процес</h2>
+                <p class="section-subtitle">
+                    Лесни стъпки до перфектната чистота
+                </p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3>Запитване и оценка</h3>
+                        <p>
+                            Свържете се с нас чрез телефон, имейл или нашата онлайн форма. 
+                            Нашият екип ще направи детайлна оценка на вашите нужди и ще предложи 
+                            най-подходящото решение за вас. Получавате безплатна оферта за услугата.
+                        </p>
+                    </div>
+                    <div class="step-image">
+                        <img src="https://placehold.co/600x350/2563eb/ffffff?text=Step+1" alt="Стъпка 1">
+                    </div>
+                    <div class="step-number">1</div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3>Планиране и подготовка</h3>
+                        <p>
+                            След потвърждение на офертата, планираме посещението в удобно за вас време. 
+                            Нашият екип се подготвя с необходимите материали и оборудване, специално 
+                            подбрани за конкретните нужди на вашия обект.
+                        </p>
+                    </div>
+                    <div class="step-image">
+                        <img src="https://placehold.co/600x350/10b981/ffffff?text=Step+2" alt="Стъпка 2">
+                    </div>
+                    <div class="step-number">2</div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3>Професионално почистване</h3>
+                        <p>
+                            Нашият екип от сертифицирани специалисти извършва цялостното почистване 
+                            според договорения обхват. Използваме само професионални препарати и техника, 
+                            гарантирайки безупречни резултати при всяка услуга.
+                        </p>
+                    </div>
+                    <div class="step-image">
+                        <img src="https://placehold.co/600x350/2563eb/ffffff?text=Step+3" alt="Стъпка 3">
+                    </div>
+                    <div class="step-number">3</div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3>Контрол и гаранция</h3>
+                        <p>
+                            След завършване на почистването, преминаваме през детайлна проверка на 
+                            всички области. Ако не сте напълно доволни от резултата, ще коригираме 
+                            всичко докато не сте 100% удовлетворени. Гаранцията ни е нашата репутация.
+                        </p>
+                    </div>
+                    <div class="step-image">
+                        <img src="https://placehold.co/600x350/10b981/ffffff?text=Step+4" alt="Стъпка 4">
+                    </div>
+                    <div class="step-number">4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         АБОНАМЕНТИ СЕКЦИЯ
+    ======================================== -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-tags"></i>
+                    Ценова листа
+                </span>
+                <h2 class="section-title">Абонаментни планове</h2>
+                <p class="section-subtitle">
+                    Изберете план, който отговаря на вашите нужди и спестете до 30%
+                </p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Базов план</h3>
+                    <p>Идеален за малки домове и апартаменти</p>
+                    <div class="pricing-amount">
+                        250лв
+                        <span>/месец</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 2 посещения месечно</li>
+                        <li><i class="fas fa-check-circle"></i> Основно почистване</li>
+                        <li><i class="fas fa-check-circle"></i> Прахосмукане и измиване</li>
+                        <li><i class="fas fa-check-circle"></i> До 80м² площ</li>
+                        <li><i class="fas fa-check-circle"></i> Еко-продукти</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 поддръжка</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="alert('Благодарим! Свържете се с нас за абонамент.')">
+                        Избери план
+                    </button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <span class="popular-badge">Най-популярен</span>
+                    <h3>Стандартен план</h3>
+                    <p>Перфектен за семейства и средни домове</p>
+                    <div class="pricing-amount">
+                        450лв
+                        <span>/месец</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 4 посещения месечно</li>
+                        <li><i class="fas fa-check-circle"></i> Детайлно почистване</li>
+                        <li><i class="fas fa-check-circle"></i> Всички стандартни зони</li>
+                        <li><i class="fas fa-check-circle"></i> До 150м² площ</li>
+                        <li><i class="fas fa-check-circle"></i> Премиум продукти</li>
+                        <li><i class="fas fa-check-circle"></i> Приоритетна поддръжка</li>
+                        <li><i class="fas fa-check-circle"></i> 15% отстъпка</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="alert('Благодарим! Свържете се с нас за абонамент.')">
+                        Избери план
+                    </button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Премиум план</h3>
+                    <p>Максимална грижа за големи домове</p>
+                    <div class="pricing-amount">
+                        800лв
+                        <span>/месец</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 8 посещения месечно</li>
+                        <li><i class="fas fa-check-circle"></i> Пълно почистване</li>
+                        <li><i class="fas fa-check-circle"></i> Всички зони + екстри</li>
+                        <li><i class="fas fa-check-circle"></i> Неограничена площ</li>
+                        <li><i class="fas fa-check-circle"></i> VIP продукти</li>
+                        <li><i class="fas fa-check-circle"></i> Персонален мениджър</li>
+                        <li><i class="fas fa-check-circle"></i> 30% отстъпка</li>
+                        <li><i class="fas fa-check-circle"></i> Безплатни екстри</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="alert('Благодарим! Свържете се с нас за абонамент.')">
+                        Избери план
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ГАЛЕРИЯ СЕКЦИЯ
+    ======================================== -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-images"></i>
+                    Нашата работа
+                </span>
+                <h2 class="section-title">Галерия</h2>
+                <p class="section-subtitle">
+                    Преди и след - вижте трансформацията, която постигаме
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x400/2563eb/ffffff?text=Before+After+1" alt="Преди и след 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Дневна</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x400/10b981/ffffff?text=Before+After+2" alt="Преди и след 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Кухня</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x400/2563eb/ffffff?text=Before+After+3" alt="Преди и след 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Баня</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x400/10b981/ffffff?text=Before+After+4" alt="Преди и след 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Офис</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x400/2563eb/ffffff?text=Before+After+5" alt="Преди и след 5">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Спалня</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/400x400/10b981/ffffff?text=Before+After+6" alt="Преди и след 6">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Прозорци</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ОТЗИВИ СЕКЦИЯ
+    ======================================== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-comments"></i>
+                    Отзиви
+                </span>
+                <h2 class="section-title">Какво казват клиентите</h2>
+                <p class="section-subtitle">
+                    Реални мнения от доволни клиенти за нашите услуги
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Невероятна услуга! Екипът на CleanPro направи апартамента ми като нов. 
+                        Професионализмът и вниманието към детайлите са на най-високо ниво. 
+                        Определено ще ги препоръчам на всички мои приятели!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">МИ</div>
+                        <div class="author-info">
+                            <h4>Мария Иванова</h4>
+                            <p>София, Витоша</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Използваме услугите им за почистване на нашия офис вече 2 години. 
+                        Винаги точни, надеждни и с отлично качество. Служителите са любезни 
+                        и работят бързо без да пречат на нашата работа."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ГП</div>
+                        <div class="author-info">
+                            <h4>Георги Петров</h4>
+                            <p>Мениджър, Tech Solutions</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "След ремонт имах нужда от сериозно почистване и те се справиха перфектно! 
+                        Премахнаха целия прах и боя, подовете блестят като нови. Отлично съотношение 
+                        цена-качество. Благодаря ви!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ЕД</div>
+                        <div class="author-info">
+                            <h4>Елена Димитрова</h4>
+                            <p>София, Лозенец</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         КОНТАКТ СЕКЦИЯ
+    ======================================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-envelope"></i>
+                    Контакти
+                </span>
+                <h2 class="section-title">Свържете се с нас</h2>
+                <p class="section-subtitle">
+                    Готови сме да отговорим на всички ваши въпроси и да запазим час
+                </p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Информация за контакт</h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Адрес</h4>
+                            <p>бул. България 102<br>София 1680, България</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Телефон</h4>
+                            <p>+359 888 999 777<br>+359 2 123 4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Имейл</h4>
+                            <p>info@cleanpro.bg<br>support@cleanpro.bg</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Работно време</h4>
+                            <p>Понеделник - Петък: 8:00 - 20:00<br>
+                            Събота - Неделя: 9:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Изпратете запитване</h3>
+                    <form onsubmit="event.preventDefault(); alert('Благодарим за вашето запитване! Ще се свържем с вас в рамките на 24 часа.');">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Име и фамилия</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Имейл адрес</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Изберете услуга</label>
+                            <select id="service" name="service" required>
+                                <option value="">-- Изберете --</option>
+                                <option value="home">Почистване на домове</option>
+                                <option value="office">Почистване на офиси</option>
+                                <option value="deep">Генерално почистване</option>
+                                <option value="repair">Почистване след ремонт</option>
+                                <option value="carpet">Пране на килими</option>
+                                <option value="windows">Почистване на прозорци</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Вашето съобщение</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Изпрати запитване
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CleanPro Bulgaria</h3>
+                <p>
+                    Вашият надежден партньор за професионално детайлно почистване. 
+                    Създаваме перфектна чистота и комфорт във вашия дом или офис.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Услуги</h3>
+                <a href="#services">Почистване на домове</a>
+                <a href="#services">Почистване на офиси</a>
+                <a href="#services">Генерално почистване</a>
+                <a href="#services">След ремонт</a>
+                <a href="#services">Пране на килими</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Бързи връзки</h3>
+                <a href="#home">Начало</a>
+                <a href="#features">Предимства</a>
+                <a href="#pricing">Цени</a>
+                <a href="#gallery">Галерия</a>
+                <a href="#contact">Контакт</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакти</h3>
+                <p><i class="fas fa-map-marker-alt"></i> бул. България 102, София</p>
+                <p><i class="fas fa-phone"></i> +359 888 999 777</p>
+                <p><i class="fas fa-envelope"></i> info@cleanpro.bg</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 CleanPro Bulgaria. Всички права запазени. Дизайн с 💙</p>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         BACK TO TOP BUTTON
+    ======================================== -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+    <script>
+        // ====== MOBILE MENU TOGGLE ======
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Затваряне на менюто при клик на линк
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // ====== NAVBAR SCROLL EFFECT ======
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // ====== BACK TO TOP BUTTON ======
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // ====== INTERSECTION OBSERVER ЗА АНИМАЦИЯ НА СЕКЦИИТЕ ======
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Наблюдаване на всички секции
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // ====== ПЛАВНА НАВИГАЦИЯ ======
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ====== АНИМАЦИЯ НА СТАТИСТИКИТЕ ======
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    const number = entry.target;
+                    const endValue = parseInt(number.textContent);
+                    number.dataset.suffix = number.textContent.replace(/[0-9]/g, '');
+                    animateValue(number, 0, endValue, 2000);
+                    entry.target.classList.add('animated');
+                }
+            });
+        });
+        
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+        
+        // ====== ФОРМА ВАЛИДАЦИЯ ======
+        const contactForm = document.querySelector('.contact-form form');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && phone && service && message) {
+                    alert('Благодарим за вашето запитване! Ще се свържем с вас в рамките на 24 часа.');
+                    contactForm.reset();
+                } else {
+                    alert('Моля, попълнете всички полета.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

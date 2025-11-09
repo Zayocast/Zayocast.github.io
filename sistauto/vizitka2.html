@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СИСТ АУТО - Визитка</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 30px;
+            background: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        .card {
+            width: 100%;
+            aspect-ratio: 85/55;
+            background: #2d2d2d;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+        
+        /* ПРЕДНА СТРАНА */
+        .card-front {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 3px solid #e63946;
+        }
+        
+        .front-header {
+            background: #1a1a1a;
+            padding: 40px 45px 35px;
+            border-bottom: 2px solid #e63946;
+        }
+        
+        .logo {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+        
+        .logo-white {
+            color: #ffffff;
+        }
+        
+        .logo-red {
+            color: #e63946;
+        }
+        
+        .tagline {
+            color: #b8b8b8;
+            font-size: 18px;
+            margin-top: 8px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .front-content {
+            flex: 1;
+            padding: 40px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .name-section {
+            margin-bottom: 25px;
+        }
+        
+        .name {
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .title {
+            color: #e63946;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .separator {
+            width: 80px;
+            height: 3px;
+            background: #e63946;
+            margin: 25px 0;
+        }
+        
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        
+        .contact-icon {
+            font-size: 28px;
+            min-width: 28px;
+            text-align: center;
+        }
+        
+        .contact-text {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        
+        /* ЗАДНА СТРАНА */
+        .card-back {
+            background: linear-gradient(135deg, #e63946 0%, #c72736 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-back::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .back-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .back-logo {
+            font-size: 80px;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-tagline {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+        
+        .services {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .service {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px 15px;
+            border-radius: 12px;
+            min-width: 100px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        
+        .service-name {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge {
+            background: #ffffff;
+            color: #e63946;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 35px;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .label {
+            text-align: center;
+            color: #999;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-wrapper">
+        <!-- ПРЕДНА СТРАНА -->
+        <div>
+            <div class="card">
+                <div class="card-front">
+                    <div class="front-header">
+                        <div class="logo">
+                            <span class="logo-white">СИСТ</span><span class="logo-red">АУТО</span>
+                        </div>
+                        <div class="tagline">Вашият доверен автосервиз</div>
+                    </div>
+                    
+                    <div class="front-content">
+                        <div class="name-section">
+                            <div class="name">Стефан Станков</div>
+                            <div class="title">Управител / Главен механик</div>
+                        </div>
+                        
+                        <div class="separator"></div>
+                        
+                        <div class="contacts">
+                            <div class="contact-item">
+                                <div class="contact-icon">📱</div>
+                                <div class="contact-text">0888 123 456</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+                                <div class="contact-text">office@sistauto.bg</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-text">бул. „Стефан Стамболов" № 6</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🌐</div>
+                                <div class="contact-text">www.sist-auto.bg</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="label">Предна страна</div>
+        </div>
+        
+        <!-- ЗАДНА СТРАНА -->
+        <div>
+            <div class="card">
+                <div class="card-back">
+                    <div class="back-content">
+                        <div class="back-logo">СИСТАУТО</div>
+                        <div class="back-tagline">Вашият доверен автосервиз</div>
+                        
+                        <div class="services">
+                            <div class="service">
+                                <div class="service-icon">🔧</div>
+                                <div class="service-name">Ремонт</div>
+                            </div>
+                            <div class="service">
+                                <div class="service-icon">⚙️</div>
+                                <div class="service-name">Поддръжка</div>
+                            </div>
+                            <div class="service">
+                                <div class="service-icon">🛠️</div>
+                                <div class="service-name">Диагностика</div>
+                            </div>
+                            <div class="service">
+                                <div class="service-icon">🔩</div>
+                                <div class="service-name">Сервиз</div>
+                            </div>
+                        </div>
+                        
+                        <div class="badge">🔧Запази час СЕГА!🔧</div>
+                    </div>
+                </div>
+            </div>
+            <div class="label">Задна страна</div>
+        </div>
+    </div>
+</body>
+</html>

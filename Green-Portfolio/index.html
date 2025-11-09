@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zayo – дигитален магьосник. Превръщам кафе в код и пиксели в милиони импресии." />
+  <meta name="keywords" content="UI/UX, фронтенд, портфолио, анимации, SVG" />
+  <meta name="author" content="@Zayocast" />
+  <title>Zayo | Портфолио с УАУ ефект</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <style>
+    /* === MEME CSS === */
+    :root {
+      --bg: #0a0a0a;
+      --accent: #00ff99;
+      --text: #f0f0f0;
+      --gray: #666;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Space Grotesk', sans-serif;
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+    ::selection { background:var(--accent); color:#000; }
+
+    /* NAV – sticky както меме в 9gag */
+    nav {
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:999;
+      padding:1.5rem 5%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter:blur(12px);
+      background:rgba(10,10,10,0.8);
+      transition:0.4s;
+    }
+    nav.scrolled { padding:1rem 5%; background:rgba(10,10,10,0.95); }
+    .logo { font-weight:800; font-size:1.8rem; color:var(--accent); }
+    .nav-links { display:flex; gap:2.5rem; }
+    .nav-links a {
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+      position:relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-6px; left:0; width:0;
+      height:3px; background:var(--accent); transition:0.3s;
+    }
+    .nav-links a:hover::after { width:100%; }
+
+    /* HERO – по-як от Tesla Plaid */
+    #hero {
+      height:100vh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      background:radial-gradient(circle at center, #1a1a2e 0%, var(--bg) 70%);
+    }
+    .hero-content {
+      text-align:center;
+      z-index:2;
+    }
+    .hero-content h1 {
+      font-size:clamp(3rem, 10vw, 7rem);
+      background:linear-gradient(90deg, #fff, var(--accent));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      margin-bottom:0.5rem;
+    }
+    .hero-content p {
+      font-size:1.4rem;
+      color:var(--gray);
+      max-width:600px;
+      margin:0 auto 2rem;
+    }
+    .cta {
+      padding:1rem 2.5rem;
+      font-size:1.1rem;
+      font-weight:600;
+      background:var(--accent);
+      color:#000;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 8px 30px rgba(0,255,153,0.4);
+    }
+    .cta:hover { transform:scale(1.1); box-shadow:0 12px 40px rgba(0,255,153,0.6); }
+
+    /* SVG BACKGROUND – меме вълни */
+    .waves {
+      position:absolute;
+      bottom:0; left:0; width:100%;
+      height:30%;
+    }
+    .waves svg { width:100%; height:100%; }
+
+    /* SECTIONS */
+    section { padding:8rem 5%; }
+    .container { max-width:1200px; margin:auto; }
+    h2 {
+      font-size:3.5rem;
+      text-align:center;
+      margin-bottom:4rem;
+      background:linear-gradient(90deg, var(--accent), #fff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    /* ABOUT */
+    #about .grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:4rem;
+      align-items:center;
+    }
+    #about img {
+      width:100%;
+      border-radius:20px;
+      box-shadow:0 20px 60px rgba(0,255,153,0.2);
+    }
+
+    /* PROJECTS */
+    #projects .cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+      gap:2rem;
+    }
+    .card {
+      background:rgba(255,255,255,0.05);
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      backdrop-filter:blur(10px);
+    }
+    .card:hover { transform:translateY(-15px); box-shadow:0 20px 40px rgba(0,255,153,0.3); }
+    .card img { width:100%; height:200px; object-fit:cover; }
+    .card-body { padding:1.5rem; }
+    .card h3 { margin-bottom:0.5rem; color:var(--accent); }
+
+    /* SKILLS – SVG барове */
+    #skills .skill {
+      margin-bottom:2rem;
+    }
+    .skill svg text { fill:var(--text); font-weight:600; }
+    .skill-bar {
+      height:12px;
+      background:rgba(255,255,255,0.1);
+      border-radius:50px;
+      overflow:hidden;
+      margin-top:0.5rem;
+    }
+    .fill {
+      height:100%;
+      background:var(--accent);
+      width:0;
+      border-radius:50px;
+      transition:width 2s cubic-bezier(0.65,0,0.35,1);
+    }
+
+    /* CONTACT */
+    #contact {
+      background:linear-gradient(135deg, #1a1a2e, var(--bg));
+      text-align:center;
+    }
+    #contact form {
+      max-width:600px;
+      margin:auto;
+      display:grid;
+      gap:1.5rem;
+    }
+    input, textarea {
+      padding:1rem;
+      border:none;
+      border-radius:12px;
+      background:rgba(255,255,255,0.1);
+      color:var(--text);
+      font-family:inherit;
+    }
+    input::placeholder, textarea::placeholder { color:var(--gray); }
+
+    /* FOOTER */
+    footer {
+      text-align:center;
+      padding:3rem;
+      background:#000;
+      font-size:0.9rem;
+      color:var(--gray);
+    }
+
+    /* MOBILE */
+    .burger { display:none; cursor:pointer; }
+    .burger div { width:25px; height:3px; background:var(--accent); margin:5px; transition:0.3s; }
+
+    @media (max-width: 768px) {
+      .nav-links { position:fixed; top:0; right:-100%; height:100vh; width:70%; background:var(--bg); flex-direction:column; justify-content:center; align-items:center; transition:0.5s; }
+      .nav-links.active { right:0; }
+      .burger { display:block; }
+      #about .grid { grid-template-columns:1fr; }
+      h2 { font-size:2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="logo">ZAYO</div>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+    <div class="nav-links">
+      <a href="#hero">Начало</a>
+      <a href="#about">За мен</a>
+      <a href="#projects">Проекти</a>
+      <a href="#skills">Скилове</a>
+      <a href="#contact">Контакт</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Здравей, аз съм Zayo</h1>
+      <p>Фронтенд нинджа, SVG магьосник и меме-генератор 24/7</p>
+      <button class="cta" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+        Виж магията
+      </button>
+    </div>
+
+    <!-- WAVES -->
+    <div class="waves">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#00ff99" fill-opacity="0.15" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,170.7C672,160,768,160,864,165.3C960,171,1056,181,1152,186.7C1248,192,1344,192,1392,192L1440,192L1440,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container" data-aos="fade-up">
+      <h2>Кой съм аз?</h2>
+      <div class="grid">
+        <div>
+          <p>От 3 години превръщам Figma в живи сайтове, а кафето – в безсънни нощи. Обичам чисти анимации, тъмни теми и котки в Zoom обаждания.</p>
+          <br>
+          <p>Когато не кодя, правя мемета в Canva и тествам нови GSAP трикове. И да, знам 12 начина да анимирам бутон.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1555952517-2a2c3c5d0a6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Zayo IRL">
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 data-aos="fade-up">Проекти, които не са скучни</h2>
+      <div class="cards">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1593720219276-0b2e0377e48b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Crypto Dashboard">
+          <div class="card-body">
+            <h3>Neon Crypto Dashboard</h3>
+            <p>React + Framer Motion + 3D графики. Клиентът плака от щастие.</p>
+          </div>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1519389951296-2d96c46d19c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce">
+          <div class="card-body">
+            <h3>Glitch Shop</h3>
+            <p>Next.js + GSAP scroll trigger. Продажбите +420%.</p>
+          </div>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1587628607610-393b8c5ca4e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portfolio">
+          <div class="card-body">
+            <h3>Този сайт</h3>
+            <p>Да, рекурсия. SVG + AOS + 0 emoji = чист УАУ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 data-aos="fade-up">Суперсили</h2>
+      <div class="skill" data-aos="fade-right">
+        <div style="display:flex; justify-content:space-between;">
+          <span>HTML / CSS / JS</span><span>95%</span>
+        </div>
+        <div class="skill-bar"><div class="fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill" data-aos="fade-right" data-aos-delay="100">
+        <div style="display:flex; justify-content:space-between;">
+          <span>React / Next.js</span><span>90%</span>
+        </div>
+        <div class="skill-bar"><div class="fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill" data-aos="fade-right" data-aos-delay="200">
+        <div style="display:flex; justify-content:space-between;">
+          <span>GSAP / SVG</span><span>99%</span>
+        </div>
+        <div class="skill-bar"><div class="fill" style="width:99%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 data-aos="fade-up">Пиши ми (без спам)</h2>
+      <form data-aos="fade-up" data-aos-delay="200">
+        <input type="text" placeholder="Име" required>
+        <input type="email" placeholder="Email" required>
+        <textarea rows="5" placeholder="Какво ти трябва?"></textarea>
+        <button type="submit" class="cta">Изпрати ракета</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Zayo. Всички права запазени. Меметата – не.</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ once:true, duration:1000 });
+
+    // Sticky nav + shrink
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      burger.classList.toggle('toggle');
+    });
+
+    // Skill bars animate on scroll
+    const fills = document.querySelectorAll('.fill');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const width = entry.target.style.width;
+          entry.target.style.width = '0%';
+          setTimeout(() => entry.target.style.width = width, 100);
+        }
+      });
+    }, { threshold: 0.5 });
+    fills.forEach(f => observer.observe(f));
+
+    // Form – просто console.log (смени с Netlify/Formspree)
+    document.querySelector('form').addEventListener('submit', e => {
+      e.preventDefault();
+      console.log('Ракетата излетя! 🚀');
+      alert('Съобщението пристигна в матрицата!');
+    });
+  </script>
+</body>
+</html>

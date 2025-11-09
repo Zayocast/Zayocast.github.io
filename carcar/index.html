@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AutoPaint Pro | Car Paint & Mixing</title>
+
+  <!-- Basic SEO -->
+  <meta name="description" content="AutoPaint Pro – professional car paint, clear coats, primers and mixing system for body shops and enthusiasts." />
+  <meta name="keywords" content="car paint, auto paint, clear coat, primer, spray paint, боя за коли, авто боя, автобояджийски магазин" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AutoPaint Pro | Car Paint & Mixing" />
+  <meta property="og:description" content="Bright, accurate and durable car paint systems for professionals and DIY painters." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630?text=AutoPaint+Pro" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Motion One (vanilla) -->
+  <script src="https://unpkg.com/motion@10.16.4/dist/motion.min.js" defer></script>
+
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --primary: #f97316;
+      --accent: #6366f1;
+      --text: #111827;
+      --muted: #6b7280;
+      --radius-xl: 1.4rem;
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f9fafb;
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* цветни пръски за целия сайт */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 5% 15%, rgba(249, 115, 22, 0.16), transparent 55%),
+        radial-gradient(circle at 90% 10%, rgba(244, 63, 94, 0.18), transparent 55%),
+        radial-gradient(circle at 15% 80%, rgba(59, 130, 246, 0.16), transparent 55%),
+        radial-gradient(circle at 85% 75%, rgba(34, 197, 94, 0.14), transparent 55%);
+      opacity: 0.9;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(249, 250, 251, 0.92);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 40% 60% 55% 45%;
+      background: conic-gradient(from 210deg,
+        #f97316,
+        #facc15,
+        #22c55e,
+        #0ea5e9,
+        #6366f1,
+        #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.6);
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 20% 0%, rgba(255,255,255,0.75), transparent 60%);
+      mix-blend-mode: screen;
+    }
+
+    .logo-icon i {
+      position: relative;
+      color: #111827;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    nav.nav-links {
+      display: flex;
+      gap: 1.3rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav.nav-links a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav.nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.2s;
+    }
+
+    nav.nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 0.3rem 0.9rem;
+      background: #ffffffaa;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--muted);
+    }
+
+    .btn-main {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 1.2rem;
+      background: radial-gradient(circle at 0 0, #f97316, #facc15);
+      color: #111827;
+      font-weight: 600;
+      font-size: 0.86rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(248, 113, 22, 0.35);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 32px rgba(248, 113, 22, 0.45);
+    }
+
+    .lang-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.25rem 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      background: #ffffffaa;
+      cursor: pointer;
+    }
+
+    .lang-toggle span {
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .lang-toggle span.active {
+      background: #111827;
+      color: #f9fafb;
+    }
+
+    .burger {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .nav-mobile {
+      display: none;
+      padding-bottom: 0.7rem;
+    }
+
+    .nav-mobile.open {
+      display: block;
+    }
+
+    .nav-mobile a {
+      display: block;
+      padding: 0.2rem 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 0 3.4rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 22px rgba(148, 163, 184, 0.45);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-label i {
+      color: var(--primary);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3.2vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #f97316, #ec4899, #6366f1);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 28rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-secondary {
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.9);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+    }
+
+    .hero-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-badge-item i {
+      color: var(--accent);
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .splash-card {
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .splash-bg {
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(249, 115, 22, 0.2), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(236, 72, 153, 0.25), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.25), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .splash-content {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .splash-disc {
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: conic-gradient(from 160deg,
+        #f97316,
+        #facc15,
+        #22c55e,
+        #0ea5e9,
+        #a855f7,
+        #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 35px rgba(148, 163, 184, 0.7);
+    }
+
+    .splash-disc::after {
+      content: "";
+      width: 72%;
+      height: 72%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 10%, #ffffff, #f9fafb, #e5e7eb);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+
+    .splash-drops {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .splash-chip {
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      background: rgba(255, 255, 255, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.4);
+    }
+
+    .splash-chip span {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .splash-chip small {
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-head {
+      text-align: left;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 26rem;
+    }
+
+    /* PRODUCTS */
+    .products {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 1.5rem;
+      box-shadow: 0 16px 35px rgba(148, 163, 184, 0.3);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(148, 163, 184, 0.32);
+      display: flex;
+      flex-direction: column;
+      font-size: 0.85rem;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .product-card img {
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 0.75rem 0.9rem 0.9rem;
+    }
+
+    .product-body h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-body p {
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .product-meta i {
+      margin-right: 0.15rem;
+      color: var(--accent);
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(148, 163, 184, 0.4);
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: 1.1rem;
+      padding: 1rem;
+      box-shadow: 0 10px 28px rgba(148, 163, 184, 0.3);
+      font-size: 0.85rem;
+    }
+
+    .service-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(248, 250, 252, 0.9);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-icon i {
+      color: var(--primary);
+    }
+
+    .service-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .service-card p {
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-points {
+      margin-top: 0.9rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .about-points span i {
+      margin-right: 0.35rem;
+      color: var(--primary);
+    }
+
+    .about-image {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(148, 163, 184, 0.4);
+    }
+
+    /* COLOR LAB */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .mixer-preview {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .mixer-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      box-shadow: 0 14px 30px rgba(148, 163, 184, 0.5);
+      border: 4px solid #ffffff;
+    }
+
+    .mixer-data {
+      font-size: 0.85rem;
+    }
+
+    .mixer-data code {
+      display: inline-block;
+      background: #0f172a;
+      color: #f9fafb;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      margin-top: 0.2rem;
+    }
+
+    .slider-group {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .slider-group label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.2rem;
+    }
+
+    .slider-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+    }
+
+    .mixer-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.65rem;
+    }
+
+    /* BRANDS */
+    .brands-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .brand-pill {
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 20px rgba(148, 163, 184, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .brand-pill img {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+
+    /* PROS */
+    .pros-box {
+      background: linear-gradient(135deg, #eef2ff, #fef3c7);
+      border-radius: 2rem;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+    }
+
+    .pros-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .pros-list li i {
+      margin-right: 0.4rem;
+      color: var(--primary);
+    }
+
+    .pros-side {
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+    }
+
+    .pros-pill {
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.35rem 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.4);
+    }
+
+    .pros-pill i {
+      color: var(--accent);
+    }
+
+    /* REVIEWS */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .review-card {
+      background: #ffffff;
+      border-radius: 1.1rem;
+      padding: 1rem;
+      box-shadow: 0 12px 32px rgba(148, 163, 184, 0.35);
+      font-size: 0.84rem;
+    }
+
+    .review-stars {
+      margin-bottom: 0.4rem;
+      color: #f59e0b;
+      font-size: 0.75rem;
+    }
+
+    .review-name {
+      margin-top: 0.4rem;
+      font-weight: 600;
+    }
+
+    .review-meta {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    /* CONTACT / FOOTER */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.4rem 1.3rem;
+      box-shadow: 0 12px 30px rgba(148, 163, 184, 0.35);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      font-size: 0.86rem;
+      margin-bottom: 0.3rem;
+      color: var(--muted);
+    }
+
+    .contact-row i {
+      color: var(--accent);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border-radius: 0.9rem;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      padding: 0.45rem 0.6rem;
+      font-size: 0.86rem;
+      outline: none;
+      background: #f9fafb;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .contact-form textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.3);
+      background: #ffffff;
+    }
+
+    .map-box {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 0.9rem;
+      box-shadow: 0 12px 30px rgba(148, 163, 184, 0.3);
+    }
+
+    /* FOOTER */
+    .footer-main {
+      background: radial-gradient(circle at 5% 0%, rgba(249, 115, 22, 0.25), transparent 60%),
+                  radial-gradient(circle at 100% 80%, rgba(59, 130, 246, 0.2), transparent 60%),
+                  #020617;
+      color: #e5e7eb;
+      padding: 2.2rem 0 1.6rem;
+      margin-top: 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.7fr);
+      gap: 2rem;
+      font-size: 0.86rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 40% 60% 60% 40%;
+      background: conic-gradient(from 180deg,
+        #f97316,
+        #facc15,
+        #22c55e,
+        #0ea5e9,
+        #6366f1,
+        #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo-icon i {
+      color: #020617;
+      font-size: 0.9rem;
+    }
+
+    .footer-heading {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-links a {
+      color: #cbd5f5;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .footer-social a {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .footer-bottom {
+      margin-top: 1.2rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 0.78rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .about-grid,
+      .lab-grid,
+      .contact-grid,
+      .pros-box,
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .services-grid,
+      .reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav.nav-links {
+        display: none;
+      }
+      .burger {
+        display: block;
+      }
+      .header-inner {
+        padding-inline: 0;
+      }
+      .hero {
+        padding-top: 2.4rem;
+      }
+      .product-grid,
+      .services-grid,
+      .reviews-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      section {
+        padding: 2.4rem 0;
+      }
+      .products {
+        border-radius: 1.2rem;
+      }
+      .pros-box {
+        padding: 1.6rem 1.3rem;
+        border-radius: 1.4rem;
+      }
+      .footer-main {
+        margin-top: 2.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#home" class="logo">
+          <div class="logo-icon">
+            <i class="fa-solid fa-car-side"></i>
+          </div>
+          <div class="logo-text">
+            <span>AutoPaint Pro</span>
+            <span data-i18n="logo.subtitle">Car Paint & Mixing Studio</span>
+          </div>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#home" data-i18n="nav.home">Home</a>
+          <a href="#products" data-i18n="nav.products">Products</a>
+          <a href="#lab" data-i18n="nav.lab">Color Lab</a>
+          <a href="#services" data-i18n="nav.services">Services</a>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+        <div class="header-right">
+          <button class="btn-chip">
+            <i class="fa-solid fa-circle-check"></i>
+            <span data-i18n="header.chip">OEM color matching</span>
+          </button>
+          <div class="lang-toggle" id="langToggle">
+            <i class="fa-solid fa-language"></i>
+            <span data-lang="en" class="active">EN</span>
+            <span data-lang="bg">BG</span>
+          </div>
+          <button class="btn-main">
+            <i class="fa-solid fa-spray-can-sparkles"></i>
+            <span data-i18n="nav.order">Order paint</span>
+          </button>
+          <button class="burger" id="burgerBtn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-mobile" id="navMobile">
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#products" data-i18n="nav.products">Products</a>
+        <a href="#lab" data-i18n="nav.lab">Color Lab</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-label" data-aos="fade-right">
+          <i class="fa-solid fa-droplet"></i>
+          <span data-i18n="hero.badge">Car refinish paints, clears & primers</span>
+        </div>
+        <h1 class="hero-title" data-i18n="hero.title">
+          Turn every scratch into a <span>color story</span>.
+        </h1>
+        <p class="hero-text" data-i18n="hero.text">
+          High-solid basecoats, glassy clear coats and precise mixing formulas so every panel blends like factory paint.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-main">
+            <i class="fa-solid fa-shop"></i>
+            <span data-i18n="hero.btn1">Browse color lines</span>
+          </button>
+          <div class="hero-secondary">
+            <i class="fa-solid fa-flask"></i>
+            <span data-i18n="hero.btn2">Upload color code (RAL / OEM)</span>
+          </div>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge-item">
+            <i class="fa-solid fa-swatchbook"></i>
+            <span data-i18n="hero.tag1">6 000+ OEM formulas</span>
+          </div>
+          <div class="hero-badge-item">
+            <i class="fa-solid fa-bottle-droplet"></i>
+            <span data-i18n="hero.tag2">Ready-to-spray kits</span>
+          </div>
+          <div class="hero-badge-item">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span data-i18n="hero.tag3">Same-day mixing & pickup</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="splash-card" data-aos="zoom-in">
+          <div class="splash-bg"></div>
+          <div class="splash-content">
+            <div class="splash-disc"></div>
+            <div class="splash-drops">
+              <div class="splash-chip">
+                <span style="background:#f97316;"></span>
+                <div>
+                  <strong>Sunset Orange</strong><br />
+                  <small>OEM code: CF-7O23</small>
+                </div>
+              </div>
+              <div class="splash-chip">
+                <span style="background:#0ea5e9;"></span>
+                <div>
+                  <strong>Lagoon Blue</strong><br />
+                  <small>Pearl effect</small>
+                </div>
+              </div>
+              <div class="splash-chip">
+                <span style="background:#facc15;"></span>
+                <div>
+                  <strong>Signal Yellow</strong><br />
+                  <small>RAL 1003 mix</small>
+                </div>
+              </div>
+              <div style="font-size:0.78rem; color:var(--muted); display:flex; gap:0.4rem; align-items:center; margin-top:0.2rem;">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <span data-i18n="hero.cardNote">Digitally weighted on precision scales.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container" data-aos="fade-up">
+      <div class="section-head">
+        <div class="section-kicker" data-i18n="services.kicker">Services</div>
+        <h2 class="section-title" data-i18n="services.title">More than cans on a shelf.</h2>
+        <p class="section-text" data-i18n="services.text">
+          Mixing, advice and support for both DIY painters and busy body shops.
+        </p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
+          <h3 data-i18n="services.s1.title">Custom color mixing</h3>
+          <p data-i18n="services.s1.text">
+            OEM codes, RAL, fantasy shades – we mix what you imagine, from samples or databases.
+          </p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-gun"></i></div>
+          <h3 data-i18n="services.s2.title">Gun & product setup</h3>
+          <p data-i18n="services.s2.text">
+            Help with nozzle size, pressure and room conditions so the finish stays smooth.
+          </p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-truck"></i></div>
+          <h3 data-i18n="services.s3.title">Delivery & refill</h3>
+          <p data-i18n="services.s3.text">
+            Regular deliveries of your most used materials straight to the workshop.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container about-grid" data-aos="fade-up">
+      <div>
+        <div class="section-head">
+          <div class="section-kicker" data-i18n="about.kicker">About us</div>
+          <h2 class="section-title" data-i18n="about.title">Auto paint is our daily language.</h2>
+          <p class="section-text" data-i18n="about.text">
+            We grew up between spray guns and mixing scales. Today we help workshops and enthusiasts get reliable, repeatable colors.
+          </p>
+        </div>
+        <div class="about-points">
+          <span><i class="fa-solid fa-check-circle"></i><span data-i18n="about.p1">10+ years focused only on refinish products.</span></span>
+          <span><i class="fa-solid fa-check-circle"></i><span data-i18n="about.p2">Training from international paint brands.</span></span>
+          <span><i class="fa-solid fa-check-circle"></i><span data-i18n="about.p3">Support in person, by phone or chat.</span></span>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="https://placehold.co/600x360?text=Auto+Paint+Shop" alt="Auto paint shop interior" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container products" data-aos="fade-up">
+      <div class="section-head">
+        <div class="section-kicker" data-i18n="products.kicker">Product families</div>
+        <h2 class="section-title" data-i18n="products.title">Everything from bare metal to glossy finish.</h2>
+        <p class="section-text" data-i18n="products.text">
+          Combine primers, basecoats, clears and accessories for a full refinish system with predictable results.
+        </p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card">
+          <img src="https://placehold.co/400x200?text=Basecoat+System" alt="Basecoat car paints" />
+          <div class="product-body">
+            <h3 data-i18n="products.base.title">Basecoat system</h3>
+            <p data-i18n="products.base.text">
+              Solvent-based basecoats with high pigmentation and smooth fan for perfect blending.
+            </p>
+            <div class="product-meta">
+              <span><i class="fa-solid fa-droplet"></i><span data-i18n="products.base.meta1">Solid, metallic, pearl</span></span>
+              <span><i class="fa-solid fa-temperature-arrow-up"></i>HS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="https://placehold.co/400x200?text=Clear+Coats" alt="Clear coats" />
+          <div class="product-body">
+            <h3 data-i18n="products.clear.title">Clear coats</h3>
+            <p data-i18n="products.clear.text">
+              From fast-dry to show-car gloss – UV resistant clears with slick, deep finish.
+            </p>
+            <div class="product-meta">
+              <span><i class="fa-solid fa-sun"></i><span data-i18n="products.clear.meta1">UV stable</span></span>
+              <span><i class="fa-solid fa-bolt"></i>2:1</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="https://placehold.co/400x200?text=Primers" alt="Primers" />
+          <div class="product-body">
+            <h3 data-i18n="products.primer.title">Primers & fillers</h3>
+            <p data-i18n="products.primer.text">
+              Epoxy, 2K and wet-on-wet solutions for adhesion, rust protection and smooth surfaces.
+            </p>
+            <div class="product-meta">
+              <span><i class="fa-solid fa-shield-halved"></i><span data-i18n="products.primer.meta1">Anti-corrosion</span></span>
+              <span><i class="fa-solid fa-layer-group"></i>4:1</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="https://placehold.co/400x200?text=Spray+Colors" alt="Spray colors" />
+          <div class="product-body">
+            <h3 data-i18n="products.spray.title">Custom spray cans</h3>
+            <p data-i18n="products.spray.text">
+              Your exact color mixed into professional spray cans for spot repairs and small jobs.
+            </p>
+            <div class="product-meta">
+              <span><i class="fa-solid fa-spray-can-sparkles"></i><span data-i18n="products.spray.meta1">Filled on demand</span></span>
+              <span><i class="fa-solid fa-wand-magic-sparkles"></i>OEM match</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section id="brands">
+    <div class="container" data-aos="fade-up">
+      <div class="section-head">
+        <div class="section-kicker" data-i18n="brands.kicker">Brands</div>
+        <h2 class="section-title" data-i18n="brands.title">Trusted refinish partners.</h2>
+        <p class="section-text" data-i18n="brands.text">
+          We work with established paint manufacturers to keep quality and color accuracy consistent.
+        </p>
+      </div>
+      <div class="brands-strip">
+        <div class="brand-pill">
+          <img src="https://placehold.co/40x40?text=A" alt="Brand A" />
+          <span data-i18n="brands.b1">ProCoat Systems</span>
+        </div>
+        <div class="brand-pill">
+          <img src="https://placehold.co/40x40?text=B" alt="Brand B" />
+          <span data-i18n="brands.b2">ColorLab Europe</span>
+        </div>
+        <div class="brand-pill">
+          <img src="https://placehold.co/40x40?text=C" alt="Brand C" />
+          <span data-i18n="brands.b3">Refinish Plus</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOR LAB -->
+  <section id="lab">
+    <div class="container lab-grid" data-aos="fade-up">
+      <div>
+        <div class="section-head">
+          <div class="section-kicker" data-i18n="mixer.kicker">Color lab</div>
+          <h2 class="section-title" data-i18n="mixer.title">Preview your shade before we mix it for real.</h2>
+          <p class="section-text" data-i18n="mixer.text">
+            Adjust the hue slider to simulate the vibe of your color. Then send us the OEM or RAL code and we mix the exact formula.
+          </p>
+        </div>
+        <div class="mixer-preview">
+          <div class="mixer-circle" id="mixerCircle"></div>
+          <div class="mixer-data">
+            <div>
+              <strong data-i18n="mixer.label.preview">Preview color</strong><br />
+              <small data-i18n="mixer.label.info">On screen only – final shade depends on substrate and clear.</small>
+            </div>
+            <div style="margin-top:0.5rem;">
+              <span style="font-size:0.8rem; color:var(--muted);">HEX:</span>
+              <code id="mixerHex">#f97316</code>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="slider-group">
+          <label>
+            <span data-i18n="mixer.slider.hue">Hue</span>
+            <span id="mixerHueValue">24°</span>
+          </label>
+          <input type="range" id="mixerHue" min="0" max="360" value="24" />
+        </div>
+        <p class="mixer-note" data-i18n="mixer.note">
+          Tip: pick something close to what you want, then send us the car brand, model, year and color code – we’ll match from the database.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR BODY SHOPS -->
+  <section id="pros">
+    <div class="container pros-box" data-aos="fade-up">
+      <div>
+        <div class="section-head">
+          <div class="section-kicker" data-i18n="pros.kicker">For body shops</div>
+          <h2 class="section-title" data-i18n="pros.title">Workshop partner, not just paint supplier.</h2>
+          <p class="section-text" data-i18n="pros.text">
+            We help you keep booths full and comebacks low – with fast formulas, tech support and stable supply.
+          </p>
+        </div>
+        <ul class="pros-list">
+          <li><i class="fa-solid fa-scale-balanced"></i><span data-i18n="pros.list1">Calibrated scales and mixing formulas.</span></li>
+          <li><i class="fa-solid fa-truck-ramp-box"></i><span data-i18n="pros.list2">Scheduled deliveries to your body shop.</span></li>
+          <li><i class="fa-solid fa-helmet-safety"></i><span data-i18n="pros.list3">Training on gun setup and application.</span></li>
+          <li><i class="fa-solid fa-boxes-stacked"></i><span data-i18n="pros.list4">Stock planning for your most used colors.</span></li>
+        </ul>
+      </div>
+      <div class="pros-side">
+        <div class="pros-pill">
+          <i class="fa-solid fa-percent"></i>
+          <span data-i18n="pros.pill1">Wholesale pricing for registered shops.</span>
+        </div>
+        <div class="pros-pill">
+          <i class="fa-solid fa-users-gear"></i>
+          <span data-i18n="pros.pill2">Dedicated account manager.</span>
+        </div>
+        <div class="pros-pill">
+          <i class="fa-solid fa-palette"></i>
+          <span data-i18n="pros.pill3">Demo of complete system in your booth.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container" data-aos="fade-up">
+      <div class="section-head">
+        <div class="section-kicker" data-i18n="reviews.kicker">Feedback</div>
+        <h2 class="section-title" data-i18n="reviews.title">Painters who already trust the colors.</h2>
+        <p class="section-text" data-i18n="reviews.text">
+          From small garages to high-volume insurance work – consistency and repeatability matter more than luck.
+        </p>
+      </div>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <p data-i18n="reviews.r1.text">
+            Metallic blends on doors and quarter panels are way easier now. Color documentation is clear, clients don’t see where we blended.
+          </p>
+          <div class="review-name" data-i18n="reviews.r1.name">Miro Paint, Sofia</div>
+          <div class="review-meta" data-i18n="reviews.r1.meta">3 booths • full refinish line</div>
+        </article>
+        <article class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p data-i18n="reviews.r2.text">
+            Love the custom spray cans – we sell them to clients for small chips after big repairs. Same color, less hassle.
+          </p>
+          <div class="review-name" data-i18n="reviews.r2.name">Detail Garage</div>
+          <div class="review-meta" data-i18n="reviews.r2.meta">Detailing & express repairs</div>
+        </article>
+        <article class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p data-i18n="reviews.r3.text">
+            Support on gun setup and temperature helped us fix orange peel issues. Clear is glossy even on white vans.
+          </p>
+          <div class="review-name" data-i18n="reviews.r3.name">Fleet Repair Center</div>
+          <div class="review-meta" data-i18n="reviews.r3.meta">Commercial vans & trucks</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container contact-grid" data-aos="fade-up">
+      <div class="contact-card">
+        <h3 data-i18n="contact.title">Visit or send your order.</h3>
+        <div class="contact-row">
+          <i class="fa-solid fa-location-dot"></i>
+          <span data-i18n="contact.addr">Sofia, Color Street 12, Auto Paint Center</span>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+359881234567">+359 88 123 4567</a>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:paint@autopaintpro.bg">paint@autopaintpro.bg</a>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-clock"></i>
+          <span data-i18n="contact.hours">Mon–Fri: 09:00 – 18:30 • Sat: 10:00 – 14:00</span>
+        </div>
+
+        <form class="contact-form">
+          <input type="text" placeholder="Body shop / Name" />
+          <input type="text" placeholder="Car brand + color code (optional)" />
+          <textarea placeholder="Tell us what you need – liters, system, deadline."></textarea>
+          <button class="btn-main" type="submit">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span data-i18n="contact.btn">Send request</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="map-box">
+        <img src="https://placehold.co/500x260?text=Map+AutoPaint+Pro" alt="Map to AutoPaint Pro" />
+        <p style="font-size:0.8rem; color:var(--muted); margin-top:0.5rem;" data-i18n="contact.mapNote">
+          Parking available in front of the shop. We can also load directly in your van.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <div class="footer-logo-icon">
+              <i class="fa-solid fa-spray-can-sparkles"></i>
+            </div>
+            <div>
+              <strong>AutoPaint Pro</strong><br />
+              <small data-i18n="logo.subtitle">Car Paint & Mixing Studio</small>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:#cbd5f5;" data-i18n="footer.about">
+            Auto paint shop focused on consistent, repeatable results – not lottery colors.
+          </p>
+          <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-heading" data-i18n="footer.links">Links</div>
+          <ul class="footer-links">
+            <li><a href="#products" data-i18n="footer.l1">Product catalog</a></li>
+            <li><a href="#lab" data-i18n="footer.l2">Color Lab</a></li>
+            <li><a href="#pros" data-i18n="footer.l3">For body shops</a></li>
+            <li><a href="#contact" data-i18n="footer.l4">Contact & location</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading" data-i18n="footer.contact">Contact</div>
+          <ul class="footer-links">
+            <li><i class="fa-solid fa-phone"></i> +359 88 123 4567</li>
+            <li><i class="fa-solid fa-envelope"></i> paint@autopaintpro.bg</li>
+            <li><i class="fa-solid fa-location-dot"></i> <span data-i18n="contact.addr">Sofia, Color Street 12, Auto Paint Center</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer.copy">© 2025 AutoPaint Pro. All rights reserved.</span>
+        <span>
+          <a href="#" style="color:#9ca3af;" data-i18n="footer.terms">Terms</a> ·
+          <a href="#" style="color:#9ca3af;" data-i18n="footer.privacy">Privacy</a> ·
+          <a href="#" style="color:#9ca3af;" data-i18n="footer.cookies">Cookies</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Оригинални EN текстове (ще ги вземем от DOM при зареждане)
+    const originalText = {};
+    const bgDict = {
+      "logo.subtitle": "Студио за авто боя и смесване",
+
+      "nav.home": "Начало",
+      "nav.products": "Продукти",
+      "nav.lab": "Color Lab",
+      "nav.services": "Услуги",
+      "nav.about": "За нас",
+      "nav.contact": "Контакт",
+      "nav.order": "Поръчай боя",
+
+      "header.chip": "Съвпадение по OEM код",
+
+      "hero.badge": "Автобои, лакове и грундове",
+      "hero.title": "Всеки дефект става <span>цветна история</span>.",
+      "hero.text": "High-solid бои, лъскави лакове и точни формули, за да изчезват ремонтираните детайли.",
+      "hero.btn1": "Виж цветови серии",
+      "hero.btn2": "Изпрати цветови код (RAL / OEM)",
+      "hero.tag1": "6 000+ OEM формули",
+      "hero.tag2": "Готови за пръскане комплекти",
+      "hero.tag3": "Същодневно забъркване и взимане",
+      "hero.cardNote": "Забъркване на прецизни везни.",
+
+      "services.kicker": "Услуги",
+      "services.title": "Повече от рафт с кутии боя.",
+      "services.text": "Смесване, консултация и подкрепа – за хоби бояджии и професионални сервизи.",
+      "services.s1.title": "Смесване по код и мостра",
+      "services.s1.text": "OEM кодове, RAL, фантазийни цветове – смесваме по база данни или от мостра.",
+      "services.s2.title": "Настройка на пистолет и материали",
+      "services.s2.text": "Помагаме с дюзи, налягане и условия в помещението, за да е гладък финишът.",
+      "services.s3.title": "Доставка и зареждане",
+      "services.s3.text": "Редовно зареждане с най-често използваните материали директно в сервиза.",
+
+      "about.kicker": "За нас",
+      "about.title": "Говорим езика на бояджийския цех.",
+      "about.text": "Израснали сме между пистолети и везни. Днес помагаме на сервизи и любители да имат повторяеми цветове.",
+      "about.p1": "Над 10 години фокус само върху авто боята.",
+      "about.p2": "Обучения от международни производители на бои.",
+      "about.p3": "Поддръжка на място, по телефон или чат.",
+
+      "products.kicker": "Продуктови серии",
+      "products.title": "От гол метал до огледален лак.",
+      "products.text": "Грундове, бази, лакове и аксесоари – цялостна система за предвидим резултат.",
+      "products.base.title": "Базови бои",
+      "products.base.text": "Разтворими бази с висока пигментация и равномерен факел за лесно преливане.",
+      "products.base.meta1": "Плътни, металик, перлен",
+      "products.clear.title": "Лакове",
+      "products.clear.text": "От бърз лак до шоу-лак – UV устойчиви с дълбок гланц.",
+      "products.clear.meta1": "UV защита",
+      "products.primer.title": "Грундове и филъри",
+      "products.primer.text": "Епокси, 2К и мокро-върху-мокро за сцепление и защита от корозия.",
+      "products.primer.meta1": "Антикорозионен",
+      "products.spray.title": "Спрей по код",
+      "products.spray.text": "Твоят цвят в професионален спрей – идеален за дребни ремонти.",
+      "products.spray.meta1": "Пълним по поръчка",
+
+      "brands.kicker": "Марки",
+      "brands.title": "Партньори, на които разчитаме.",
+      "brands.text": "Работим с доказани производители на бои за стабилно качество и точен цвят.",
+      "brands.b1": "ProCoat Systems",
+      "brands.b2": "ColorLab Europe",
+      "brands.b3": "Refinish Plus",
+
+      "mixer.kicker": "Color Lab",
+      "mixer.title": "Виж нюанса още преди да го забъркаме.",
+      "mixer.text": "Премести слайдера, за да усетиш посоката на цвета. После ни прати OEM или RAL код и ние смесваме точната формула.",
+      "mixer.label.preview": "Преглед на цвят",
+      "mixer.label.info": "Само визуално – крайният нюанс зависи от основата и лака.",
+      "mixer.slider.hue": "Нюанс",
+      "mixer.note": "Хитринка: кажи марка, модел, година и код на цвета – ние вадим формулата от база данни.",
+
+      "pros.kicker": "За сервизи",
+      "pros.title": "Партньор за бояджийския цех, не просто доставчик.",
+      "pros.text": "Помагаме камерите да са пълни, а рекламациите – малко, с бързи формули и стабилни доставки.",
+      "pros.list1": "Калибрирани везни и рецепти.",
+      "pros.list2": "Планирани доставки до сервиза.",
+      "pros.list3": "Обучение за нанасяне и настройки.",
+      "pros.list4": "Планиране на наличности по цвят.",
+      "pros.pill1": "Отстъпки за регистрирани сервизи.",
+      "pros.pill2": "Личен търговски представител.",
+      "pros.pill3": "Демо на цялата система при теб.",
+
+      "reviews.kicker": "Отзиви",
+      "reviews.title": "Бояджии, които вече разчитат на цветовете.",
+      "reviews.text": "От малки гаражи до големи сервизи – важни са повторяемостта и спокойните клиенти.",
+      "reviews.r1.text": "Преливките по врати и калници станаха по-лесни. Документацията е ясна, клиентите не виждат къде сме пръскали.",
+      "reviews.r1.name": "Miro Paint, София",
+      "reviews.r1.meta": "3 камери • пълна система",
+      "reviews.r2.text": "Спреят по код е хит – даваме го на клиенти за дребни поправки след ремонта.",
+      "reviews.r2.name": "Detail Garage",
+      "reviews.r2.meta": "Детайлинг и експресни ремонти",
+      "reviews.r3.text": "С помощта за настройки спряхме портокаловата кора. Лакът стои лъскав и на бели бусове.",
+      "reviews.r3.name": "Fleet Repair Center",
+      "reviews.r3.meta": "Бусове и товарни автомобили",
+
+      "contact.title": "Ела на място или изпрати заявка.",
+      "contact.addr": "София, ул. „Цвят“ 12, авто боя център",
+      "contact.hours": "Пон–Пет: 09:00 – 18:30 • Съб: 10:00 – 14:00",
+      "contact.btn": "Изпрати запитване",
+      "contact.mapNote": "Има паркинг отпред. Можем да товарим директно в буса.",
+
+      "footer.about": "Магазин за авто боя, фокусиран върху стабилен, повторяем резултат – не върху „дано уцелим цвета“.",
+      "footer.links": "Линкове",
+      "footer.l1": "Каталог продукти",
+      "footer.l2": "Color Lab",
+      "footer.l3": "За сервизи",
+      "footer.l4": "Контакт и локация",
+      "footer.contact": "За контакт",
+      "footer.copy": "© 2025 AutoPaint Pro. Всички права запазени.",
+      "footer.terms": "Общи условия",
+      "footer.privacy": "Поверителност",
+      "footer.cookies": "Бисквитки"
+    };
+
+    function applyLang(lang) {
+      if (lang === "bg") {
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+          const key = el.getAttribute("data-i18n");
+          const value = bgDict[key];
+          if (!value) return;
+          if (value.includes("<span")) {
+            el.innerHTML = value;
+          } else {
+            el.textContent = value;
+          }
+        });
+      } else {
+        // връщаме оригиналните EN текстове
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+          const key = el.getAttribute("data-i18n");
+          const value = originalText[key];
+          if (!value) return;
+          el.innerHTML = value;
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // запаметяваме оригиналните EN текстове
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (!originalText[key]) {
+          originalText[key] = el.innerHTML;
+        }
+      });
+
+      // AOS
+      AOS.init({ duration: 700, once: true, offset: 80 });
+
+      // Motion hero
+      if (window.Motion) {
+        const { animate } = Motion;
+        animate(".hero-title", { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, easing: "ease-out" });
+        animate(".splash-disc", { scale: [0.85, 1], opacity: [0, 1] }, { duration: 0.5, delay: 0.1 });
+      }
+
+      // Mobile nav
+      const burger = document.getElementById("burgerBtn");
+      const navMobile = document.getElementById("navMobile");
+      burger.addEventListener("click", () => {
+        navMobile.classList.toggle("open");
+      });
+
+      // Mixer
+      const hueInput = document.getElementById("mixerHue");
+      const hueValue = document.getElementById("mixerHueValue");
+      const circle = document.getElementById("mixerCircle");
+      const hexLabel = document.getElementById("mixerHex");
+
+      function hslToHex(h, s, l) {
+        s /= 100;
+        l /= 100;
+        const k = n => (n + h / 30) % 12;
+        const a = s * Math.min(l, 1 - l);
+        const f = n => {
+          const c = l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+          return Math.round(255 * c);
+        };
+        return "#" + [f(0), f(8), f(4)].map(x => x.toString(16).padStart(2, "0")).join("");
+      }
+
+      function updateMixer() {
+        const h = parseInt(hueInput.value, 10);
+        hueValue.textContent = h + "°";
+        const color = `hsl(${h} 85% 55%)`;
+        circle.style.backgroundColor = color;
+        hexLabel.textContent = hslToHex(h, 85, 55);
+      }
+
+      hueInput.addEventListener("input", updateMixer);
+      updateMixer();
+
+      // Lang toggle
+      const langToggle = document.getElementById("langToggle");
+      langToggle.addEventListener("click", (e) => {
+        const span = e.target.closest("span[data-lang]");
+        if (!span) return;
+        const lang = span.getAttribute("data-lang");
+        langToggle.querySelectorAll("span[data-lang]").forEach(s => s.classList.remove("active"));
+        span.classList.add("active");
+        applyLang(lang);
+      });
+
+      // default EN – не пипаме, защото е оригиналният текст
+    });
+  </script>
+</body>
+</html>

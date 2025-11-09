@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <title>ФК Нова Вълна – Модерен футболен клуб</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ФК Нова Вълна – модерен футболен клуб с професионални тренировки за деца и възрастни. Запиши се за пробна тренировка.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-main: #050816;
+      --bg-elevated: rgba(8, 15, 35, 0.9);
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.18);
+      --accent-strong: #4ade80;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --error: #ef4444;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 0% 0%, #1f2937 0, #050816 45%, #020617 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.12) 0, transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(34, 197, 94, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 50% 90%, rgba(59, 130, 246, 0.14) 0, transparent 55%);
+      opacity: 0.9;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(transparent 0, rgba(15, 23, 42, 0.3) 100%),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.55) 0, transparent 50%, rgba(15, 23, 42, 0.55) 100%);
+      mix-blend-mode: soft-light;
+      opacity: 0.8;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAVBAR */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(3, 7, 18, 0.94), rgba(3, 7, 18, 0.82), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at 30% 10%, #ffffff 0, #e5e7eb 16%, #0f172a 40%, #020617 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 10px 25px rgba(15, 23, 42, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 0, rgba(255, 255, 255, 0.6) 0, transparent 45%),
+        radial-gradient(circle at 85% 100%, rgba(34, 197, 94, 0.5) 0, transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+
+    .logo-mark svg {
+      position: relative;
+      width: 74%;
+      height: 74%;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .logo-title {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.9rem;
+      align-items: center;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.25rem;
+      cursor: pointer;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), var(--accent-strong));
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .badge-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.18rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.22) 0, transparent 52%);
+    }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+      padding: 0.55rem 1.35rem;
+      background: radial-gradient(circle at 0 0, #22c55e, #16a34a, #15803d);
+      border: 1px solid rgba(34, 197, 94, 0.85);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      color: #0b1120;
+      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.37);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-position 220ms ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 50%, rgba(255, 255, 255, 0.5) 0, transparent 50%);
+      transform: translateX(-120%);
+      transition: transform 260ms ease-out;
+      opacity: 0.75;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(120%);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-toggle-line {
+      width: 16px;
+      height: 1px;
+      background: #e5e7eb;
+      position: relative;
+    }
+
+    .nav-toggle-line::before,
+    .nav-toggle-line::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: #e5e7eb;
+      left: 0;
+      transition: transform 180ms ease-out, opacity 180ms ease-out, top 180ms ease-out, bottom 180ms ease-out;
+    }
+
+    .nav-toggle-line::before {
+      top: -4px;
+    }
+
+    .nav-toggle-line::after {
+      bottom: -4px;
+    }
+
+    .nav-toggle.active .nav-toggle-line {
+      background: transparent;
+    }
+
+    .nav-toggle.active .nav-toggle-line::before {
+      top: 0;
+      transform: rotate(40deg);
+    }
+
+    .nav-toggle.active .nav-toggle-line::after {
+      bottom: 0;
+      transform: rotate(-40deg);
+    }
+
+    .nav-links-mobile {
+      display: none;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 3.5rem 0 4.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+      margin-bottom: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-kicker-pill {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 222, 128, 0.7);
+      background: radial-gradient(circle at 30% 30%, #bbf7d0 0, #16a34a 55%, #052e16 100%);
+      box-shadow:
+        0 0 0 1px rgba(22, 163, 74, 0.7),
+        0 0 20px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #22c55e, #4ade80, #a7f3d0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 30rem;
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.9rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.1) 0, transparent 52%);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+      padding: 0.52rem 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-ghost:hover {
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 1);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .hero-meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.68rem;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .hero-meta-value {
+      font-weight: 500;
+      color: #e5e7eb;
+      font-size: 0.86rem;
+    }
+
+    .hero-right {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 26px;
+      padding: 1.2rem;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.14) 0, rgba(15, 23, 42, 0.98) 40%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 15% 0, rgba(34, 197, 94, 0.25) 0, transparent 60%),
+        radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.3) 0, transparent 65%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero-main-img {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .hero-main-img img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transform: scale(1.03);
+      transition: transform 3s ease-out;
+    }
+
+    .hero-card:hover .hero-main-img img {
+      transform: scale(1.08);
+    }
+
+    .hero-tag {
+      position: absolute;
+      left: 0.9rem;
+      top: 0.9rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+    }
+
+    .hero-mini-stats {
+      position: absolute;
+      right: 0.8rem;
+      bottom: 0.8rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .hero-mini-stats strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-badges-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .hero-mini-card {
+      background: rgba(15, 23, 42, 0.88);
+      border-radius: 16px;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-mini-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.35) 0, rgba(15, 23, 42, 0.9) 55%);
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      flex-shrink: 0;
+    }
+
+    .hero-mini-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero-mini-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .hero-mini-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .hero-mini-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .hero-floating-chip {
+      position: absolute;
+      right: -0.5rem;
+      top: -0.6rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #e5e7eb;
+      transform: translateY(0);
+      animation: floatChip 3.8s ease-in-out infinite;
+    }
+
+    @keyframes floatChip {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(5px);
+      }
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: -20px;
+      border-radius: 24px;
+      border: 1px dashed rgba(55, 65, 81, 0.7);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    /* GENERIC SECTIONS */
+
+    section {
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 30rem;
+      line-height: 1.6;
+    }
+
+    /* TRAINING PROGRAMS */
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .program-card {
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1rem;
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.12) 0, rgba(15, 23, 42, 0.96) 45%);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.8);
+      position: relative;
+      overflow: hidden;
+      transition: transform 180ms ease-out, box-shadow 180ms ease-out, border-color 180ms ease-out, background 180ms ease-out;
+    }
+
+    .program-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.16) 0, transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity 200ms ease-out;
+    }
+
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(34, 197, 94, 0.6);
+    }
+
+    .program-card:hover::after {
+      opacity: 1;
+    }
+
+    .program-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .program-title {
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    .program-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+    }
+
+    .program-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
+    }
+
+    .program-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .program-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .program-highlight {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-auto-rows: 170px;
+      gap: 0.9rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      cursor: pointer;
+      background: #020617;
+      transform: translateY(0);
+      transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+    }
+
+    .gallery-item.large {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 3.2s ease-out;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 197, 94, 0.7);
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.95);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.78), transparent 60%);
+      opacity: 0;
+      transition: opacity 160ms ease-out;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.7rem 0.8rem;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* GALLERY MODAL */
+
+    .lightbox-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    .lightbox-backdrop.active {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      max-width: 960px;
+      width: 92vw;
+      max-height: 80vh;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: #020617;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+      position: relative;
+    }
+
+    .lightbox-inner img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: cover;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      border-radius: 999px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    /* BOOKING / FORM */
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .booking-card {
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 1.4rem;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.15) 0, rgba(15, 23, 42, 0.97) 45%);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking-card::after {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background:
+        radial-gradient(circle at 80% 0, rgba(34, 197, 94, 0.25) 0, transparent 55%),
+        radial-gradient(circle at 0 100%, rgba(59, 130, 246, 0.3) 0, transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .booking-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.9rem;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .form-field {
+      flex: 1;
+      min-width: min(100%, 180px);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-label {
+      font-size: 0.82rem;
+      color: rgba(209, 213, 219, 0.9);
+    }
+
+    .form-label span {
+      color: var(--accent-strong);
+      margin-left: 0.2rem;
+    }
+
+    .input,
+    .select,
+    .textarea {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      padding: 0.6rem 0.85rem;
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 160ms ease-out, box-shadow 160ms ease-out, background 160ms ease-out, transform 160ms ease-out;
+    }
+
+    .textarea {
+      border-radius: 16px;
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .input::placeholder,
+    .textarea::placeholder {
+      color: rgba(148, 163, 184, 0.8);
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+      border-color: rgba(34, 197, 94, 0.9);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5);
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .form-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.9rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      max-width: 18rem;
+    }
+
+    .form-status {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .form-status.success {
+      color: var(--accent-strong);
+    }
+
+    .form-status.error {
+      color: var(--error);
+    }
+
+    .booking-side {
+      border-radius: var(--radius-xl);
+      padding: 1.2rem 1.1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .badge-soft {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      color: var(--accent-strong);
+      align-self: flex-start;
+    }
+
+    .booking-side-title {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .booking-side-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .booking-slots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.1rem;
+    }
+
+    .slot-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(209, 213, 219, 0.95);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.15) 0, rgba(15, 23, 42, 0.96) 45%);
+    }
+
+    .slot-pill span:last-child {
+      font-size: 0.7rem;
+      color: rgba(148, 163, 184, 0.95);
+    }
+
+    /* CONTACT */
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-xl);
+      padding: 1.3rem 1.2rem;
+      background: rgba(8, 15, 35, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .contact-text-main {
+      font-size: 0.88rem;
+      color: #e5e7eb;
+    }
+
+    .contact-text-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .map-placeholder {
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18) 0, rgba(15, 23, 42, 0.98) 40%);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-box {
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background-image:
+        linear-gradient(120deg, rgba(15, 23, 42, 0.95) 0, rgba(15, 23, 42, 1) 50%, rgba(15, 23, 42, 0.97) 100%),
+        linear-gradient(90deg, rgba(34, 197, 94, 0.2) 0, transparent 40%, rgba(59, 130, 246, 0.2) 100%);
+      padding: 0.9rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 210px;
+    }
+
+    .map-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.25) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .map-marker {
+      position: absolute;
+      left: 56%;
+      top: 42%;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #bbf7d0 0, #22c55e 50%, #14532d 100%);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 1),
+        0 0 0 6px rgba(34, 197, 94, 0.4),
+        0 0 25px rgba(34, 197, 94, 0.9);
+      transform-origin: center;
+      animation: pulseMarker 2.4s ease-out infinite;
+    }
+
+    @keyframes pulseMarker {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(1.14);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .map-caption {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 1.8rem 0 2.2rem;
+      border-top: 1px solid rgba(30, 64, 175, 0.55);
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.98), transparent);
+      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-right a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    /* REVEAL ANIMATIONS */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 420ms ease-out, transform 420ms ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero-card-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-item.large {
+        grid-row: span 1;
+        grid-column: span 2;
+      }
+
+      .programs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .booking-layout,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta .badge-pill {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 0.7rem;
+        padding: 0.7rem 0 1rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--text-muted);
+      }
+
+      .nav-links-mobile a {
+        padding-bottom: 0.2rem;
+        border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      }
+
+      .nav-links-mobile.active {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 2.8rem;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .programs-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: 190px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-foot {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-main-img img {
+        height: 220px;
+      }
+
+      .map-box {
+        min-height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG ICONS -->
+  <svg width="0" height="0" style="position:absolute;visibility:hidden;">
+    <defs>
+      <symbol id="icon-ball" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="#020617" />
+        <circle cx="12" cy="12" r="9" fill="none" stroke="#4ade80" stroke-width="1.4" />
+        <path d="M12 4l3.5 2.2-.9 3.8L12 12l-2.6-2-.9-3.8L12 4z" fill="#4ade80" />
+        <path d="M7 15.5L9.4 14 12 16l2.6-2 2.4 1.5L16 19h-4-4l-1-3.5z" fill="#22c55e" />
+      </symbol>
+      <symbol id="icon-whistle" viewBox="0 0 24 24">
+        <path d="M5 10a5 5 0 0 1 5-5h4.5a2.5 2.5 0 0 1 0 5H13a4 4 0 1 1-3.87 5H7.5A2.5 2.5 0 0 1 5 12.5V10z" fill="none" stroke="#a5b4fc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="13" cy="14" r="1.4" fill="#a5b4fc"/>
+      </symbol>
+      <symbol id="icon-speed" viewBox="0 0 24 24">
+        <circle cx="12" cy="13" r="6.5" fill="none" stroke="#4ade80" stroke-width="1.4"/>
+        <path d="M12 13l3.5-4.5" stroke="#4ade80" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="12" cy="13" r="1.3" fill="#22c55e"/>
+      </symbol>
+      <symbol id="icon-trophy" viewBox="0 0 24 24">
+        <path d="M9 4h6v3a3 3 0 0 1-3 3 3 3 0 0 1-3-3V4z" fill="none" stroke="#facc15" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M9 11h6v1a3 3 0 0 1-3 3 3 3 0 0 1-3-3v-1z" fill="none" stroke="#facc15" stroke-width="1.4"/>
+        <path d="M10 18h4v2H10z" fill="none" stroke="#fbbf24" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M9 5H6a2 2 0 0 0-2 2v1a3 3 0 0 0 3 3" fill="none" stroke="#facc15" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M15 5h3a2 2 0 0 1 2 2v1a3 3 0 0 1-3 3" fill="none" stroke="#facc15" stroke-width="1.4" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="icon-location" viewBox="0 0 24 24">
+        <path d="M12 4.5A5.5 5.5 0 0 0 6.5 10c0 4.5 4.8 8.14 5.2 8.44.17.13.43.13.6 0 .4-.3 5.2-3.94 5.2-8.44A5.5 5.5 0 0 0 12 4.5z" fill="none" stroke="#4ade80" stroke-width="1.4"/>
+        <circle cx="12" cy="10" r="1.8" fill="#4ade80"/>
+      </symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24">
+        <path d="M7.5 4h2l1.4 3.5-1.8 1.2a9.5 9.5 0 0 0 4.2 4.2l1.2-1.8L18 14.5v2a1.5 1.5 0 0 1-1.7 1.5 12.5 12.5 0 0 1-8.8-8.8A1.5 1.5 0 0 1 7.5 4z" fill="none" stroke="#e5e7eb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <rect x="4" y="6" width="16" height="12" rx="2" fill="none" stroke="#e5e7eb" stroke-width="1.4"/>
+        <path d="M5 8l7 5 7-5" fill="none" stroke="#e5e7eb" stroke-width="1.4" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="7" fill="none" stroke="#a5b4fc" stroke-width="1.4"/>
+        <path d="M12 9v3.2l2 1.4" stroke="#a5b4fc" stroke-width="1.4" stroke-linecap="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <div class="logo-mark">
+          <svg aria-hidden="true">
+            <use href="#icon-ball"></use>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <div class="logo-title">ФК Нова Вълна</div>
+          <div class="logo-sub">Футболна академия</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a data-scroll-to="#gallery">Галерия</a>
+        <a data-scroll-to="#programs">Тренировки</a>
+        <a data-scroll-to="#booking">Записване</a>
+        <a data-scroll-to="#contact">Контакт</a>
+      </nav>
+      <div class="nav-cta">
+        <span class="badge-pill">Сезон 2025/26</span>
+        <button class="btn-primary" data-scroll-to="#booking">
+          <span>Запиши пробна тренировка</span>
+        </button>
+        <button class="nav-toggle" aria-label="Меню">
+          <span class="nav-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+    <div class="container nav-links-mobile">
+      <a data-scroll-to="#gallery">Галерия</a>
+      <a data-scroll-to="#programs">Тренировъчни групи</a>
+      <a data-scroll-to="#booking">Записване</a>
+      <a data-scroll-to="#contact">Контакти</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-left reveal">
+          <div class="hero-kicker">
+            <span class="hero-kicker-pill"></span>
+            Интензивни тренировки, модерна визия
+          </div>
+          <h1 class="hero-title">
+            Футболен клуб за новото поколение –
+            <span>скорост, техника и дисциплина.</span>
+          </h1>
+          <p class="hero-subtitle">
+            ФК Нова Вълна комбинира модерни тренировъчни методи с професионален подход. От първите стъпки до състезателно ниво – изграждаме играчи и характери.
+          </p>
+          <div class="hero-highlights">
+            <span class="chip">Деца от 6 до 18 години</span>
+            <span class="chip">Професионални треньори с UEFA лиценз</span>
+            <span class="chip">Индивидуални планове за развитие</span>
+          </div>
+          <div class="hero-actions">
+            <button class="btn-primary" data-scroll-to="#booking">
+              <span>Запази място за проба</span>
+            </button>
+            <button class="btn-ghost" data-scroll-to="#gallery">
+              Виж игрището и атмосферата
+            </button>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-meta-block">
+              <div class="hero-meta-label">Игрище</div>
+              <div class="hero-meta-value">Изкуствен терен от последно поколение</div>
+            </div>
+            <div class="hero-meta-block">
+              <div class="hero-meta-label">Групи</div>
+              <div class="hero-meta-value">По възраст и ниво на подготовка</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <div class="hero-card">
+            <div class="hero-orbit"></div>
+            <div class="hero-floating-chip">
+              Модерна футболна академия
+            </div>
+            <div class="hero-card-inner">
+              <div class="hero-main-img" data-gallery-image>
+                <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=900&q=85" alt="Деца, които тренират футбол под прожекторите" loading="lazy" />
+                <div class="hero-tag">Вечерна тренировка</div>
+                <div class="hero-mini-stats">
+                  <span>Играчите на терена: <strong>18</strong></span>
+                  <span>Интензитет: <strong>Висок</strong></span>
+                </div>
+              </div>
+              <div class="hero-badges-column">
+                <div class="hero-mini-card">
+                  <div class="hero-mini-icon">
+                    <svg aria-hidden="true">
+                      <use href="#icon-whistle"></use>
+                    </svg>
+                  </div>
+                  <div class="hero-mini-text">
+                    <div class="hero-mini-title">Тактическо мислене</div>
+                    <div class="hero-mini-sub">Разчитане на играта, позициониране, бързи решения.</div>
+                  </div>
+                </div>
+                <div class="hero-mini-card">
+                  <div class="hero-mini-icon">
+                    <svg aria-hidden="true">
+                      <use href="#icon-speed"></use>
+                    </svg>
+                  </div>
+                  <div class="hero-mini-text">
+                    <div class="hero-mini-title">Скорост и техника</div>
+                    <div class="hero-mini-sub">Финтове, координация и динамика с топка.</div>
+                  </div>
+                </div>
+                <div class="hero-mini-card">
+                  <div class="hero-mini-icon">
+                    <svg aria-hidden="true">
+                      <use href="#icon-trophy"></use>
+                    </svg>
+                  </div>
+                  <div class="hero-mini-text">
+                    <div class="hero-mini-title">Турнири и мачове</div>
+                    <div class="hero-mini-sub">Участие в първенства и приятелски срещи.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div>
+            <div class="section-label">Галерия</div>
+            <h2 class="section-title">Игрище, атмосфера и истински моменти от тренировки.</h2>
+          </div>
+          <p class="section-sub">
+            Вярваме, че средата има значение. Виж игрището, тренировъчния процес и енергията на отбора. Всички снимки са от реални футболни сесии.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item large reveal" data-lightbox-src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=1400&q=85">
+            <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=85" alt="Млади футболисти в динамичен мач" loading="lazy" />
+            <div class="gallery-overlay">
+              Централен мач – динамика, скорост и силна конкуренция.
+            </div>
+          </div>
+          <div class="gallery-item reveal" data-lightbox-src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?auto=format&fit=crop&w=1200&q=85">
+            <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?auto=format&fit=crop&w=900&q=85" alt="Футболна топка на модерно игрище" loading="lazy" />
+            <div class="gallery-overlay">
+              Изкуствен терен от последно поколение.
+            </div>
+          </div>
+          <div class="gallery-item reveal" data-lightbox-src="https://images.unsplash.com/photo-1518091043644-c1f4c4c6c779?auto=format&fit=crop&w=1200&q=85">
+            <img src="https://images.unsplash.com/photo-1518091043644-c1f4c4c6c779?auto=format&fit=crop&w=900&q=85" alt="Детски футболен отбор заедно с треньора" loading="lazy" />
+            <div class="gallery-overlay">
+              Отборен дух и подкрепа от треньорския щаб.
+            </div>
+          </div>
+          <div class="gallery-item reveal" data-lightbox-src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=85">
+            <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=900&q=85" alt="Момче с футболна топка, готово за тренировка" loading="lazy" />
+            <div class="gallery-overlay">
+              Индивидуална подготовка и работа по техника.
+            </div>
+          </div>
+          <div class="gallery-item reveal" data-lightbox-src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?auto=format&fit=crop&w=1200&q=85">
+            <img src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?auto=format&fit=crop&w=900&q=85" alt="Вратар на футболен мач" loading="lazy" />
+            <div class="gallery-overlay">
+              Специализирани тренировки за вратари.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div>
+            <div class="section-label">Тренировъчни групи</div>
+            <h2 class="section-title">Структурирани програми по възраст и ниво на подготовка.</h2>
+          </div>
+          <p class="section-sub">
+            Във всяка група работим целенасочено – техника, физическа подготовка, тактика и психология на играта. Целта е естествено развитие и плавен преход към по-високи нива.
+          </p>
+        </div>
+
+        <div class="programs-grid">
+          <article class="program-card reveal">
+            <div class="program-header">
+              <h3 class="program-title">Детска академия</h3>
+              <div class="program-tag">6–9 години</div>
+            </div>
+            <p class="program-desc">
+              Първи стъпки във футбола – забавни упражнения, основни техники с топка и изграждане на любов към играта. Работа в малки групи за максимално внимание.
+            </p>
+            <div class="program-footer">
+              <div class="program-meta">
+                <span>Тренировки:</span>
+                <span class="program-highlight">2 пъти седмично</span>
+              </div>
+              <div class="program-meta">
+                <span>Фокус:</span>
+                <span class="program-highlight">Координация, контрол, групови игри</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="program-card reveal">
+            <div class="program-header">
+              <h3 class="program-title">Развитие и техника</h3>
+              <div class="program-tag">10–13 години</div>
+            </div>
+            <p class="program-desc">
+              По-структурирани тренировки с акцент върху техника, пасове, стрелба и позициониране. Участие в контролни срещи и малки турнири.
+            </p>
+            <div class="program-footer">
+              <div class="program-meta">
+                <span>Тренировки:</span>
+                <span class="program-highlight">3 пъти седмично</span>
+              </div>
+              <div class="program-meta">
+                <span>Фокус:</span>
+                <span class="program-highlight">Техника, тактика, отборна игра</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="program-card reveal">
+            <div class="program-header">
+              <h3 class="program-title">Състезателно ниво</h3>
+              <div class="program-tag">14–18 години</div>
+            </div>
+            <p class="program-desc">
+              Интензивни тренировки, анализ на мачове, индивидуални задачи и подготовка за състезателни срещи и професионални проби.
+            </p>
+            <div class="program-footer">
+              <div class="program-meta">
+                <span>Тренировки:</span>
+                <span class="program-highlight">3–4 пъти седмично</span>
+              </div>
+              <div class="program-meta">
+                <span>Фокус:</span>
+                <span class="program-highlight">Физика, тактика, ментална устойчивост</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING / SIGN UP -->
+    <section id="booking">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div>
+            <div class="section-label">Записване</div>
+            <h2 class="section-title">Заяви пробна тренировка и запази място в групата.</h2>
+          </div>
+          <p class="section-sub">
+            Попълни кратката форма и ще се свържем с теб за потвърждение на точен ден и час. Пробната тренировка е без ангажимент – целта е да видиш атмосферата и подхода ни.
+          </p>
+        </div>
+
+        <div class="booking-layout">
+          <div class="booking-card reveal">
+            <div class="booking-card-inner">
+              <form id="booking-form" novalidate>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="parentName" class="form-label">Име на родител / настойник<span>*</span></label>
+                    <input id="parentName" name="parentName" type="text" class="input" placeholder="Име и фамилия" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="phone" class="form-label">Телефон за контакт<span>*</span></label>
+                    <input id="phone" name="phone" type="tel" class="input" placeholder="08xx xxx xxx" required />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="playerName" class="form-label">Име на играча<span>*</span></label>
+                    <input id="playerName" name="playerName" type="text" class="input" placeholder="Име и фамилия" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="age" class="form-label">Възраст<span>*</span></label>
+                    <input id="age" name="age" type="number" min="5" max="18" class="input" placeholder="Напр. 12" required />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="position" class="form-label">Предпочитана позиция</label>
+                    <select id="position" name="position" class="select">
+                      <option value="">Избери позиция</option>
+                      <option value="goalkeeper">Вратар</option>
+                      <option value="defender">Защитник</option>
+                      <option value="midfielder">Полузащитник</option>
+                      <option value="forward">Нападател</option>
+                      <option value="flex">Без предпочитание</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label for="preferredTime" class="form-label">Предпочитан часови диапазон</label>
+                    <select id="preferredTime" name="preferredTime" class="select">
+                      <option value="">Избери предпочитан час</option>
+                      <option value="morning">Сутрин (09:00–11:00)</option>
+                      <option value="afternoon">Следобед (15:00–17:00)</option>
+                      <option value="evening">Вечер (18:00–20:30)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="message" class="form-label">Допълнителна информация</label>
+                  <textarea id="message" name="message" class="textarea" placeholder="Сподели предишен опит, здравословни особености или очаквания към тренровките."></textarea>
+                </div>
+
+                <div class="form-foot">
+                  <button type="submit" class="btn-primary">
+                    <span>Изпрати заявка</span>
+                  </button>
+                  <p class="form-note">
+                    Ще получиш обаждане или съобщение в рамките на един работен ден за потвърждение на часа.
+                  </p>
+                </div>
+                <p id="form-status" class="form-status" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+
+          <aside class="booking-side reveal">
+            <span class="badge-soft">Как протича пробната тренировка</span>
+            <h3 class="booking-side-title">60 минути, в които играчът влиза в реална тренировъчна среда.</h3>
+            <p class="booking-side-text">
+              Първо запознаваме играча с треньора и групата. След кратка загрявка преминаваме към упражнения с топка и игрови ситуации. Накрая даваме обратна връзка и препоръки.
+            </p>
+            <div class="booking-slots">
+              <div class="slot-pill">
+                <span>Вторник / Четвъртък</span>
+                <span>16:30 – 19:30</span>
+              </div>
+              <div class="slot-pill">
+                <span>Събота</span>
+                <span>10:00 – 13:00</span>
+              </div>
+              <div class="slot-pill">
+                <span>Локация</span>
+                <span>Градски спортен комплекс</span>
+              </div>
+              <div class="slot-pill">
+                <span>Екипировка</span>
+                <span>Футболни обувки и шини</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div>
+            <div class="section-label">Контакт</div>
+            <h2 class="section-title">Игрището е на една стъпка разстояние – свържи се с нас.</h2>
+          </div>
+          <p class="section-sub">
+            Ако имаш въпроси за групи, график или условия, пиши ни или се обади директно. Винаги отговаряме честно и без излишни обещания – важното е детето да се чувства на място.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-card reveal">
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg aria-hidden="true">
+                    <use href="#icon-location"></use>
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-text-main">Градски спортен комплекс „Нова Вълна“</div>
+                  <div class="contact-text-sub">ул. „Стадионна“ 12, град София</div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg aria-hidden="true">
+                    <use href="#icon-phone"></use>
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-text-main">
+                    Телефон за контакт: <a href="tel:+359890000000">+359 89 000 00 00</a>
+                  </div>
+                  <div class="contact-text-sub">Най-добро време за обаждане – всеки делничен ден след 14:00.</div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg aria-hidden="true">
+                    <use href="#icon-mail"></use>
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-text-main">
+                    Имейл: <a href="mailto:academy@novavlna.fc">academy@novavlna.fc</a>
+                  </div>
+                  <div class="contact-text-sub">Пишеш ни, когато ти е удобно – отговаряме до 24 часа.</div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg aria-hidden="true">
+                    <use href="#icon-clock"></use>
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-text-main">Тренировъчен график</div>
+                  <div class="contact-text-sub">Актуален график по групи се изпраща при записване и потвърждение.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-placeholder reveal">
+            <div class="map-box">
+              <div class="map-grid"></div>
+              <div class="map-marker"></div>
+            </div>
+            <p class="map-caption">
+              Карта-илюстрация за позицията на игрището. По желание може да бъде заменена с реална вградена карта (Google Maps / OpenStreetMap).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        © <span id="year"></span> ФК Нова Вълна. Всички права запазени.
+      </div>
+      <div class="footer-right">
+        <a href="#booking" data-scroll-to="#booking">Запиши пробна тренировка</a>
+        <a href="#gallery" data-scroll-to="#gallery">Визия и атмосфера</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-backdrop" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" type="button" id="lightbox-close">×</button>
+      <img src="" alt="Галерия – футболни моменти" id="lightbox-img" />
+    </div>
+  </div>
+
+  <script>
+    // Година във футъра
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth scroll за всички data-scroll-to
+    function setupSmoothScroll() {
+      const links = document.querySelectorAll("[data-scroll-to]");
+      links.forEach(link => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          const target = link.getAttribute("data-scroll-to");
+          const el = document.querySelector(target);
+          if (el) {
+            const y = el.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        });
+      });
+    }
+
+    // Mobile навигация
+    function setupNavToggle() {
+      const toggle = document.querySelector(".nav-toggle");
+      const mobileNav = document.querySelector(".nav-links-mobile");
+      if (!toggle || !mobileNav) return;
+
+      toggle.addEventListener("click", () => {
+        toggle.classList.toggle("active");
+        mobileNav.classList.toggle("active");
+      });
+
+      mobileNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          toggle.classList.remove("active");
+          mobileNav.classList.remove("active");
+        });
+      });
+    }
+
+    // Reveal анимации при скрол
+    function setupRevealOnScroll() {
+      const elements = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        elements.forEach(el => el.classList.add("visible"));
+        return;
+      }
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.25
+        }
+      );
+      elements.forEach(el => observer.observe(el));
+    }
+
+    // Lightbox за галерия
+    function setupLightbox() {
+      const items = document.querySelectorAll(".gallery-item, [data-gallery-image]");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const closeBtn = document.getElementById("lightbox-close");
+
+      function open(src) {
+        if (!src) return;
+        lightboxImg.src = src;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function close() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+        lightboxImg.src = "";
+      }
+
+      items.forEach(item => {
+        item.addEventListener("click", () => {
+          const src = item.getAttribute("data-lightbox-src") || item.querySelector("img")?.src;
+          open(src);
+        });
+      });
+
+      closeBtn.addEventListener("click", close);
+      lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) close();
+      });
+
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && lightbox.classList.contains("active")) {
+          close();
+        }
+      });
+    }
+
+    // Валидация на формата (клиентска)
+    function setupForm() {
+      const form = document.getElementById("booking-form");
+      const status = document.getElementById("form-status");
+      if (!form || !status) return;
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        status.textContent = "";
+        status.className = "form-status";
+
+        const formData = new FormData(form);
+        const required = ["parentName", "phone", "playerName", "age"];
+        let hasError = false;
+
+        required.forEach(field => {
+          const value = (formData.get(field) || "").toString().trim();
+          const input = form.querySelector("[name='" + field + "']");
+          if (value === "") {
+            hasError = true;
+            if (input) input.classList.add("input-error");
+          } else if (input) {
+            input.classList.remove("input-error");
+          }
+        });
+
+        const age = parseInt(formData.get("age"), 10);
+        if (isNaN(age) || age < 5 || age > 18) {
+          hasError = true;
+          const ageInput = form.querySelector("[name='age']");
+          if (ageInput) ageInput.classList.add("input-error");
+        }
+
+        if (hasError) {
+          status.textContent = "Моля, попълни задължителните полета коректно.";
+          status.classList.add("error");
+          return;
+        }
+
+        // Демонстрационно съобщение – тук вместо alert може да добавиш реално изпращане.
+        status.textContent = "Заявката е изпратена успешно. Ще се свържем с теб скоро за потвърждение.";
+        status.classList.add("success");
+        form.reset();
+      });
+    }
+
+    // Добавяме клас за грешка
+    const style = document.createElement("style");
+    style.textContent = ".input-error { border-color: #ef4444 !important; box-shadow: 0 0 0 1px rgba(239,68,68,0.5); }";
+    document.head.appendChild(style);
+
+    // Инициализация
+    setupSmoothScroll();
+    setupNavToggle();
+    setupRevealOnScroll();
+    setupLightbox();
+    setupForm();
+  </script>
+</body>
+</html>
