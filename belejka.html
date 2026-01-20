@@ -6,343 +6,434 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вносна бележка</title>
     <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #27ae60;
+            --danger: #e74c3c;
+            --bg: #f4f7f6;
+            --surface: #ffffff;
+            --locked: #f8f9fa;
+        }
+
         body {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
         }
 
         .container {
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: var(--surface);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             padding: 40px;
-            margin: 50px auto;
-            max-width: 900px;
-        }
-
-        h1 {
-            color: #000000;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="date"],
-        button {
-            width: calc(100% - 20px);
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #cccccc;
-            margin-top: 10px;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .canvas-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        canvas {
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-            margin-top: 0px;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
         }
 
         .logo {
             display: block;
             margin: 0 auto 20px;
-            width: 598px;
-            height: 165px;
+            max-height: 80px;
+            width: auto;
         }
 
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 15px;
+        }
+
+        /* Toolbar за отключване */
+        .toolbar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .toggle-edit {
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: all 0.2s;
+        }
+        .toggle-edit:hover { background-color: #eee; color: #333; }
+        .toggle-edit.active { background-color: var(--primary); color: white; border-color: var(--primary); }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .full-width { grid-column: 1 / -1; }
+        .form-group { margin-bottom: 5px; position: relative; }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #bdc3c7;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #fff;
+            color: #2c3e50;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.15);
+        }
+
+        /* Стилове за заключени полета */
+        input.locked {
+            background-color: var(--locked);
+            color: #555;
+            border-color: #e0e0e0;
+            cursor: not-allowed;
+        }
+        /* Когато е отключено, да си личи */
+        input:not(.locked) {
+            background-color: #fff;
+        }
+
+        input[readonly] { /* За полето с думи и дата */
+            background-color: #f0f3f4;
+            color: #7f8c8d;
+            cursor: default;
+            font-weight: 600;
+            border: 1px solid #e0e0e0;
+        }
+
+        .buttons-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-print {
+            flex: 2;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-print:hover { background-color: #219150; transform: translateY(-2px); }
+
+        .btn-clear {
+            flex: 1;
+            background-color: #fff;
+            color: #7f8c8d;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px;
+            transition: 0.2s;
+        }
+        .btn-clear:hover { border-color: var(--danger); color: var(--danger); background-color: #fff5f5; }
+
+        /* PRINT */
+        #print-area { display: none; }
+
         @media print {
-            body * {
-                visibility: hidden;
-            }
-
-            .canvas-container,
-            .canvas-container * {
-                visibility: visible;
-            }
-
-            .canvas-container {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: auto;
-            }
-
-            canvas {
-                display: block;
-                page-break-after: avoid;
-                width: 100%;
-                max-height: calc(50vh - 20px);
-            }
+            @page { size: A4; margin: 0; }
+            body, html { margin: 0; padding: 0; background: white; height: 100%; overflow: hidden; }
+            .container { display: none !important; }
+            #print-area { display: flex !important; flex-direction: column; align-items: center; width: 100%; padding-top: 5mm; }
+            .canvas-wrapper { width: 96%; display: flex; justify-content: center; margin-bottom: 2mm; }
+            canvas { width: 100% !important; height: auto !important; max-height: 140mm; }
+            .separator { width: 90%; border-top: 1px dashed #ccc; margin: 5mm 0; display: block !important; }
         }
     </style>
 </head>
 
 <body>
+
     <div class="container">
-        <img src="logo.jpg" alt="Лого на банката" class="logo">
-        <h1>Вносна бележка</h1>
+        <div class="toolbar">
+            <button class="toggle-edit" onclick="toggleEditMode()" id="editBtn">🔓 Редактирай Данни</button>
+        </div>
 
-        <div class="form-group">
-            <label for="date">Дата на представяне:</label>
-            <input type="text" id="date" name="date" readonly>
-        </div>
-        <div class="form-group">
-            <label for="branch">Банка:</label>
-            <input type="text" id="branch" name="branch" value="УНИКРЕДИТ БУЛБАНК">
-        </div>
-        <div class="form-group">
-            <label for="address">Клон:</label>
-            <input type="text" id="address" name="address" value="ПАЗАРДЖИК">
-        </div>
-        <div class="form-group">
-            <label for="name">В полза на - име:</label>
-            <input type="text" id="name" name="name" value="КОСЕР АД">
-        </div>
-        <div class="form-group">
-            <label for="id">Уникален идентификатор на получателя:</label>
-            <input type="text" id="id" name="id" value="BG03UNCR70001523592596">
-        </div>
-        <div class="form-group">
-            <label for="currency">Валута:</label>
-            <input type="text" id="currency" name="currency" value="BGN">
-        </div>
-        <div class="form-group">
-            <label for="amount">Сума:</label>
-            <input type="number" id="amount" name="amount">
-        </div>
-        <div class="form-group">
-            <label for="amountWords">С думи:</label>
-            <input type="text" id="amountWords" name="amountWords">
-        </div>
-        <div class="form-group">
-            <label for="depositor">Вносител - име:</label>
-            <input type="text" id="depositor" name="depositor" value="ЙОРДАН ИВАНОВ ВАСИЛЕВ">
-        </div>
-        <div class="form-group">
-            <label for="reason">Основание за внасяне:</label>
-            <input type="text" id="reason" name="reason" value="ОБОРОТ МАГАЗИН ПАЗАРДЖИК">
-        </div>
-        <button onclick="generateImage()">Принтирай</button>
-        <div class="canvas-container" id="canvas-container">
-            <canvas id="canvas1"></canvas>
+        <img src="logo.jpg" alt="Лого" class="logo">
+        <h1>🏦 Вносна Бележка</h1>
 
-            <hr />
-            <canvas id="canvas2"></canvas>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>📅 Дата</label>
+                <input type="text" id="date" readonly>
+            </div>
+            <div class="form-group">
+                <label>💱 Валута</label>
+                <select id="currencySelect" onchange="updateCurrency()">
+                    <option value="BGN">BGN (Лева)</option>
+                    <option value="EUR">EUR (Евро)</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>🏦 Банка</label><input type="text" id="branch" value="УНИКРЕДИТ БУЛБАНК" class="locked" readonly></div>
+            <div class="form-group"><label>📍 Клон</label><input type="text" id="address" value="ПАЗАРДЖИК" class="locked" readonly></div>
+            
+            <div class="form-group full-width"><label>🏢 В полза на (Име)</label><input type="text" id="name" value="КОСЕР АД" class="locked" readonly></div>
+            <div class="form-group full-width"><label>🔢 IBAN / ID</label><input type="text" id="id" value="BG03UNCR70001523592596" class="locked" readonly></div>
+            
+            <div class="form-group">
+                <label>💰 Сума (Цифри)</label>
+                <input type="number" id="amount" placeholder="0.00" step="0.01" onblur="formatAmount()">
+            </div>
+            <div class="form-group">
+                <label>🔤 Сума (Думи)</label>
+                <input type="text" id="amountWords" readonly style="color: var(--accent);">
+            </div>
+
+            <div class="form-group full-width"><label>👤 Вносител</label><input type="text" id="depositor" value="ЙОРДАН ИВАНОВ ВАСИЛЕВ" class="locked" readonly></div>
+            <div class="form-group full-width"><label>📄 Основание</label><input type="text" id="reason" value="ОБОРОТ МАГАЗИН ПАЗАРДЖИК" class="locked" readonly></div>
+        </div>
+
+        <div class="buttons-row">
+            <button class="btn-clear" onclick="clearForm()">🧹 Изчисти Сума</button>
+            <button class="btn-print" onclick="generateAndPrint()">🖨️ ПРИНТИРАЙ (2 БРОЯ)</button>
         </div>
     </div>
 
+    <div id="print-area">
+        <div class="canvas-wrapper"><canvas id="canvas1"></canvas></div>
+        <div class="separator"></div>
+        <div class="canvas-wrapper"><canvas id="canvas2"></canvas></div>
+    </div>
+
     <script>
-        let imageLoaded = false;
-        function checkImagesLoaded() {
-            if (imageLoaded) {
-                generateImage();
+        const CONFIG = {
+            'BGN': { word: 'ЛЕВА', singular: 'ЛЕВ', gender: 'm' },
+            'EUR': { word: 'ЕВРО', singular: 'ЕВРО', gender: 'n' }
+        };
+        let currentCurrency = 'BGN';
+        let isLocked = true; // Начално състояние - заключено
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('date').value = getFormattedDate();
+            document.getElementById('amount').addEventListener('input', updateAmountWords);
+        });
+
+        // === 1. ФУНКЦИЯ ЗА ОТКЛЮЧВАНЕ/ЗАКЛЮЧВАНЕ ===
+        function toggleEditMode() {
+            isLocked = !isLocked;
+            const fields = document.querySelectorAll('.locked, .unlocked'); // Всички специални полета
+            const btn = document.getElementById('editBtn');
+
+            fields.forEach(field => {
+                if (isLocked) {
+                    field.setAttribute('readonly', true);
+                    field.classList.add('locked');
+                    field.classList.remove('unlocked');
+                } else {
+                    field.removeAttribute('readonly');
+                    field.classList.remove('locked');
+                    field.classList.add('unlocked');
+                }
+            });
+
+            if (isLocked) {
+                btn.textContent = "🔓 Редактирай Данни";
+                btn.classList.remove('active');
             } else {
-                setTimeout(checkImagesLoaded, 100); // Проверяваме всеки 100 милисекунди
+                btn.textContent = "🔒 Заключи Данни";
+                btn.classList.add('active');
             }
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            checkImagesLoaded();
-        });
-
-        function getFormattedDate() {
-            const months = [
-                "ЯНУАРИ", "ФЕВРУАРИ", "МАРТ", "АПРИЛ", "МАЙ", "ЮНИ",
-                "ЮЛИ", "АВГУСТ", "СЕПТЕМВРИ", "ОКТОМВРИ", "НОЕМВРИ", "ДЕКЕМВРИ"
-            ];
-            const today = new Date();
-            const day = today.getDate();
-            const month = months[today.getMonth()];
-            const year = today.getFullYear();
-            return `${day}${month}${year}`;
+        // === 2. ФУНКЦИЯ ЗА АВТО-ФОРМАТИРАНЕ (.00) ===
+        function formatAmount() {
+            const input = document.getElementById('amount');
+            let val = parseFloat(input.value);
+            if (!isNaN(val)) {
+                input.value = val.toFixed(2); // Прави го винаги с 2 знака (50.00)
+                updateAmountWords(); // Обновяваме и текста
+            }
         }
 
-        document.getElementById('date').value = getFormattedDate();
+        // === 3. ФУНКЦИЯ ЗА ИЗЧИСТВАНЕ ===
+        function clearForm() {
+            document.getElementById('amount').value = '';
+            document.getElementById('amountWords').value = '';
+            document.getElementById('amount').focus();
+        }
 
-        function convertNumberToWords(amount) {
-            const units = ["", "ЕДИН", "ДВА", "ТРИ", "ЧЕТИРИ", "ПЕТ", "ШЕСТ", "СЕДЕМ", "ОСЕМ", "ДЕВЕТ"];
+        function updateCurrency() {
+            currentCurrency = document.getElementById('currencySelect').value;
+            updateAmountWords();
+        }
+
+        function updateAmountWords() {
+            const val = document.getElementById('amount').value;
+            document.getElementById('amountWords').value = val ? numberToWordsBG(val, currentCurrency) : "";
+        }
+
+        function getFormattedDate() {
+            const months = ["ЯНУАРИ","ФЕВРУАРИ","МАРТ","АПРИЛ","МАЙ","ЮНИ","ЮЛИ","АВГУСТ","СЕПТЕМВРИ","ОКТОМВРИ","НОЕМВРИ","ДЕКЕМВРИ"];
+            const d = new Date();
+            return `${String(d.getDate()).padStart(2,'0')}${months[d.getMonth()]}${d.getFullYear()}`;
+        }
+
+        // === ГРАМАТИКА ===
+        function numberToWordsBG(amount, currencyCode) {
+            const conf = CONFIG[currencyCode];
+            let num = parseInt(amount, 10);
+            
+            if (isNaN(num) || num < 0) return "НЕВАЛИДНА СУМА";
+            if (num === 0) return "НУЛА " + conf.word;
+            if (num === 1) return (conf.gender === 'm' ? "ЕДИН " : "ЕДНО ") + conf.singular;
+
+            const unitsM = ["", "ЕДИН", "ДВА", "ТРИ", "ЧЕТИРИ", "ПЕТ", "ШЕСТ", "СЕДЕМ", "ОСЕМ", "ДЕВЕТ"];
+            const unitsN = ["", "ЕДНО", "ДВЕ", "ТРИ", "ЧЕТИРИ", "ПЕТ", "ШЕСТ", "СЕДЕМ", "ОСЕМ", "ДЕВЕТ"];
+            const units = (conf.gender === 'n') ? unitsN : unitsM;
+
             const teens = ["ДЕСЕТ", "ЕДИНАДЕСЕТ", "ДВАНАДЕСЕТ", "ТРИНАДЕСЕТ", "ЧЕТИРИНАДЕСЕТ", "ПЕТНАДЕСЕТ", "ШЕСТНАДЕСЕТ", "СЕДЕМНАДЕСЕТ", "ОСЕМНАДЕСЕТ", "ДЕВЕТНАДЕСЕТ"];
             const tens = ["", "ДЕСЕТ", "ДВАДЕСЕТ", "ТРИДЕСЕТ", "ЧЕТИРИДЕСЕТ", "ПЕТДЕСЕТ", "ШЕСТДЕСЕТ", "СЕДЕМДЕСЕТ", "ОСЕМДЕСЕТ", "ДЕВЕТДЕСЕТ"];
             const hundreds = ["", "СТО", "ДВЕСТА", "ТРИСТА", "ЧЕТИРИСТОТИН", "ПЕТСТОТИН", "ШЕСТСТОТИН", "СЕДЕМСТОТИН", "ОСЕМСТОТИН", "ДЕВЕТСТОТИН"];
-            const thousands = ["", "ХИЛЯДА", "ДВЕ ХИЛЯДИ", "ТРИ ХИЛЯДИ", "ЧЕТИРИ ХИЛЯДИ", "ПЕТ ХИЛЯДИ", "ШЕСТ ХИЛЯДИ", "СЕДЕМ ХИЛЯДИ", "ОСЕМ ХИЛЯДИ", "ДЕВЕТ ХИЛЯДИ"];
+            const thousandsArr = ["", "ХИЛЯДА", "ДВЕ ХИЛЯДИ", "ТРИ ХИЛЯДИ", "ЧЕТИРИ ХИЛЯДИ", "ПЕТ ХИЛЯДИ", "ШЕСТ ХИЛЯДИ", "СЕДЕМ ХИЛЯДИ", "ОСЕМ ХИЛЯДИ", "ДЕВЕТ ХИЛЯДИ"];
 
-            let words = '';
-            let number = parseInt(amount, 10);
-            if (isNaN(number) || !isFinite(number) || number < 0 || number > 10000) {
-                return "невалидна сума";
-            }
+            let parts = [];
 
-            if (number === 0) {
-                return "НУЛА ЛЕВА";
+            if (num >= 1000) {
+                let th = Math.floor(num / 1000);
+                if (th < 10) parts.push(thousandsArr[th]); 
+                num %= 1000;
             }
-            if (number === 1) {
-                return "ЕДИН ЛЕВ";
+            if (num >= 100) {
+                parts.push(hundreds[Math.floor(num / 100)]);
+                num %= 100;
             }
-
-            if (number === 10000) {
-                return "ДЕСЕТ ХИЛЯДИ ЛЕВА";
-            }
-
-            if (number >= 1000) {
-                const thousandPart = Math.floor(number / 1000);
-                number %= 1000;
-                words += thousands[thousandPart];
-                if (number > 0) {
-                    words += " И ";
-                } else {
-                    words += " ЛЕВА";
+            if (num > 0) {
+                let lastPart = "";
+                if (num < 10) lastPart = units[num];
+                else if (num >= 10 && num < 20) lastPart = teens[num - 10];
+                else {
+                    let ten = Math.floor(num / 10);
+                    let unit = num % 10;
+                    lastPart = tens[ten];
+                    if (unit > 0) lastPart += " И " + units[unit];
                 }
+                parts.push(lastPart);
             }
 
-            if (number >= 100) {
-                const hundredPart = Math.floor(number / 100);
-                number %= 100;
-                words += hundreds[hundredPart];
-                if (number > 0) {
-                    words += " И ";
-                } else {
-                    words += " ЛЕВА";
-                }
+            let resultString = "";
+            if (parts.length === 1) resultString = parts[0];
+            else {
+                let lastChunk = parts.pop(); 
+                resultString = parts.join(" ") + " И " + lastChunk;
             }
-
-            if (number >= 20) {
-                const tenPart = Math.floor(number / 10);
-                number %= 10;
-                words += tens[tenPart];
-                if (number > 0) {
-                    words += " И ";
-                } else {
-                    words += " ЛЕВА";
-                }
-            } else if (number >= 10) {
-                words += teens[number - 10] + " ЛЕВА";
-                number = 0;
-            }
-
-            if (number > 0 && number < 10) {
-                words += units[number] + " ЛЕВА";
-            } else if (number === 0 && words === '') {
-                words = "НУЛА ЛЕВА";
-            }
-
-            return words;
+            return resultString + " " + conf.word;
         }
 
-        document.getElementById('amount').addEventListener('input', function () {
-            const amount = this.value;
-            const words = convertNumberToWords(amount);
-            document.getElementById('amountWords').value = words;
-        });
+        // === DRAW ===
+        function fillCanvas(canvasId, imgSource) {
+            return new Promise((resolve, reject) => {
+                const canvas = document.getElementById(canvasId);
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                img.src = imgSource;
 
-        function drawTextInBoxes(ctx, text, startX, startY, boxWidth, boxHeight, letterSpacing) {
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    
+                    const date = document.getElementById('date').value;
+                    const branch = document.getElementById('branch').value;
+                    const address = document.getElementById('address').value;
+                    const name = document.getElementById('name').value;
+                    const id = document.getElementById('id').value;
+                    const currency = document.getElementById('currencySelect').value;
+                    const amount = document.getElementById('amount').value;
+                    const amountWords = document.getElementById('amountWords').value;
+                    const depositor = document.getElementById('depositor').value;
+                    const reason = document.getElementById('reason').value;
+
+                    ctx.font = "22px Arial"; 
+                    ctx.fillStyle = "#1a1a1a"; 
+
+                    drawText(ctx, date, 510, 30, 20, 30, 1);
+                    drawText(ctx, branch, 50, 30, 20, 30, -4);
+                    drawText(ctx, address, 93, 75, 20, 30, -1);
+                    drawText(ctx, name, 20, 195, 20, 30, 4);
+                    drawText(ctx, id, 20, 245, 20, 30, 4);
+                    drawText(ctx, currency, 498, 295, 20, 30, 4);
+                    drawText(ctx, "00", 812, 295, 20, 30, 4);
+                    
+                    let mainAmt = amount ? Math.floor(amount) : "";
+                    drawRightToLeft(ctx, mainAmt, 787, 295, 20, 30, 4);
+                    
+                    drawText(ctx, amountWords, 19, 345, 20, 30, 4);
+                    drawText(ctx, depositor, 19, 430, 20, 30, 4);
+                    drawText(ctx, reason, 20, 513, 20, 30, 4);
+
+                    resolve();
+                };
+                img.onerror = reject;
+            });
+        }
+
+        function drawText(ctx, text, startX, startY, w, h, space) {
+            text = String(text).toUpperCase();
             for (let i = 0; i < text.length; i++) {
-                ctx.fillText(text[i], startX + (i * (boxWidth + letterSpacing)), startY);
+                ctx.fillText(text[i], startX + (i * (w + space)), startY);
             }
         }
 
-        function drawTextInBoxesRightToLeft(ctx, text, startX, startY, boxWidth, boxHeight, letterSpacing) {
-            const chars = text.split('');
+        function drawRightToLeft(ctx, text, startX, startY, w, h, space) {
+            const chars = String(text).split('');
             for (let i = chars.length - 1; i >= 0; i--) {
-                ctx.fillText(chars[i], startX - (chars.length - 1 - i) * (boxWidth + letterSpacing), startY);
+                ctx.fillText(chars[i], startX - (chars.length - 1 - i) * (w + space), startY);
             }
         }
 
-        function generateImage() {
-            const date = document.getElementById('date').value;
-            const branch = document.getElementById('branch').value;
-            const address = document.getElementById('address').value;
-            const name = document.getElementById('name').value;
-            const id = document.getElementById('id').value;
-            const currency = document.getElementById('currency').value;
+        async function generateAndPrint() {
             const amount = document.getElementById('amount').value;
-            const amountWords = document.getElementById('amountWords').value;
-            const depositor = document.getElementById('depositor').value;
-            const reason = document.getElementById('reason').value;
-            const zerocent = "00";
+            if (!amount) { alert("❗ Моля, въведи сума!"); document.getElementById('amount').focus(); return; }
 
-            const canvas1 = document.getElementById('canvas1');
-            const ctx1 = canvas1.getContext('2d');
-            const canvas2 = document.getElementById('canvas2');
-            const ctx2 = canvas2.getContext('2d');
-
-            const img = new Image();
-            img.onload = function () {
-                canvas1.width = img.width;
-                canvas1.height = img.height;
-                ctx1.drawImage(img, 0, 0);
-                ctx1.font = "21px Arial";
-                ctx1.fillStyle = "#000000";
-
-                drawTextInBoxes(ctx1, date, 510, 30, 20, 30, 1);
-                drawTextInBoxes(ctx1, branch, 50, 30, 20, 30, -4);
-                drawTextInBoxes(ctx1, address, 93, 75, 20, 30, -1);
-                drawTextInBoxes(ctx1, name, 20, 195, 20, 30, 4);
-                drawTextInBoxes(ctx1, id, 20, 245, 20, 30, 4);
-                drawTextInBoxes(ctx1, currency, 498, 295, 20, 30, 4);
-                drawTextInBoxes(ctx1, zerocent, 812, 295, 20, 30, 4);
-                drawTextInBoxesRightToLeft(ctx1, amount, 787, 295, 20, 30, 4);
-                drawTextInBoxes(ctx1, amountWords, 19, 345, 20, 30, 4);
-                drawTextInBoxes(ctx1, depositor, 19, 430, 20, 30, 4);
-                drawTextInBoxes(ctx1, reason, 20, 513, 20, 30, 4);
-
-                canvas2.width = img.width;
-                canvas2.height = img.height;
-                ctx2.drawImage(img, 0, 0);
-                ctx2.font = "21px Arial";
-                ctx2.fillStyle = "#000000";
-
-                drawTextInBoxes(ctx2, date, 510, 30, 20, 30, 1);
-                drawTextInBoxes(ctx2, branch, 50, 30, 20, 30, -4);
-                drawTextInBoxes(ctx2, address, 93, 75, 20, 30, -1);
-                drawTextInBoxes(ctx2, name, 20, 195, 20, 30, 4);
-                drawTextInBoxes(ctx2, id, 20, 245, 20, 30, 4);
-                drawTextInBoxes(ctx2, currency, 498, 295, 20, 30, 4);
-                drawTextInBoxes(ctx2, zerocent, 812, 295, 20, 30, 4);
-                drawTextInBoxesRightToLeft(ctx2, amount, 787, 295, 20, 30, 4);
-                drawTextInBoxes(ctx2, amountWords, 19, 345, 20, 30, 4);
-                drawTextInBoxes(ctx2, depositor, 19, 430, 20, 30, 4);
-                drawTextInBoxes(ctx2, reason, 20, 513, 20, 30, 4);
-
-                setTimeout(() => {
-                    window.print();
-                }, 100);
-            };
-            img.src = 'belejka.png';
+            try {
+                await fillCanvas('canvas1', 'belejka.png');
+                await fillCanvas('canvas2', 'belejka.png');
+                setTimeout(() => window.print(), 300);
+            } catch (e) {
+                alert("Грешка: Не намирам 'belejka.png'!");
+            }
         }
-
     </script>
 </body>
-
 </html>
