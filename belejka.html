@@ -200,7 +200,6 @@
             <div class="form-group">
                 <label>💱 Валута</label>
                 <select id="currencySelect" onchange="updateCurrency()">
-                    <option value="BGN">BGN (Лева)</option>
                     <option value="EUR">EUR (Евро)</option>
                 </select>
             </div>
@@ -238,7 +237,7 @@
 
     <script>
         const CONFIG = {
-            'BGN': { word: 'ЛЕВА', singular: 'ЛЕВ', gender: 'm' },
+            
             'EUR': { word: 'ЕВРО', singular: 'ЕВРО', gender: 'n' }
         };
         let currentCurrency = 'BGN';
