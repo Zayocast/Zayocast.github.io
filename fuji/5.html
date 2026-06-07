@@ -55,7 +55,6 @@ body::before {
   pointer-events: none; z-index: 9997; opacity: 0.35;
 }
 
-/* ─── HEADER ─── */
 header {
   position: fixed; top: 0; width: 100%;
   z-index: 1000;
@@ -143,25 +142,26 @@ nav { display: flex; align-items: center; gap: 30px; }
   align-items: center; justify-content: center;
 }
 
-/* ─── MOBILE NAV ─── */
 .mobile-nav {
   position: fixed; inset: 0;
   background: rgba(8,6,8,0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  z-index: 2000; /* above everything */
+  z-index: 9999;
   display: flex;
   flex-direction: column; align-items: center; justify-content: center;
   gap: 28px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-16px);
-  transition: opacity 0.38s var(--ease), visibility 0.38s, transform 0.38s var(--ease-out);
+  transform: translateY(-20px);
+  transition: opacity 0.4s var(--ease), visibility 0.4s, transform 0.4s var(--ease-out);
+  pointer-events: none;
 }
 .mobile-nav.open {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: all;
 }
 .mobile-nav a {
   font-family: var(--font-display);
@@ -169,43 +169,40 @@ nav { display: flex; align-items: center; gap: 30px; }
   letter-spacing: 5px;
   color: var(--paper);
   text-transform: uppercase;
-  transform: translateY(12px);
+  transition: color 0.3s;
+  transform: translateY(10px);
   opacity: 0;
   transition: color 0.3s, transform 0.4s var(--ease-out), opacity 0.4s;
 }
-.mobile-nav.open a { opacity: 1; transform: translateY(0); }
-.mobile-nav.open a:nth-child(2) { transition-delay: 0.04s; }
-.mobile-nav.open a:nth-child(3) { transition-delay: 0.09s; }
-.mobile-nav.open a:nth-child(4) { transition-delay: 0.14s; }
-.mobile-nav.open a:nth-child(5) { transition-delay: 0.19s; }
-.mobile-nav.open a:nth-child(6) { transition-delay: 0.24s; }
-.mobile-nav.open a:nth-child(7) { transition-delay: 0.29s; }
-.mobile-nav.open a:nth-child(8) { transition-delay: 0.34s; }
+.mobile-nav.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mobile-nav.open a:nth-child(2) { transition-delay: 0.05s; }
+.mobile-nav.open a:nth-child(3) { transition-delay: 0.1s; }
+.mobile-nav.open a:nth-child(4) { transition-delay: 0.15s; }
+.mobile-nav.open a:nth-child(5) { transition-delay: 0.2s; }
+.mobile-nav.open a:nth-child(6) { transition-delay: 0.25s; }
+.mobile-nav.open a:nth-child(7) { transition-delay: 0.3s; }
+.mobile-nav.open a:nth-child(8) { transition-delay: 0.35s; }
+.mobile-nav.open a:nth-child(9) { transition-delay: 0.4s; }
 .mobile-nav a:hover { color: var(--gold); }
 .mobile-nav-close {
-  position: absolute; top: 20px; right: 18px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 50%;
-  color: var(--paper);
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 2001; /* above mobile-nav itself */
-  width: 46px; height: 46px;
+  position: absolute; top: 24px; right: 20px;
+  background: none; border: none; color: var(--paper);
+  font-size: 1.6rem; cursor: pointer; z-index: 10000;
+  width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
-  transition: background 0.3s, color 0.3s, border-color 0.3s;
-  -webkit-tap-highlight-color: transparent;
+  transition: color 0.3s;
 }
-.mobile-nav-close:hover,
-.mobile-nav-close:active { background: rgba(201,168,76,0.15); color: var(--gold); border-color: rgba(201,168,76,0.3); }
+.mobile-nav-close:hover { color: var(--gold); }
 .mobile-nav-gold { color: var(--gold) !important; }
 .mobile-nav-divider {
   width: 40px; height: 1px;
-  background: rgba(201,168,76,0.25);
-  margin: 2px 0;
+  background: rgba(201,168,76,0.3);
+  margin: 5px 0;
 }
 
-/* ─── HERO ─── */
 #hero {
   height: 100svh; min-height: 600px;
   position: relative;
@@ -233,7 +230,6 @@ nav { display: flex; align-items: center; gap: 30px; }
   );
 }
 
-/* Geometric accent lines */
 .hero-geo {
   position: absolute; inset: 0;
   pointer-events: none; z-index: 1;
@@ -277,7 +273,6 @@ nav { display: flex; align-items: center; gap: 30px; }
   z-index: 1; pointer-events: none;
 }
 
-/* Scroll indicator */
 .hero-scroll {
   position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
   z-index: 3;
@@ -306,32 +301,6 @@ nav { display: flex; align-items: center; gap: 30px; }
   padding: 0 24px;
   max-width: 900px;
   width: 100%;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--font-jp);
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--gold);
-  letter-spacing: 6px;
-  margin-bottom: 22px;
-  opacity: 0;
-  transform: translateY(16px);
-  padding: 8px 22px;
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 30px;
-  background: rgba(201,168,76,0.06);
-  backdrop-filter: blur(8px);
-}
-.hero-badge-dot {
-  width: 5px; height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.7); }
 }
 .hero-title {
   font-family: var(--font-display);
@@ -413,7 +382,6 @@ nav { display: flex; align-items: center; gap: 30px; }
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); background: rgba(201,168,76,0.08); }
 
-/* ─── MARQUEE ─── */
 .marquee-bar {
   background: var(--vermillion);
   overflow: hidden;
@@ -442,7 +410,6 @@ nav { display: flex; align-items: center; gap: 30px; }
   display: inline-block;
 }
 
-/* ─── SECTIONS ─── */
 section { padding: 110px 5%; position: relative; }
 
 .section-label {
@@ -479,7 +446,6 @@ section { padding: 110px 5%; position: relative; }
   line-height: 1.2;
 }
 
-/* ─── REVEAL ANIMATIONS ─── */
 .reveal {
   opacity: 0; transform: translateY(36px);
   transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
@@ -502,7 +468,6 @@ section { padding: 110px 5%; position: relative; }
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 
-/* ─── ABOUT ─── */
 #about { background: var(--ink); }
 
 .about-layout {
@@ -586,7 +551,64 @@ section { padding: 110px 5%; position: relative; }
   user-select: none;
 }
 
-/* ─── MENU ─── */
+#experience {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.exp-inner {
+  max-width: 1300px; margin: 0 auto;
+}
+.exp-header { text-align: center; margin-bottom: 70px; }
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.exp-card {
+  background: var(--ink);
+  padding: 45px 35px;
+  text-align: center;
+  transition: background 0.4s;
+  position: relative;
+}
+.exp-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 40px; height: 2px;
+  background: var(--gold);
+  transition: transform 0.4s var(--ease-out);
+}
+.exp-card:hover { background: rgba(201,168,76,0.04); }
+.exp-card:hover::after { transform: translateX(-50%) scaleX(1); }
+.exp-icon {
+  font-family: var(--font-jp);
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: block;
+  opacity: 0.8;
+}
+.exp-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 14px;
+}
+.exp-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--silver);
+  line-height: 1.8;
+}
+
 #menu {
   background: var(--deep);
   overflow: hidden;
@@ -737,7 +759,6 @@ section { padding: 110px 5%; position: relative; }
   color: rgba(156,168,180,0.5);
 }
 
-/* ─── SPECIALS ─── */
 #specials {
   background: var(--ink);
   position: relative; overflow: hidden;
@@ -829,7 +850,6 @@ section { padding: 110px 5%; position: relative; }
   text-transform: uppercase;
 }
 
-/* ─── BAR ─── */
 #bar { background: var(--deep); }
 
 .bar-layout {
@@ -890,7 +910,6 @@ section { padding: 110px 5%; position: relative; }
   letter-spacing: 3px;
 }
 
-/* ─── DICTIONARY ─── */
 #dictionary {
   background: var(--ink);
   padding-top: 110px; padding-bottom: 110px;
@@ -948,7 +967,6 @@ section { padding: 110px 5%; position: relative; }
   background: linear-gradient(to top, rgba(8,6,8,0.7), transparent);
 }
 
-/* ─── TESTIMONIALS (new) ─── */
 #testimonials {
   background: var(--deep);
   overflow: hidden;
@@ -1026,66 +1044,6 @@ section { padding: 110px 5%; position: relative; }
   letter-spacing: 1px;
 }
 
-/* ─── EXPERIENCE / IKIGAI (new) ─── */
-#experience {
-  background: var(--ink);
-  position: relative;
-  overflow: hidden;
-}
-.exp-inner {
-  max-width: 1300px; margin: 0 auto;
-}
-.exp-header { text-align: center; margin-bottom: 70px; }
-.exp-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.08);
-  border-radius: 20px;
-  overflow: hidden;
-}
-.exp-card {
-  background: var(--ink);
-  padding: 45px 35px;
-  text-align: center;
-  transition: background 0.4s;
-  position: relative;
-}
-.exp-card::after {
-  content: '';
-  position: absolute; bottom: 0; left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 40px; height: 2px;
-  background: var(--gold);
-  transition: transform 0.4s var(--ease-out);
-}
-.exp-card:hover { background: rgba(201,168,76,0.04); }
-.exp-card:hover::after { transform: translateX(-50%) scaleX(1); }
-.exp-icon {
-  font-family: var(--font-jp);
-  font-size: 2.5rem;
-  color: var(--gold);
-  margin-bottom: 20px;
-  display: block;
-  opacity: 0.8;
-}
-.exp-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--paper);
-  margin-bottom: 14px;
-}
-.exp-desc {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--silver);
-  line-height: 1.8;
-}
-
-/* ─── DELIVERY (new) ─── */
 #delivery {
   position: relative;
   overflow: hidden;
@@ -1158,7 +1116,6 @@ section { padding: 110px 5%; position: relative; }
   color: var(--silver);
 }
 
-/* ─── GALLERY ─── */
 #gallery { background: var(--ink); padding-top: 100px; }
 
 .gallery-header {
@@ -1204,7 +1161,6 @@ section { padding: 110px 5%; position: relative; }
 .bento-overlay i { color: var(--paper); font-size: 2rem; transform: scale(0.5); transition: transform 0.4s var(--ease); }
 .bento-item:hover .bento-overlay i { transform: scale(1); }
 
-/* ─── LIGHTBOX ─── */
 .lightbox {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.97);
@@ -1225,7 +1181,6 @@ section { padding: 110px 5%; position: relative; }
 }
 .lightbox-close:hover { color: var(--gold); }
 
-/* ─── RESERVATION ─── */
 #reservation {
   position: relative;
   padding: 130px 5%;
@@ -1305,7 +1260,6 @@ section { padding: 110px 5%; position: relative; }
 }
 .glass-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-/* ─── CONTACT ─── */
 #contact { background: var(--ink); padding-top: 110px; padding-bottom: 0; }
 
 .contact-super-layout {
@@ -1356,7 +1310,6 @@ section { padding: 110px 5%; position: relative; }
 .contact-map { width: 100%; height: 100%; min-height: 480px; }
 .contact-map iframe { width: 100%; height: 100%; border: none; filter: grayscale(100%) invert(88%) brightness(0.38) contrast(1.1); }
 
-/* ─── FOOTER ─── */
 footer {
   background: #000;
   padding: 70px 5% 0;
@@ -1437,7 +1390,6 @@ footer {
 .made-by-link:hover { border-color: var(--gold); }
 .made-by-link:hover strong { color: var(--gold-light); }
 
-/* ─── FLOATING BUTTONS ─── */
 .floating-btns {
   position: fixed; bottom: 28px; right: 24px;
   display: flex; flex-direction: column; gap: 10px;
@@ -1466,7 +1418,6 @@ footer {
 }
 .float-top.show { opacity: 1; visibility: visible; }
 
-/* ─── PORTFOLIO POPUP ─── */
 .portfolio-overlay {
   position: fixed; inset: 0;
   background: rgba(8,6,8,0.9);
@@ -1496,7 +1447,7 @@ footer {
 }
 .portfolio-modal-header {
   position: relative;
-  background: linear-gradient(135deg, rgba(139,26,26,0.7), rgba(8,6,8,0.9));
+  background: linear-gradient(135deg, rgba(13,11,14,0.9), rgba(8,6,8,0.95));
   padding: 50px 45px 40px;
   text-align: center;
   overflow: hidden;
@@ -1507,7 +1458,7 @@ footer {
   font-family: var(--font-body);
   font-size: 7rem;
   font-weight: 200;
-  color: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.02);
   pointer-events: none;
 }
 .portfolio-modal-header::after {
@@ -1518,15 +1469,14 @@ footer {
 }
 .pm-avatar {
   width: 72px; height: 72px;
-  background: linear-gradient(135deg, var(--gold), var(--vermillion));
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
   font-size: 1.8rem;
-  color: var(--ink);
+  color: var(--gold);
   margin: 0 auto 20px;
-  box-shadow: 0 8px 30px rgba(201,168,76,0.35);
-  font-weight: 900;
+  box-shadow: 0 8px 30px rgba(201,168,76,0.15);
 }
 .pm-name {
   font-family: var(--font-display);
@@ -1626,7 +1576,6 @@ footer {
 }
 .pm-close-x:hover { color: var(--paper); background: rgba(255,255,255,0.06); }
 
-/* ─── MOBILE ─── */
 @media (max-width: 1100px) {
   .about-layout { grid-template-columns: 1fr; gap: 50px; }
   .about-img-wrap { display: none; }
@@ -1700,44 +1649,41 @@ footer {
 </head>
 <body>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
   <img src="" id="lightboxImg" alt="">
 </div>
 
-<!-- PORTFOLIO POPUP -->
 <div class="portfolio-overlay" id="portfolioOverlay">
   <div class="portfolio-modal">
-    <div class="portfolio-modal-header" style="position:relative;">
+    <div class="portfolio-modal-header">
       <button class="pm-close-x" id="pmCloseX"><i class="fas fa-times"></i></button>
-      <div class="pm-avatar">З</div>
+      <div class="pm-avatar"><i class="fas fa-laptop-code"></i></div>
       <div class="pm-name">Златин Райков</div>
-      <div class="pm-tagline">Web Developer & UI/UX Designer</div>
+      <div class="pm-tagline">Уеб Разработчик & UI/UX Дизайнер</div>
     </div>
     <div class="portfolio-modal-body">
       <div class="pm-services">
-        <div class="pm-service"><i class="fas fa-code"></i><span>Web Development</span></div>
-        <div class="pm-service"><i class="fas fa-palette"></i><span>UI / UX Design</span></div>
-        <div class="pm-service"><i class="fas fa-mobile-alt"></i><span>Mobile-First</span></div>
-        <div class="pm-service"><i class="fas fa-bolt"></i><span>Performance</span></div>
-        <div class="pm-service"><i class="fas fa-store"></i><span>E-Commerce</span></div>
-        <div class="pm-service"><i class="fas fa-chart-line"></i><span>SEO Ready</span></div>
+        <div class="pm-service"><i class="fas fa-code"></i><span>Уеб Разработка</span></div>
+        <div class="pm-service"><i class="fas fa-palette"></i><span>UI / UX Дизайн</span></div>
+        <div class="pm-service"><i class="fas fa-mobile-alt"></i><span>Мобилен Дизайн</span></div>
+        <div class="pm-service"><i class="fas fa-bolt"></i><span>Оптимизация</span></div>
+        <div class="pm-service"><i class="fas fa-shopping-cart"></i><span>Онлайн Магазини</span></div>
+        <div class="pm-service"><i class="fas fa-search"></i><span>SEO Оптимизация</span></div>
       </div>
       <p class="pm-desc">
-        Правя красиви, бързи и модерни уебсайтове за бизнеси, ресторанти и магазини. Всеки проект е уникален — от нулата до живо.
+        Създавам съвременни, бързи и интуитивни уебсайтове, които помагат на бизнеса да расте. Всяка линия код и всеки детайл в дизайна са изработени с мисъл за крайния потребител.
       </p>
       <div class="pm-cta">
-        <a href="mailto:zlatin.raykov@gmail.com" class="pm-btn-main">
-          <i class="fas fa-envelope"></i> Свържи се
-        </a>
+        <div class="pm-btn-main" id="copyEmailBtn" style="text-transform: none; font-family: var(--font-body); letter-spacing: 1px; cursor: copy; user-select: all;" title="Кликни за да копираш">
+          <i class="fas fa-envelope"></i> zlatin.raykov@gmail.com
+        </div>
         <button class="pm-btn-close" id="pmBtnClose">Затвори</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- HEADER -->
 <header id="header">
   <a href="#" class="logo-wrap">
     <span class="logo-jp">富士山 · バー&ディナー</span>
@@ -1758,7 +1704,6 @@ footer {
   <button class="hamburger" id="hamburger" aria-label="Меню"><i class="fas fa-bars"></i></button>
 </header>
 
-<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Навигация">
   <button class="mobile-nav-close" id="mobileClose" aria-label="Затвори"><i class="fas fa-times"></i></button>
   <a href="#about" class="mobile-link">За нас</a>
@@ -1771,7 +1716,6 @@ footer {
   <a href="#reservation" class="mobile-link mobile-nav-gold">Резервация →</a>
 </div>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-geo"></div>
@@ -1779,10 +1723,6 @@ footer {
   <canvas id="sakura-canvas"></canvas>
 
   <div class="hero-content">
-    <div class="hero-badge" id="heroBadge">
-      <span class="hero-badge-dot"></span>
-      富士山 · Пазарджик
-    </div>
     <h1 class="hero-title" id="heroTitle">
       Fujiyama
       <span>Автентичен вкус от Япония</span>
@@ -1803,7 +1743,6 @@ footer {
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-bar">
   <div class="marquee-track">
     <span class="marquee-item">Прясно приготвено суши <span class="marquee-dot"></span></span>
@@ -1819,7 +1758,6 @@ footer {
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-layout">
     <div class="about-text-wrap">
@@ -1848,7 +1786,6 @@ footer {
   </div>
 </section>
 
-<!-- EXPERIENCE (NEW) -->
 <section id="experience">
   <div class="exp-inner">
     <div class="exp-header reveal">
@@ -1880,7 +1817,6 @@ footer {
   </div>
 </section>
 
-<!-- MENU -->
 <section id="menu">
   <div class="menu-header-row reveal">
     <div>
@@ -1995,7 +1931,6 @@ footer {
   </div>
 </section>
 
-<!-- SPECIALS -->
 <section id="specials">
   <div style="text-align:center; margin-bottom:65px;" class="reveal">
     <div class="section-label" style="justify-content:center; margin-bottom:14px;">Специалитети · スペシャル</div>
@@ -2031,7 +1966,6 @@ footer {
   </div>
 </section>
 
-<!-- BAR -->
 <section id="bar">
   <div class="bar-layout">
     <div class="bar-text">
@@ -2084,7 +2018,6 @@ footer {
   </div>
 </section>
 
-<!-- DICTIONARY -->
 <section id="dictionary">
   <div class="dict-layout">
     <div class="dict-text reveal">
@@ -2119,7 +2052,6 @@ footer {
   </div>
 </section>
 
-<!-- TESTIMONIALS (NEW) -->
 <section id="testimonials">
   <div class="testi-inner">
     <div class="testi-header reveal">
@@ -2170,7 +2102,6 @@ footer {
   </div>
 </section>
 
-<!-- DELIVERY (NEW) -->
 <section id="delivery" style="padding:0;">
   <div class="delivery-inner">
     <div class="delivery-visual">
@@ -2213,7 +2144,6 @@ footer {
   </div>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery">
   <div class="gallery-header reveal">
     <div>
@@ -2249,7 +2179,6 @@ footer {
   </div>
 </section>
 
-<!-- RESERVATION -->
 <section id="reservation">
   <div class="res-bg"></div>
   <div class="glass-panel reveal">
@@ -2292,7 +2221,6 @@ footer {
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-super-layout reveal">
     <div class="contact-info-panel">
@@ -2332,7 +2260,6 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
@@ -2377,11 +2304,10 @@ footer {
   </div>
   <div class="footer-bottom">
     <span class="copyright-text">© 2026 Sushi Bar & Dinner Fujiyama. Всички права запазени.</span>
-    <span class="made-by">Made by: <span class="made-by-link" id="madeByLink"><strong>Златин Райков</strong></span></span>
+    <span class="made-by">Изработено от: <span class="made-by-link" id="madeByLink"><strong>Златин Райков</strong></span></span>
   </div>
 </footer>
 
-<!-- FLOATING BUTTONS -->
 <div class="floating-btns">
   <a href="viber://chat?number=359888123456" class="float-btn float-viber" title="Viber">
     <i class="fab fa-viber"></i>
@@ -2395,7 +2321,6 @@ footer {
 </div>
 
 <script>
-// ─── HERO ANIMATIONS (instant, no loader)
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('heroBg').style.transform = 'scale(1)';
   document.getElementById('heroBg').style.transition = 'transform 8s ease-out';
@@ -2403,7 +2328,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initHeroAnims() {
-  const ids = ['heroBadge', 'heroTitle', 'heroDesc', 'heroActions'];
+  const ids = ['heroTitle', 'heroDesc', 'heroActions'];
   ids.forEach((id, i) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -2421,7 +2346,6 @@ function initHeroAnims() {
   }
 }
 
-// ─── HEADER SCROLL
 const header = document.getElementById('header');
 const btnTop = document.getElementById('btnTop');
 window.addEventListener('scroll', () => {
@@ -2435,7 +2359,6 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 btnTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// ─── MOBILE NAV — fixed open/close
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 const mobileClose = document.getElementById('mobileClose');
@@ -2452,22 +2375,18 @@ function closeNav() {
 hamburger.addEventListener('click', openNav);
 mobileClose.addEventListener('click', closeNav);
 
-// Close on link click
 document.querySelectorAll('.mobile-link').forEach(l => {
   l.addEventListener('click', closeNav);
 });
 
-// Close on overlay background click
 mobileNav.addEventListener('click', (e) => {
   if (e.target === mobileNav) closeNav();
 });
 
-// Close on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
 });
 
-// ─── REVEAL ON SCROLL
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -2479,7 +2398,6 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 revealEls.forEach(el => obs.observe(el));
 
-// ─── MENU FILTER & SEARCH
 const pills = document.querySelectorAll('.filter-pill');
 const cards = document.querySelectorAll('.menu-card');
 
@@ -2517,7 +2435,6 @@ document.getElementById('menuSearch').addEventListener('input', e => {
   });
 });
 
-// ─── DICTIONARY
 const dictItems = document.querySelectorAll('.dict-item');
 const dictImgs = document.querySelectorAll('.dict-img');
 dictItems.forEach(item => {
@@ -2528,7 +2445,6 @@ dictItems.forEach(item => {
     const target = document.getElementById(item.dataset.img);
     if (target) target.classList.add('active');
   });
-  // also on hover for desktop
   item.addEventListener('mouseenter', () => {
     dictItems.forEach(i => i.classList.remove('active'));
     dictImgs.forEach(img => img.classList.remove('active'));
@@ -2538,7 +2454,6 @@ dictItems.forEach(item => {
   });
 });
 
-// ─── LIGHTBOX
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 document.querySelectorAll('.bento-item').forEach(item => {
@@ -2559,7 +2474,6 @@ lightbox.addEventListener('click', e => {
   }
 });
 
-// ─── RESERVATION FORM
 document.getElementById('resForm').addEventListener('submit', e => {
   e.preventDefault();
   const btn = e.target.querySelector('.glass-btn');
@@ -2577,7 +2491,6 @@ document.getElementById('resForm').addEventListener('submit', e => {
   }, 1600);
 });
 
-// ─── PORTFOLIO POPUP
 const portfolioOverlay = document.getElementById('portfolioOverlay');
 const madeByLink = document.getElementById('madeByLink');
 
@@ -2600,7 +2513,16 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && portfolioOverlay.classList.contains('open')) closePortfolio();
 });
 
-// ─── SAKURA CANVAS
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+if(copyEmailBtn) {
+  copyEmailBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('zlatin.raykov@gmail.com');
+    const orig = copyEmailBtn.innerHTML;
+    copyEmailBtn.innerHTML = '<i class="fas fa-check"></i> Копиран!';
+    setTimeout(() => { copyEmailBtn.innerHTML = orig; }, 2000);
+  });
+}
+
 (function() {
   const canvas = document.getElementById('sakura-canvas');
   const ctx = canvas.getContext('2d');
@@ -2644,11 +2566,10 @@ document.addEventListener('keydown', (e) => {
 
   for (let i = 0; i < 55; i++) {
     const p = new Petal();
-    p.y = Math.random() * H; // start spread across screen
+    p.y = Math.random() * H;
     petals.push(p);
   }
 
-  // Only animate when hero is visible
   const heroEl = document.getElementById('hero');
   const heroObs = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
