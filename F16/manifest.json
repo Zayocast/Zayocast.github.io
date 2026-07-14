@@ -1,0 +1,15 @@
+{
+  "name": "Graf Ignatievo Air Force Base - Pilot Readiness Evaluation",
+  "short_name": "Graf Ignatievo F-16",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#f97316",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

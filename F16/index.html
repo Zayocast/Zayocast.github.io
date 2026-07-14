@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F-16</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="brand" onclick="goToStart()" style="cursor:pointer;" title="Към началото">
+        <img src="logo.svg" alt="F-16 Logo" class="base-logo" onclick="event.stopImmediatePropagation(); goToStart();" title="Към началото (F-16)">
+        <div>
+          <h1>F-16</h1>
+          <span>F-16 VIPER ASSESSMENT</span>
+        </div>
+      </div>
+      <div id="total-count" style="font-size:13px; color:#64748b; font-weight:500;">350 въпроса</div>
+    </div>
+
+    <!-- START SCREEN -->
+    <div id="start-screen" class="screen active">
+      <div class="start-hero">
+        <h2>F-16<br>PILOT READINESS EVALUATION</h2>
+        <p class="lead">ОЦЕНКА НА ЗНАНИЯТА НА ПИЛОТА НА F-16. ПОДГОТВЕТЕ СЕ ЗА МИСИЯ.</p>
+
+        <!-- Pilot Personalization -->
+        <div class="pilot-info">
+          <div class="input-row">
+            <input type="text" id="pilot-rank" placeholder="Звание (напр. Капитан)" value="Капитан">
+            <input type="text" id="pilot-name" placeholder="Име (напр. Иванов)" value="Иванов">
+          </div>
+        </div>
+
+        <div class="section-title">Брой въпроси</div>
+        <div class="length-selector">
+          <button class="length-btn active" data-length="20">20 въпроса</button>
+          <button class="length-btn" data-length="50">50 въпроса</button>
+          <button class="length-btn" data-length="100">100 въпроса</button>
+          <button class="length-btn" data-length="all">Пълен тест (350)</button>
+        </div>
+
+        <div class="section-title">Категории (за пилоти)</div>
+        <div class="category-selector" id="category-selector">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="mode-toggle">
+          <label>
+            <input type="checkbox" id="training-toggle" checked>
+            <span class="toggle-switch"></span>
+            <span>Training Mode — показвай верни отговори + обяснения</span>
+          </label>
+        </div>
+
+        <div class="mode-toggle">
+          <label>
+            <input type="checkbox" id="timer-toggle">
+            <span class="toggle-switch"></span>
+            <span>Включи таймер (30 сек на въпрос)</span>
+          </label>
+        </div>
+
+        <button class="start-btn" onclick="startQuiz()">Започни оценката</button>
+
+        <button class="study-btn" onclick="startStudyMode()">Study Mode — Преглед на всички въпроси</button>
+        <button onclick="startStudyWithImages()" class="study-btn" style="background: #f97316; color: white; border-color: #f97316;">Филтър: С изображения</button>
+      </div>
+    </div>
+
+    <!-- QUIZ SCREEN -->
+    <div id="quiz-screen" class="screen">
+      <div class="quiz-header">
+        <div>
+          <span class="progress-text" id="q-progress">1 / 50</span>
+          <span style="margin: 0 8px; color:#475569;">•</span>
+          <span class="accuracy" id="accuracy">100%</span>
+        </div>
+        <div id="correct-count" style="font-weight:600;">0 верни</div>
+      </div>
+
+      <div id="large-timer" class="large-timer" style="display:none;">30</div>
+
+      <div class="progress-bar">
+        <div class="fill" id="progress-fill" style="width:0%"></div>
+      </div>
+
+      <div class="question-wrapper">
+        <div id="category-badge" class="category-badge"></div>
+        <div id="question-text" class="question-text"></div>
+        
+        <div id="answers" class="answers"></div>
+        
+        <div id="explanation-box" class="explanation-box" style="display:none;">
+          <strong>Обяснение:</strong>
+          <div id="explanation-text"></div>
+        </div>
+      </div>
+
+      <div class="quiz-footer">
+        <div>Точност: <strong id="live-accuracy">100%</strong></div>
+        <button id="next-btn" class="next-btn" style="display:none;">Следващ въпрос</button>
+      </div>
+    </div>
+
+    <!-- DEBRIEF SCREEN -->
+    <div id="debrief-screen" class="screen">
+      <div class="debrief-hero">
+        <div style="font-size:14px; color:#64748b; margin-bottom:4px;">F-16</div>
+        <div class="score-display" id="final-score">0%</div>
+        <div class="pilot-rating" id="pilot-rating"></div>
+        <div style="font-size:12px; color:#64748b;">Pilot Readiness Report</div>
+      </div>
+
+      <div class="metrics" id="metrics"></div>
+
+      <div class="charts-grid">
+        <div class="chart-box">
+          <h4>Общ резултат</h4>
+          <canvas id="overall-chart" width="300" height="260"></canvas>
+        </div>
+        <div class="chart-box">
+          <h4>Точност по категории</h4>
+          <canvas id="radar-chart" width="300" height="260"></canvas>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h4 style="font-size:15px;">Преглед на отговорите</h4>
+        </div>
+
+        <div class="filter-bar">
+          <button class="active" data-filter="all">Всички</button>
+          <button data-filter="wrong">Грешни</button>
+          <button data-filter="correct">Верни</button>
+          <button data-filter="images">С изображения</button>
+        </div>
+
+        <div id="review-items"></div>
+      </div>
+
+      <div class="actions">
+        <button onclick="restartQuiz()">Нов тест</button>
+        <button onclick="retakeWrong()">Повтори грешните</button>
+        <button onclick="showHistory()">История на опитите</button>
+        <button class="primary" onclick="downloadDebrief()">Експорт на резултата</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
