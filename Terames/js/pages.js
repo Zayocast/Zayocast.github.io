@@ -159,6 +159,22 @@ window.TERA = window.TERA || {};
 
     box.innerHTML = items.map(function (r) { return recipeCard(r, ''); }).join('');
     set('#recipeCount', items.length + ' рецепти');
+    set('#recipesMeta', items.length + ' рецепти от месаря');
+
+    /* първата рецепта става карта в шапката */
+    var feat = $('#recipeFeature');
+    if (feat && items.length) {
+      var f = items[0];
+      feat.hidden = false;
+      feat.innerHTML =
+        '<span class="pc-kicker">Започни оттук</span>' +
+        (f.image ? '<figure class="pc-img"><img src="' + attr(f.image) + '" alt="' + attr(f.name) +
+          '" width="700" height="525" fetchpriority="high" decoding="async"></figure>' : '') +
+        '<div class="pc-head"><b>' + esc(f.name) + '</b>' +
+          '<span>' + esc([f.time, f.level].filter(Boolean).join(' · ')) + '</span></div>' +
+        (f.cut ? '<ul class="pc-list"><li><span>Трябва ти</span><b>' + esc(f.cut) + '</b></li></ul>' : '') +
+        '<span class="pc-stamp">' + esc(f.portions || 'Опитай я') + '</span>';
+    }
 
     function filter() {
       var active = $('#recipeChips .chip.active');
@@ -221,18 +237,47 @@ window.TERA = window.TERA || {};
       return;
     }
 
-    var meta = ['time', 'level', 'portions'].map(function (k) {
-      return r[k] ? '<li>' + esc(r[k]) + '</li>' : '';
+    /* шапката поема името, увода и етикетите — тялото остава само рецептата */
+    var rpH1 = $('#rpTitle');
+    if (rpH1) {
+      var rw = String(r.name || '').split(' ');
+      rpH1.innerHTML = esc(rw.shift()) + (rw.length ? '<span class="hl">' + esc(rw.join(' ')) + '</span>' : '');
+    }
+    set('#rpLead', r.text || '');
+
+    var rpBg = $('#rpBg');
+    if (rpBg && r.image) rpBg.src = r.image;
+
+    var rpMeta = $('#rpMeta');
+    if (rpMeta) rpMeta.innerHTML = ['time', 'level', 'portions'].map(function (k) {
+      return r[k] ? '<span>' + esc(r[k]) + '</span>' : '';
     }).join('');
 
+    /* картончето вдясно: какво да купиш и колко работа е */
+    var rpCard = $('#rpCard');
+    if (rpCard) {
+      var steps = (r.steps || []).length, ings = (r.ingredients || []).length;
+      rpCard.hidden = false;
+      rpCard.innerHTML =
+        (steps ? '<span class="pc-badge"><b>' + steps + '</b><span>стъпки</span></span>' : '') +
+        '<span class="pc-kicker">Рецептата накратко</span>' +
+        (r.image ? '<figure class="pc-img"><img src="' + attr(r.image) + '" alt="' + attr(r.name) +
+          '" width="700" height="525" loading="lazy" decoding="async"></figure>' : '') +
+        '<div class="pc-head"><b>' + esc(r.cut || r.name) + '</b>' +
+          '<span>Това ти трябва от витрината</span></div>' +
+        '<ul class="pc-list">' +
+          (r.time ? '<li><span>Време</span><b>' + esc(r.time) + '</b></li>' : '') +
+          (r.level ? '<li><span>Трудност</span><b>' + esc(r.level) + '</b></li>' : '') +
+          (r.portions ? '<li><span>Дава</span><b>' + esc(r.portions) + '</b></li>' : '') +
+          (ings ? '<li><span>Продукти</span><b>' + ings + ' бр.</b></li>' : '') +
+        '</ul>' +
+        (r.cut ? '<button class="btn btn-red pc-cta" type="button" data-add data-name="' +
+          attr(r.cut) + '" data-unit="/ кг">Добави в поръчката</button>' : '') +
+        '<span class="pc-stamp">Режем както кажеш</span>';
+    }
+
     root.innerHTML =
-      '<div class="rp-head">' +
-        '<a class="rp-back" href="../">← Всички рецепти</a>' +
-        (r.cut ? '<span class="recipe-cut">' + esc(r.cut) + '</span>' : '') +
-        '<h1>' + esc(r.name) + '</h1>' +
-        '<p class="rp-lead">' + esc(r.text || '') + '</p>' +
-        '<ul class="recipe-meta">' + meta + '</ul>' +
-      '</div>' +
+      '<a class="rp-back" href="../">← Всички рецепти</a>' +
       (r.image ? '<figure class="rp-img"><img src="' + attr(r.image) + '" alt="' + attr(r.name) +
         '" width="1200" height="800" fetchpriority="high" decoding="async"></figure>' : '') +
       '<div class="rp-body">' + recipeBody(r) + '</div>' +
@@ -269,6 +314,13 @@ window.TERA = window.TERA || {};
     var groups = (C.cuts.groups || []).filter(function (g) {
       return (C.cuts[g.key] || []).length;
     });
+
+    /* картата в шапката: колко части има от всеки вид */
+    var summary = $('#cutsSummary');
+    if (summary) summary.innerHTML = groups.map(function (g) {
+      return '<li><span>' + esc(g.label) + '</span><b>' + (C.cuts[g.key] || []).length + ' части</b></li>';
+    }).join('');
+    set('#cutsCount', String(groups.length));
 
     /* бърза навигация между животните */
     var tabs = $('#cutsTabs');
@@ -326,11 +378,40 @@ window.TERA = window.TERA || {};
     var P = A.page || {};
 
     set('#abKicker', P.kicker);
-    set('#abTitle', P.title);
+
+    /* заглавието се чупи на два тона: първата дума светла, останалото червено */
+    var abH1 = $('#abTitle');
+    if (abH1) {
+      var aw = String(P.title || '').split(' ');
+      abH1.innerHTML = esc(aw.shift()) + (aw.length ? '<span class="hl">' + esc(aw.join(' ')) + '</span>' : '');
+    }
     set('#abLead', P.lead);
 
     var img = $('#abImg');
     if (img && P.image) { img.src = P.image; img.alt = P.alt || ''; }
+
+    var abBg = $('#abBg');
+    if (abBg && P.image) abBg.src = P.image;
+
+    /* картончето в шапката — визитката на дюкяна */
+    var abCard = $('#abCard');
+    if (abCard) {
+      var rows = (A.counters || []).map(function (c) {
+        return '<li><span>' + esc(c.label) + '</span><b>' + esc(c.value) + '+</b></li>';
+      }).join('');
+      abCard.hidden = false;
+      abCard.innerHTML =
+        '<span class="pc-badge"><b>' + esc(String(A.stamp || '2024').replace(/\D/g, '') || '2024') + '</b>' +
+          '<span>ЕСТ.</span></span>' +
+        '<span class="pc-kicker">Визитката ни</span>' +
+        (P.image ? '<figure class="pc-img"><img src="' + attr(P.image) + '" alt="' + attr(P.alt || '') +
+          '" width="700" height="525" loading="lazy" decoding="async"></figure>' : '') +
+        '<div class="pc-head"><b>' + esc(C.meta.siteName || 'Tera.MES') + '</b>' +
+          '<span>' + esc(C.contact.city + ', ' + C.contact.street) + '</span></div>' +
+        (rows ? '<ul class="pc-list">' + rows + '</ul>' : '') +
+        '<p class="pc-note">Всичко се реже на място, в деня на покупката.</p>' +
+        '<span class="pc-stamp">' + esc(A.stamp || 'ЕСТ. 2024') + '</span>';
+    }
 
     set('#abQuote', P.quote);
     set('#abQuoteBy', P.quoteBy);
@@ -374,6 +455,32 @@ window.TERA = window.TERA || {};
   function kontakti(C) {
     var K = C.contacts || {};
     set('#koLead', K.pageLead);
+    set('#koAddr', C.contact.city + ', ' + C.contact.street);
+
+    var koCall = $('#koCall');
+    if (koCall) koCall.href = TERA.layout.tel();
+
+    /* картончето в шапката: работно време за днес + телефон
+       (#conStatus се попълва по-късно от paintHours в page.js) */
+    var koCard = $('#koCard');
+    if (koCard) {
+      koCard.hidden = false;
+      koCard.innerHTML =
+        '<span class="pc-kicker">Отбий се</span>' +
+        '<div class="pc-status"><p class="con-status" id="conStatus">' +
+          '<span class="dot" aria-hidden="true"></span><b>Работно време</b></p></div>' +
+        '<div class="pc-head"><b>' + esc(C.contact.city) + '</b>' +
+          '<span>' + esc(C.contact.street) + '</span></div>' +
+        '<ul class="pc-list">' +
+          (C.hours.rows || []).map(function (r) {
+            return '<li data-day="' + attr(r.spec) + '"><span>' + esc(r.label) + '</span><b>' +
+              (r.closed ? 'почивен' : esc(r.open) + '–' + esc(r.close)) + '</b></li>';
+          }).join('') +
+        '</ul>' +
+        '<a class="btn btn-red pc-cta" href="' + attr(TERA.layout.tel()) + '">' +
+          esc(C.contact.phoneLabel || 'Обади се') + '</a>' +
+        '<span class="pc-stamp">Паркинг пред входа</span>';
+    }
 
     var list = $('#koList');
     if (list) {
@@ -444,23 +551,78 @@ window.TERA = window.TERA || {};
         .replace(/\{phone\}/g, C.contact.phoneLabel || '');
     };
 
-    set('#legalTitle', D.title);
+    /* заглавието се чупи на два тона: първата дума светла, останалото червено */
+    var h1 = $('#legalTitle');
+    if (h1) {
+      var w = String(D.title || '').split(' ');
+      h1.innerHTML = esc(w.shift()) + (w.length ? '<span class="hl">' + esc(w.join(' ')) + '</span>' : '');
+    }
     set('#legalLead', D.lead);
-    set('#legalUpdated', (L.updatedLabel || 'Последна редакция') + ': ' + (L.updated || ''));
 
-    root.innerHTML = (D.blocks || []).map(function (b, i) {
-      return '<section class="lg-block" data-rv data-d="' + (i % 3) + '">' +
+    var blocks = D.blocks || [];
+
+    /* време за четене — по 200 думи в минута */
+    var words = blocks.reduce(function (n, b) {
+      return n + (b.h + ' ' + (b.p || []).join(' ')).split(/\s+/).length;
+    }, 0);
+    var mins = Math.max(1, Math.round(words / 200));
+    set('#legalUpdated',
+      (L.updatedLabel || 'Последна редакция') + ': ' + (L.updated || '') +
+      '\n' + blocks.length + ' раздела · ' + mins + ' ' + (L.readLabel || 'мин. четене'));
+
+    /* „накратко“ — човешката версия над правния текст */
+    var tldr = $('#legalTldr');
+    if (tldr) {
+      var sum = D.summary || [];
+      if (!sum.length) { tldr.hidden = true; }
+      else {
+        tldr.hidden = false;
+        tldr.innerHTML =
+          '<h2>' + esc(L.summaryLabel || 'Накратко') + '</h2>' +
+          '<p>' + esc(L.summaryNote || '') + '</p>' +
+          '<ul>' + sum.map(function (s) { return '<li>' + esc(fill(s)) + '</li>'; }).join('') + '</ul>';
+      }
+    }
+
+    root.innerHTML = blocks.map(function (b, i) {
+      return '<section class="lg-block" id="lg-' + i + '" data-rv data-d="' + (i % 3) + '">' +
         '<h2>' + esc(b.h) + '</h2>' +
         (b.p || []).map(function (p) { return '<p>' + esc(fill(p)) + '</p>'; }).join('') +
       '</section>';
     }).join('');
 
-    /* съдържание отстрани */
+    /* превключвател между трите документа */
+    var docs = $('#legalDocs');
+    if (docs) {
+      docs.innerHTML = (C.nav.legal || []).map(function (l) {
+        var on = new RegExp(doc === 'terms' ? 'usloviya' : doc === 'privacy' ? 'poveritelnost' : 'biskvitki')
+                 .test(l.href);
+        return '<a class="lg-doc' + (on ? ' on' : '') + '" href="../' + attr(l.href) + '"' +
+               (on ? ' aria-current="page"' : '') + '>' + esc(l.label) + '</a>';
+      }).join('');
+    }
+
+    /* съдържание отстрани + следене на скрола */
     var toc = $('#legalToc');
-    if (toc) toc.innerHTML = (D.blocks || []).map(function (b, i) {
-      return '<li><a href="#lg-' + i + '">' + esc(b.h) + '</a></li>';
-    }).join('');
-    $$('.lg-block', root).forEach(function (s, i) { s.id = 'lg-' + i; });
+    if (toc) {
+      toc.innerHTML = blocks.map(function (b, i) {
+        return '<li><a href="#lg-' + i + '">' + esc(b.h) + '</a></li>';
+      }).join('');
+      set('#legalTocLabel', L.tocLabel || 'В тази страница');
+
+      if ('IntersectionObserver' in window) {
+        var links = $$('#legalToc a');
+        var io = new IntersectionObserver(function (ents) {
+          ents.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            links.forEach(function (a) {
+              a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id);
+            });
+          });
+        }, { rootMargin: '-25% 0px -65% 0px' });
+        $$('.lg-block', root).forEach(function (s) { io.observe(s); });
+      }
+    }
 
     if (L.disclaimer) set('#legalNote', L.disclaimer);
 

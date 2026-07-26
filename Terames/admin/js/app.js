@@ -34,6 +34,11 @@ TERA.views = TERA.views || {};
     insta:    { label:'Instagram',        icon:'instagram', sec:'insta' },
     faq:      { label:'Чести въпроси',    icon:'help',      sec:'faq' },
     contacts: { label:'Контакти',         icon:'pin',       sec:'contacts' },
+    /* отделните страници (site.com/za-nas/ и т.н.) */
+    pages:        { label:'Преглед',            icon:'globe' },
+    aboutPage:    { label:'За нас',             icon:'info' },
+    contactsPage: { label:'Контакти',           icon:'pin' },
+    legal:        { label:'Правни текстове',    icon:'lock' },
     sections: { label:'Секции',           icon:'layers' },
     nav:      { label:'Менюта',           icon:'list' },
     footer:   { label:'Долен колонтитул', icon:'panel' },
@@ -52,6 +57,7 @@ TERA.views = TERA.views || {};
     { id:'content',   label:'Съдържание', icon:'layers',    pages:[
         'hero','about','cuts','products','kitchen','promo','sets','calc',
         'tips','recipes','holidays','kurban','order','gallery','reviews','insta','faq','contacts'] },
+    { id:'pages',     label:'Страници',   icon:'globe',     pages:['pages','aboutPage','contactsPage','legal'] },
     { id:'structure', label:'Структура',  icon:'panel',     pages:['sections','nav','footer'] },
     { id:'media',     label:'Снимки',     icon:'folder',    pages:['media'] },
     { id:'settings',  label:'Настройки',  icon:'cog',       pages:['settings','history'] }
@@ -96,7 +102,11 @@ TERA.views = TERA.views || {};
       if (!view || !host) return;
 
       var actions = typeof view.actions === 'function' ? view.actions() : (view.actions || '');
-      if (view.anchor) {
+      /* url сочи към отделна страница, anchor — към секция на началната */
+      if (view.url) {
+        actions = '<a class="abtn abtn-sm" href="../' + view.url + '" target="_blank" rel="noopener">' +
+          icon('eye') + 'Виж страницата</a>' + actions;
+      } else if (view.anchor) {
         actions = '<a class="abtn abtn-sm" href="../index.html#' + view.anchor + '" target="_blank" rel="noopener">' +
           icon('eye') + 'Виж в сайта</a>' + actions;
       }
@@ -116,8 +126,10 @@ TERA.views = TERA.views || {};
 
   /* ---------- рисуване на менютата ---------- */
   function buildGroups() {
+    /* title е нужен, защото на по-тесен екран остава само иконата */
     document.getElementById('groups').innerHTML = GROUPS.map(function (g) {
-      return '<a class="group-btn" href="#/' + g.pages[0] + '" data-group="' + g.id + '">' +
+      return '<a class="group-btn" href="#/' + g.pages[0] + '" data-group="' + g.id + '"' +
+        ' title="' + g.label + '" aria-label="' + g.label + '">' +
         icon(g.icon) + '<span>' + g.label + '</span>' +
         (g.counter ? '<span class="badge" data-count-new hidden></span>' : '') +
       '</a>';

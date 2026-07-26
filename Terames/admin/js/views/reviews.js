@@ -17,14 +17,37 @@
       var items = store.get('reviews.items') || [];
       var big = items.filter(function (r) { return r.big; }).length;
 
+      var visible = Math.max(1, +store.get('reviews.visible') || 5);
+
       return UI.card({
         title: 'Заглавия и оценка',
         body: UI.fields([
-          { k:'eyebrow',   label:'Малък надпис', type:'text', ph:'Казано на тезгяха' },
-          { k:'title',     label:'Заглавие', type:'text', ph:'Клиентите за нас' },
-          { k:'score',     label:'Средна оценка', type:'text', ph:'5,0' },
-          { k:'scoreText', label:'Текст до оценката', type:'text', ph:'Средна оценка от клиентите ни' }
+          { k:'eyebrow',    label:'Малък надпис', type:'text', ph:'Казано на тезгяха' },
+          { k:'title',      label:'Заглавие', type:'text', ph:'Клиентите за нас' },
+          { k:'score',      label:'Средна оценка', type:'text', ph:'5,0' },
+          { k:'scoreText',  label:'Текст до оценката', type:'text', ph:'Средна оценка от клиентите ни' },
+          { k:'countLabel', label:'Дума след броя отзиви', type:'text', ph:'отзива от клиенти',
+            hint:'Излиза като „Средна оценка · 12 отзива от клиенти“.' }
         ], 'reviews')
+      }) +
+
+      UI.card({
+        title: 'Разгъване',
+        desc: 'Дългият списък се свива, за да не заема половин екран.',
+        body:
+          UI.fields([
+            { k:'visible',   label:'Колко се виждат отначало', type:'number', min:1, max:30, step:1,
+              hint:'На телефон винаги са 3 — там картите са една под друга.' },
+            { k:'moreLabel', label:'Бутон за разгъване', type:'text', ph:'Виж всички отзиви',
+              hint:'Броят се добавя автоматично в скоби.' },
+            { k:'lessLabel', label:'Бутон за свиване', type:'text', ph:'Скрий отзивите' }
+          ], 'reviews') +
+          (items.length > visible
+            ? '<div class="note info" style="margin-top:.8rem">' + icon('check') +
+              '<span>Показват се ' + visible + ', а бутонът разгъва останалите ' + (items.length - visible) + '.</span></div>'
+            : '<div class="note" style="margin-top:.8rem">' + icon('alert') +
+              '<span>Имаш ' + items.length + ' отзива, а се показват ' + visible +
+              ' — бутонът за разгъване няма да се появи, защото няма какво да крие.</span></div>')
       }) +
 
       UI.card({

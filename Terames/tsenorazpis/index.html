@@ -25,23 +25,43 @@
 
 <main id="main">
 
-<section class="phero">
+<section class="phero" id="top">
+  <div class="phero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1800&auto=format&fit=crop"
+         alt="" width="1800" height="1200" fetchpriority="high" decoding="async">
+  </div>
   <div class="wrap phero-in">
-    <nav class="crumbs" aria-label="Навигация">
-      <a href="../">Начало</a><span aria-hidden="true">/</span><b>Ценоразпис</b>
-    </nav>
-    <p class="eyebrow">Витрината днес</p>
-    <h1 id="pricesTitle">Ценоразпис</h1>
-    <p>Всички цени на едно място — в евро за килограм, с равностойността в лева. Търси по име, филтрирай по категория и си направи списък още от телефона.</p>
-    <p class="phero-meta">
-      <span id="pricesStamp">Заредено тази сутрин</span>
-      <span>Пон – Съб от 08:00</span>
-      <span>1 € = 1,95583 лв.</span>
-    </p>
-    <div class="phero-cta">
-      <a class="btn btn-red" href="tel:+359000000000">Обади се за поръчка</a>
-      <a class="btn btn-ghost" href="../#order">Поръчай през формата</a>
+    <div class="phero-txt">
+      <nav class="crumbs" aria-label="Навигация">
+        <a href="../">Начало</a><span aria-hidden="true">/</span><b>Ценоразпис</b>
+      </nav>
+      <p class="eyebrow">Витрината днес</p>
+      <h1>Цените<span class="hl">на витрината</span></h1>
+      <p class="phero-lead">Всичко на едно място — в евро за килограм, с равностойността в лева. Търси по име, филтрирай по категория и си направи списък още от телефона.</p>
+      <p class="phero-meta">
+        <span id="pricesStamp">Заредено тази сутрин</span>
+        <span>Пон – Съб от 08:00</span>
+        <span>1 € = 1,95583 лв.</span>
+      </p>
+      <div class="phero-cta">
+        <a class="btn btn-red" href="tel:+359000000000">Обади се за поръчка</a>
+        <a class="btn btn-ghost" href="../#order">Поръчай през формата</a>
+      </div>
     </div>
+
+    <aside class="phero-card">
+      <span class="pc-kicker">Избор на месаря</span>
+      <figure class="pc-img">
+        <img src="https://images.unsplash.com/photo-1546964124-0cce460f38ef?q=80&w=700&auto=format&fit=crop"
+             alt="Отлежал рибай стек на витрината" width="700" height="525" fetchpriority="high" decoding="async">
+      </figure>
+      <div class="pc-head">
+        <b>Рибай стек</b>
+        <span>Отлежал · режем пред теб</span>
+      </div>
+      <div class="pc-foot"><b>17,90 €</b><span>/ кг</span></div>
+      <span class="pc-stamp">✓ Прясно днес</span>
+    </aside>
   </div>
   <svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
 </section>

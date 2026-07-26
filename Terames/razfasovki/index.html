@@ -25,22 +25,39 @@
 
 <main id="main">
 
-<section class="phero">
+<section class="phero" id="top">
+  <div class="phero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?q=80&w=1800&auto=format&fit=crop"
+         alt="" width="1800" height="1200" fetchpriority="high" decoding="async">
+  </div>
   <div class="wrap phero-in">
-    <nav class="crumbs" aria-label="Навигация">
-      <a href="../">Начало</a><span aria-hidden="true">/</span><b>Разфасовки</b>
-    </nav>
-    <p class="eyebrow">Знай какво купуваш</p>
-    <h1>Справочник на разфасовките</h1>
-    <p>Всяка част от животното става за различно нещо. Тук е записано какво за какво е, как се готви и колко струва — за да не гадаеш пред витрината.</p>
-    <p class="phero-meta">
-      <span>Свинско · Телешко · Агнешко · Пилешко</span>
-      <span>Режем и обезкостяваме безплатно</span>
-    </p>
-    <div class="phero-cta">
-      <a class="btn btn-red" href="../#cuts">Виж интерактивната карта</a>
-      <a class="btn btn-ghost" href="../tsenorazpis/">Ценоразпис</a>
+    <div class="phero-txt">
+      <nav class="crumbs" aria-label="Навигация">
+        <a href="../">Начало</a><span aria-hidden="true">/</span><b>Разфасовки</b>
+      </nav>
+      <p class="eyebrow">Знай какво купуваш</p>
+      <h1>Справочник<span class="hl">на разфасовките</span></h1>
+      <p class="phero-lead">Всяка част от животното става за различно нещо. Тук е записано какво за какво е, как се готви и колко струва — за да не гадаеш пред витрината.</p>
+      <p class="phero-meta">
+        <span>Четири вида месо</span>
+        <span>Режем и обезкостяваме безплатно</span>
+      </p>
+      <div class="phero-cta">
+        <a class="btn btn-red" href="../#cuts">Виж интерактивната карта</a>
+        <a class="btn btn-ghost" href="../tsenorazpis/">Ценоразпис</a>
+      </div>
     </div>
+
+    <aside class="phero-card">
+      <span class="pc-badge" aria-hidden="true"><b id="cutsCount">4</b><span>вида</span></span>
+      <span class="pc-kicker">Какво ще намериш</span>
+      <div class="pc-head">
+        <b>Част по част</b>
+        <span>С цена и съвет за готвене</span>
+      </div>
+      <ul class="pc-list" id="cutsSummary"></ul>
+      <span class="pc-stamp">✓ Питай на тезгяха</span>
+    </aside>
   </div>
   <svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
 </section>

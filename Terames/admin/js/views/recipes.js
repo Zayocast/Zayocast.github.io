@@ -5,7 +5,7 @@
 
   UI.blanks['recipes.items'] = function () {
     return {
-      name:'Нова рецепта', cut:'', time:'', level:'Лесно', portions:'4 порции',
+      name:'Нова рецепта', slug:'', cut:'', time:'', level:'Лесно', portions:'4 порции',
       image:'', text:'', ingredients:[], steps:[], on:true
     };
   };
@@ -32,13 +32,25 @@
       var items = store.get('recipes.items') || [];
       var live = items.filter(function (i) { return i.on !== false; }).length;
 
+      var own = items.filter(function (i) { return i.slug; }).length;
+
       return UI.card({
         title: 'Заглавия',
+        actions: '<a class="abtn abtn-sm" href="../recepti/" target="_blank" rel="noopener">Виж /recepti/</a>',
         body: UI.fields([
           { k:'eyebrow', label:'Малък надпис', type:'text', ph:'От тезгяха до тигана' },
           { k:'title',   label:'Заглавие', type:'text', ph:'Какво да сготвиш' },
           { k:'sub',     label:'Текст под заглавието', type:'textarea', w:'full', rows:2 }
         ], 'recipes')
+      }) +
+
+      UI.card({
+        title: 'Собствени страници',
+        desc: own + ' от ' + live + ' показвани рецепти имат отделен адрес.',
+        body: '<div class="note info">' + icon('info') +
+          '<span>Рецепта с попълнен адрес получава своя страница — например <code class="mono">/recepti/kyufteta/</code> — ' +
+          'която Google индексира отделно. Рецепта без адрес пак работи: показва се в списъка и се разгъва на място. ' +
+          '<b>Внимание:</b> самата папка на новата страница се създава от разработчика — попълването на адреса тук не я прави само.</span></div>'
       }) +
 
       UI.card({
@@ -53,10 +65,12 @@
             path: 'recipes.items',
             addLabel: 'Добави рецепта',
             title: function (it) { return it.name; },
-            val: function (it) { return it.time || it.level || ''; },
+            val: function (it) { return it.slug ? '/recepti/' + it.slug + '/' : (it.time || it.level || ''); },
             toggleKey: 'on',
             specs: [
               { k:'name',     label:'Име на рецептата', type:'text', ph:'Вратни пържоли на скара' },
+              { k:'slug',     label:'Адрес на страницата', type:'text', mono:true, ph:'vratni-parzholi-skara',
+                hint:'Само малки латински букви, цифри и тирета. Празно = рецептата се разгъва в списъка.' },
               { k:'cut',      label:'С коя разфасовка', type:'select', opts: cutOpts(),
                 hint:'Показва се като етикет и води клиента към точния продукт.' },
               { k:'text',     label:'Един ред за какво става дума', type:'textarea', w:'full', rows:2 },

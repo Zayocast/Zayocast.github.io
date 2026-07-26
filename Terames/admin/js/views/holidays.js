@@ -84,9 +84,22 @@
           { k:'eyebrow',  label:'Малък надпис', type:'text', ph:'Заяви навреме' },
           { k:'title',    label:'Заглавие', type:'text', ph:'Наближава' },
           { k:'sub',      label:'Текст под заглавието', type:'textarea', w:'full', rows:2 },
-          { k:'orderBy',  label:'Надпис пред срока', type:'text', ph:'Заяви до' },
-          { k:'daysLeft', label:'Надпис пред дните', type:'text', ph:'остават' },
-          { k:'passed',   label:'Когато срокът е минал', type:'text', w:'full', ph:'срокът за заявка изтече' }
+          { k:'orderBy',    label:'Надпис пред срока', type:'text', ph:'Заяви до' },
+          { k:'daysLeft',   label:'Надпис пред дните', type:'text', ph:'остават' },
+          { k:'passed',     label:'Когато срокът е минал', type:'text', ph:'срокът за заявка изтече' },
+          { k:'todayLabel', label:'Когато срокът е днес', type:'text', ph:'днес е денят' },
+          { k:'ctaLabel',   label:'Бутон в картичката', type:'text', ph:'Заяви',
+            hint:'Вторият бутон винаги е Viber.' }
+        ], 'holidays')
+      }) +
+
+      UI.card({
+        title: 'Лента под празниците',
+        desc: 'Тъмната лента с призив, която затваря секцията.',
+        body: UI.fields([
+          { k:'barTitle', label:'Заглавие', type:'text', ph:'Не чакай последния ден' },
+          { k:'barBtn',   label:'Текст на бутона', type:'text', ph:'Обади се за заявка' },
+          { k:'barText',  label:'Изречение под заглавието', type:'textarea', w:'full', rows:2 }
         ], 'holidays')
       }) +
 

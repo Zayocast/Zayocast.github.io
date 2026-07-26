@@ -47,7 +47,19 @@
           { k:'occasionLabel', label:'Надпис на избора за повод', type:'text' },
           { k:'resultLabel',   label:'Надпис над резултата', type:'text' },
           { k:'addLabel',      label:'Бутон към поръчката', type:'text' },
-          { k:'note',          label:'Дребен шрифт под сметката', type:'textarea', w:'full', rows:2 }
+          { k:'note',          label:'Дребен шрифт под формата', type:'textarea', w:'full', rows:2 }
+        ], 'calc')
+      }) +
+
+      UI.card({
+        title: 'Бърз избор и надписи на сметката',
+        desc: 'Копчетата с готов брой гости и трите числа над таблицата.',
+        body: UI.fields([
+          { k:'presets',      label:'Готови бройки гости', type:'tags', w:'full',
+            hint:'Само числа: 2, 4, 6, 8, 12, 20. Enter добавя ново.' },
+          { k:'totalKgLabel', label:'Надпис под общото количество', type:'text', ph:'общо количество' },
+          { k:'perHeadLabel', label:'Надпис под количеството на човек', type:'text', ph:'на човек' },
+          { k:'totalLabel',   label:'Надпис под сметката', type:'text', ph:'Приблизителна сметка' }
         ], 'calc')
       }) +
 

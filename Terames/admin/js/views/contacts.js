@@ -14,8 +14,16 @@
       var map = 'https://www.google.com/maps?q=' + encodeURIComponent(c.mapQuery || '');
 
       return UI.card({
+        title: 'Има и цяла страница',
+        body: '<div class="note info">' + icon('info') +
+          '<span>Данните отдолу важат за целия сайт. Допълненията само за <b>/kontakti/</b> — как да стигнеш, ' +
+          'кога да дойдеш и бележката за празниците — са в ' +
+          '<a href="#/contactsPage" style="color:var(--blood);text-decoration:underline">Страници → Контакти</a>.</span></div>'
+      }) +
+
+      UI.card({
         title: 'Данни за връзка',
-        desc: 'Влизат в менюто, бутоните, футъра и плаващите икони.',
+        desc: 'Влизат в менюто, бутоните, футъра и плаващите икони на всяка страница.',
         body: UI.fields([
           { k:'phone',      label:'Телефон за набиране', type:'tel', mono:true, ph:'+359000000000',
             hint:'Без интервали — това е номерът, който се набира при натискане.' },

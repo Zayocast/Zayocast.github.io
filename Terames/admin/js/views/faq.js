@@ -4,7 +4,7 @@
   var UI = TERA.UI, store = TERA.store, icon = TERA.icon;
 
   UI.blanks['faq.items'] = function () {
-    return { q:'Нов въпрос', a:'', on:true };
+    return { q:'Нов въпрос', a:'', group:'', on:true };
   };
 
   TERA.views.faq = {
@@ -17,6 +17,9 @@
       var items = store.get('faq.items') || [];
       var live = items.filter(function (i) { return i.on !== false; }).length;
 
+      var groups = [];
+      items.forEach(function (i) { if (i.group && groups.indexOf(i.group) < 0) groups.push(i.group); });
+
       return UI.card({
         title: 'Заглавия',
         body: UI.fields([
@@ -27,12 +30,23 @@
       }) +
 
       UI.card({
-        title: 'Кутия „Не намери отговор?“',
-        desc: 'Малката карта с телефона отстрани.',
+        title: 'Търсене във въпросите',
+        desc: 'Полето над списъка. Филтрира на място, докато посетителят пише.',
+        body: UI.fields([
+          { k:'searchPlaceholder', label:'Текст в празното поле', type:'text', ph:'Търси във въпросите…' },
+          { k:'noResults',         label:'Когато няма съвпадение', type:'text',
+            ph:'Няма въпрос с тази дума. Обади се — отговаряме на всичко.' }
+        ], 'faq')
+      }) +
+
+      UI.card({
+        title: 'Лента „Не намери отговор?“',
+        desc: 'Широката тъмна лента под въпросите.',
         body: UI.fields([
           { k:'helpTitle', label:'Заглавие', type:'text', ph:'Не намери отговор?' },
           { k:'helpHours', label:'Работно време', type:'text', ph:'Пон – Съб · 08:00 – 19:00' },
-          { k:'helpBtn',   label:'Текст на бутона', type:'text', w:'full', ph:'Обади се' }
+          { k:'helpBtn',   label:'Първи бутон', type:'text', ph:'Обади се' },
+          { k:'helpBtn2',  label:'Втори бутон', type:'text', ph:'Пиши във Viber' }
         ], 'faq')
       }) +
 
@@ -47,12 +61,15 @@
             path: 'faq.items',
             addLabel: 'Добави въпрос',
             title: function (it) { return it.q; },
-            val: function (it, i) { return String(i + 1).padStart(2, '0'); },
+            val: function (it) { return it.group || ''; },
             toggleKey: 'on',
             specs: [
-              { k:'q',  label:'Въпрос', type:'text', w:'full', ph:'Мога ли да поръчам предварително?' },
-              { k:'a',  label:'Отговор', type:'textarea', w:'full', rows:4 },
-              { k:'on', label:'Показвай въпроса', type:'switch', w:'full' }
+              { k:'q',     label:'Въпрос', type:'text', w:'full', ph:'Мога ли да поръчам предварително?' },
+              { k:'a',     label:'Отговор', type:'textarea', w:'full', rows:4 },
+              { k:'group', label:'Тема', type:'text', ph:'Поръчки',
+                hint:'Малкият етикет вдясно на въпроса. Ползвай няколко повтарящи се думи' +
+                     (groups.length ? ' — засега: ' + groups.join(', ') + '.' : '. Остави празно, ако не ти трябва.') },
+              { k:'on',    label:'Показвай въпроса', type:'switch' }
             ]
           })
       });

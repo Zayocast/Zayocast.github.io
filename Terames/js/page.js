@@ -55,7 +55,8 @@ window.TERA = window.TERA || {};
     };
     var open = !!today && !today.closed && mins >= toMin(today.open) && mins < toMin(today.close);
 
-    $$('.hours div[data-day]').forEach(function (row) {
+    /* и редовете в таблицата, и тези в картончето на шапката */
+    $$('[data-day]').forEach(function (row) {
       var spec = row.dataset.day;
       var match = spec === '1-5' ? (day >= 1 && day <= 5) : +spec === day;
       row.classList.toggle('today', match);

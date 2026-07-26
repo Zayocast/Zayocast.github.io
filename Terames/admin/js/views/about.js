@@ -1,7 +1,7 @@
-/* За нас — историята зад тезгяха */
+/* За нас — секцията на началната страница */
 (function () {
   'use strict';
-  var UI = TERA.UI;
+  var UI = TERA.UI, icon = TERA.icon;
 
   UI.blanks['about.counters'] = { value: '0', label: 'Ново число' };
 
@@ -13,6 +13,14 @@
 
     render: function () {
       return UI.card({
+        title: 'Има и цяла страница',
+        body: '<div class="note info">' + icon('info') +
+          '<span>Тук е кратката версия на началната страница. Дългият разказ, времевата линия, правилата и фермите ' +
+          'от <b>/za-nas/</b> се пипат в <a href="#/aboutPage" style="color:var(--blood);text-decoration:underline">Страници → За нас</a>. ' +
+          'Числата отдолу се показват и на двете места.</span></div>'
+      }) +
+
+      UI.card({
         title: 'Текст',
         body: UI.fields([
           { k:'eyebrow', label:'Малък надпис', type:'text', ph:'За нас' },
