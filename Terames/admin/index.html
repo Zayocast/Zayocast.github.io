@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="bg" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#17110E">
+<title>Панел · Tera.MES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;800&family=Sofia+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C41E2F'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='%23FBF3EC' font-family='Arial Black' font-weight='900'%3ET%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ горна лента ============ -->
+  <header class="topnav">
+    <div class="bar-in topnav-row">
+      <a class="brand" href="#/dashboard">
+        <img src="../teralogo.png" alt="">
+        <span>
+          <b>Tera.<em>MES</em></b>
+          <span>Панел</span>
+        </span>
+      </a>
+
+      <nav class="groups" id="groups" aria-label="Основно меню"></nav>
+
+      <div class="bar-actions">
+        <a class="bar-btn orders-btn" id="ordersBtn" href="#/inbox" aria-label="Поръчки" title="Поръчки">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+          <span class="dot-new" data-count-new hidden></span>
+        </a>
+        <a class="bar-btn live" href="../index.html" target="_blank" rel="noopener" aria-label="Отвори сайта" title="Отвори сайта">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+        <button type="button" class="bar-btn" id="themeBtn" aria-label="Тъмна тема"></button>
+        <button type="button" class="bar-user" id="barUser"></button>
+        <button type="button" class="burger" id="burger" aria-label="Отвори менюто">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ втора лента: страници в раздела ============ -->
+  <nav class="context" id="context" aria-label="Страници в раздела">
+    <div class="bar-in context-in" id="contextIn"></div>
+  </nav>
+
+  <!-- ============ съдържание ============ -->
+  <div class="main">
+    <div class="view" style="padding-bottom:0">
+      <nav class="crumbs" id="crumbs" aria-label="Път"></nav>
+    </div>
+    <main class="view" id="view"></main>
+  </div>
+</div>
+
+<!-- ============ меню на телефон ============ -->
+<div class="mobmenu" id="mobmenu">
+  <div class="mobmenu-top">
+    <span class="brand">
+      <img src="../teralogo.png" alt="">
+      <span><b>Tera.<em>MES</em></b><span>Панел</span></span>
+    </span>
+    <button type="button" class="bar-btn" id="mobClose" aria-label="Затвори менюто">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobmenu-scroll" id="mobNav"></div>
+</div>
+
+<!-- ============ лента за запис ============ -->
+<div class="savebar" id="savebar" role="status">
+  <span class="dot" aria-hidden="true"></span>
+  <div class="txt">
+    <b>Имаш незаписани промени</b>
+    <span>Ctrl + S записва</span>
+  </div>
+  <button type="button" class="abtn" id="revertBtn">Откажи</button>
+  <button type="button" class="abtn abtn-primary" id="saveBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+    Запази
+  </button>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="js/icons.js"></script>
+<script src="../js/content.js"></script>
+<script src="../js/api.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+
+<script src="js/views/dashboard.js"></script>
+<script src="js/views/today.js"></script>
+<script src="js/views/sections.js"></script>
+<script src="js/views/hero.js"></script>
+<script src="js/views/about.js"></script>
+<script src="js/views/cuts.js"></script>
+<script src="js/views/products.js"></script>
+<script src="js/views/kitchen.js"></script>
+<script src="js/views/promo.js"></script>
+<script src="js/views/sets.js"></script>
+<script src="js/views/calc.js"></script>
+<script src="js/views/tips.js"></script>
+<script src="js/views/recipes.js"></script>
+<script src="js/views/holidays.js"></script>
+<script src="js/views/kurban.js"></script>
+<script src="js/views/order.js"></script>
+<script src="js/views/gallery.js"></script>
+<script src="js/views/reviews.js"></script>
+<script src="js/views/insta.js"></script>
+<script src="js/views/faq.js"></script>
+<script src="js/views/contacts.js"></script>
+<script src="js/views/nav.js"></script>
+<script src="js/views/footer.js"></script>
+<script src="js/views/media.js"></script>
+<script src="js/views/inbox.js"></script>
+<script src="js/views/settings.js"></script>
+<script src="js/views/history.js"></script>
+
+<script src="js/app.js"></script>
+</body>
+</html>

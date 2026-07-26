@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="bg" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#17110E">
+<title>Вход · Панел Tera.MES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;800&family=Sofia+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C41E2F'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='%23FBF3EC' font-family='Arial Black' font-weight='900'%3ET%3C/text%3E%3C/svg%3E">
+</head>
+<body class="login-page">
+
+<!-- ============ лява страна ============ -->
+<div class="login-art">
+  <div class="bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?q=80&w=1400&auto=format&fit=crop"
+         alt="" width="1400" height="1750" decoding="async">
+  </div>
+
+  <a class="lg" href="../index.html">
+    <img src="../teralogo.png" alt="">
+    <b>Tera.<em style="font-style:normal;color:#FF6B7A">MES</em></b>
+  </a>
+
+  <div>
+    <h2>Витрината<i>се управлява</i>оттук.</h2>
+    <p class="say">Цени, снимки, топла кухня, промоции и работно време — всичко, което посетителят вижда, се сменя от този панел.</p>
+  </div>
+
+  <p class="feet">Административен панел · само за служители</p>
+</div>
+
+<!-- ============ дясна страна ============ -->
+<div class="login-form">
+  <div class="login-card">
+    <p class="eyebrow">Административен панел</p>
+    <h1>Вход</h1>
+    <p>Влез, за да редактираш съдържанието на сайта.</p>
+
+    <form id="loginForm" novalidate>
+      <div class="login-err" id="err">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <span id="errTxt">Попълни и двете полета.</span>
+      </div>
+
+      <div class="field">
+        <label for="user">Потребител или имейл</label>
+        <input class="inp" id="user" name="user" type="text" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label for="pass">Парола</label>
+        <div class="pw-wrap">
+          <input class="inp" id="pass" name="pass" type="password" autocomplete="current-password" required>
+          <button type="button" class="pw-toggle" id="pwBtn" aria-label="Покажи паролата">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="login-row">
+        <label class="switch">
+          <input type="checkbox" id="remember" checked>
+          <span class="track"></span>
+          <span class="lbl">Запомни ме</span>
+        </label>
+        <a href="#" id="forgot">Забравена парола</a>
+      </div>
+
+      <button class="abtn abtn-primary btn-full" type="submit" style="width:100%">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
+        Влез в панела
+      </button>
+    </form>
+
+    <p class="login-foot">
+      Демонстрационен вход — работи с всякакви данни.<br>
+      Истинската проверка идва със сървърната част.
+    </p>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var form = document.getElementById('loginForm');
+  var err  = document.getElementById('err');
+  var errTxt = document.getElementById('errTxt');
+  var pass = document.getElementById('pass');
+  var user = document.getElementById('user');
+
+  document.getElementById('pwBtn').addEventListener('click', function () {
+    var show = pass.type === 'password';
+    pass.type = show ? 'text' : 'password';
+    this.setAttribute('aria-label', show ? 'Скрий паролата' : 'Покажи паролата');
+    this.innerHTML = show
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+    pass.focus();
+  });
+
+  document.getElementById('forgot').addEventListener('click', function (e) {
+    e.preventDefault();
+    errTxt.textContent = 'Смяната на парола ще заработи заедно със сървърната част.';
+    err.classList.add('show');
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!user.value.trim() || !pass.value) {
+      errTxt.textContent = 'Попълни и потребител, и парола.';
+      err.classList.add('show');
+      (user.value.trim() ? pass : user).focus();
+      return;
+    }
+    err.classList.remove('show');
+    location.href = 'index.html';
+  });
+
+  ['input'].forEach(function (ev) {
+    form.addEventListener(ev, function () { err.classList.remove('show'); });
+  });
+})();
+</script>
+</body>
+</html>

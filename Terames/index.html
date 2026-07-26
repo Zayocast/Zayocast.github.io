@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#C41E2F">
+<title>Tera.MES — Месарски магазин | Прясно месо всеки ден</title>
+<meta name="description" content="Tera.MES — месарски магазин за прясно българско месо, филе от сом, топла кухня и деликатеси. с. Мало Конаре, ул. Седма.">
+<link rel="canonical" href="https://tera-mes.bg/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tera.MES — Прясно месо. Всеки ден.">
+<meta property="og:description" content="Охладено прясно месо, филе от сом за всеки дом, топла кухня и гарнитури.">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:url" content="https://tera-mes.bg/">
+<meta property="og:image" content="https://tera-mes.bg/teralogo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tera-mes.bg/teralogo.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C41E2F'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='%23FBF3EC' font-family='Arial Black' font-weight='900'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preload" as="image" fetchpriority="high"
+      href="https://images.unsplash.com/photo-1558030006-450675393462?q=80&amp;w=1800&amp;auto=format&amp;fit=crop">
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;800&family=Sofia+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "additionalType": "https://schema.org/ButcherShop",
+  "name": "Tera.MES",
+  "description": "Охладено прясно месо, филе от сом, топла кухня и гарнитури.",
+  "telephone": "+359000000000",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Седма",
+    "addressLocality": "с. Мало Конаре",
+    "addressCountry": "BG"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "15:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/tera.mes/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Мога ли да поръчам предварително?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да — по телефон, Viber или през формата на сайта. Приготвяме поръчката и тя те чака претеглена и опакована в уговорения час." } },
+    { "@type": "Question", "name": "Мелите ли кайма на място?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да. Избираш парчето, ние го смиламе пред теб. Правим и смес по желание — класиката е 60/40 телешко към свинско." } },
+    { "@type": "Question", "name": "Приемате ли заявки за курбан, цяло агне или прасе?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да, с предварителна заявка от няколко дни. Обади се и ще уговорим количество, разфасоване и ден за взимане." } },
+    { "@type": "Question", "name": "Има ли топла кухня всеки ден?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да — топлата витрина се зарежда всяка сутрин с печено, кюфтета и гарнитури. За по-големи количества е добре да се обадиш предварително." } },
+    { "@type": "Question", "name": "Кога витрината е най-заредена?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Сутрин, около отварянето в 08:00 — тогава пристига прясното месо. В събота работим до 15:00." } },
+    { "@type": "Question", "name": "Може ли да мариновате месото вместо мен?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Може. Имаме готови марината по наша рецепта — барбекю, пикантна и класическа с подправки. Кажи за кога ти трябва, за да престои достатъчно." } },
+    { "@type": "Question", "name": "Как да съхранявам прясното месо?",
+      "acceptedAnswer": { "@type": "Answer", "text": "В най-студената част на хладилника, 0–4 °C, и го изконсумирай до 2–3 дни. Ако няма да го готвиш скоро — раздели го на порции и го замрази още същия ден." } },
+    { "@type": "Question", "name": "Какви са начините за плащане?",
+      "acceptedAnswer": { "@type": "Answer", "text": "В брой на място. Цените на витрината са в евро, с равностойност в лева по фиксирания курс 1 € = 1,95583 лв." } },
+    { "@type": "Question", "name": "Колко месо да сметна на човек?",
+      "acceptedAnswer": { "@type": "Answer", "text": "За скара — около 400 г общо на човек, от които 200 г месо за печене. За печено на фурна — 350 г с кокал. Ако не ти се смята, използвай калкулатора на сайта." } },
+    { "@type": "Question", "name": "Мога ли да върна или сменя продукт?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ако нещо не е наред, кажи ни в същия ден — сменяме го или връщаме сумата, без спорове. Прясното месо е нашата репутация." } }
+  ]
+}
+</script>
+</head>
+<body data-base="" data-page="home" data-nav="sections" data-tools="yes">
+
+<!-- Шапката, футърът, кошницата и летящите бутони се рисуват от js/layout.js -->
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1800&auto=format&fit=crop"
+         alt="" width="1800" height="1200" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero-halftone" aria-hidden="true"></div>
+
+  <div class="hero-in wrap">
+    <div class="hero-copy">
+      <p class="hero-kicker"><i aria-hidden="true"></i>Месарски магазин · с. Мало Конаре</p>
+      <h1 class="hero-title">
+        <span class="h-line"><span>Прясно месо.</span></span>
+        <span class="h-line h-red"><span>Всеки ден.</span></span>
+      </h1>
+      <p class="hero-lead">Охладено българско месо, филе от сом, топла кухня и гарнитури — подбрани от месаря и приготвени на място, пред очите ти.</p>
+      <ul class="hero-tags">
+        <li>Прясно месо и колбаси</li>
+        <li>Филе от сом</li>
+        <li>Топла кухня</li>
+        <li>Собствена транжорна</li>
+      </ul>
+      <div class="hero-cta-row">
+        <a class="btn btn-red" href="#products">Виж витрината
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="tel:+359000000000">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          Обади се
+        </a>
+      </div>
+      <p class="hero-meta">
+        <span>Пон – Съб от 08:00</span>
+        <span>ул. Седма, Мало Конаре</span>
+        <span>Поръчки по телефон и Viber</span>
+      </p>
+    </div>
+
+    <aside class="hero-card" aria-label="Избор на месаря днес">
+      <svg class="spin-badge" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="sbCirc" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs>
+        <circle class="sb-bg" cx="60" cy="60" r="58"/>
+        <g class="sb-ring">
+          <text class="sb-text"><textPath href="#sbCirc">ПРЯСНО • БЪЛГАРСКО • ОТ ФЕРМАТА • ВСЕКИ ДЕН •&#160;</textPath></text>
+        </g>
+        <text class="sb-center" x="60" y="71">100%</text>
+      </svg>
+      <span class="hc-kicker">Избор на месаря</span>
+      <figure class="hc-img">
+        <img src="https://images.unsplash.com/photo-1546964124-0cce460f38ef?q=80&w=700&auto=format&fit=crop"
+             alt="Отлежал рибай стек на витрината на Tera.MES" width="700" height="525"
+             fetchpriority="high" decoding="async">
+      </figure>
+      <div class="hc-body">
+        <strong>Рибай стек</strong>
+        <span class="hc-desc">Отлежал · режем пред теб</span>
+        <p class="hc-price"><b>17,90&nbsp;€</b><span>/ кг</span><small>35,01 лв.</small></p>
+      </div>
+      <span class="st-fresh">✓ Заредено тази сутрин</span>
+    </aside>
+  </div>
+
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust" aria-label="Защо Tera.MES">
+  <svg class="tear tear-top" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="wrap trust-in">
+    <div class="trust-item"><i>✓</i>100% българско месо</div>
+    <div class="trust-item"><i>✓</i>Свежест всеки ден</div>
+    <div class="trust-item"><i>✓</i>Собствена транжорна</div>
+    <div class="trust-item"><i>✓</i>Проверени ферми</div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about sec-pink" id="about">
+  <svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="wrap about-grid">
+    <div class="about-media" data-rv>
+      <figure class="polaroid">
+        <span class="tape" aria-hidden="true"></span>
+        <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?q=80&w=900&auto=format&fit=crop"
+             alt="Майстор месар приготвя месо в транжорната" width="900" height="1125"
+             loading="lazy" decoding="async">
+        <figcaption>Майсторът зад витрината</figcaption>
+      </figure>
+      <span class="est-stamp" aria-hidden="true">ЕСТ. 2024</span>
+    </div>
+    <div class="about-txt">
+      <p class="eyebrow" data-rv>За нас</p>
+      <h2 class="sec-title" data-rv>Занаят, който се вижда на витрината</h2>
+      <p data-rv>Tera.MES се роди от една проста идея: месото трябва да е прясно, българско и подбрано лично. Всяка сутрин витрината ни се зарежда наново — работим само с ферми, които познаваме по име, и транжираме на място, пред очите ти.</p>
+      <p data-rv>При нас няма „опаковано отпреди седмица“. Има майстор зад тезгяха, който ще те попита какво ще готвиш — и ще ти отреже, смели или маринова точно каквото ти трябва. Защото добрата вечеря започва от добрия месар.</p>
+      <div class="counters" data-rv>
+        <div class="counter"><b data-count="15">0</b><span>Години занаят</span></div>
+        <div class="counter"><b data-count="1200">0</b><span>Редовни клиенти</span></div>
+        <div class="counter"><b data-count="60">0</b><span>Вида продукти</span></div>
+      </div>
+    </div>
+  </div>
+  <svg class="tear flip" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+</section>
+
+<!-- ============ CUTS ============ -->
+<section class="cuts" id="cuts">
+  <div class="wrap">
+    <div class="cuts-head">
+      <div>
+        <p class="eyebrow" data-rv>Знай какво купуваш</p>
+        <h2 class="sec-title" data-rv>Карта на разфасовките</h2>
+      </div>
+      <div class="cuts-toggle" data-rv role="group" aria-label="Избор на животно">
+        <button class="active" id="btnPork" type="button" aria-pressed="true" aria-controls="svgPork">Свинско</button>
+        <button id="btnBeef" type="button" aria-pressed="false" aria-controls="svgBeef">Телешко</button>
+      </div>
+    </div>
+
+    <div class="cuts-grid">
+      <div class="cuts-board" data-rv>
+        <svg class="cuts-svg" id="svgPork" viewBox="0 0 920 560" role="img" aria-label="Диаграма на свински разфасовки">
+          <defs>
+            <clipPath id="pigClip">
+              <path d="M92 266 C84 274 82 288 90 298 C98 306 112 310 126 314 C148 326 170 342 192 356 C208 366 222 372 236 378 C240 410 240 446 238 484 L284 484 C282 452 282 420 286 392 C340 404 430 410 510 408 C566 406 616 400 652 392 C656 422 656 454 654 484 L700 484 C700 448 702 416 708 388 C748 376 782 352 802 320 C818 292 824 260 818 230 C806 196 776 172 736 158 C650 132 540 124 444 130 C366 136 300 146 254 160 C240 164 228 170 220 178 C214 168 206 154 196 144 C186 134 174 130 166 136 C160 142 162 154 168 166 C156 178 140 196 126 218 C112 236 100 250 92 266 Z"/>
+            </clipPath>
+          </defs>
+          <g class="zones">
+            <g class="zone" data-cut="glava" tabindex="0" role="button" aria-label="Глава">
+              <path clip-path="url(#pigClip)" d="M0 0 L252 0 L252 100 C244 170 236 224 228 276 C222 330 216 380 214 400 L210 560 L0 560 Z"/>
+              <text class="lbl" x="152" y="308">ГЛАВА</text>
+            </g>
+            <g class="zone" data-cut="vrat" tabindex="0" role="button" aria-label="Врат">
+              <path clip-path="url(#pigClip)" d="M252 100 C244 170 236 224 228 276 C272 274 308 270 348 264 C349 210 350 150 354 90 L252 90 Z"/>
+              <text class="lbl" x="298" y="220">ВРАТ</text>
+            </g>
+            <g class="zone" data-cut="kotlet" tabindex="0" role="button" aria-label="Котлет и гръб">
+              <path clip-path="url(#pigClip)" d="M354 90 C350 150 349 210 348 264 C448 258 548 252 652 246 C651 190 652 140 654 90 Z"/>
+              <text class="lbl" x="500" y="202">КОТЛЕТ / ГРЪБ</text>
+            </g>
+            <g class="zone" data-cut="pleshka" tabindex="0" role="button" aria-label="Плешка">
+              <path clip-path="url(#pigClip)" d="M228 276 C272 274 308 270 348 264 C345 340 342 450 340 560 L210 560 L214 400 C216 380 222 330 228 276 Z"/>
+              <text class="lbl" x="280" y="342">ПЛЕШКА</text>
+            </g>
+            <g class="zone" data-cut="gardi" tabindex="0" role="button" aria-label="Гърди и ребра">
+              <path clip-path="url(#pigClip)" d="M348 264 C448 258 548 252 652 246 C650 320 650 440 651 560 L340 560 C342 450 345 340 348 264 Z"/>
+              <text class="lbl" x="498" y="336">ГЪРДИ И РЕБРА</text>
+            </g>
+            <g class="zone" data-cut="but" tabindex="0" role="button" aria-label="Бут">
+              <path clip-path="url(#pigClip)" d="M654 90 C652 140 651 190 652 246 C650 320 650 440 651 560 L920 560 L920 90 Z"/>
+              <text class="lbl" x="734" y="268">БУТ</text>
+            </g>
+            <g class="zone" data-cut="djolan" tabindex="0" role="button" aria-label="Джолан преден">
+              <path clip-path="url(#pigClip)" d="M205 404 L300 404 L300 560 L205 560 Z"/>
+              <text class="lbl sm" transform="rotate(-90 260 448)" x="260" y="448">ДЖОЛАН</text>
+            </g>
+            <g class="zone" data-cut="djolan" tabindex="0" role="button" aria-label="Джолан заден">
+              <path clip-path="url(#pigClip)" d="M640 404 L720 404 L720 560 L640 560 Z"/>
+              <text class="lbl sm" transform="rotate(-90 677 448)" x="677" y="448">ДЖОЛАН</text>
+            </g>
+          </g>
+          <path class="sil" d="M92 266 C84 274 82 288 90 298 C98 306 112 310 126 314 C148 326 170 342 192 356 C208 366 222 372 236 378 C240 410 240 446 238 484 L284 484 C282 452 282 420 286 392 C340 404 430 410 510 408 C566 406 616 400 652 392 C656 422 656 454 654 484 L700 484 C700 448 702 416 708 388 C748 376 782 352 802 320 C818 292 824 260 818 230 C806 196 776 172 736 158 C650 132 540 124 444 130 C366 136 300 146 254 160 C240 164 228 170 220 178 C214 168 206 154 196 144 C186 134 174 130 166 136 C160 142 162 154 168 166 C156 178 140 196 126 218 C112 236 100 250 92 266 Z"/>
+          <g clip-path="url(#pigClip)">
+            <path class="cutline" d="M250 148 C244 190 236 224 228 276 C222 330 216 380 214 420"/>
+            <path class="cutline" d="M228 276 C272 274 308 270 348 264"/>
+            <path class="cutline" d="M353 126 C350 170 349 210 348 264 C346 330 344 370 343 420"/>
+            <path class="cutline" d="M348 264 C448 258 548 252 652 246"/>
+            <path class="cutline" d="M653 138 C652 180 651 210 652 246 C650 310 650 360 651 420"/>
+            <path class="cutline" d="M234 404 L290 404"/>
+            <path class="cutline" d="M650 404 L706 404"/>
+          </g>
+          <path class="detail" d="M814 228 C838 210 860 222 852 240 C846 254 828 254 830 240 C831 232 838 230 842 234"/>
+          <circle class="pig-eye" cx="148" cy="246" r="6"/>
+          <path class="detail" d="M96 276 c -3 4 -3 8 0 12"/>
+        </svg>
+
+        <svg class="cuts-svg" id="svgBeef" viewBox="0 0 920 600" role="img" aria-label="Диаграма на телешки разфасовки" hidden>
+          <defs>
+            <clipPath id="cowClip">
+              <path d="M84 250 C76 260 74 276 80 288 C88 298 102 302 118 306 C138 318 158 334 178 348 C196 360 214 368 230 376 C234 396 234 420 232 444 C230 470 230 500 228 524 L272 524 C272 492 272 462 276 434 C330 446 420 452 505 450 C565 448 615 442 655 434 C658 462 658 494 656 524 L702 524 C702 488 704 456 710 428 C748 414 780 390 800 356 C816 326 822 292 818 258 C814 222 800 196 772 180 C700 156 580 148 470 152 C380 156 310 164 262 176 C246 182 234 188 226 196 C220 184 210 174 198 170 C188 168 182 174 184 182 C188 192 196 198 206 202 C168 212 120 228 84 250 Z"/>
+            </clipPath>
+          </defs>
+          <g class="zones">
+            <g class="zone" data-cut="b-glava" tabindex="0" role="button" aria-label="Телешка глава">
+              <path clip-path="url(#cowClip)" d="M0 0 L262 0 L262 120 C252 190 244 240 234 296 C228 340 224 380 222 420 L218 600 L0 600 Z"/>
+              <text class="lbl" x="148" y="298">ГЛАВА</text>
+            </g>
+            <g class="zone" data-cut="b-vrat" tabindex="0" role="button" aria-label="Телешки врат">
+              <path clip-path="url(#cowClip)" d="M262 120 C252 190 244 240 234 296 C276 296 318 292 360 288 C362 230 364 170 368 110 L262 110 Z"/>
+              <text class="lbl" x="304" y="230">ВРАТ</text>
+            </g>
+            <g class="zone" data-cut="b-rebra" tabindex="0" role="button" aria-label="Ребра и рибай">
+              <path clip-path="url(#cowClip)" d="M368 110 C364 170 362 230 360 288 C417 283 474 277 529 272 C530 215 532 160 534 108 Z"/>
+              <text class="lbl" x="447" y="212">РЕБРА / РИБАЙ</text>
+            </g>
+            <g class="zone" data-cut="b-file" tabindex="0" role="button" aria-label="Контрафиле">
+              <path clip-path="url(#cowClip)" d="M534 108 C532 160 530 215 529 272 C573 269 618 268 662 270 C661 215 662 165 664 110 Z"/>
+              <text class="lbl" x="597" y="208">КОНТРАФИЛЕ</text>
+            </g>
+            <g class="zone" data-cut="b-pleshka" tabindex="0" role="button" aria-label="Телешка плешка">
+              <path clip-path="url(#cowClip)" d="M234 296 C276 296 318 292 360 288 C357 380 355 490 354 600 L218 600 L222 420 C224 380 228 340 234 296 Z"/>
+              <text class="lbl" x="292" y="350">ПЛЕШКА</text>
+            </g>
+            <g class="zone" data-cut="b-gardi" tabindex="0" role="button" aria-label="Телешки гърди">
+              <path clip-path="url(#cowClip)" d="M360 288 C417 283 474 277 529 272 C573 269 618 268 662 270 C660 350 660 470 661 600 L354 600 C355 490 357 380 360 288 Z"/>
+              <text class="lbl" x="508" y="348">ГЪРДИ</text>
+            </g>
+            <g class="zone" data-cut="b-but" tabindex="0" role="button" aria-label="Бут и шол">
+              <path clip-path="url(#cowClip)" d="M664 110 C662 165 661 215 662 270 C660 350 660 470 661 600 L920 600 L920 110 Z"/>
+              <text class="lbl" x="742" y="282">БУТ / ШОЛ</text>
+            </g>
+            <g class="zone" data-cut="b-djolan" tabindex="0" role="button" aria-label="Джолан преден">
+              <path clip-path="url(#cowClip)" d="M205 448 L295 448 L295 600 L205 600 Z"/>
+              <text class="lbl sm" transform="rotate(-90 251 492)" x="251" y="492">ДЖОЛАН</text>
+            </g>
+            <g class="zone" data-cut="b-djolan" tabindex="0" role="button" aria-label="Джолан заден">
+              <path clip-path="url(#cowClip)" d="M640 448 L722 448 L722 600 L640 600 Z"/>
+              <text class="lbl sm" transform="rotate(-90 680 492)" x="680" y="492">ДЖОЛАН</text>
+            </g>
+          </g>
+          <path class="sil" d="M84 250 C76 260 74 276 80 288 C88 298 102 302 118 306 C138 318 158 334 178 348 C196 360 214 368 230 376 C234 396 234 420 232 444 C230 470 230 500 228 524 L272 524 C272 492 272 462 276 434 C330 446 420 452 505 450 C565 448 615 442 655 434 C658 462 658 494 656 524 L702 524 C702 488 704 456 710 428 C748 414 780 390 800 356 C816 326 822 292 818 258 C814 222 800 196 772 180 C700 156 580 148 470 152 C380 156 310 164 262 176 C246 182 234 188 226 196 C220 184 210 174 198 170 C188 168 182 174 184 182 C188 192 196 198 206 202 C168 212 120 228 84 250 Z"/>
+          <g clip-path="url(#cowClip)">
+            <path class="cutline" d="M260 170 C252 210 244 240 234 296 C228 340 224 380 222 440"/>
+            <path class="cutline" d="M234 296 C276 296 318 292 360 288"/>
+            <path class="cutline" d="M366 148 C363 200 362 230 360 288 C357 370 356 410 355 460"/>
+            <path class="cutline" d="M360 288 C417 283 474 277 529 272 C573 269 618 268 662 270"/>
+            <path class="cutline" d="M534 145 C532 180 530 215 529 272"/>
+            <path class="cutline" d="M663 152 C662 200 661 230 662 270 C660 340 660 400 661 460"/>
+            <path class="cutline" d="M228 448 L282 448"/>
+            <path class="cutline" d="M652 448 L710 448"/>
+          </g>
+          <path class="detail" d="M813 268 C821 320 819 380 810 424"/>
+          <path class="dfill" d="M810 424 C817 433 815 446 806 449 C799 450 794 443 798 435 C801 429 806 426 810 424 Z"/>
+          <path class="dfill" d="M210 182 C202 162 210 144 226 148 C218 158 216 170 220 182 C217 183 213 183 210 182 Z"/>
+          <circle class="pig-eye" cx="140" cy="240" r="6"/>
+          <path class="detail" d="M86 262 c -3 4 -3 8 0 12"/>
+        </svg>
+        <span class="cut-tip" id="cutTip" aria-hidden="true"></span>
+        <p class="cut-hint">▸ Посочи или докосни част от диаграмата</p>
+      </div>
+
+      <aside class="cut-info" data-rv id="cutInfo" aria-live="polite">
+        <h3>Избери разфасовка</h3>
+        <p>Докосни част от диаграмата, за да видиш за какво е най-подходяща и ориентировъчна цена. Нашите месари ще ти я приготвят на място — на пържоли, за скара или смляна.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="prod-head">
+      <div>
+        <p class="eyebrow" data-rv>Витрината днес</p>
+        <h2 class="sec-title" data-rv>Нашите продукти</h2>
+      </div>
+      <span class="fresh-stamp" data-rv>Заредено тази сутрин</span>
+    </div>
+
+    <div class="feat-grid">
+      <article class="feat" data-rv>
+        <span class="feat-badge">Избор на месаря</span>
+        <figure class="feat-img">
+          <img src="https://images.unsplash.com/photo-1546964124-0cce460f38ef?q=80&w=800&auto=format&fit=crop"
+               alt="Отлежал рибай стек" width="800" height="600" loading="lazy" decoding="async">
+        </figure>
+        <div class="feat-body">
+          <h3>Рибай стек<small>Отлежал, режем пред теб</small></h3>
+          <div class="feat-price"><b>17,90 €</b><span>35,01 лв. / кг</span></div>
+        </div>
+      </article>
+      <article class="feat" data-rv data-d="1">
+        <span class="feat-badge">Избор на месаря</span>
+        <figure class="feat-img">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+               alt="Печени свински ребърца" width="800" height="600" loading="lazy" decoding="async">
+        </figure>
+        <div class="feat-body">
+          <h3>Ребърца маринати<small>В домашна барбекю марината</small></h3>
+          <div class="feat-price"><b>6,40 €</b><span>12,52 лв. / кг</span></div>
+        </div>
+      </article>
+      <article class="feat" data-rv data-d="2">
+        <span class="feat-badge">Избор на месаря</span>
+        <figure class="feat-img">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop"
+               alt="Домашна наденица на скара" width="800" height="600" loading="lazy" decoding="async">
+        </figure>
+        <div class="feat-body">
+          <h3>Домашна наденица<small>По наша рецепта, само месо</small></h3>
+          <div class="feat-price"><b>8,10 €</b><span>15,84 лв. / кг</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="board" data-rv>
+      <div class="board-head">
+        <div>
+          <h3>Ценоразпис</h3>
+          <span>Цени на витрината · €&nbsp;/&nbsp;кг</span>
+        </div>
+        <div class="board-tools no-print">
+          <button class="board-btn" type="button" id="printPrices">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+            Разпечатай
+          </button>
+          <button class="board-btn" type="button" id="showQr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M18 18h3v3h-3z"/></svg>
+            QR код
+          </button>
+        </div>
+      </div>
+
+      <div class="board-find no-print">
+        <label class="find-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" id="prodSearch" placeholder="Търси в ценоразписа…" aria-label="Търси в ценоразписа">
+        </label>
+        <label class="find-sort">
+          <span>Подреди</span>
+          <select id="prodSort">
+            <option value="default">По категория</option>
+            <option value="cheap">Първо евтините</option>
+            <option value="pricey">Първо скъпите</option>
+            <option value="name">По азбучен ред</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="chips no-print" id="chips" role="group" aria-label="Филтър по категория"></div>
+      <div class="menu-list" id="prodList"></div>
+      <p class="prices-note">* Цените са в евро, ориентировъчни са и подлежат на промяна според пазара. Равностойността в лева е по фиксирания курс 1&nbsp;€&nbsp;=&nbsp;1,95583&nbsp;лв. Актуални цени — на витрината и по телефона.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KITCHEN ============ -->
+<section class="kitchen sec-pink" id="kitchen">
+  <svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="wrap">
+    <div class="kitchen-head">
+      <div>
+        <p class="eyebrow" data-rv>Топла кухня</p>
+        <h2 class="sec-title" data-rv>Готово за вкъщи</h2>
+      </div>
+      <span class="fresh-stamp" data-rv>Топло от 11:00</span>
+    </div>
+    <div class="dish-grid" id="dishGrid"></div>
+    <p class="sec-note" data-rv>▸ Топлата витрина се зарежда всяка сутрин и е до изчерпване. За по-големи количества — обади се предварително, за да ти запазим.</p>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <svg class="tear tear-hero" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="mq-clip">
+    <div class="mq-track">
+      <span>Прясно месо ✦ Филе от сом ✦ Колбаси ✦ Млечни продукти ✦ Топла кухня ✦ Гарнитури ✦ Маринати ✦ Деликатеси ✦&nbsp;</span>
+      <span>Прясно месо ✦ Филе от сом ✦ Колбаси ✦ Млечни продукти ✦ Топла кухня ✦ Гарнитури ✦ Маринати ✦ Деликатеси ✦&nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROMO ============ -->
+<section class="promo" id="promo">
+  <div class="awning" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow" data-rv>Само тази седмица</p>
+    <h2 class="sec-title" data-rv>Оферта на седмицата</h2>
+    <div class="promo-grid" id="promoGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SETS ============ -->
+<section class="sets" id="sets">
+  <div class="wrap">
+    <div class="sets-head">
+      <div>
+        <p class="eyebrow" data-rv>Взимаш и печеш</p>
+        <h2 class="sec-title" data-rv>Сетове за скарата</h2>
+      </div>
+      <p class="sets-sub" data-rv>Сглобени от месаря — претеглени, подправени и готови за огъня. Запази по телефона и вземи без чакане.</p>
+    </div>
+    <div class="sets-grid">
+      <article class="set-card" data-rv>
+        <div class="set-top"><h3>Сет „Класика“</h3><span class="set-badge">За 4 души</span></div>
+        <ul class="set-list">
+          <li><span>Кюфтета от нашата кайма</span><b>× 6</b></li>
+          <li><span>Кебапчета</span><b>× 6</b></li>
+          <li><span>Вратни пържоли</span><b>× 4</b></li>
+          <li><span>Картофи соте</span><b>1 кг</b></li>
+        </ul>
+        <div class="set-total"><span>Общо</span><div><b>15,90 €</b><small>31,10 лв.</small></div></div>
+        <a class="btn btn-red set-btn" href="tel:+359000000000">Запази сета</a>
+      </article>
+      <article class="set-card" data-rv data-d="1">
+        <div class="set-top"><h3>Сет „Барбекю“</h3><span class="set-badge">За 6–8 души</span></div>
+        <ul class="set-list">
+          <li><span>Ребърца в марината</span><b>1 кг</b></li>
+          <li><span>Вратни пържоли BBQ</span><b>1 кг</b></li>
+          <li><span>Домашна наденица</span><b>1 кг</b></li>
+          <li><span>Пилешки шишчета</span><b>× 6</b></li>
+        </ul>
+        <div class="set-total"><span>Общо</span><div><b>27,90 €</b><small>54,57 лв.</small></div></div>
+        <a class="btn btn-red set-btn" href="tel:+359000000000">Запази сета</a>
+      </article>
+      <article class="set-card" data-rv data-d="2">
+        <div class="set-top"><h3>Сет „Неделно печено“</h3><span class="set-badge">За семейството</span></div>
+        <ul class="set-list">
+          <li><span>Свински бут, връзан за фурна</span><b>≈ 2 кг</b></li>
+          <li><span>Домашна марината и подправки</span><b>✓</b></li>
+          <li><span>Гарнитура ориз</span><b>1 кг</b></li>
+          <li><span>Съвет за печенето от месаря</span><b>✓</b></li>
+        </ul>
+        <div class="set-total"><span>Общо</span><div><b>16,90 €</b><small>33,05 лв.</small></div></div>
+        <a class="btn btn-red set-btn" href="tel:+359000000000">Запази сета</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALC ============ -->
+<section class="calc" id="calc">
+  <div class="wrap">
+    <div class="calc-head">
+      <div>
+        <p class="eyebrow" id="calcEyebrow" data-rv>Сметни преди да дойдеш</p>
+        <h2 class="sec-title" id="calcTitle" data-rv>Колко месо ти трябва</h2>
+      </div>
+      <p class="calc-sub" id="calcSub" data-rv></p>
+    </div>
+
+    <div class="calc-grid">
+      <form class="calc-form" data-rv onsubmit="return false">
+        <div class="calc-field">
+          <label for="calcGuests" id="calcGuestsLabel">Колко души ще сте</label>
+          <div class="calc-num">
+            <button class="calc-step" type="button" data-step="-1" aria-label="По-малко гости">−</button>
+            <input id="calcGuests" type="number" min="1" max="500" value="8" inputmode="numeric">
+            <button class="calc-step" type="button" data-step="1" aria-label="Повече гости">+</button>
+          </div>
+          <div class="calc-presets" id="calcPresets" role="group" aria-label="Бърз избор на брой гости"></div>
+        </div>
+        <div class="calc-field">
+          <span class="calc-label" id="calcOccasionLabel">За какъв повод</span>
+          <div class="calc-occasions" id="calcOccasion" role="radiogroup" aria-labelledby="calcOccasionLabel"></div>
+        </div>
+        <p class="calc-hint" id="calcHint"></p>
+      </form>
+
+      <div class="calc-out" id="calcOut" data-rv data-d="1" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIPS ============ -->
+<section class="tips" id="tips">
+  <div class="wrap">
+    <p class="eyebrow" data-rv>Съвети от месаря</p>
+    <h2 class="sec-title" data-rv>Малки тайни, голяма разлика</h2>
+    <div class="tips-grid">
+      <article class="tip" data-rv>
+        <span class="pin" aria-hidden="true"></span>
+        <div class="tip-bar"><span class="no">Съвет 01</span><span class="tip-ico" aria-hidden="true">▲</span></div>
+        <h3>Как да избереш стек</h3>
+        <p>Търси равномерна мраморовидност — тънките бели нишки мазнина се топят при готвене и дават вкуса. Дебелина поне 2,5 см, иначе изсъхва преди да хване коричка.</p>
+        <span class="mono">▸ Извади го 30 мин преди готвене</span>
+      </article>
+      <article class="tip" data-rv data-d="1">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="tip-bar"><span class="no">Съвет 02</span><span class="tip-ico" aria-hidden="true">▲</span></div>
+        <h3>Идеалната кайма за кюфтета</h3>
+        <p>Класиката е 60/40 телешко към свинско — телешкото дава вкус, свинското сочност. Ние я мелим на място пред теб, от парчето, което си избереш.</p>
+        <span class="mono">▸ Меси я студена, печи я гореща</span>
+      </article>
+      <article class="tip" data-rv data-d="2">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="tip-bar"><span class="no">Съвет 03</span><span class="tip-ico" aria-hidden="true">▲</span></div>
+        <h3>Температури на готвене</h3>
+        <p>Пилешко — винаги 74°C в средата. Свинско — 63°C и 3 минути почивка. Телешки стек medium — свали го на 57°C и го остави да си дойде.</p>
+        <span class="mono">▸ Термометърът е най-добрият ти приятел</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECIPES ============ -->
+<section class="recipes sec-pink" id="recipes">
+  <svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="wrap">
+    <div class="rec-head">
+      <div>
+        <p class="eyebrow" id="recipesEyebrow" data-rv>От тезгяха до тигана</p>
+        <h2 class="sec-title" id="recipesTitle" data-rv>Какво да сготвиш</h2>
+      </div>
+      <p class="rec-sub" id="recipesSub" data-rv></p>
+    </div>
+    <div class="recipe-grid" id="recipeGrid"></div>
+  </div>
+  <svg class="tear flip" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+</section>
+
+<!-- ============ HOLIDAYS ============ -->
+<section class="holidays" id="holidays">
+  <div class="wrap">
+    <div class="hol-head">
+      <div>
+        <p class="eyebrow" id="holidaysEyebrow" data-rv>Заяви навреме</p>
+        <h2 class="sec-title" id="holidaysTitle" data-rv>Наближава</h2>
+      </div>
+      <p class="hol-sub" id="holidaysSub" data-rv></p>
+    </div>
+    <div class="holiday-grid" id="holidayGrid"></div>
+    <div class="hol-bar" id="holidayBar" data-rv hidden>
+      <div class="hol-bar-txt">
+        <b id="holBarTitle"></b>
+        <span id="holBarText"></span>
+      </div>
+      <div class="hol-bar-btns">
+        <a class="btn btn-red" href="tel:+359000000000" id="holBarBtn">Обади се за заявка</a>
+        <a class="btn btn-ghost" href="viber://chat?number=%2B359000000000">Пиши във Viber</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KURBAN ============ -->
+<section class="kurban" id="kurban">
+  <svg class="tear tear-top" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="wrap">
+    <div class="kurban-head">
+      <div>
+        <p class="eyebrow" data-rv>По заявка</p>
+        <h2 class="sec-title" data-rv>Цяло животно и курбан</h2>
+      </div>
+      <p class="kurban-sub" data-rv>Кажи повода, броя гости и деня — ние поемаме количеството, разфасоването и опаковането. Приемаме заявки с няколко дни предизвестие.</p>
+    </div>
+
+    <div class="kurban-grid">
+      <article class="kb-card" data-rv>
+        <span class="kb-num">01</span>
+        <h3>Цяло прасе</h3>
+        <p>За сватба, имен ден или голямо семейно печене. Даваме го цяло или нарязано на порции — както ти е удобно.</p>
+        <ul class="kb-list">
+          <li>Тегло по твоя заявка</li>
+          <li>Почистено и подготвено</li>
+          <li>Разфасоване по желание</li>
+        </ul>
+        <span class="kb-tag">Заявка 3–5 дни</span>
+      </article>
+      <article class="kb-card" data-rv data-d="1">
+        <span class="kb-num">02</span>
+        <h3>Цяло агне</h3>
+        <p>Класиката за Гергьовден и Великден. Подбираме агнето лично от фермата и го подготвяме за фурна или шиш.</p>
+        <ul class="kb-list">
+          <li>От проверени ферми</li>
+          <li>За фурна, шиш или на части</li>
+          <li>Дреболии по желание</li>
+        </ul>
+        <span class="kb-tag">Заявка 5–7 дни</span>
+      </article>
+      <article class="kb-card" data-rv data-d="2">
+        <span class="kb-num">03</span>
+        <h3>Курбан пакет</h3>
+        <p>Всичко за курбан чорбата — месо с кокал, дреболии и подправки, премерено според броя гости.</p>
+        <ul class="kb-list">
+          <li>Изчисляваме количествата</li>
+          <li>Нарязано за чорба</li>
+          <li>Съвет за готвенето</li>
+        </ul>
+        <span class="kb-tag">Заявка 3 дни</span>
+      </article>
+    </div>
+
+    <div class="kurban-bar" data-rv>
+      <div class="kb-bar-txt">
+        <b>Готов за заявка?</b>
+        <span>Обади се и ще уговорим количество, разфасоване и ден за взимане.</span>
+      </div>
+      <div class="kb-bar-btns">
+        <a class="btn btn-paper" href="tel:+359000000000">Обади се</a>
+        <a class="btn btn-viber" href="viber://chat?number=%2B359000000000">Пиши във Viber</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER ============ -->
+<section class="order" id="order">
+  <div class="wrap order-grid">
+    <div class="order-txt">
+      <p class="eyebrow" data-rv>Поръчай предварително</p>
+      <h2 class="sec-title" data-rv>Вземи без чакане</h2>
+      <div class="steps">
+        <div class="step" data-rv>
+          <span class="n">1</span>
+          <div>
+            <h3>Обади се или пиши</h3>
+            <p>По телефон, Viber или през формата — кажи какво ти трябва и за кога.</p>
+            <span class="step-meta">≈ 2 минути</span>
+          </div>
+        </div>
+        <div class="step" data-rv data-d="1">
+          <span class="n">2</span>
+          <div>
+            <h3>Ние го приготвяме</h3>
+            <p>Режем, мелим или мариноваме поръчката ти точно по твоите изисквания.</p>
+            <span class="step-meta">Същия ден</span>
+          </div>
+        </div>
+        <div class="step" data-rv data-d="2">
+          <span class="n">3</span>
+          <div>
+            <h3>Взимаш от магазина</h3>
+            <p>Поръчката те чака претеглена и опакована в уговорения час.</p>
+            <span class="step-meta">Без чакане на опашка</span>
+          </div>
+        </div>
+      </div>
+      <ul class="order-badges" id="orderBadges" data-rv></ul>
+      <div class="order-contacts" data-rv>
+        <a class="btn btn-red" href="tel:+359000000000">Обади се сега</a>
+        <a class="btn btn-viber" href="viber://chat?number=%2B359000000000">Пиши във Viber</a>
+      </div>
+    </div>
+
+    <div class="order-form" data-rv data-d="1">
+      <form class="form" id="orderForm" novalidate>
+        <div class="form-awning" aria-hidden="true"></div>
+        <h3>Форма за поръчка</h3>
+        <div class="form-cart" id="formCart" hidden>
+          <span id="formCartHint">В списъка ти има продукти — да ги сложа ли в поръчката?</span>
+          <button class="form-cart-btn" type="button" id="formCartBtn">Добави списъка</button>
+        </div>
+        <div class="field">
+          <label for="fName">Име</label>
+          <input id="fName" name="name" type="text" autocomplete="name" required>
+          <span class="err">Моля, въведи името си.</span>
+        </div>
+        <div class="field">
+          <label for="fPhone">Телефон</label>
+          <input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+          <span class="err">Моля, въведи валиден телефон (мин. 9 цифри).</span>
+        </div>
+        <div class="field">
+          <label for="fMsg">Какво да приготвим?</label>
+          <textarea id="fMsg" name="msg" required placeholder="Напр.: 1 кг свински врат на пържоли, 500 г кайма смес…"></textarea>
+          <span class="err">Опиши поръчката си с няколко думи.</span>
+        </div>
+        <div class="field">
+          <label for="fTime">Предпочитан час за взимане</label>
+          <input id="fTime" name="time" type="text" placeholder="Напр.: днес около 17:30">
+          <div class="time-chips" id="timeChips" role="group" aria-label="Бърз избор на час"></div>
+        </div>
+        <button class="btn btn-red btn-full" type="submit">Изпрати поръчката</button>
+        <p class="form-note">Формата не е онлайн плащане — потвърждаваме по телефона и плащаш на място.</p>
+      </form>
+      <div class="form-ok" id="formOk" role="status">
+        <div class="big" aria-hidden="true">🥩</div>
+        <h3>Поръчката е приета!</h3>
+        <p>Ще се свържем с теб на посочения телефон, за да потвърдим. До скоро в Tera.MES!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow" data-rv>От витрината</p>
+    <h2 class="sec-title" data-rv>Прясно е, вижда се</h2>
+    <div class="gal-grid" data-rv>
+      <button class="gal-item" data-cap="Витрината сутрин">
+        <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=900&auto=format&fit=crop" alt="Прясно телешко месо" width="900" height="700" loading="lazy" decoding="async">
+      </button>
+      <button class="gal-item" data-cap="Телешки стекове">
+        <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?q=80&w=700&auto=format&fit=crop" alt="Телешки стекове" width="700" height="500" loading="lazy" decoding="async">
+      </button>
+      <button class="gal-item" data-cap="Подбрано от майстора">
+        <img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?q=80&w=700&auto=format&fit=crop" alt="Сурово месо с подправки" width="700" height="500" loading="lazy" decoding="async">
+      </button>
+      <button class="gal-item" data-cap="Майсторска транжорна">
+        <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?q=80&w=700&auto=format&fit=crop" alt="Месар транжира на дъска" width="700" height="900" loading="lazy" decoding="async">
+      </button>
+      <button class="gal-item" data-cap="Готово за скарата">
+        <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?q=80&w=700&auto=format&fit=crop" alt="Приготвен стек" width="700" height="500" loading="lazy" decoding="async">
+      </button>
+      <button class="gal-item" data-cap="Ребърца в марината">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=900&auto=format&fit=crop" alt="Ребърца на скара" width="900" height="600" loading="lazy" decoding="async">
+      </button>
+      <button class="gal-item" data-cap="Деликатеси и сушени">
+        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=700&auto=format&fit=crop" alt="Месни деликатеси" width="700" height="500" loading="lazy" decoding="async">
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Галерия — уголемен изглед">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Затвори">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Предишна снимка">‹</button>
+  <div class="lb-stage">
+    <img id="lbImg" alt="">
+  </div>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Следваща снимка">›</button>
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews sec-pink" id="reviews">
+  <svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="wrap">
+    <div class="rev-head">
+      <div>
+        <p class="eyebrow" data-rv>Казано на тезгяха</p>
+        <h2 class="sec-title" data-rv>Клиентите за нас</h2>
+      </div>
+      <!-- ПЛЕЙСХОЛДЪР: смени оценката и броя с реалните си данни -->
+      <div class="rev-score" data-rv data-d="1">
+        <b id="revScore">5,0</b>
+        <div>
+          <span class="stars" aria-label="5 от 5 звезди">★★★★★</span>
+          <span class="rev-score-txt" id="revScoreTxt">Средна оценка от клиентите ни</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-wrap">
+      <div class="rev-grid" id="revGrid"></div>
+    </div>
+    <div class="rev-more-row">
+      <button class="btn btn-ghost rev-more" type="button" id="revMore" hidden>
+        <span class="rev-more-txt">Виж всички отзиви</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <svg class="tear flip" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="insta" id="insta">
+  <div class="wrap">
+    <p class="eyebrow" data-rv>Следвай ни</p>
+    <h2 class="sec-title" data-rv>Витрината, на живо</h2>
+
+    <div class="ig-card" data-rv>
+      <div class="ig-head">
+        <a class="ig-profile" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener">
+          <span class="ig-avatar"><img src="teralogo.png" alt="" width="52" height="52" loading="lazy" decoding="async"></span>
+          <span class="ig-names">
+            <b>@tera.mes</b>
+            <em>Tera.MES · Месарски магазин</em>
+          </span>
+        </a>
+        <a class="ig-follow" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
+          Следвай
+        </a>
+      </div>
+
+      <p class="ig-note">Всяка сутрин показваме какво е заредено — виж преди да дойдеш.</p>
+
+      <div class="ig-grid">
+        <a class="ig-tile" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener" aria-label="Публикация в Instagram: прясно телешко месо">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=500&auto=format&fit=crop" alt="Прясно телешко месо" width="500" height="500" loading="lazy" decoding="async">
+          <span class="ig-ov" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener" aria-label="Публикация в Instagram: телешки стекове">
+          <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?q=80&w=500&auto=format&fit=crop" alt="Телешки стекове" width="500" height="500" loading="lazy" decoding="async">
+          <span class="ig-ov" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener" aria-label="Публикация в Instagram: ребърца на скара">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=500&auto=format&fit=crop" alt="Ребърца на скара" width="500" height="500" loading="lazy" decoding="async">
+          <span class="ig-ov" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener" aria-label="Публикация в Instagram: приготвен стек">
+          <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?q=80&w=500&auto=format&fit=crop" alt="Приготвен стек" width="500" height="500" loading="lazy" decoding="async">
+          <span class="ig-ov" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener" aria-label="Публикация в Instagram: месни деликатеси">
+          <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=500&auto=format&fit=crop" alt="Месни деликатеси" width="500" height="500" loading="lazy" decoding="async">
+          <span class="ig-ov" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener" aria-label="Публикация в Instagram: месарят на работа">
+          <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?q=80&w=500&auto=format&fit=crop" alt="Месарят на работа" width="500" height="500" loading="lazy" decoding="async">
+          <span class="ig-ov" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+        </a>
+      </div>
+
+      <a class="ig-more" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener">Виж всички публикации →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-top">
+      <p class="eyebrow" data-rv>Питаш — отговаряме</p>
+      <h2 class="sec-title" data-rv>Чести въпроси</h2>
+      <p class="faq-lead" data-rv>Събрахме това, което ни питат най-често на тезгяха. Ако твоят въпрос го няма — вдигни телефона, отговаряме и по Viber.</p>
+      <label class="faq-search" data-rv data-d="1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="search" id="faqSearch" placeholder="Търси във въпросите…" aria-label="Търси във въпросите">
+      </label>
+    </div>
+
+    <div class="faq-list" id="faqList" data-rv data-d="1"></div>
+
+    <div class="faq-help" data-rv data-d="2">
+      <div class="faq-help-txt">
+        <b>Не намери отговор?</b>
+        <span>Пон – Съб · 08:00 – 19:00 · отговаряме и по Viber</span>
+      </div>
+      <div class="faq-help-btns">
+        <a class="btn btn-red" href="tel:+359000000000">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          Обади се
+        </a>
+        <a class="btn btn-viber" href="viber://chat?number=%2B359000000000">Пиши във Viber</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="contacts" id="contacts">
+  <svg class="tear tear-top" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+  <div class="wrap">
+    <div class="con-head">
+      <div>
+        <p class="eyebrow" data-rv>Ела на витрината</p>
+        <h2 class="sec-title" data-rv>Контакти</h2>
+      </div>
+      <p class="con-status" id="conStatus" data-rv><span class="dot" aria-hidden="true"></span><b>Работно време</b></p>
+    </div>
+
+    <div class="con-grid">
+      <div class="con-txt">
+        <div class="con-list" data-rv>
+          <a class="con-item" href="tel:+359000000000">
+            <span class="con-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>
+            <span class="con-body"><b>Телефон</b><em>+359 000 000 000</em></span>
+            <span class="con-go" aria-hidden="true">→</span>
+          </a>
+          <a class="con-item" href="https://www.google.com/maps?q=%D0%9C%D0%B0%D0%BB%D0%BE%20%D0%9A%D0%BE%D0%BD%D0%B0%D1%80%D0%B5%2C%20%D1%83%D0%BB.%20%D0%A1%D0%B5%D0%B4%D0%BC%D0%B0" target="_blank" rel="noopener">
+            <span class="con-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+            <span class="con-body"><b>Адрес</b><em>Мало Конаре, ул. Седма</em></span>
+            <span class="con-go" aria-hidden="true">→</span>
+          </a>
+          <a class="con-item" href="viber://chat?number=%2B359000000000">
+            <span class="con-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.6 2 10.2c0 2.6 1.4 4.9 3.6 6.4v3.9c0 .4.5.7.8.4l2.6-2c1 .2 2 .3 3 .3 5.5 0 10-3.6 10-8.2S17.5 2 12 2zm4.9 11.6c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.5-.6.7-.8.2-.3.4-.2.6-.1.3.1 1.6.8 1.9.9.3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg></span>
+            <span class="con-body"><b>Viber</b><em>Пиши ни за поръчка</em></span>
+            <span class="con-go" aria-hidden="true">→</span>
+          </a>
+          <a class="con-item" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener">
+            <span class="con-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.4-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></span>
+            <span class="con-body"><b>Instagram</b><em>@tera.mes</em></span>
+            <span class="con-go" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="hours" data-rv aria-label="Работно време">
+          <div class="hours-head"><span>Работно време</span><span>Мало Конаре</span></div>
+          <div data-day="1-5"><span>Понеделник – Петък</span><span>08:00 – 19:00</span></div>
+          <div data-day="6"><span>Събота</span><span>08:00 – 15:00</span></div>
+          <div data-day="0"><span>Неделя</span><span class="closed">Почивен ден</span></div>
+        </div>
+
+        <div class="con-ctas" data-rv>
+          <a class="btn btn-red" href="tel:+359000000000">Обади се сега</a>
+          <a class="btn btn-paper" href="#order">Поръчай онлайн</a>
+        </div>
+      </div>
+
+      <div class="map-wrap" data-rv data-d="1">
+        <div class="map">
+          <!-- зарежда се само след съгласие за бисквитки (js/layout.js) -->
+          <iframe title="Tera.MES на картата" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden
+            data-consent-src="https://www.google.com/maps?q=%D0%9C%D0%B0%D0%BB%D0%BE%20%D0%9A%D0%BE%D0%BD%D0%B0%D1%80%D0%B5%2C%20%D1%83%D0%BB.%20%D0%A1%D0%B5%D0%B4%D0%BC%D0%B0&output=embed"></iframe>
+        </div>
+        <a class="map-cta" href="https://www.google.com/maps?q=%D0%9C%D0%B0%D0%BB%D0%BE%20%D0%9A%D0%BE%D0%BD%D0%B0%D1%80%D0%B5%2C%20%D1%83%D0%BB.%20%D0%A1%D0%B5%D0%B4%D0%BC%D0%B0" target="_blank" rel="noopener">
+          <b>Виж маршрут в Google Maps</b>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="js/content.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/layout.js" defer></script>
+<script src="js/qr.js" defer></script>
+<script src="js/shop.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

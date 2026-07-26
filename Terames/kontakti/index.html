@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#C41E2F">
+<title>Контакти и работно време — Tera.MES, с. Мало Конаре</title>
+<meta name="description" content="Телефон, Viber, адрес и работно време на Tera.MES. Как да стигнеш до магазина в с. Мало Конаре, ул. Седма, и кога витрината е най-заредена.">
+<link rel="canonical" href="https://tera-mes.bg/kontakti/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Контакти — Tera.MES">
+<meta property="og:description" content="Телефон, Viber, адрес, работно време и как да стигнеш.">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:url" content="https://tera-mes.bg/kontakti/">
+<meta property="og:image" content="https://tera-mes.bg/teralogo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C41E2F'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='%23FBF3EC' font-family='Arial Black' font-weight='900'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@700;800&family=Sofia+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/pages.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "additionalType": "https://schema.org/ButcherShop",
+  "name": "Tera.MES",
+  "url": "https://tera-mes.bg/kontakti/",
+  "telephone": "+359000000000",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Седма",
+    "addressLocality": "с. Мало Конаре",
+    "addressCountry": "BG"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "15:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/tera.mes/"]
+}
+</script>
+</head>
+<body data-base="../" data-page="kontakti">
+
+<main id="main">
+
+<section class="phero">
+  <div class="wrap phero-in">
+    <nav class="crumbs" aria-label="Навигация">
+      <a href="../">Начало</a><span aria-hidden="true">/</span><b>Контакти</b>
+    </nav>
+    <p class="eyebrow">Ела на витрината</p>
+    <h1>Контакти</h1>
+    <p id="koLead"></p>
+    <p class="con-status" id="conStatus"><span class="dot" aria-hidden="true"></span><b>Работно време</b></p>
+  </div>
+  <svg class="tear" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 L0 16 L48 22 L96 8 L160 20 L224 10 L280 24 L348 12 L420 22 L484 8 L560 18 L636 10 L704 24 L776 12 L848 20 L916 8 L984 22 L1048 12 L1112 20 L1160 10 L1200 18 L1200 30 Z"/></svg>
+</section>
+
+<section class="psec psec-dark">
+  <div class="wrap ko-grid">
+    <div>
+      <div class="con-list" id="koList" data-rv></div>
+      <div class="hours ko-hours" id="koHours" data-rv aria-label="Работно време"></div>
+      <p class="ko-note" id="koHolidayNote"></p>
+      <div class="con-ctas" data-rv>
+        <a class="btn btn-red" href="tel:+359000000000">Обади се сега</a>
+        <a class="btn btn-paper" href="../#order">Поръчай онлайн</a>
+      </div>
+    </div>
+    <div class="map-wrap" data-rv data-d="1">
+      <div class="map ko-map">
+        <!-- зарежда се само след съгласие за бисквитки (js/layout.js) -->
+        <iframe id="koMap" title="Tera.MES на картата" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+      </div>
+      <a class="map-cta" id="koMapLink" href="https://www.google.com/maps" target="_blank" rel="noopener">
+        <b>Виж маршрут в Google Maps</b>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="psec">
+  <div class="wrap">
+    <div class="psec-head">
+      <p class="eyebrow">Пътят дотук</p>
+      <h2 id="koDirectionsTitle">Как да стигнеш</h2>
+    </div>
+    <div class="ko-cards" id="koDirections"></div>
+  </div>
+</section>
+
+<section class="psec psec-alt">
+  <div class="wrap">
+    <div class="psec-head">
+      <p class="eyebrow">Малък съвет</p>
+      <h2 id="koBestTitle">Кога да дойдеш</h2>
+      <p>Витрината живее по свой ритъм. Ето кога какво да очакваш.</p>
+    </div>
+    <ul class="ko-times" id="koBest"></ul>
+  </div>
+</section>
+
+<section class="psec psec-pink">
+  <div class="wrap">
+    <div class="psec-head">
+      <p class="eyebrow">Не ти се звъни?</p>
+      <h2>Пиши ни във Viber</h2>
+      <p>Изпрати списък или снимка на това, което ти трябва. Отговаряме в рамките на работния ден.</p>
+    </div>
+    <div class="phero-cta">
+      <a class="btn btn-viber" href="viber://chat?number=%2B359000000000">Пиши във Viber</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/tera.mes/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="../js/content.js" defer></script>
+<script src="../js/api.js" defer></script>
+<script src="../js/layout.js" defer></script>
+<script src="../js/shop.js" defer></script>
+<script src="../js/pages.js" defer></script>
+<script src="../js/page.js" defer></script>
+</body>
+</html>
